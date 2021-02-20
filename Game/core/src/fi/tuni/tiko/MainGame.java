@@ -27,8 +27,6 @@ public class MainGame extends ApplicationAdapter {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 
-		windowWidth = Gdx.graphics.getWidth();
-		windowHeight = Gdx.graphics.getHeight();
 		float boxWidth = windowWidth * 0.9f;
 		float boxHeight = windowHeight * 0.1f;
 		float boxMargin = windowHeight * 0.05f;
