@@ -66,6 +66,7 @@ public class MainGame extends ApplicationAdapter {
 
 	@Override
 	public void dispose () {
+		stage.dispose();
 		batch.dispose();
 		img.dispose();
 	}
