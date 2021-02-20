@@ -33,8 +33,10 @@ public class AnswerBox extends Label {
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
                 boolean move = true;
                 for (Actor a : getStage().getActors()) {
-                    if (((AnswerBox) a).atEdge) {
-                        move = false;
+                    if (a.getClass() == AnswerBox.class) {
+                        if (((AnswerBox) a).atEdge) {
+                            move = false;
+                        }
                     }
                 }
                 if (move || atEdge) {

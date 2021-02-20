@@ -13,6 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import java.util.ArrayList;
+
 public class MainGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
@@ -30,7 +32,13 @@ public class MainGame extends ApplicationAdapter {
 		boxTexture = new Texture("Box.png");
 		skin = createSkin();
 
-		screen = new ChoiceScreen(skin);
+		String q = "What are you going to do?";
+		ArrayList<String> answers = new ArrayList<String>();
+		answers.add("Who knows...");
+		answers.add("I don't care.");
+		answers.add("Run towards the nearest wall.");
+
+		screen = new ChoiceScreen(skin, q, answers);
 		Gdx.input.setInputProcessor(screen);
 
 	}
