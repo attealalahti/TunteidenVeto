@@ -34,14 +34,14 @@ public class MainGame extends ApplicationAdapter {
 		boxTexture = new Texture("Box.png");
 		skin = createSkin();
 
-		String q = "What are you going to do?";
+		String question = "What are you going to do?";
 		ArrayList<String> answers = new ArrayList<String>();
 		answers.add("Who knows...");
 		answers.add("I don't care.");
 		answers.add("Run towards the nearest wall.");
 		//answers.add("Another option.");
 
-		screen = new ChoiceScreen(skin, q, answers);
+		screen = new ChoiceScreen(skin, question, answers);
 		Gdx.input.setInputProcessor(screen);
 
 	}

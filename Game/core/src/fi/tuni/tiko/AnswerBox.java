@@ -31,15 +31,17 @@ public class AnswerBox extends Label {
             }
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                boolean move = true;
+                /* KNOWN BUG */
+                // You can swipe with two fingers to move multiple boxes at the same time.
+                boolean canMove = true;
                 for (Actor a : getStage().getActors()) {
                     if (a.getClass() == AnswerBox.class) {
                         if (((AnswerBox) a).atEdge) {
-                            move = false;
+                            canMove = false;
                         }
                     }
                 }
-                if (move || atEdge) {
+                if (canMove || atEdge) {
                     setX(Gdx.input.getX() - touchDifferenceX);
                 }
             }

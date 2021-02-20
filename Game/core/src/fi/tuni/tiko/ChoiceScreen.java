@@ -16,7 +16,7 @@ public class ChoiceScreen extends Stage {
     private ArrayList<String> answers;
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
-    private final float boxMargin = windowHeight * 0.05f;
+    private final float boxMargin = windowHeight * 0.025f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
 
     public ChoiceScreen(Skin skin, String question, ArrayList<String> answers) {
@@ -31,6 +31,7 @@ public class ChoiceScreen extends Stage {
         questionBox.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - boxMargin);
         questionBox.setAlignment(0);
         questionBox.setFontScale(3);
+        questionBox.setWrap(true);
         addActor(questionBox);
     }
     public void createAnswerBoxes() {
