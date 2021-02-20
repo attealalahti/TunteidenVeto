@@ -16,11 +16,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 public class MainGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
+	Texture boxTexture;
 	public static int windowWidth;
 	public static int windowHeight;
 
 	Stage stage;
-	AnswerBox answerBox;
 	Skin skin;
 	@Override
 	public void create () {
@@ -32,8 +32,8 @@ public class MainGame extends ApplicationAdapter {
 		float boxMargin = windowHeight * 0.05f;
 		float xBox = (windowWidth - boxWidth) / 2f;
 
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		Texture boxTexture = new Texture("Box.png");
+
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 		skin = new Skin();
@@ -41,17 +41,20 @@ public class MainGame extends ApplicationAdapter {
 		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
-		skin.add("white", new Texture(pixmap));
+		skin.add("white", boxTexture);
 		skin.add("default", new BitmapFont());
 
 		Label.LabelStyle labelStyle = new Label.LabelStyle();
-		labelStyle.background = skin.newDrawable("white", Color.GREEN);
+		labelStyle.background = skin.newDrawable("white", Color.FOREST);
 		labelStyle.font = skin.getFont("default");
 
 		skin.add("default", labelStyle);
 
-		answerBox = new AnswerBox("Test text.", skin, xBox, boxMargin, boxWidth, boxHeight);
-		stage.addActor(answerBox);
+		float currentY = boxMargin;
+		for (int i = 0; i < 3; i++) {
+			stage.addActor(new AnswerBox("Laatikko numero " + i, skin, xBox, currentY, boxWidth, boxHeight));
+			currentY += boxMargin + boxHeight;
+		}
 	}
 	@Override
 	public void render () {

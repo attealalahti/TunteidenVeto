@@ -21,11 +21,11 @@ public class AnswerBox extends Label {
         startX = x;
         setFontScale(2);
         setWrap(true);
+        setAlignment(0);
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                float touchX = Gdx.input.getX();
-                touchDifferenceX = touchX - getX();
+                touchDifferenceX = Gdx.input.getX() - getX();
                 return true;
             }
             @Override
