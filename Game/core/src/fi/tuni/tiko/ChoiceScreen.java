@@ -45,6 +45,11 @@ public class ChoiceScreen extends Stage {
             currentY += boxMargin + boxHeight;
         }
     }
+
+    /** Happens when one of the answers is selected and confirmed.
+     *
+     * @param screenLink The ID number of the next screen.
+     */
     public void nextScreen(int screenLink) {
         System.out.println("Link to this screen: " + screenLink);
     }
