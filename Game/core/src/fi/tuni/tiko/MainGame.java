@@ -5,7 +5,6 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -23,7 +22,6 @@ public class MainGame extends ApplicationAdapter {
 	Stage stage;
 	AnswerBox answerBox;
 	Skin skin;
-	OrthographicCamera camera;
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
@@ -56,16 +54,7 @@ public class MainGame extends ApplicationAdapter {
 
 		answerBox = new AnswerBox("Test text.", skin, xBox, boxMargin, boxWidth, boxHeight);
 		stage.addActor(answerBox);
-
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, windowWidth, windowHeight);
-		stage.getViewport().setCamera(camera);
 	}
-	@Override
-	public void resize(int width, int height) {
-		stage.getViewport().setCamera(camera);
-	}
-
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(0, 0.1f, 0.1f, 1);
