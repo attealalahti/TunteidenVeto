@@ -20,22 +20,15 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowWidth;
 	public static int windowHeight;
 
-	Stage stage;
+	ChoiceScreen screen;
 	Skin skin;
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 
-		float boxWidth = windowWidth * 0.9f;
-		float boxHeight = windowHeight * 0.1f;
-		float boxMargin = windowHeight * 0.05f;
-		float xBox = (windowWidth - boxWidth) / 2f;
 
-		Texture boxTexture = new Texture("Box.png");
-
-		stage = new Stage();
-		Gdx.input.setInputProcessor(stage);
+		boxTexture = new Texture("Box.png");
 		skin = new Skin();
 
 		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
@@ -50,11 +43,9 @@ public class MainGame extends ApplicationAdapter {
 
 		skin.add("default", labelStyle);
 
-		float currentY = boxMargin;
-		for (int i = 0; i < 3; i++) {
-			stage.addActor(new AnswerBox("Laatikko numero " + i, skin, xBox, currentY, boxWidth, boxHeight));
-			currentY += boxMargin + boxHeight;
-		}
+		screen = new ChoiceScreen(skin);
+		Gdx.input.setInputProcessor(screen);
+
 	}
 	@Override
 	public void render () {
@@ -62,14 +53,15 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
-		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
-		stage.draw();
+		screen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
+		screen.draw();
 	}
 
 	@Override
 	public void dispose () {
-		stage.dispose();
+		screen.dispose();
 		batch.dispose();
 		img.dispose();
+		boxTexture.dispose();
 	}
 }
