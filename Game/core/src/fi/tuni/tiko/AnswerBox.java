@@ -13,55 +13,19 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 public class AnswerBox extends Label {
     private float startX;
     private float moveDuration = 0.2f;
-    private boolean touching = false;
+    public boolean atEdge = false;
     private float touchDifferenceX;
-    private float touchDifferenceY;
     public AnswerBox(CharSequence text, Skin skin, float x, float y, float width, float height) {
         super(text, skin);
         setBounds(x, y, width, height);
         startX = x;
         setFontScale(2);
         setWrap(true);
-
-        /*
-        addListener(new ActorGestureListener() {
-           public void fling (InputEvent event, float velocityX, float velocityY) {
-               float moveX = startX;
-               if (getX() < startX - windowWidth * 0.25f) {
-                   moveX = startX - windowWidth * 0.5f;
-               } else if (getX() > startX + windowWidth * 0.25f) {
-                   moveX = startX + windowWidth * 0.5f;
-               }
-               boolean actionConfirmed = false;
-               if (getX() < startX - windowWidth * 0.5f) {
-                   moveX = startX - windowWidth;
-                   actionConfirmed = true;
-               } else if (getX() > startX + windowWidth * 0.5f) {
-                   moveX = startX + windowWidth;
-                   actionConfirmed = true;
-               }
-               if (actionConfirmed) {
-                    addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
-                        @Override
-                        public void run() {
-                            System.out.println("Switches to next screen.");
-                        }
-                    })));
-               } else {
-                   addAction(moveTo(moveX, getY(), moveDuration));
-               }
-           }
-        });
-         */
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 float touchX = Gdx.input.getX();
-
                 touchDifferenceX = touchX - getX();
-
-
-
                 return true;
             }
             @Override
@@ -71,16 +35,23 @@ public class AnswerBox extends Label {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 float moveX = startX;
+                boolean movingToEdge = false;
                 if (getX() < startX - windowWidth * 0.25f) {
                     moveX = startX - windowWidth * 0.5f;
+                    movingToEdge = true;
                 } else if (getX() > startX + windowWidth * 0.25f) {
                     moveX = startX + windowWidth * 0.5f;
+                    movingToEdge = true;
+                } else {
+                    atEdge = false;
+                    movingToEdge = false;
                 }
+                final boolean finalEdge = movingToEdge;
                 boolean actionConfirmed = false;
-                if (getX() < startX - windowWidth * 0.5f) {
+                if (getX() < startX - windowWidth * 0.5f && atEdge) {
                     moveX = startX - windowWidth;
                     actionConfirmed = true;
-                } else if (getX() > startX + windowWidth * 0.5f) {
+                } else if (getX() > startX + windowWidth * 0.5f && atEdge) {
                     moveX = startX + windowWidth;
                     actionConfirmed = true;
                 }
@@ -92,20 +63,16 @@ public class AnswerBox extends Label {
                         }
                     })));
                 } else {
-                    addAction(moveTo(moveX, getY(), moveDuration));
+                    addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (finalEdge) {
+                                atEdge = true;
+                            }
+                        }
+                    })));
                 }
             }
         });
     }
-    /*
-    @Override
-    public void act(float delta) {
-        super.act(delta);
-        if (Gdx.input.justTouched()) {
-
-        }
-
-    }
-
-     */
 }
