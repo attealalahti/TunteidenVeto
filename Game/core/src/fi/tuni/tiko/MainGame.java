@@ -27,25 +27,28 @@ public class MainGame extends ApplicationAdapter {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 
-
 		boxTexture = new Texture("Box.png");
-		skin = new Skin();
-
-		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
-		pixmap.setColor(Color.WHITE);
-		pixmap.fill();
-		skin.add("white", boxTexture);
-		skin.add("default", new BitmapFont());
-
-		Label.LabelStyle labelStyle = new Label.LabelStyle();
-		labelStyle.background = skin.newDrawable("white", Color.FOREST);
-		labelStyle.font = skin.getFont("default");
-
-		skin.add("default", labelStyle);
+		skin = createSkin();
 
 		screen = new ChoiceScreen(skin);
 		Gdx.input.setInputProcessor(screen);
 
+	}
+	public Skin createSkin() {
+		Skin s = new Skin();
+		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
+		pixmap.setColor(Color.WHITE);
+		pixmap.fill();
+		s.add("white", boxTexture);
+		s.add("default", new BitmapFont());
+
+		Label.LabelStyle labelStyle = new Label.LabelStyle();
+		labelStyle.background = s.newDrawable("white", Color.FOREST);
+		labelStyle.font = s.getFont("default");
+
+		s.add("default", labelStyle);
+
+		return s;
 	}
 	@Override
 	public void render () {
