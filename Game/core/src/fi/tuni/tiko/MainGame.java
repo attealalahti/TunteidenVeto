@@ -40,8 +40,12 @@ public class MainGame extends ApplicationAdapter {
 		answers.add("I don't care.");
 		answers.add("Run towards the nearest wall.");
 		//answers.add("Another option.");
+		ArrayList<Integer> screenLinks = new ArrayList<Integer>();
+		screenLinks.add(1);
+		screenLinks.add(2);
+		screenLinks.add(3);
 
-		screen = new ChoiceScreen(skin, question, answers);
+		screen = new ChoiceScreen(0, skin, question, answers, screenLinks);
 		Gdx.input.setInputProcessor(screen);
 
 	}

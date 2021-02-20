@@ -11,18 +11,22 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 
 public class ChoiceScreen extends Stage {
 
+    private int screenID;
     private Skin skin;
     private String question;
     private ArrayList<String> answers;
+    private ArrayList<Integer> screenLinks;
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
     private final float boxMargin = windowHeight * 0.025f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
 
-    public ChoiceScreen(Skin skin, String question, ArrayList<String> answers) {
+    public ChoiceScreen(int screenID, Skin skin, String question, ArrayList<String> answers, ArrayList<Integer> screenLinks) {
+        this.screenID = screenID;
         this.skin = skin;
         this.question = question;
         this.answers = answers;
+        this.screenLinks = screenLinks;
 
         createAnswerBoxes();
 
@@ -36,9 +40,12 @@ public class ChoiceScreen extends Stage {
     }
     public void createAnswerBoxes() {
         float currentY = boxMargin;
-        for (String a: answers) {
-            addActor(new AnswerBox(a, skin, xBox, currentY, boxWidth, boxHeight));
+        for (int i = 0; i < answers.size(); i++) {
+            addActor(new AnswerBox(answers.get(i), skin, xBox, currentY, boxWidth, boxHeight, screenLinks.get(i)));
             currentY += boxMargin + boxHeight;
         }
+    }
+    public void nextScreen(int screenLink) {
+        System.out.println("Link to this screen: " + screenLink);
     }
 }

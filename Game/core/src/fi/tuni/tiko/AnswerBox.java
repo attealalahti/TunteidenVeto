@@ -14,10 +14,12 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 public class AnswerBox extends Label {
     private float startX;
     private float moveDuration = 0.2f;
+    private int screenLink;
     public boolean atEdge = false;
     private float touchDifferenceX;
-    public AnswerBox(CharSequence text, Skin skin, float x, float y, float width, float height) {
+    public AnswerBox(CharSequence text, Skin skin, float x, float y, float width, float height, final int screenLink) {
         super(text, skin);
+        this.screenLink = screenLink;
         setBounds(x, y, width, height);
         startX = x;
         setFontScale(2);
@@ -73,6 +75,8 @@ public class AnswerBox extends Label {
                         @Override
                         public void run() {
                             System.out.println("Switches to next screen.");
+                            ChoiceScreen c = (ChoiceScreen) getStage();
+                            c.nextScreen(screenLink);
                         }
                     })));
                 } else {
