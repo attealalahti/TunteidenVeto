@@ -27,8 +27,10 @@ public class ChoiceScreen extends Stage {
         createAnswerBoxes();
 
         float roomLeft = windowHeight - (answers.size() * (boxHeight + boxMargin) + boxMargin);
-        Label questionBox = new Label(question, skin);
+        Label questionBox = new Label(question, skin, "question");
         questionBox.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - boxMargin);
+        questionBox.setAlignment(0);
+        questionBox.setFontScale(3);
         addActor(questionBox);
     }
     public void createAnswerBoxes() {

@@ -15,6 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.ArrayList;
 
+import javax.swing.text.LabelView;
+
 public class MainGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
@@ -37,6 +39,7 @@ public class MainGame extends ApplicationAdapter {
 		answers.add("Who knows...");
 		answers.add("I don't care.");
 		answers.add("Run towards the nearest wall.");
+		//answers.add("Another option.");
 
 		screen = new ChoiceScreen(skin, q, answers);
 		Gdx.input.setInputProcessor(screen);
@@ -47,14 +50,19 @@ public class MainGame extends ApplicationAdapter {
 		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
-		s.add("white", boxTexture);
+		s.add("round_corners", boxTexture);
+		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
 
-		Label.LabelStyle labelStyle = new Label.LabelStyle();
-		labelStyle.background = s.newDrawable("white", Color.FOREST);
-		labelStyle.font = s.getFont("default");
+		Label.LabelStyle answerStyle = new Label.LabelStyle();
+		answerStyle.background = s.newDrawable("round_corners", Color.FOREST);
+		answerStyle.font = s.getFont("default");
+		Label.LabelStyle questionStyle = new Label.LabelStyle();
+		questionStyle.background = s.newDrawable("white", Color.ORANGE);
+		questionStyle.font = s.getFont("default");
 
-		s.add("default", labelStyle);
+		s.add("default", answerStyle);
+		s.add("question", questionStyle);
 
 		return s;
 	}
