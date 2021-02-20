@@ -2,6 +2,7 @@ package fi.tuni.tiko;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -30,7 +31,15 @@ public class AnswerBox extends Label {
             }
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                setX(Gdx.input.getX() - touchDifferenceX);
+                boolean move = true;
+                for (Actor a : getStage().getActors()) {
+                    if (((AnswerBox) a).atEdge) {
+                        move = false;
+                    }
+                }
+                if (move || atEdge) {
+                    setX(Gdx.input.getX() - touchDifferenceX);
+                }
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
