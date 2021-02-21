@@ -20,6 +20,7 @@ public class ChoiceScreen extends Stage {
     private final float boxHeight = windowHeight * 0.1f;
     private final float boxMargin = windowHeight * 0.025f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
+    int nextScreensID = 0;
 
     public ChoiceScreen(int screenID, Skin skin, String question, ArrayList<String> answers, ArrayList<Integer> screenLinks) {
         this.screenID = screenID;
@@ -51,6 +52,11 @@ public class ChoiceScreen extends Stage {
      * @param screenLink The ID number of the next screen.
      */
     public void nextScreen(int screenLink) {
+        nextScreensID = screenLink;
         System.out.println("Link to this screen: " + screenLink);
+    }
+
+    public int getNextScreensID() {
+        return nextScreensID;
     }
 }

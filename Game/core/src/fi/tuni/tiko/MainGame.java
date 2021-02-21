@@ -1,4 +1,3 @@
-
 package fi.tuni.tiko;
 
 import com.badlogic.gdx.ApplicationAdapter;
@@ -29,6 +28,8 @@ public class MainGame extends ApplicationAdapter {
 	ChoiceScreen screen;
 	ChoiceScreen screen2a;
 	ChoiceScreen screen2b;
+	ChoiceScreen currentScreen;
+	int nextScreensID = 0;
 
 	Skin skin;
 	@Override
@@ -49,20 +50,20 @@ public class MainGame extends ApplicationAdapter {
 		screenLinks.add(2);
 
 		screen = new ChoiceScreen(0, skin, question, answers, screenLinks);
-		Gdx.input.setInputProcessor(screen);
+		currentScreen = screen;
 
 		String feedback2a = "Tilanne jää mietityttämään. \n Oliko ystäväsi kuitenkin \n vihaisen sijaan surullinen? \n Et oikein tiedä, \n mitä tilanteesta pitäisi ajatella.";
 		ArrayList<String> answers2a = new ArrayList<String>();
 		answers2a.add("HÄMMENNYS +10");
 		ArrayList<Integer> screenLinks2 = new ArrayList<Integer>();
-		screenLinks2.add(0);
+		screenLinks2.add(3);
 		screen2a = new ChoiceScreen(1, skin, feedback2a, answers2a, screenLinks2);
 
 		String feedback2b = "Hetken päästä ystäväsi kertoo,\n että hänen lemmikkinsä kuoli \n muutama päivä sitten. \n Juttelette tilanteesta hetken ja \n ystäväsi vaikuttaa tulevan paremmille mielin. \n Itseäsi alkaa hiukan surettaa ystäväsi puolesta, \n mutta olet iloinen että juttelusta \n tuli hänelle parempi mieli.";
 		ArrayList<String> answers2b = new ArrayList<String>();
-		answers2a.add("SURU +5, ILO +15");
+		answers2b.add("SURU +5, ILO +15");
 		ArrayList<Integer> screenLinks3 = new ArrayList<Integer>();
-		screenLinks3.add(0);
+		screenLinks3.add(3);
 		screen2b = new ChoiceScreen(2, skin, feedback2b, answers2b, screenLinks3);
 	}
 	public Skin createSkin() {
@@ -91,13 +92,23 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0.1f, 0.1f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		screen.draw();
-		screen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
+		nextScreensID = currentScreen.getNextScreensID();
+
+		if(nextScreensID == 1) {
+			currentScreen = screen2a;
+		}
+		else if(nextScreensID == 2) {
+			currentScreen = screen2b;
+		}
+
+		Gdx.input.setInputProcessor(currentScreen);
+		currentScreen.draw();
+		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
 
 	@Override
 	public void dispose () {
-		screen.dispose();
+		currentScreen.dispose();
 		batch.dispose();
 		img.dispose();
 		boxTexture.dispose();
