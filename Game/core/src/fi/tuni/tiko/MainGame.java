@@ -24,7 +24,12 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowWidth;
 	public static int windowHeight;
 
+	ArrayList<String> answers;
+
 	ChoiceScreen screen;
+	ChoiceScreen screen2a;
+	ChoiceScreen screen2b;
+
 	Skin skin;
 	@Override
 	public void create () {
@@ -34,20 +39,31 @@ public class MainGame extends ApplicationAdapter {
 		boxTexture = new Texture("Box.png");
 		skin = createSkin();
 
-		String question = "What are you going to do?";
-		ArrayList<String> answers = new ArrayList<String>();
-		answers.add("Who knows...");
-		answers.add("I don't care.");
-		answers.add("Run towards the nearest wall.");
+		String question = "Välitunnilla ystäväsi on vaisu, \n eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. \n Hän on selvästi omissa ajatuksissaan. \n Sinä… ";
+		answers = new ArrayList<String>();
+		answers.add(" …tunnet itsesi hölmöksi. \n Oletkohan suututtanut hänet jotenkin?");
+		answers.add(" …alat kysellä, mikä vaivaa. \n Hän ei selvästikään ole oma itsensä.");
 		//answers.add("Another option.");
 		ArrayList<Integer> screenLinks = new ArrayList<Integer>();
 		screenLinks.add(1);
 		screenLinks.add(2);
-		screenLinks.add(3);
 
 		screen = new ChoiceScreen(0, skin, question, answers, screenLinks);
 		Gdx.input.setInputProcessor(screen);
 
+		String feedback2a = "Tilanne jää mietityttämään. \n Oliko ystäväsi kuitenkin \n vihaisen sijaan surullinen? \n Et oikein tiedä, \n mitä tilanteesta pitäisi ajatella.";
+		ArrayList<String> answers2a = new ArrayList<String>();
+		answers2a.add("HÄMMENNYS +10");
+		ArrayList<Integer> screenLinks2 = new ArrayList<Integer>();
+		screenLinks2.add(0);
+		screen2a = new ChoiceScreen(1, skin, feedback2a, answers2a, screenLinks2);
+
+		String feedback2b = "Hetken päästä ystäväsi kertoo,\n että hänen lemmikkinsä kuoli \n muutama päivä sitten. \n Juttelette tilanteesta hetken ja \n ystäväsi vaikuttaa tulevan paremmille mielin. \n Itseäsi alkaa hiukan surettaa ystäväsi puolesta, \n mutta olet iloinen että juttelusta \n tuli hänelle parempi mieli.";
+		ArrayList<String> answers2b = new ArrayList<String>();
+		answers2a.add("SURU +5, ILO +15");
+		ArrayList<Integer> screenLinks3 = new ArrayList<Integer>();
+		screenLinks3.add(0);
+		screen2b = new ChoiceScreen(2, skin, feedback2b, answers2b, screenLinks3);
 	}
 	public Skin createSkin() {
 		Skin s = new Skin();
@@ -75,9 +91,17 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0.1f, 0.1f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-
-		screen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 		screen.draw();
+		screen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
+
+
+		/* if(option a is chosen) {
+			screen2a.draw();
+		}
+		else if (option b is chosen) {
+			screen2b.draw();
+		} */
+
 	}
 
 	@Override
@@ -87,4 +111,9 @@ public class MainGame extends ApplicationAdapter {
 		img.dispose();
 		boxTexture.dispose();
 	}
+
+	//Used to check if answer box is confirmed.
+
+
+
 }
