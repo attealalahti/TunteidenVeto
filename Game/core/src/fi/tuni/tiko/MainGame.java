@@ -60,10 +60,8 @@ public class MainGame extends ApplicationAdapter {
 		String feedback2b = "Hetken päästä ystäväsi kertoo,\n että hänen lemmikkinsä kuoli \n muutama päivä sitten. \n Juttelette tilanteesta hetken ja \n ystäväsi vaikuttaa tulevan paremmille mielin. \n Itseäsi alkaa hiukan surettaa ystäväsi puolesta, \n mutta olet iloinen että juttelusta \n tuli hänelle parempi mieli.";
 		ArrayList<String> answers2b = new ArrayList<String>();
 		answers2b.add("SURU +5, ILO +15");
-		answers2b.add("another option");
 		ArrayList<Integer> screenLinks3 = new ArrayList<Integer>();
 		screenLinks3.add(0);
-		screenLinks3.add(1);
 		screen2b = new ChoiceScreen(2, skin, feedback2b, answers2b, screenLinks3);
 
 		currentScreen = screen2b;
