@@ -39,10 +39,10 @@ public class MainGame extends ApplicationAdapter {
 		boxTexture = new Texture("Box.png");
 		skin = createSkin();
 
-		String question = "Välitunnilla ystäväsi on vaisu, \n eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. \n Hän on selvästi omissa ajatuksissaan. \n Sinä… ";
+		String question = "Välitunnilla ystäväsi on vaisu, \n eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. \n Hän on selvästi omissa ajatuksissaan. \n Sinä... ";
 		answers = new ArrayList<String>();
-		answers.add(" …tunnet itsesi hölmöksi. \n Oletkohan suututtanut hänet jotenkin?");
-		answers.add(" …alat kysellä, mikä vaivaa. \n Hän ei selvästikään ole oma itsensä.");
+		answers.add(" ...tunnet itsesi hölmöksi. \n Oletkohan tehnyt jotakin, \n mistä hän on suuttunut?");
+		answers.add(" ...alat kysellä, mikä vaivaa. \n Hän ei selvästikään ole oma itsensä.");
 		//answers.add("Another option.");
 		ArrayList<Integer> screenLinks = new ArrayList<Integer>();
 		screenLinks.add(1);
@@ -93,15 +93,6 @@ public class MainGame extends ApplicationAdapter {
 
 		screen.draw();
 		screen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
-
-
-		/* if(option a is chosen) {
-			screen2a.draw();
-		}
-		else if (option b is chosen) {
-			screen2b.draw();
-		} */
-
 	}
 
 	@Override
@@ -111,9 +102,4 @@ public class MainGame extends ApplicationAdapter {
 		img.dispose();
 		boxTexture.dispose();
 	}
-
-	//Used to check if answer box is confirmed.
-
-
-
 }

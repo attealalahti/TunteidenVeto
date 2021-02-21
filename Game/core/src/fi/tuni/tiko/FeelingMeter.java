@@ -71,7 +71,7 @@ public class FeelingMeter extends ProgressBar {
 
     public void reduceValue(float valueToReduce) {
         float tempFloat = getValue();
-        tempFloat -= valueToAdd;
+        tempFloat -= valueToReduce;
         if(tempFloat < MIN_VALUE) {
             Gdx.app.log("Error", "Value exceeds the minimum limit off: " + MIN_VALUE);
         } else {
