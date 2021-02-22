@@ -1,3 +1,4 @@
+
 package fi.tuni.tiko;
 
 import com.badlogic.gdx.ApplicationAdapter;

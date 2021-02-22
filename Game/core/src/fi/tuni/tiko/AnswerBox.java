@@ -33,6 +33,7 @@ public class AnswerBox extends Label {
             }
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
+                System.out.println("touching");
                 /* KNOWN BUG */
                 // You can swipe with two fingers to move multiple boxes at the same time.
                 boolean canMove = true;
