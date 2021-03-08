@@ -49,7 +49,6 @@ public class MainGame extends ApplicationAdapter {
 		ArrayList<Integer> screenLinks = new ArrayList<Integer>();
 		screenLinks.add(1);
 		screenLinks.add(2);
-
 		screen = new ChoiceScreen(0, skin, question, answers, screenLinks);
 		currentScreen = screen;
 

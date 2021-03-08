@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
+import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 
 public class AnswerBox extends Label {
@@ -22,7 +23,8 @@ public class AnswerBox extends Label {
         this.screenLink = screenLink;
         setBounds(x, y, width, height);
         startX = x;
-        setFontScale(2);
+        setFontScaleX(0.0025f * windowWidth);
+        setFontScaleY(0.0015f * windowHeight);
         setWrap(true);
         setAlignment(0);
         addListener(new InputListener() {

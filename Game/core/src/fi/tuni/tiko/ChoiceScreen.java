@@ -35,7 +35,8 @@ public class ChoiceScreen extends Stage {
         Label questionBox = new Label(question, skin, "question");
         questionBox.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - boxMargin);
         questionBox.setAlignment(0);
-        questionBox.setFontScale(3);
+        questionBox.setFontScaleX(0.005f * windowWidth);
+        questionBox.setFontScaleY(0.003f * windowHeight);
         questionBox.setWrap(true);
         addActor(questionBox);
     }
