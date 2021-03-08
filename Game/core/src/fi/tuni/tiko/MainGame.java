@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -21,6 +22,7 @@ public class MainGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	Texture boxTexture;
+	Texture feeling;
 	public static int windowWidth;
 	public static int windowHeight;
 
@@ -39,12 +41,14 @@ public class MainGame extends ApplicationAdapter {
 		windowHeight = Gdx.graphics.getHeight();
 
 		boxTexture = new Texture("Box.png");
+		feeling = new Texture("ilo_reunatmdpi.png");
+		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
-		String question = "Välitunnilla ystäväsi on vaisu, \n eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. \n Hän on selvästi omissa ajatuksissaan. \n Sinä... ";
+		String question = "Välitunnilla ystäväsi on vaisu, eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. Hän on selvästi omissa ajatuksissaan. \n Sinä... ";
 		answers = new ArrayList<String>();
-		answers.add(" ...tunnet itsesi hölmöksi. \n Oletkohan tehnyt jotakin, \n mistä hän on suuttunut?");
-		answers.add(" ...alat kysellä, mikä vaivaa. \n Hän ei selvästikään ole oma itsensä.");
+		answers.add(" ...tunnet itsesi hölmöksi. Oletkohan tehnyt jotakin, mistä hän on suuttunut?");
+		answers.add(" ...alat kysellä, mikä vaivaa. Hän ei selvästikään ole oma itsensä.");
 		//answers.add("Another option.");
 		ArrayList<Integer> screenLinks = new ArrayList<Integer>();
 		screenLinks.add(1);
@@ -52,14 +56,14 @@ public class MainGame extends ApplicationAdapter {
 		screen = new ChoiceScreen(0, skin, question, answers, screenLinks);
 		currentScreen = screen;
 
-		String feedback2a = "Tilanne jää mietityttämään. \n Oliko ystäväsi kuitenkin \n vihaisen sijaan surullinen? \n Et oikein tiedä, \n mitä tilanteesta pitäisi ajatella.";
+		String feedback2a = "Tilanne jää mietityttämään. Oliko ystäväsi kuitenkin vihaisen sijaan surullinen? Et oikein tiedä, mitä tilanteesta pitäisi ajatella.";
 		ArrayList<String> answers2a = new ArrayList<String>();
 		answers2a.add("HÄMMENNYS +10");
 		ArrayList<Integer> screenLinks2 = new ArrayList<Integer>();
 		screenLinks2.add(3);
 		screen2a = new ChoiceScreen(1, skin, feedback2a, answers2a, screenLinks2);
 
-		String feedback2b = "Hetken päästä ystäväsi kertoo,\n että hänen lemmikkinsä kuoli \n muutama päivä sitten. \n Juttelette tilanteesta hetken ja \n ystäväsi vaikuttaa tulevan paremmille mielin. \n Itseäsi alkaa hiukan surettaa ystäväsi puolesta, \n mutta olet iloinen että juttelusta \n tuli hänelle parempi mieli.";
+		String feedback2b = "Hetken päästä ystäväsi kertoo, että hänen lemmikkinsä kuoli muutama päivä sitten. Juttelette tilanteesta hetken ja ystäväsi vaikuttaa tulevan paremmille mielin. Itseäsi alkaa hiukan surettaa ystäväsi puolesta, mutta olet iloinen että juttelusta tuli hänelle parempi mieli.";
 		ArrayList<String> answers2b = new ArrayList<String>();
 		answers2b.add("SURU +5, ILO +15");
 		ArrayList<Integer> screenLinks3 = new ArrayList<Integer>();
@@ -74,6 +78,8 @@ public class MainGame extends ApplicationAdapter {
 		s.add("round_corners", boxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
+		s.add("feeling", feeling);
+		s.add("test", img);
 
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
 		answerStyle.background = s.newDrawable("round_corners", Color.FOREST);
@@ -82,8 +88,18 @@ public class MainGame extends ApplicationAdapter {
 		questionStyle.background = s.newDrawable("white", Color.ORANGE);
 		questionStyle.font = s.getFont("default");
 
+		Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
+		buttonStyle.up = s.newDrawable("feeling");
+		buttonStyle.down = s.newDrawable("feeling", Color.DARK_GRAY);
+
+		Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
+		buttonStyleAlt.up = s.newDrawable("test");
+		buttonStyleAlt.down = s.newDrawable("test", Color.DARK_GRAY);
+
 		s.add("default", answerStyle);
 		s.add("question", questionStyle);
+		s.add("default", buttonStyle);
+		s.add("alt", buttonStyleAlt);
 
 		return s;
 	}
@@ -112,5 +128,6 @@ public class MainGame extends ApplicationAdapter {
 		batch.dispose();
 		img.dispose();
 		boxTexture.dispose();
+		feeling.dispose();
 	}
 }

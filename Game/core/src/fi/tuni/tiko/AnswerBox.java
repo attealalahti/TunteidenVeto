@@ -16,7 +16,8 @@ public class AnswerBox extends Label {
     private float startX;
     private float moveDuration = 0.2f;
     private int screenLink;
-    public boolean atEdge = false;
+    private boolean atEdge = false;
+    private boolean unPaused = true;
     private float touchDifferenceX;
     public AnswerBox(CharSequence text, Skin skin, float x, float y, float width, float height, final int screenLink) {
         super(text, skin);
@@ -39,14 +40,12 @@ public class AnswerBox extends Label {
                 /* KNOWN BUG */
                 // You can swipe with two fingers to move multiple boxes at the same time.
                 boolean canMove = true;
-                for (Actor a : getStage().getActors()) {
-                    if (a.getClass() == AnswerBox.class) {
-                        if (((AnswerBox) a).atEdge) {
-                            canMove = false;
-                        }
+                for (Actor a : getParent().getChildren()) {
+                    if (((AnswerBox) a).atEdge) {
+                        canMove = false;
                     }
                 }
-                if (canMove || atEdge) {
+                if ((canMove || atEdge) && unPaused) {
                     setX(Gdx.input.getX() - touchDifferenceX);
                 }
             }
@@ -94,5 +93,12 @@ public class AnswerBox extends Label {
                 }
             }
         });
+    }
+    public void pause() {
+        if (unPaused) {
+            unPaused = false;
+        } else {
+            unPaused = true;
+        }
     }
 }
