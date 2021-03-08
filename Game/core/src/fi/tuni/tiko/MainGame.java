@@ -3,6 +3,7 @@ package fi.tuni.tiko;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -27,6 +28,7 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowHeight;
 
 	ArrayList<String> answers;
+	ArrayList<ChoiceScreen> screens;
 
 	ChoiceScreen screen;
 	ChoiceScreen screen2a;
@@ -45,7 +47,7 @@ public class MainGame extends ApplicationAdapter {
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
-		String question = "Välitunnilla ystäväsi on vaisu, eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. Hän on selvästi omissa ajatuksissaan. \n Sinä... ";
+		String question1 = "Välitunnilla ystäväsi on vaisu, eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. Hän on selvästi omissa ajatuksissaan. \n Sinä... ";
 		answers = new ArrayList<String>();
 		answers.add(" ...tunnet itsesi hölmöksi. Oletkohan tehnyt jotakin, mistä hän on suuttunut?");
 		answers.add(" ...alat kysellä, mikä vaivaa. Hän ei selvästikään ole oma itsensä.");
@@ -53,7 +55,7 @@ public class MainGame extends ApplicationAdapter {
 		ArrayList<Integer> screenLinks = new ArrayList<Integer>();
 		screenLinks.add(1);
 		screenLinks.add(2);
-		screen = new ChoiceScreen(0, skin, question, answers, screenLinks);
+		screen = new ChoiceScreen(0, skin, question1, answers, screenLinks);
 		currentScreen = screen;
 
 		String feedback2a = "Tilanne jää mietityttämään. Oliko ystäväsi kuitenkin vihaisen sijaan surullinen? Et oikein tiedä, mitä tilanteesta pitäisi ajatella.";
@@ -69,6 +71,43 @@ public class MainGame extends ApplicationAdapter {
 		ArrayList<Integer> screenLinks3 = new ArrayList<Integer>();
 		screenLinks3.add(3);
 		screen2b = new ChoiceScreen(2, skin, feedback2b, answers2b, screenLinks3);
+
+
+		screens = createScreens();
+		currentScreen = screens.get(0);
+
+
+	}
+	public ArrayList<ChoiceScreen> createScreens() {
+		FileHandle handle = Gdx.files.internal("leveldata.feel");
+		String text = handle.readString();
+		String [] linesArray = text.split("\\r?\\n");
+		int index = 0;
+		int screenID = Integer.parseInt(linesArray[index]);
+		index++;
+		String question = linesArray[index];
+		index++;
+		int oldIndex = index;
+		while(!linesArray[index].equals("")) {
+			index++;
+		}
+		int amountOfAnswers = (index - oldIndex) / 2;
+		ArrayList<String> answers = new ArrayList<>();
+		for (int i = oldIndex; i < oldIndex + amountOfAnswers; i++) {
+			answers.add(linesArray[i]);
+		}
+		oldIndex += amountOfAnswers;
+		ArrayList<Integer> screenLinks = new ArrayList<>();
+		for (int i = oldIndex; i <oldIndex + amountOfAnswers ; i++) {
+			screenLinks.add(Integer.parseInt(linesArray[i]));
+		}
+		ChoiceScreen choiceScreen = new ChoiceScreen(screenID, skin, question, answers, screenLinks);
+		ArrayList<ChoiceScreen> choiceScreens = new ArrayList<>();
+		choiceScreens.add(choiceScreen);
+
+
+
+		return choiceScreens;
 	}
 	public Skin createSkin() {
 		Skin s = new Skin();
@@ -114,6 +153,7 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0.1f, 0.1f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		/*
 		nextScreensID = currentScreen.getNextScreensID();
 
 		if(nextScreensID == 1) {
@@ -122,6 +162,8 @@ public class MainGame extends ApplicationAdapter {
 		else if(nextScreensID == 2) {
 			currentScreen = screen2b;
 		}
+
+		 */
 
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
