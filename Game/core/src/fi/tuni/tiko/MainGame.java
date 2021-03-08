@@ -84,9 +84,14 @@ public class MainGame extends ApplicationAdapter {
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
 		answerStyle.background = s.newDrawable("round_corners", Color.FOREST);
 		answerStyle.font = s.getFont("default");
+
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
 		questionStyle.background = s.newDrawable("white", Color.ORANGE);
 		questionStyle.font = s.getFont("default");
+
+		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
+		textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
+		textBoxStyle.font = s.getFont("default");
 
 		Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 		buttonStyle.up = s.newDrawable("feeling");
@@ -100,6 +105,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("question", questionStyle);
 		s.add("default", buttonStyle);
 		s.add("alt", buttonStyleAlt);
+		s.add("text", textBoxStyle);
 
 		return s;
 	}

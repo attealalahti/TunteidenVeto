@@ -1,46 +1,34 @@
 package fi.tuni.tiko;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
-import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
+
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 
-public class AnswerBox extends Group {
+public class AnswerBoxOld extends Label {
     private float startX;
     private float moveDuration = 0.2f;
     private int screenLink;
     private boolean atEdge = false;
     private boolean unPaused = true;
     private float touchDifferenceX;
-    private Label background;
-    private Label textBox;
-    private float margin = 0.2f;
-    public AnswerBox(CharSequence text, Skin skin, float x, float y, float width, float height, final int screenLink) {
+    public AnswerBoxOld(CharSequence text, Skin skin, float x, float y, float width, float height, final int screenLink) {
+        super(text, skin);
         this.screenLink = screenLink;
-        background = new Label(null, skin);
-        textBox = new Label(text, skin, "text");
-        background.setBounds(x, y, width, height);
-
-        float xMargin = margin * width;
-        float yMargin = margin * height;
-        textBox.setBounds(x + xMargin * 0.5f, y + yMargin * 0.5f, width - xMargin, height - yMargin);
-        startX = getX();
-        textBox.setFontScaleX(0.0025f * windowWidth);
-        textBox.setFontScaleY(0.0015f * windowHeight);
-        textBox.setWrap(true);
-        textBox.setAlignment(0);
-
-        addActor(background);
-        addActor(textBox);
-
+        setBounds(x, y, width, height);
+        startX = x;
+        setFontScaleX(0.0025f * windowWidth);
+        setFontScaleY(0.0015f * windowHeight);
+        setWrap(true);
+        setAlignment(0);
         addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -54,7 +42,7 @@ public class AnswerBox extends Group {
                 // You can swipe with two fingers to move multiple boxes at the same time.
                 boolean canMove = true;
                 for (Actor a : getParent().getChildren()) {
-                    if (((AnswerBox) a).atEdge) {
+                    if (((AnswerBoxOld) a).atEdge) {
                         canMove = false;
                     }
                 }
