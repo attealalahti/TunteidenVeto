@@ -90,7 +90,7 @@ public class AnswerBox extends Group {
                         @Override
                         public void run() {
                             System.out.println("Switches to next screen.");
-                            ChoiceScreen c = (ChoiceScreen) getStage();
+                            Screen c = (Screen) getStage();
                             c.nextScreen(screenLink);
                         }
                     })));
