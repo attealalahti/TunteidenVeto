@@ -23,6 +23,7 @@ public class MainGame extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	Texture boxTexture;
+	Texture bigBoxTexture;
 	Texture feeling;
 	public static int windowWidth;
 	public static int windowHeight;
@@ -42,7 +43,8 @@ public class MainGame extends ApplicationAdapter {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 
-		boxTexture = new Texture("Box.png");
+		boxTexture = new Texture("boxshadowmdpi.png");
+		bigBoxTexture = new Texture("bigboxshadowmdpi.png");
 		feeling = new Texture("ilo_reunatmdpi.png");
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
@@ -73,8 +75,11 @@ public class MainGame extends ApplicationAdapter {
 		screen2b = new ChoiceScreen(2, skin, feedback2b, answers2b, screenLinks3);
 
 
+		/*
 		screens = createScreens();
 		currentScreen = screens.get(0);
+
+		 */
 
 
 	}
@@ -115,17 +120,18 @@ public class MainGame extends ApplicationAdapter {
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
 		s.add("round_corners", boxTexture);
+		s.add("big_box", bigBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
 		s.add("feeling", feeling);
 		s.add("test", img);
 
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
-		answerStyle.background = s.newDrawable("round_corners", Color.FOREST);
+		answerStyle.background = s.newDrawable("round_corners", Color.WHITE);
 		answerStyle.font = s.getFont("default");
 
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
-		questionStyle.background = s.newDrawable("white", Color.ORANGE);
+		questionStyle.background = s.newDrawable("big_box", Color.WHITE);
 		questionStyle.font = s.getFont("default");
 
 		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
@@ -150,10 +156,11 @@ public class MainGame extends ApplicationAdapter {
 	}
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(0, 0.1f, 0.1f, 1);
+		float fraction = 1f / 255f;
+		Gdx.gl.glClearColor(fraction * 81f, fraction * 99f, fraction * 115f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		/*
+
 		nextScreensID = currentScreen.getNextScreensID();
 
 		if(nextScreensID == 1) {
@@ -163,7 +170,7 @@ public class MainGame extends ApplicationAdapter {
 			currentScreen = screen2b;
 		}
 
-		 */
+
 
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
