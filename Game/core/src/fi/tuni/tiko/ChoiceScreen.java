@@ -17,7 +17,7 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 
 /** ChoiceScreen is a Screen that has a big text box at the top of the screen and some AnswerBoxes below it.
  * There is also a button at the bottom to switch to FeelingMeter viewing mode and back.
- * 7 FeelingMeters are created at the start and then shown in FeelingMeter viewing mode.
+ * 7 (currently mock-up) FeelingMeters are created at the start and then shown in FeelingMeter viewing mode.
  * All sizes are predetermined based on the device's screen size.
  * @author Atte Ala-Lahti
  */
