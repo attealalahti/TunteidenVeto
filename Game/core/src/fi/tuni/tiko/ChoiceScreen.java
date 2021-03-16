@@ -15,13 +15,9 @@ import java.util.ArrayList;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 
-public class ChoiceScreen extends Stage {
+public class ChoiceScreen extends Screen {
 
-    private int screenID;
-    private Skin skin;
     private String question;
-    private ArrayList<String> answers;
-    private ArrayList<Integer> screenLinks;
     private Group game;
     private Group meters;
     private Group answerBoxes;
@@ -33,15 +29,11 @@ public class ChoiceScreen extends Stage {
     private final float meterWidth = windowWidth * 0.8f;
     private final float meterHeight = windowHeight * 0.1f;
     private final float FADE_TIME = 0.2f;
-    int nextScreensID = 0;
     private boolean gameView = true;
 
     public ChoiceScreen(int screenID, Skin skin, String question, ArrayList<String> answers, ArrayList<Integer> screenLinks) {
-        this.screenID = screenID;
-        this.skin = skin;
+        super(screenID, skin, answers, screenLinks);
         this.question = question;
-        this.answers = answers;
-        this.screenLinks = screenLinks;
 
         answerBoxes = new Group();
         game = new Group();
@@ -101,24 +93,11 @@ public class ChoiceScreen extends Stage {
     }
     public void createAnswerBoxes() {
         float currentY = margin * 2 + buttonHeight;
-        for (int i = 0; i < answers.size(); i++) {
-            answerBoxes.addActor(new AnswerBox(answers.get(i), skin, xBox, currentY, boxWidth, boxHeight, screenLinks.get(i)));
+        for (int i = 0; i < getChoices().size(); i++) {
+            answerBoxes.addActor(new AnswerBox(getChoices().get(i), getSkin(), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
             currentY += margin + boxHeight;
         }
         game.addActor(answerBoxes);
-    }
-
-    /** Happens when one of the answers is selected and confirmed.
-     *
-     * @param screenLink The ID number of the next screen.
-     */
-    public void nextScreen(int screenLink) {
-        nextScreensID = screenLink;
-        System.out.println("Link to this screen: " + screenLink);
-    }
-
-    public int getNextScreensID() {
-        return nextScreensID;
     }
 
     public void pauseAnswers() {
