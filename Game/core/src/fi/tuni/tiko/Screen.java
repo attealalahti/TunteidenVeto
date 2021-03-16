@@ -13,6 +13,15 @@ abstract public class Screen extends Stage {
     private ArrayList<Integer> screenLinks;
     int nextScreensID = 0;
 
+    /** Screen is an abstract class that is used to create different screen layouts for the game.
+     * Every screen has a screen ID and some choices that moves the game to a different screen.
+     *
+     * @param screenID a unique integer used in MainGame to determine which screen to show
+     * @param skin contains styles for all objects
+     * @param choices text for each of the choices
+     * @param screenLinks screen IDs for screens the choices lead to. Must be the same size as choices
+     * @author Atte Ala-Lahti
+     */
     public Screen (int screenID, Skin skin, ArrayList<String> choices, ArrayList<Integer> screenLinks) {
         this.screenID = screenID;
         this.skin = skin;
