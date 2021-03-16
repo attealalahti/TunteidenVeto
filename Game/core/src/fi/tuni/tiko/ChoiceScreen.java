@@ -19,6 +19,7 @@ import static fi.tuni.tiko.MainGame.windowWidth;
  * There is also a button at the bottom to switch to FeelingMeter viewing mode and back.
  * 7 FeelingMeters are created at the start and then shown in FeelingMeter viewing mode.
  * All sizes are predetermined based on the device's screen size.
+ * @author Atte Ala-Lahti
  */
 public class ChoiceScreen extends Screen {
 
