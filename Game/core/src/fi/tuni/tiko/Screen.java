@@ -17,7 +17,7 @@ abstract public class Screen extends Stage {
     private ArrayList<Integer> screenLinks;
     int nextScreensID = 0;
 
-    /** Creates a new screen
+    /** Creates a new screen.
      *
      * @param screenID a unique integer used in MainGame to determine which screen to show
      * @param skin contains styles for all objects
