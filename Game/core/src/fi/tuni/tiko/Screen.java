@@ -15,7 +15,6 @@ abstract public class Screen extends Stage {
     private Skin skin;
     private ArrayList<String> choices;
     private ArrayList<Integer> screenLinks;
-    int nextScreensID = 0;
 
     /** Creates a new screen.
      *
@@ -50,8 +49,5 @@ abstract public class Screen extends Stage {
     public void nextScreen(int screenLink) {
         MainGame.currentScreenID = screenLink;
         System.out.println("Link to this screen: " + screenLink);
-    }
-    public int getNextScreensID() {
-        return nextScreensID;
     }
 }
