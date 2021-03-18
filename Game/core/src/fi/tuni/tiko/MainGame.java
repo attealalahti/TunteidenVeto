@@ -17,7 +17,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import java.util.ArrayList;
 
-import javax.swing.text.LabelView;
 
 public class MainGame extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -75,44 +74,57 @@ public class MainGame extends ApplicationAdapter {
 		screen2b = new ChoiceScreen(2, skin, feedback2b, answers2b, screenLinks3);
 
 
-		/*
-		screens = createScreens();
+		screens = createChoiceScreens();
 		currentScreen = screens.get(0);
-
-		 */
-
-
 	}
-	public ArrayList<ChoiceScreen> createScreens() {
+	public ArrayList<ChoiceScreen> createChoiceScreens() {
 		FileHandle handle = Gdx.files.internal("leveldata.feel");
 		String text = handle.readString();
-		String [] linesArray = text.split("\\r?\\n");
-		int index = 0;
-		int screenID = Integer.parseInt(linesArray[index]);
-		index++;
-		String question = linesArray[index];
-		index++;
-		int oldIndex = index;
-		while(!linesArray[index].equals("")) {
-			index++;
-		}
-		int amountOfAnswers = (index - oldIndex) / 2;
-		ArrayList<String> answers = new ArrayList<>();
-		for (int i = oldIndex; i < oldIndex + amountOfAnswers; i++) {
-			answers.add(linesArray[i]);
-		}
-		oldIndex += amountOfAnswers;
-		ArrayList<Integer> screenLinks = new ArrayList<>();
-		for (int i = oldIndex; i <oldIndex + amountOfAnswers ; i++) {
-			screenLinks.add(Integer.parseInt(linesArray[i]));
-		}
-		ChoiceScreen choiceScreen = new ChoiceScreen(screenID, skin, question, answers, screenLinks);
+		String [] allLines = text.split("\\r?\\n");
+
 		ArrayList<ChoiceScreen> choiceScreens = new ArrayList<>();
-		choiceScreens.add(choiceScreen);
 
+		for (int i = 0; i < allLines.length; i++) {
+			int startingIndex = i;
+			while (!allLines[i].equals("---")) {
+				i++;
+			}
+			int amountOfAnswers = i - startingIndex - 1;
 
+			int screenID = getStartOfLineNumber(allLines[startingIndex]);
+			String question = getEndOfLineText(allLines[startingIndex]);
+
+			ArrayList<Integer> screenLinks = new ArrayList<>();
+			ArrayList<String> answers = new ArrayList<>();
+			for (int j = startingIndex+1; j <startingIndex+1+amountOfAnswers ; j++) {
+				screenLinks.add(getStartOfLineNumber(allLines[j]));
+				answers.add(getEndOfLineText(allLines[j]));
+			}
+			choiceScreens.add(new ChoiceScreen(screenID, skin, question, answers, screenLinks));
+		}
 
 		return choiceScreens;
+	}
+	public int getStartOfLineNumber(String line) {
+		String number = "";
+		int index = 0;
+		while (line.charAt(index) != ' ') {
+			number += line.charAt(index);
+			index++;
+		}
+		return Integer.parseInt(number);
+	}
+	public String getEndOfLineText(String line) {
+		int index = 0;
+		while (line.charAt(index) != ' ') {
+			index++;
+		}
+		index++;
+		String text = "";
+		for (int i = index; i < line.length(); i++) {
+			text += line.charAt(i);
+		}
+		return text;
 	}
 	public Skin createSkin() {
 		Skin s = new Skin();
