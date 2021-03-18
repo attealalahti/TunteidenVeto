@@ -48,7 +48,7 @@ abstract public class Screen extends Stage {
      * @param screenLink The ID number of the next screen.
      */
     public void nextScreen(int screenLink) {
-        nextScreensID = screenLink;
+        MainGame.currentScreenID = screenLink;
         System.out.println("Link to this screen: " + screenLink);
     }
     public int getNextScreensID() {
