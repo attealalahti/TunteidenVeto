@@ -24,6 +24,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture feeling;
 	private Skin skin;
 	private ArrayList<ChoiceScreen> screens;
+	private Screen currentScreen;
 
 	public static int currentScreenID = 0;
 	public static int windowWidth;
@@ -41,6 +42,7 @@ public class MainGame extends ApplicationAdapter {
 		skin = createSkin();
 
 		screens = createChoiceScreens();
+		currentScreen = screens.get(0);
 	}
 	@Override
 	public void render () {
@@ -48,9 +50,15 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(fraction * 81f, fraction * 99f, fraction * 115f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		Gdx.input.setInputProcessor(screens.get(currentScreenID));
-		screens.get(currentScreenID).draw();
-		screens.get(currentScreenID).act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
+		for (Screen screen: screens) {
+			if (screen.getScreenID() == currentScreenID) {
+				currentScreen = screen;
+			}
+		}
+
+		Gdx.input.setInputProcessor(currentScreen);
+		currentScreen.draw();
+		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
 	public ArrayList<ChoiceScreen> createChoiceScreens() {
 		FileHandle handle = Gdx.files.internal("leveldata.feel");

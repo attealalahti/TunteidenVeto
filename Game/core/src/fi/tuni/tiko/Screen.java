@@ -32,7 +32,9 @@ abstract public class Screen extends Stage {
             throw new IllegalArgumentException("Choice and screen link amounts don't match.");
         }
     }
-
+    public int getScreenID() {
+        return screenID;
+    }
     public Skin getSkin() {
         return skin;
     }
