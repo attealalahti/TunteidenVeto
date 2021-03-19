@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture bigBoxTexture;
 	private Texture happy;
 	private Texture settings;
+	private Texture empty;
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
 
@@ -38,6 +40,7 @@ public class MainGame extends ApplicationAdapter {
 		bigBoxTexture = new Texture("bigboxshadowmdpi.png");
 		happy = new Texture("ilo_reunatmdpi.png");
 		settings = new Texture("hamburger.png");
+		empty = new Texture("emptycircle.png");
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
@@ -118,8 +121,9 @@ public class MainGame extends ApplicationAdapter {
 		s.add("big_box", bigBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
-		s.add("feeling", happy);
+		s.add("happy", happy);
 		s.add("settings", settings);
+		s.add("empty", empty);
 		s.add("test", img);
 
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
@@ -135,20 +139,29 @@ public class MainGame extends ApplicationAdapter {
 		textBoxStyle.font = s.getFont("default");
 
 		Button.ButtonStyle feelingsButtonStyle = new Button.ButtonStyle();
-		feelingsButtonStyle.up = s.newDrawable("feeling");
-		feelingsButtonStyle.down = s.newDrawable("feeling", Color.DARK_GRAY);
+		feelingsButtonStyle.up = s.newDrawable("empty");
+		feelingsButtonStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
+
+		Button.ButtonStyle happyStyle = new Button.ButtonStyle();
+		happyStyle.up = s.newDrawable("happy");
+		happyStyle.down = s.newDrawable("happy", Color.DARK_GRAY);
+		happyStyle.checked = s.newDrawable("happy", Color.DARK_GRAY);
 
 		Button.ButtonStyle settingsButtonStyle = new Button.ButtonStyle();
 		settingsButtonStyle.up = s.newDrawable("settings");
 		settingsButtonStyle.down = s.newDrawable("settings", Color.DARK_GRAY);
+		settingsButtonStyle.checked = s.newDrawable("settings", Color.DARK_GRAY);
 
 		Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
 		buttonStyleAlt.up = s.newDrawable("test");
 		buttonStyleAlt.down = s.newDrawable("test", Color.DARK_GRAY);
 
+
+
 		s.add("default", answerStyle);
 		s.add("question", questionStyle);
 		s.add("feelings", feelingsButtonStyle);
+		s.add("happiness", happyStyle);
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
 		s.add("settings", settingsButtonStyle);
