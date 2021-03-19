@@ -19,14 +19,15 @@ public class MainGame extends ApplicationAdapter {
 	private Texture img;
 	private Texture boxTexture;
 	private Texture bigBoxTexture;
-	private Texture feeling;
-	public static Skin skin;
+	private Texture happy;
+	private Texture settings;
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
 
 	public static int currentScreenID = 0;
 	public static int windowWidth;
 	public static int windowHeight;
+	public static Skin skin;
 
 	@Override
 	public void create () {
@@ -35,7 +36,8 @@ public class MainGame extends ApplicationAdapter {
 
 		boxTexture = new Texture("boxshadowmdpi.png");
 		bigBoxTexture = new Texture("bigboxshadowmdpi.png");
-		feeling = new Texture("ilo_reunatmdpi.png");
+		happy = new Texture("ilo_reunatmdpi.png");
+		settings = new Texture("hamburger.png");
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
@@ -116,7 +118,8 @@ public class MainGame extends ApplicationAdapter {
 		s.add("big_box", bigBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
-		s.add("feeling", feeling);
+		s.add("feeling", happy);
+		s.add("settings", settings);
 		s.add("test", img);
 
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
@@ -131,9 +134,13 @@ public class MainGame extends ApplicationAdapter {
 		textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
 		textBoxStyle.font = s.getFont("default");
 
-		Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
-		buttonStyle.up = s.newDrawable("feeling");
-		buttonStyle.down = s.newDrawable("feeling", Color.DARK_GRAY);
+		Button.ButtonStyle feelingsButtonStyle = new Button.ButtonStyle();
+		feelingsButtonStyle.up = s.newDrawable("feeling");
+		feelingsButtonStyle.down = s.newDrawable("feeling", Color.DARK_GRAY);
+
+		Button.ButtonStyle settingsButtonStyle = new Button.ButtonStyle();
+		settingsButtonStyle.up = s.newDrawable("settings");
+		settingsButtonStyle.down = s.newDrawable("settings", Color.DARK_GRAY);
 
 		Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
 		buttonStyleAlt.up = s.newDrawable("test");
@@ -141,9 +148,10 @@ public class MainGame extends ApplicationAdapter {
 
 		s.add("default", answerStyle);
 		s.add("question", questionStyle);
-		s.add("default", buttonStyle);
+		s.add("feelings", feelingsButtonStyle);
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
+		s.add("settings", settingsButtonStyle);
 
 		return s;
 	}
@@ -152,6 +160,7 @@ public class MainGame extends ApplicationAdapter {
 	public void dispose () {
 		img.dispose();
 		boxTexture.dispose();
-		feeling.dispose();
+		happy.dispose();
+		settings.dispose();
 	}
 }

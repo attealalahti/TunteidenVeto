@@ -12,6 +12,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import java.util.ArrayList;
 
+import sun.applet.Main;
+
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 
@@ -70,10 +72,15 @@ public class ChoiceScreen extends Screen {
         game.addActor(questionBox);
 
         // Create the FeelingMeter button
-        Button feelingMeterButton = new Button(MainGame.skin);
-        feelingMeterButton.setBounds(windowWidth * 0.5f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
+        Button feelingMeterButton = new Button(MainGame.skin, "feelings");
+        feelingMeterButton.setBounds((windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
         addActor(feelingMeterButton);
         //feelingMeterButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
+
+        // Create settings button
+        Button settingsButton = new Button(MainGame.skin, "settings");
+        settingsButton.setBounds((windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
+        addActor(settingsButton);
 
         // Create FeelingMeters
         float meterLocationHeight = meterHeight * 7 + margin * 7;
