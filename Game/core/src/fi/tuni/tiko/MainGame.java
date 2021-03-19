@@ -9,11 +9,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-
 import java.util.ArrayList;
 
 
@@ -22,7 +20,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture boxTexture;
 	private Texture bigBoxTexture;
 	private Texture feeling;
-	private Skin skin;
+	public static Skin skin;
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
 
@@ -83,7 +81,7 @@ public class MainGame extends ApplicationAdapter {
 				screenLinks.add(getStartOfLineNumber(allLines[j]));
 				answers.add(getEndOfLineText(allLines[j]));
 			}
-			choiceScreens.add(new ChoiceScreen(screenID, skin, question, answers, screenLinks));
+			choiceScreens.add(new ChoiceScreen(screenID, question, answers, screenLinks));
 		}
 
 		return choiceScreens;

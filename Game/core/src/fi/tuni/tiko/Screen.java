@@ -12,20 +12,17 @@ import java.util.ArrayList;
 abstract public class Screen extends Stage {
 
     private int screenID;
-    private Skin skin;
     private ArrayList<String> choices;
     private ArrayList<Integer> screenLinks;
 
     /** Creates a new screen.
      *
      * @param screenID a unique integer used in MainGame to determine which screen to show
-     * @param skin contains styles for all objects
      * @param choices text for each of the choices
      * @param screenLinks screen IDs for screens the choices lead to. Must be the same size as choices
      */
-    public Screen (int screenID, Skin skin, ArrayList<String> choices, ArrayList<Integer> screenLinks) {
+    public Screen (int screenID, ArrayList<String> choices, ArrayList<Integer> screenLinks) {
         this.screenID = screenID;
-        this.skin = skin;
         this.choices = choices;
         this.screenLinks = screenLinks;
         if (choices.size() != screenLinks.size()) {
@@ -34,9 +31,6 @@ abstract public class Screen extends Stage {
     }
     public int getScreenID() {
         return screenID;
-    }
-    public Skin getSkin() {
-        return skin;
     }
     public ArrayList<String> getChoices() {
         return choices;
