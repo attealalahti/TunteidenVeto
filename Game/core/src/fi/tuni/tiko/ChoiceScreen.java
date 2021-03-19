@@ -42,6 +42,7 @@ public class ChoiceScreen extends Screen {
     private final float margin = windowHeight * 0.025f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
     private final float buttonHeight = windowHeight * 0.07f;
+    private final float bigButtonHeight = buttonHeight * 2f;
     private final float meterWidth = windowWidth * 0.8f;
     private final float meterHeight = windowHeight * 0.1f;
     // How long it takes to switch between Game and FeelingMeter mode:
@@ -54,7 +55,7 @@ public class ChoiceScreen extends Screen {
      * @param answers text for each of the choices
      * @param screenLinks screen IDs for screens the choices lead to. Must be the same size as choices
      */
-    public ChoiceScreen(int screenID, String question, ArrayList<String> answers, ArrayList<Integer> screenLinks) {
+    public ChoiceScreen(int screenID, String question, final ArrayList<String> answers, ArrayList<Integer> screenLinks) {
         super(screenID, answers, screenLinks);
         this.question = question;
 
@@ -65,7 +66,7 @@ public class ChoiceScreen extends Screen {
         settings = new Group();
         addActor(game);
         addActor(meters);
-        //addActor(settings);
+        addActor(settings);
 
         createAnswerBoxes();
 
@@ -79,16 +80,62 @@ public class ChoiceScreen extends Screen {
         questionBox.setWrap(true);
         game.addActor(questionBox);
 
+        // Create settings button
+        final Button settingsButton = new Button(MainGame.skin, "settings");
+        settingsButton.setBounds((windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
+        addActor(settingsButton);
+
+        // Create buttons for settings
+        final Button musicButton = new Button(MainGame.skin, "alt");
+        final Button soundsButton = new Button(MainGame.skin, "alt");
+        final Button exitButton = new Button(MainGame.skin, "alt");
+        float centerX = windowWidth * 0.5f - bigButtonHeight * 0.5f;
+        float centerY = windowHeight * 0.5f - bigButtonHeight * 0.5f;
+        musicButton.setBounds(centerX, centerY + bigButtonHeight + margin, bigButtonHeight, bigButtonHeight);
+        soundsButton.setBounds(centerX, centerY, bigButtonHeight, bigButtonHeight);
+        exitButton.setBounds(centerX, centerY - bigButtonHeight - margin, bigButtonHeight, bigButtonHeight);
+        settings.addActor(musicButton);
+        settings.addActor(soundsButton);
+        settings.addActor(exitButton);
+        settings.toBack();
+        settings.addAction(Actions.fadeOut(0));
+        musicButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if (musicButton.isChecked()) {
+                    musicButton.setStyle(MainGame.skin.get("happiness", Button.ButtonStyle.class));
+                } else {
+                    musicButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
+                }
+                MainGame.musicOn = musicButton.isChecked();
+            }
+        });
+        soundsButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if (soundsButton.isChecked()) {
+                    soundsButton.setStyle(MainGame.skin.get("happiness", Button.ButtonStyle.class));
+                } else {
+                    soundsButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
+                }
+                MainGame.soundsOn = soundsButton.isChecked();
+            }
+        });
+        exitButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+
+            }
+        });
+        musicButton.setChecked(MainGame.musicOn);
+        soundsButton.setChecked(MainGame.soundsOn);
+        // MAKE IT SO SETTINGS AND FEELINGMETERS ARE NOT CREATED INDIVIDUALLY FOR EACH SCREEN
+
         // Create the FeelingMeter button
         final Button feelingMeterButton = new Button(MainGame.skin, "happiness");
         feelingMeterButton.setBounds((windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
         addActor(feelingMeterButton);
         //feelingMeterButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
-
-        // Create settings button
-        final Button settingsButton = new Button(MainGame.skin, "settings");
-        settingsButton.setBounds((windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
-        addActor(settingsButton);
 
         // Create FeelingMeters
         float meterLocationHeight = meterHeight * 7 + margin * 7;
@@ -112,12 +159,18 @@ public class ChoiceScreen extends Screen {
             public void changed(ChangeEvent event, Actor actor) {
                 if (!feelingMeterButton.isChecked()) {
                     meters.addAction(Actions.fadeOut(FADE_TIME));
+                    meters.toBack();
                     if (!settingsButton.isChecked()) {
                         game.addAction(Actions.fadeIn(FADE_TIME));
+                        answersSetPause(false);
+                        game.toFront();
                     }
                 } else {
                     meters.addAction(Actions.fadeIn(FADE_TIME));
+                    meters.toFront();
                     game.addAction(Actions.fadeOut(FADE_TIME));
+                    answersSetPause(true);
+                    game.toBack();
                     if (settingsButton.isChecked()) {
                         settingsButton.setChecked(false);
                     }
@@ -129,12 +182,18 @@ public class ChoiceScreen extends Screen {
             public void changed(ChangeEvent event, Actor actor) {
                 if (!settingsButton.isChecked()) {
                     settings.addAction(Actions.fadeOut(FADE_TIME));
+                    settings.toBack();
                     if (!feelingMeterButton.isChecked()) {
                         game.addAction(Actions.fadeIn(FADE_TIME));
+                        answersSetPause(false);
+                        game.toFront();
                     }
                 } else {
                     settings.addAction(Actions.fadeIn(FADE_TIME));
+                    settings.toFront();
                     game.addAction(Actions.fadeOut(FADE_TIME));
+                    answersSetPause(true);
+                    game.toBack();
                     if (feelingMeterButton.isChecked()) {
                         feelingMeterButton.setChecked(false);
                     }
@@ -151,10 +210,10 @@ public class ChoiceScreen extends Screen {
         game.addActor(answerBoxes);
     }
 
-    public void pauseAnswers() {
+    public void answersSetPause(boolean pause) {
         for (Actor a: answerBoxes.getChildren()) {
             AnswerBox ab = (AnswerBox) a;
-            ab.pause();
+            ab.setPause(pause);
         }
     }
 }

@@ -30,6 +30,8 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowWidth;
 	public static int windowHeight;
 	public static Skin skin;
+	public static boolean musicOn = true;
+	public static boolean soundsOn = true;
 
 	@Override
 	public void create () {
