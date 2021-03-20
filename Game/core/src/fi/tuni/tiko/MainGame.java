@@ -9,10 +9,15 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+
 import java.util.ArrayList;
 
 
@@ -21,10 +26,14 @@ public class MainGame extends ApplicationAdapter {
 	private Texture boxTexture;
 	private Texture bigBoxTexture;
 	private Texture happy;
-	private Texture settings;
+	private Texture settingsTexture;
 	private Texture empty;
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
+	private Group meters;
+	private Button feelingMeterButton;
+	private Group settings;
+	private Button settingsButton;
 
 	public static int currentScreenID = 0;
 	public static int windowWidth;
@@ -33,18 +42,38 @@ public class MainGame extends ApplicationAdapter {
 	public static boolean musicOn = true;
 	public static boolean soundsOn = true;
 
+	private float buttonHeight;
+	private float bigButtonHeight;
+	private float meterWidth;
+	private float meterHeight;
+	// How long it takes to switch between Game and FeelingMeter mode:
+	private float FADE_TIME = 0.2f;
+	private float margin;
+
+
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
+		buttonHeight =  windowHeight * 0.07f;
+		bigButtonHeight = buttonHeight * 2f;
+		meterWidth = windowWidth * 0.8f;
+		meterHeight = windowHeight * 0.1f;
+		margin = windowHeight * 0.025f;
 
 		boxTexture = new Texture("boxshadowmdpi.png");
 		bigBoxTexture = new Texture("bigboxshadowmdpi.png");
 		happy = new Texture("ilo_reunatmdpi.png");
-		settings = new Texture("hamburger.png");
+		settingsTexture = new Texture("hamburger.png");
 		empty = new Texture("emptycircle.png");
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
+
+		settingsButton = createSettingsButton();
+		feelingMeterButton = createFeelingMeterButton();
+		settings = createSettings();
+		meters = createMeters();
+
 
 		screens = createChoiceScreens();
 		currentScreen = screens.get(0);
@@ -59,6 +88,9 @@ public class MainGame extends ApplicationAdapter {
 			if (screen.getScreenID() == currentScreenID) {
 				currentScreen = screen;
 			}
+		}
+		if (currentScreen.getClass() == ChoiceScreen.class) {
+			((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 		}
 
 		Gdx.input.setInputProcessor(currentScreen);
@@ -124,7 +156,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
 		s.add("happy", happy);
-		s.add("settings", settings);
+		s.add("settings", settingsTexture);
 		s.add("empty", empty);
 		s.add("test", img);
 
@@ -170,12 +202,139 @@ public class MainGame extends ApplicationAdapter {
 
 		return s;
 	}
+	public Button createSettingsButton() {
+		final Button button = new Button(MainGame.skin, "settings");
+		button.setBounds(((float) windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
+		button.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				ChoiceScreen thisScreen = (ChoiceScreen) settingsButton.getStage();
+				if (!settingsButton.isChecked()) {
+					settings.addAction(Actions.fadeOut(FADE_TIME));
+					settings.toBack();
+					if (!feelingMeterButton.isChecked()) {
+						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
+						thisScreen.answersSetPause(false);
+						thisScreen.getGameElements().toFront();
+					}
+				} else {
+					settings.addAction(Actions.fadeIn(FADE_TIME));
+					settings.toFront();
+					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
+					thisScreen.answersSetPause(true);
+					thisScreen.getGameElements().toBack();
+					if (feelingMeterButton.isChecked()) {
+						feelingMeterButton.setChecked(false);
+					}
+				}
+			}
+		});
+		return button;
+	}
+	public Button createFeelingMeterButton() {
+		final Button button = new Button(MainGame.skin, "happiness");
+		button.setBounds(((float) windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
+		button.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				ChoiceScreen thisScreen = (ChoiceScreen) feelingMeterButton.getStage();
+				if (!feelingMeterButton.isChecked()) {
+					meters.addAction(Actions.fadeOut(FADE_TIME));
+					meters.toBack();
+					if (!settingsButton.isChecked()) {
+						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
+						thisScreen.answersSetPause(false);
+						thisScreen.getGameElements().toFront();
+					}
+				} else {
+					meters.addAction(Actions.fadeIn(FADE_TIME));
+					meters.toFront();
+					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
+					thisScreen.answersSetPause(true);
+					thisScreen.getGameElements().toBack();
+					if (settingsButton.isChecked()) {
+						settingsButton.setChecked(false);
+					}
+				}
+			}
+		});
+		return button;
+	}
+	public Group createMeters() {
+		Group result = new Group();
+		// Create FeelingMeters
+		float meterLocationHeight = meterHeight * 7 + margin * 7;
+		float currentY = windowHeight - meterLocationHeight;
+		for (int i = 0; i < 7; i++) {
+			Label myLabel = new Label(i + "", MainGame.skin, "question");
+			myLabel.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
+			myLabel.setAlignment(0);
+			myLabel.setFontScaleX(0.005f * windowWidth);
+			myLabel.setFontScaleY(0.003f * windowHeight);
+			result.addActor(myLabel);
+			currentY += margin + meterHeight;
+		}
+		// Hide the meters initially
+		result.toBack();
+		result.addAction(Actions.fadeOut(0));
 
+		return result;
+	}
+	public Group createSettings() {
+		Group result = new Group();
+		// Create buttons for settings
+		final Button musicButton = new Button(MainGame.skin, "alt");
+		final Button soundsButton = new Button(MainGame.skin, "alt");
+		final Button exitButton = new Button(MainGame.skin, "alt");
+		float centerX = windowWidth * 0.5f - bigButtonHeight * 0.5f;
+		float centerY = windowHeight * 0.5f - bigButtonHeight * 0.5f;
+		musicButton.setBounds(centerX, centerY + bigButtonHeight + margin, bigButtonHeight, bigButtonHeight);
+		soundsButton.setBounds(centerX, centerY, bigButtonHeight, bigButtonHeight);
+		exitButton.setBounds(centerX, centerY - bigButtonHeight - margin, bigButtonHeight, bigButtonHeight);
+		result.addActor(musicButton);
+		result.addActor(soundsButton);
+		result.addActor(exitButton);
+		// Hide the buttons initially
+		result.toBack();
+		result.addAction(Actions.fadeOut(0));
+		musicButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				if (musicButton.isChecked()) {
+					musicButton.setStyle(MainGame.skin.get("happiness", Button.ButtonStyle.class));
+				} else {
+					musicButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
+				}
+				MainGame.musicOn = musicButton.isChecked();
+			}
+		});
+		soundsButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				if (soundsButton.isChecked()) {
+					soundsButton.setStyle(MainGame.skin.get("happiness", Button.ButtonStyle.class));
+				} else {
+					soundsButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
+				}
+				MainGame.soundsOn = soundsButton.isChecked();
+			}
+		});
+		exitButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				System.out.println("EXIT THE GAME");
+			}
+		});
+		musicButton.setChecked(MainGame.musicOn);
+		soundsButton.setChecked(MainGame.soundsOn);
+
+		return result;
+	}
 	@Override
 	public void dispose () {
 		img.dispose();
 		boxTexture.dispose();
 		happy.dispose();
-		settings.dispose();
+		settingsTexture.dispose();
 	}
 }
