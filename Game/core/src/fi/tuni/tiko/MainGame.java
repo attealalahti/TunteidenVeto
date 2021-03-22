@@ -38,6 +38,7 @@ public class MainGame extends ApplicationAdapter {
 	int nextScreensID = 0;
 
 	Skin skin;
+
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
@@ -151,9 +152,57 @@ public class MainGame extends ApplicationAdapter {
 		s.add("default", buttonStyle);
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
+		s.add("font", createFont());
 
 		return s;
 	}
+
+	/** createFont creates and returns a BitmapFont to be used
+	 *
+	 * This method uses FreeTypeFont to create a BitmapFont from an existing font file in the project font folder.
+	 * @return returns a BitmapFont
+	 * @author Mika Kivennenä
+	 */
+	public BitmapFont createFont() {
+		FreeTypeFontGenerator fontGenerator new FreeTypeFontGenerator(Gdx.files.internal(font/"lato.ttf"));
+		FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+		fontParameter.size = 100;
+		fontParameter.borderColor = Color.BLACK;
+		fontParameter.color = Color.WHITE
+
+		BitmapFont font = fontGenerator.generateFont(fontParameter);
+		return font;
+	}
+
+	/** This method creates an array of screens containing longer story texts.
+	 *
+	 * This method takes in the story text, divides it into different screens for easier readibility.
+	 * @param lengthOfText is the float given to determine the length of the story text.
+	 * @param string containing the story text that will be split into separate parts
+	 * @return an array of strings
+	 * @author Mika Kivennenä
+	 */
+	public String[] createStoryScreens(float lengthOfMaxPerScreen, String storyText) {
+		int amountOfScreens = (int)(storyText.length() / lengthOfMaxPerScreen);
+		int characterIndex = 0;
+		int screenIndex = 0;
+		String[] stringArr = new String[amountOfScreens];
+
+		// This loop runs until the current character is the last character of the text.
+		while(characterIndex < storyText.length()) {
+			String tempString;
+			// Saves the story text one character at a time into a temporary string that is later added to the story array.
+			for(int i = 0; i<lengthOfMaxPerScreen; i++) {
+				tempString += storyText.charAt(characterIndex);
+				characterIndex++;
+			}
+			// Adds the tempstring into the string array of the current screen index. Increases screen index by one.
+			stringArr[screenIndex] = tempString;
+			screenIndex++;
+		}
+	}
+
 	@Override
 	public void render () {
 		float fraction = 1f / 255f;
