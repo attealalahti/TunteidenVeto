@@ -72,7 +72,7 @@ public class FeelingMeter extends Group {
         float tempFloat = meter.getValue();
         tempFloat += valueToAdd;
         if(tempFloat > MAX_VALUE) {
-            Gdx.app.log("Error", "Value exceeds the maximum limit off: " + MAX_VALUE);
+            Gdx.app.log("Error", "Value exceeds the maximum limit of: " + MAX_VALUE);
         } else {
             meter.setValue(tempFloat);
         }
@@ -82,7 +82,7 @@ public class FeelingMeter extends Group {
         float tempFloat = meter.getValue();
         tempFloat -= valueToReduce;
         if(tempFloat < MIN_VALUE) {
-            Gdx.app.log("Error", "Value exceeds the minimum limit off: " + MIN_VALUE);
+            Gdx.app.log("Error", "Value exceeds the minimum limit of: " + MIN_VALUE);
         } else {
             meter.setValue(tempFloat);
         }

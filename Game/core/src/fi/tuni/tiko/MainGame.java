@@ -14,9 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
@@ -31,6 +29,11 @@ public class MainGame extends ApplicationAdapter {
 	private Texture settingsTexture;
 	private Texture empty;
 	private Texture feelingMeterTexture;
+	private Texture musicOnTexture;
+	private Texture musicOffTexture;
+	private Texture soundOnTexture;
+	private Texture soundOffTexture;
+
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
 	private Group meters;
@@ -51,7 +54,7 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowHeight;
 	public static Skin skin;
 	public static boolean musicOn = true;
-	public static boolean soundsOn = true;
+	public static boolean soundOn = true;
 	public static float margin;
 	public static float meterHeight;
 
@@ -82,6 +85,10 @@ public class MainGame extends ApplicationAdapter {
 		settingsTexture = new Texture(folderToUse+"hamburgermenu.png");
 		empty = new Texture(folderToUse+"button.png");
 		feelingMeterTexture = new Texture("mittari2.png");
+		musicOnTexture = new Texture(folderToUse+"music_on.png");
+		musicOffTexture = new Texture(folderToUse+"music_off.png");
+		soundOnTexture = new Texture(folderToUse+"sound_on.png");
+		soundOffTexture = new Texture(folderToUse+"sound_off.png");
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
@@ -177,6 +184,10 @@ public class MainGame extends ApplicationAdapter {
 		s.add("settings", settingsTexture);
 		s.add("empty", empty);
 		s.add("meter", feelingMeterTexture);
+		s.add("soundOn", soundOnTexture);
+		s.add("soundOff", soundOffTexture);
+		s.add("musicOn", musicOnTexture);
+		s.add("musicOff", musicOffTexture);
 		s.add("test", img);
 		s.add("font", createFont());
 
@@ -206,6 +217,22 @@ public class MainGame extends ApplicationAdapter {
 		settingsButtonStyle.down = s.newDrawable("settings", Color.DARK_GRAY);
 		settingsButtonStyle.checked = s.newDrawable("settings", Color.DARK_GRAY);
 
+		Button.ButtonStyle soundStyle = new Button.ButtonStyle();
+		soundStyle.up = s.newDrawable("soundOff");
+		soundStyle.down = s.newDrawable("soundOff", Color.DARK_GRAY);
+		soundStyle.checked = s.newDrawable("soundOn");
+		soundStyle.checkedDown = s.newDrawable("soundOn", Color.DARK_GRAY);
+
+		Button.ButtonStyle musicStyle = new Button.ButtonStyle();
+		musicStyle.up = s.newDrawable("musicOff");
+		musicStyle.down = s.newDrawable("musicOff", Color.DARK_GRAY);
+		musicStyle.checked = s.newDrawable("musicOn");
+		musicStyle.checkedDown = s.newDrawable("musicOn", Color.DARK_GRAY);
+
+		Button.ButtonStyle exitStyle = new Button.ButtonStyle();
+		exitStyle.up = s.newDrawable("empty");
+		exitStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
+
 		Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
 		buttonStyleAlt.up = s.newDrawable("test");
 		buttonStyleAlt.down = s.newDrawable("test", Color.DARK_GRAY);
@@ -223,6 +250,9 @@ public class MainGame extends ApplicationAdapter {
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
 		s.add("settings", settingsButtonStyle);
+		s.add("sound", soundStyle);
+		s.add("music", musicStyle);
+		s.add("exit", exitStyle);
 		s.add("feelingMeterForeground", feelingMeterForeGroundStyle);
 
 
@@ -354,16 +384,16 @@ public class MainGame extends ApplicationAdapter {
 	public Group createSettings() {
 		Group result = new Group();
 		// Create buttons for settings
-		final Button musicButton = new Button(skin, "alt");
-		final Button soundsButton = new Button(skin, "alt");
-		final Button exitButton = new Button(skin, "alt");
+		final Button musicButton = new Button(skin, "music");
+		final Button soundButton = new Button(skin, "sound");
+		final Button exitButton = new Button(skin, "exit");
 		float centerX = windowWidth * 0.5f - bigButtonHeight * 0.5f;
 		float centerY = windowHeight * 0.5f - bigButtonHeight * 0.5f;
 		musicButton.setBounds(centerX, centerY + bigButtonHeight + margin, bigButtonHeight, bigButtonHeight);
-		soundsButton.setBounds(centerX, centerY, bigButtonHeight, bigButtonHeight);
+		soundButton.setBounds(centerX, centerY, bigButtonHeight, bigButtonHeight);
 		exitButton.setBounds(centerX, centerY - bigButtonHeight - margin, bigButtonHeight, bigButtonHeight);
 		result.addActor(musicButton);
-		result.addActor(soundsButton);
+		result.addActor(soundButton);
 		result.addActor(exitButton);
 		// Hide the buttons initially
 		result.toBack();
@@ -371,23 +401,13 @@ public class MainGame extends ApplicationAdapter {
 		musicButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				if (musicButton.isChecked()) {
-					musicButton.setStyle(skin.get("happiness", Button.ButtonStyle.class));
-				} else {
-					musicButton.setStyle(skin.get("alt", Button.ButtonStyle.class));
-				}
-				MainGame.musicOn = musicButton.isChecked();
+				musicOn = musicButton.isChecked();
 			}
 		});
-		soundsButton.addListener(new ChangeListener() {
+		soundButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				if (soundsButton.isChecked()) {
-					soundsButton.setStyle(skin.get("happiness", Button.ButtonStyle.class));
-				} else {
-					soundsButton.setStyle(skin.get("alt", Button.ButtonStyle.class));
-				}
-				MainGame.soundsOn = soundsButton.isChecked();
+				soundOn = soundButton.isChecked();
 			}
 		});
 		exitButton.addListener(new ChangeListener() {
@@ -396,8 +416,8 @@ public class MainGame extends ApplicationAdapter {
 				System.out.println("EXIT THE GAME");
 			}
 		});
-		musicButton.setChecked(MainGame.musicOn);
-		soundsButton.setChecked(MainGame.soundsOn);
+		musicButton.setChecked(musicOn);
+		soundButton.setChecked(soundOn);
 
 		return result;
 	}
