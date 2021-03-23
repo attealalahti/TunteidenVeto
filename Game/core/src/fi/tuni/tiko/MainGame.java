@@ -339,18 +339,6 @@ public class MainGame extends ApplicationAdapter {
 		result.addAction(Actions.fadeOut(0));
 
 		return result;
-				/*
-		for (int i = 0; i < 7; i++) {
-			Label myLabel = new Label(i + "", skin, "question");
-			myLabel.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
-			myLabel.setAlignment(0);
-			myLabel.setFontScaleX(0.0005f * windowWidth);
-			myLabel.setFontScaleY(0.0003f * windowHeight);
-			result.addActor(myLabel);
-			currentY += margin + meterHeight;
-		}
-		 */
-
 	}
 	public Button createSettingsButton() {
 		final Button button = new Button(skin, "settings");
@@ -413,6 +401,7 @@ public class MainGame extends ApplicationAdapter {
 		exitButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				screens = createChoiceScreens();
 				currentScreenID = 0;
 				settingsButton.setChecked(false);
 			}
