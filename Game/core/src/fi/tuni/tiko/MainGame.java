@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -28,15 +29,21 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowWidth;
 	public static int windowHeight;
 
+	public String folderToUse = "";
+	public int fontSize;
+
 	@Override
 	public void create () {
+		folderToUse = getPixelDensity();
+		fontSize = getFontSize();
+
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 
-		boxTexture = new Texture("boxshadowmdpi.png");
-		bigBoxTexture = new Texture("bigboxshadowmdpi.png");
-		feeling = new Texture("ilo_reunatmdpi.png");
-		img = new Texture("badlogic.jpg");
+		boxTexture = new Texture(folderToUse+"boxshadow.png");
+		bigBoxTexture = new Texture(folderToUse+"bigboxshadow.png");
+		feeling = new Texture(folderToUse+"ilo_reunat.png");
+		img = new Texture(folderToUse+"badlogic.jpg");
 		skin = createSkin();
 
 		screens = createChoiceScreens();
@@ -118,6 +125,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("default", new BitmapFont());
 		s.add("feeling", feeling);
 		s.add("test", img);
+		s.add("font", createFont());
 
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
 		answerStyle.background = s.newDrawable("round_corners", Color.WHITE);
@@ -129,7 +137,7 @@ public class MainGame extends ApplicationAdapter {
 
 		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
 		textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
-		textBoxStyle.font = s.getFont("default");
+		textBoxStyle.font = s.getFont("font");
 
 		Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 		buttonStyle.up = s.newDrawable("feeling");
@@ -145,7 +153,27 @@ public class MainGame extends ApplicationAdapter {
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
 
+
 		return s;
+	}
+
+	/** createFont creates and returns a BitmapFont to be used
+	 *
+	 * This method uses FreeTypeFont to create a BitmapFont from an existing font file in the project font folder.
+	 * @return returns a BitmapFont
+	 * @author Mika Kivennenä
+	 */
+	public BitmapFont createFont() {
+		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/lato.ttf"));
+		FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+
+		fontParameter.size = fontSize;
+		fontParameter.borderColor = Color.BLACK;
+		fontParameter.color = Color.WHITE;
+
+		BitmapFont font = fontGenerator.generateFont(fontParameter);
+		return font;
 	}
 
 	@Override
@@ -153,5 +181,54 @@ public class MainGame extends ApplicationAdapter {
 		img.dispose();
 		boxTexture.dispose();
 		feeling.dispose();
+	}
+
+	/** getPixelDensity method is used to show correct images
+	 *
+	 * This method uses getDensity() method to determine screen pixel density
+	 * and sets the correct folder to which the images in the project are being used from.
+	 *
+	 * @return returns a string that is used to choose right folder for images
+	 * @author Mika Kivennenä
+	 */
+	public String getPixelDensity() {
+		float density = Gdx.graphics.getDensity();
+		String tempString = "";
+
+		if(density < 1) {
+			tempString = "ldpi/";
+		}
+		else if(density >= 1f && density < 2f) {
+			tempString = "mdpi/";
+		}
+		else if(density >= 2f && density < 3f) {
+			tempString = "hdpi/";
+		}
+		else if(density >= 3f && density < 4f) {
+			tempString = "xhdpi/";
+		}
+
+		return tempString;
+	}
+
+	/** getFontSize method is used to set size for the font
+	 *
+	 * This method uses getDensity() method to determine screen pixel density
+	 * and calculates the correct font size based on pixel density
+	 *
+	 * @return returns an integer that is used to set fontSize
+	 * @author Mika Kivennenä
+	 */
+	public int getFontSize() {
+		float density = Gdx.graphics.getDensity();
+		int tempInt = 0;
+
+		if(density < 1) {
+			tempInt = 150;
+		} else {
+			tempInt = 75 * (int)density;
+		}
+
+		return tempInt;
 	}
 }

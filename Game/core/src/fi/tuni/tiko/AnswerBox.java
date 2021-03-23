@@ -55,8 +55,8 @@ public class AnswerBox extends Group {
         float yMargin = margin * height;
         textBox.setBounds(x + xMargin * 0.5f, y + yMargin * 0.5f, width - xMargin, height - yMargin);
         startX = getX();
-        textBox.setFontScaleX(0.0025f * windowWidth);
-        textBox.setFontScaleY(0.0015f * windowHeight);
+        textBox.setFontScaleX(0.00025f * windowWidth);
+        textBox.setFontScaleY(0.00015f * windowHeight);
         textBox.setWrap(true);
         textBox.setAlignment(0);
 
