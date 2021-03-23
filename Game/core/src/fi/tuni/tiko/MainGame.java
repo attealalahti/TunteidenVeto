@@ -413,7 +413,8 @@ public class MainGame extends ApplicationAdapter {
 		exitButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				System.out.println("EXIT THE GAME");
+				currentScreenID = 0;
+				settingsButton.setChecked(false);
 			}
 		});
 		musicButton.setChecked(musicOn);
