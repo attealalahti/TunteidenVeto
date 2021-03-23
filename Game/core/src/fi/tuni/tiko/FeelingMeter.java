@@ -9,6 +9,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.graphics.Color;
 
+import static fi.tuni.tiko.MainGame.skin;
+
 /*
 How to use in Main Class
 MAIN
@@ -31,17 +33,17 @@ public class FeelingMeter extends ProgressBar {
     private static final float MIN_VALUE = 0f;
     private static final float MAX_VALUE = 100f;
 
-    public FeelingMeter(int width, int height) {
-        super(0f, 100f, 1f, false, new ProgressBarStyle());
-        getStyle().background = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("mittari_tyhja.png"))));
-        getStyle().knob = getColoredDrawable(0, height, Color.GREEN);
-        getStyle().knobBefore = getColoredDrawable(width, height, Color.GREEN);
+    public FeelingMeter(float x, float y, float width, float height) {
+        super(0f, 100f, 1f, false, skin, "feelingmeter");
+        /*
+        getStyle().background = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("mittari.png"))));
+        */
+        getStyle().knobBefore = getColoredDrawable((int)width, (int)height, Color.GREEN);
 
-        setWidth(width);
-        setHeight(height);
+        setBounds(x, y, width, height);
 
         setAnimateDuration(0.0f);
-        setValue(1f);
+        setValue(50f);
 
         setAnimateDuration(0.25f);
     }

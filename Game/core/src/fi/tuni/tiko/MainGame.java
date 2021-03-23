@@ -16,6 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
@@ -29,6 +30,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture happy;
 	private Texture settingsTexture;
 	private Texture empty;
+	private Texture feelingMeterTexture;
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
 	private Group meters;
@@ -74,6 +76,7 @@ public class MainGame extends ApplicationAdapter {
 		happy = new Texture(folderToUse+"ilo_reunat.png");
 		settingsTexture = new Texture(folderToUse+"hamburgermenu.png");
 		empty = new Texture(folderToUse+"button.png");
+		feelingMeterTexture = new Texture("mittari2.png");
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
@@ -168,6 +171,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("happy", happy);
 		s.add("settings", settingsTexture);
 		s.add("empty", empty);
+		s.add("meter", feelingMeterTexture);
 		s.add("test", img);
 		s.add("font", createFont());
 
@@ -201,6 +205,14 @@ public class MainGame extends ApplicationAdapter {
 		buttonStyleAlt.up = s.newDrawable("test");
 		buttonStyleAlt.down = s.newDrawable("test", Color.DARK_GRAY);
 
+		ProgressBar.ProgressBarStyle feelingMeterStyle = new ProgressBar.ProgressBarStyle();
+		feelingMeterStyle.background = s.newDrawable("white", Color.CLEAR);
+		feelingMeterStyle.knob = s.newDrawable("white", Color.GREEN);
+
+		Label.LabelStyle feelingMeterForeGroundStyle = new Label.LabelStyle();
+		feelingMeterForeGroundStyle.font = s.getFont("default");
+		feelingMeterForeGroundStyle.background = s.newDrawable("meter");
+
 
 
 		s.add("default", answerStyle);
@@ -210,6 +222,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
 		s.add("settings", settingsButtonStyle);
+		s.add("feelingmeter", feelingMeterStyle);
 
 
 		return s;
@@ -297,6 +310,7 @@ public class MainGame extends ApplicationAdapter {
 		// Create FeelingMeters
 		float meterLocationHeight = meterHeight * 7 + margin * 7;
 		float currentY = windowHeight - meterLocationHeight;
+		/*
 		for (int i = 0; i < 7; i++) {
 			Label myLabel = new Label(i + "", skin, "question");
 			myLabel.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
@@ -306,6 +320,10 @@ public class MainGame extends ApplicationAdapter {
 			result.addActor(myLabel);
 			currentY += margin + meterHeight;
 		}
+		 */
+		FeelingMeter myFeelingMeter = new FeelingMeter(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
+		result.addActor(myFeelingMeter);
+
 		// Hide the meters initially
 		result.toBack();
 		result.addAction(Actions.fadeOut(0));
