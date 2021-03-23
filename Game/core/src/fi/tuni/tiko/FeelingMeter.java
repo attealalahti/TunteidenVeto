@@ -44,10 +44,11 @@ public class FeelingMeter extends Group {
 
     public FeelingMeter(float y, Color color) {
         meter = new ProgressBar(0f, 100f, 1f, false, new ProgressBar.ProgressBarStyle());
-        meter.getStyle().knobBefore = getColoredDrawable((int)(meterWidth / 100f), (int)meterHeight, color);
+        meter.getStyle().knobBefore = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, color);
+        meter.getStyle().knobAfter = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, Color.WHITE);
         meter.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, y, meterWidth, meterHeight);
         meter.setAnimateDuration(0.25f);
-        meter.setValue(50f);
+        meter.setValue(70f);
         addActor(meter);
 
         foreground = new Label(null, skin, "feelingMeterForeground");
