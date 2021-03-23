@@ -1,16 +1,24 @@
 package fi.tuni.tiko;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import java.util.ArrayList;
+
+import javax.xml.stream.FactoryConfigurationError;
+
+import sun.applet.Main;
 
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
@@ -23,21 +31,14 @@ import static fi.tuni.tiko.MainGame.windowWidth;
  */
 public class ChoiceScreen extends Screen {
 
-    private String question;
     private Group game;
-    private Group meters;
     private Group answerBoxes;
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
+    private final float buttonHeight = windowHeight * 0.07f;
     // How much space is in between elements:
     private final float margin = windowHeight * 0.025f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
-    private final float buttonHeight = windowHeight * 0.07f;
-    private final float meterWidth = windowWidth * 0.8f;
-    private final float meterHeight = windowHeight * 0.1f;
-    // How long it takes to switch between Game and FeelingMeter mode:
-    private final float FADE_TIME = 0.2f;
-    private boolean gameView = true;
 
     /** Creates a new ChoiceScreen.
      *
@@ -46,16 +47,13 @@ public class ChoiceScreen extends Screen {
      * @param answers text for each of the choices
      * @param screenLinks screen IDs for screens the choices lead to. Must be the same size as choices
      */
-    public ChoiceScreen(int screenID, String question, ArrayList<String> answers, ArrayList<Integer> screenLinks) {
+    public ChoiceScreen(int screenID, String question, final ArrayList<String> answers, ArrayList<Integer> screenLinks) {
         super(screenID, answers, screenLinks);
-        this.question = question;
 
         // Create groups for easy access of different elements
         answerBoxes = new Group();
         game = new Group();
-        meters = new Group();
         addActor(game);
-        addActor(meters);
 
         createAnswerBoxes();
 
@@ -69,48 +67,6 @@ public class ChoiceScreen extends Screen {
         questionBox.setWrap(true);
         game.addActor(questionBox);
 
-        // Create the FeelingMeter button
-        Button feelingMeterButton = new Button(MainGame.skin);
-        feelingMeterButton.setBounds(windowWidth * 0.5f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
-        addActor(feelingMeterButton);
-        //feelingMeterButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
-
-        // Create FeelingMeters
-        float meterLocationHeight = meterHeight * 7 + margin * 7;
-        float currentY = windowHeight - meterLocationHeight;
-        for (int i = 0; i < 7; i++) {
-            Label myLabel = new Label(i + "", MainGame.skin, "question");
-            myLabel.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
-            myLabel.setAlignment(0);
-            myLabel.setFontScaleX(0.005f * windowWidth);
-            myLabel.setFontScaleY(0.003f * windowHeight);
-            meters.addActor(myLabel);
-            currentY += margin + meterHeight;
-        }
-        // Hide the meters initially
-        meters.toBack();
-        meters.addAction(Actions.fadeOut(0));
-
-        // Toggle between between Game and FeelingMeter mode
-        feelingMeterButton.addListener(new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                if (gameView) {
-                    game.addAction(Actions.fadeOut(FADE_TIME));
-                    meters.addAction(Actions.fadeIn(FADE_TIME));
-                    game.toBack();
-                    meters.toFront();
-                    gameView = false;
-                } else {
-                    game.addAction(Actions.fadeIn(FADE_TIME));
-                    meters.addAction(Actions.fadeOut(FADE_TIME));
-                    meters.toBack();
-                    game.toFront();
-                    gameView = true;
-                }
-                pauseAnswers();
-            }
-        });
     }
     public void createAnswerBoxes() {
         float currentY = margin * 2 + buttonHeight;
@@ -121,10 +77,21 @@ public class ChoiceScreen extends Screen {
         game.addActor(answerBoxes);
     }
 
-    public void pauseAnswers() {
+    public void answersSetPause(boolean pause) {
         for (Actor a: answerBoxes.getChildren()) {
             AnswerBox ab = (AnswerBox) a;
-            ab.pause();
+            ab.setPause(pause);
         }
+    }
+    public void addGlobalElements(Button feelingMeterButton, Group meters, Button settingsButton, Group settings) {
+        addActor(feelingMeterButton);
+        addActor(meters);
+        addActor(settingsButton);
+        addActor(settings);
+        feelingMeterButton.toBack();
+        meters.toBack();
+    }
+    public Group getGameElements() {
+        return game;
     }
 }

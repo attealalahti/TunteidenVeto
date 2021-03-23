@@ -27,7 +27,7 @@ public class AnswerBox extends Group {
     private float moveDuration = 0.2f;
     private int screenLink;
     private boolean atEdge = false;
-    private boolean unPaused = true;
+    private boolean paused = false;
     private float touchDifferenceX;
     private Label background;
     private Label textBox;
@@ -84,7 +84,7 @@ public class AnswerBox extends Group {
                         canMove = false;
                     }
                 }
-                if ((canMove || atEdge) && unPaused) {
+                if ((canMove || atEdge) && !paused) {
                     setX(Gdx.input.getX() - touchDifferenceX);
                 }
             }
@@ -136,14 +136,10 @@ public class AnswerBox extends Group {
         });
     }
 
-    /** Toggles pausing. The AnswerBox cannot be moved while paused.
+    /** Sets pausing. The AnswerBox cannot be moved while paused.
      * Called by the Screen when moving out of game view.
      */
-    public void pause() {
-        if (unPaused) {
-            unPaused = false;
-        } else {
-            unPaused = true;
-        }
+    public void setPause(boolean pause) {
+        paused = pause;
     }
 }
