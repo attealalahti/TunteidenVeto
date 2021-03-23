@@ -35,6 +35,7 @@ public class MainGame extends ApplicationAdapter {
 	private Button feelingMeterButton;
 	private Group settings;
 	private Button settingsButton;
+	private Screen lastFrameCurrentScreen;
 
 	public static int currentScreenID = 0;
 	public static int windowWidth;
@@ -52,8 +53,8 @@ public class MainGame extends ApplicationAdapter {
 	private float margin;
 
 
-	public String folderToUse = "";
-	public int fontSize;
+	private String folderToUse = "";
+	private int fontSize;
 
 	@Override
 	public void create () {
@@ -68,12 +69,12 @@ public class MainGame extends ApplicationAdapter {
 		meterHeight = windowHeight * 0.1f;
 		margin = windowHeight * 0.025f;
 
-		boxTexture = new Texture(folderToUse+"boxshadow.png");
-		bigBoxTexture = new Texture(folderToUse+"bigboxshadow.png");
+		boxTexture = new Texture(folderToUse+"box.png");
+		bigBoxTexture = new Texture(folderToUse+"textbox.png");
 		happy = new Texture(folderToUse+"ilo_reunat.png");
-		settingsTexture = new Texture("hamburger.png");
-		empty = new Texture("emptycircle.png");
-		img = new Texture(folderToUse+"badlogic.jpg");
+		settingsTexture = new Texture(folderToUse+"hamburgermenu.png");
+		empty = new Texture(folderToUse+"button.png");
+		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
 		settingsButton = createSettingsButton();
@@ -88,7 +89,7 @@ public class MainGame extends ApplicationAdapter {
 	@Override
 	public void render () {
 		float fraction = 1f / 255f;
-		Gdx.gl.glClearColor(fraction * 81f, fraction * 99f, fraction * 115f, 1);
+		Gdx.gl.glClearColor(fraction * 0f, fraction * 131f, fraction * 143f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		for (Screen screen: screens) {
@@ -96,9 +97,11 @@ public class MainGame extends ApplicationAdapter {
 				currentScreen = screen;
 			}
 		}
-		if (currentScreen.getClass() == ChoiceScreen.class) {
+
+		if (currentScreen.getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
 			((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 		}
+		lastFrameCurrentScreen = currentScreen;
 
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
@@ -174,7 +177,7 @@ public class MainGame extends ApplicationAdapter {
 
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
 		questionStyle.background = s.newDrawable("big_box", Color.WHITE);
-		questionStyle.font = s.getFont("default");
+		questionStyle.font = s.getFont("font");
 
 		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
 		textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
@@ -185,9 +188,9 @@ public class MainGame extends ApplicationAdapter {
 		feelingsButtonStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
 
 		Button.ButtonStyle happyStyle = new Button.ButtonStyle();
-		happyStyle.up = s.newDrawable("happy");
-		happyStyle.down = s.newDrawable("happy", Color.DARK_GRAY);
-		happyStyle.checked = s.newDrawable("happy", Color.DARK_GRAY);
+		happyStyle.up = s.newDrawable("empty");
+		happyStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
+		happyStyle.checked = s.newDrawable("empty", Color.DARK_GRAY);
 
 		Button.ButtonStyle settingsButtonStyle = new Button.ButtonStyle();
 		settingsButtonStyle.up = s.newDrawable("settings");
@@ -232,7 +235,7 @@ public class MainGame extends ApplicationAdapter {
 	}
 
 	public Button createSettingsButton() {
-		final Button button = new Button(MainGame.skin, "settings");
+		final Button button = new Button(skin, "settings");
 		button.setBounds(((float) windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
 		button.addListener(new ChangeListener() {
 			@Override
@@ -261,7 +264,7 @@ public class MainGame extends ApplicationAdapter {
 		return button;
 	}
 	public Button createFeelingMeterButton() {
-		final Button button = new Button(MainGame.skin, "happiness");
+		final Button button = new Button(skin, "happiness");
 		button.setBounds(((float) windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
 		button.addListener(new ChangeListener() {
 			@Override
@@ -295,11 +298,11 @@ public class MainGame extends ApplicationAdapter {
 		float meterLocationHeight = meterHeight * 7 + margin * 7;
 		float currentY = windowHeight - meterLocationHeight;
 		for (int i = 0; i < 7; i++) {
-			Label myLabel = new Label(i + "", MainGame.skin, "question");
+			Label myLabel = new Label(i + "", skin, "question");
 			myLabel.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
 			myLabel.setAlignment(0);
-			myLabel.setFontScaleX(0.005f * windowWidth);
-			myLabel.setFontScaleY(0.003f * windowHeight);
+			myLabel.setFontScaleX(0.0005f * windowWidth);
+			myLabel.setFontScaleY(0.0003f * windowHeight);
 			result.addActor(myLabel);
 			currentY += margin + meterHeight;
 		}
@@ -312,9 +315,9 @@ public class MainGame extends ApplicationAdapter {
 	public Group createSettings() {
 		Group result = new Group();
 		// Create buttons for settings
-		final Button musicButton = new Button(MainGame.skin, "alt");
-		final Button soundsButton = new Button(MainGame.skin, "alt");
-		final Button exitButton = new Button(MainGame.skin, "alt");
+		final Button musicButton = new Button(skin, "alt");
+		final Button soundsButton = new Button(skin, "alt");
+		final Button exitButton = new Button(skin, "alt");
 		float centerX = windowWidth * 0.5f - bigButtonHeight * 0.5f;
 		float centerY = windowHeight * 0.5f - bigButtonHeight * 0.5f;
 		musicButton.setBounds(centerX, centerY + bigButtonHeight + margin, bigButtonHeight, bigButtonHeight);
@@ -330,9 +333,9 @@ public class MainGame extends ApplicationAdapter {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				if (musicButton.isChecked()) {
-					musicButton.setStyle(MainGame.skin.get("happiness", Button.ButtonStyle.class));
+					musicButton.setStyle(skin.get("happiness", Button.ButtonStyle.class));
 				} else {
-					musicButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
+					musicButton.setStyle(skin.get("alt", Button.ButtonStyle.class));
 				}
 				MainGame.musicOn = musicButton.isChecked();
 			}
@@ -341,9 +344,9 @@ public class MainGame extends ApplicationAdapter {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				if (soundsButton.isChecked()) {
-					soundsButton.setStyle(MainGame.skin.get("happiness", Button.ButtonStyle.class));
+					soundsButton.setStyle(skin.get("happiness", Button.ButtonStyle.class));
 				} else {
-					soundsButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
+					soundsButton.setStyle(skin.get("alt", Button.ButtonStyle.class));
 				}
 				MainGame.soundsOn = soundsButton.isChecked();
 			}
@@ -363,8 +366,10 @@ public class MainGame extends ApplicationAdapter {
 	public void dispose () {
 		img.dispose();
 		boxTexture.dispose();
+		bigBoxTexture.dispose();
 		happy.dispose();
 		settingsTexture.dispose();
+		empty.dispose();
 	}
 
 	/** getPixelDensity method is used to show correct images

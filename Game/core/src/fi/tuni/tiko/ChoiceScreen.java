@@ -22,6 +22,7 @@ import sun.applet.Main;
 
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
+import static fi.tuni.tiko.MainGame.skin;
 
 /** ChoiceScreen is a Screen that has a big text box at the top of the screen and some AnswerBoxes below it.
  * There is also a button at the bottom to switch to FeelingMeter viewing mode and back.
@@ -51,24 +52,36 @@ public class ChoiceScreen extends Screen {
         super(screenID, answers, screenLinks);
 
         // Create groups for easy access of different elements
-        answerBoxes = new Group();
         game = new Group();
         addActor(game);
 
         createAnswerBoxes();
 
-        // Create the big text box
+        // Create the question text box
         float roomLeft = windowHeight - (answers.size() * (boxHeight + margin) + margin + buttonHeight + margin);
-        Label questionBox = new Label(question, MainGame.skin, "question");
-        questionBox.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
-        questionBox.setAlignment(0);
-        questionBox.setFontScaleX(0.005f * windowWidth);
-        questionBox.setFontScaleY(0.003f * windowHeight);
-        questionBox.setWrap(true);
+        Label questionBackground = new Label(null, skin, "question");
+        questionBackground.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
+
+        Label questionText = new Label(question, skin, "text");
+        questionText.setBounds(
+                questionBackground.getX() + questionBackground.getWidth() * 0.04f,
+                questionBackground.getY() + questionBackground.getHeight() * 0.08f,
+                questionBackground.getWidth() * 0.9f,
+                questionBackground.getHeight() * 0.88f
+        );
+        questionText.setAlignment(0);
+        questionText.setFontScaleX(0.00045f * windowWidth);
+        questionText.setFontScaleY(0.00027f * windowHeight);
+        questionText.setWrap(true);
+
+        Group questionBox = new Group();
+        questionBox.addActor(questionBackground);
+        questionBox.addActor(questionText);
         game.addActor(questionBox);
 
     }
     public void createAnswerBoxes() {
+        answerBoxes = new Group();
         float currentY = margin * 2 + buttonHeight;
         for (int i = 0; i < getChoices().size(); i++) {
             answerBoxes.addActor(new AnswerBox(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
@@ -90,6 +103,7 @@ public class ChoiceScreen extends Screen {
         addActor(settings);
         feelingMeterButton.toBack();
         meters.toBack();
+        settings.toBack();
     }
     public Group getGameElements() {
         return game;

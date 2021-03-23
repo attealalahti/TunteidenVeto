@@ -15,6 +15,7 @@ import sun.applet.Main;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
+import static fi.tuni.tiko.MainGame.skin;
 
 /** AnswerBoxes are text boxes that can be moved by dragging them. They stop halfway out from the screen and require a second swipe to confirm.
  * Confirming an AnswerBox calls it's Screen's nextScreen method with the AnswerBox's assigned screenLink,
@@ -31,7 +32,7 @@ public class AnswerBox extends Group {
     private float touchDifferenceX;
     private Label background;
     private Label textBox;
-    private float margin = 0.2f;
+    private float margin = 0.14f;
 
     /** Creates a new AnswerBox.
      * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
@@ -46,8 +47,8 @@ public class AnswerBox extends Group {
      */
     public AnswerBox(CharSequence text, float x, float y, float width, float height, final int screenLink) {
         this.screenLink = screenLink;
-        background = new Label(null, MainGame.skin);
-        textBox = new Label(text, MainGame.skin, "text");
+        background = new Label(null, skin);
+        textBox = new Label(text, skin, "text");
         background.setBounds(x, y, width, height);
 
         // Calculating the dimensions of the text box
