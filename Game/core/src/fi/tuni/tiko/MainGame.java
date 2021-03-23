@@ -9,111 +9,110 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-
 import java.util.ArrayList;
 
-import javax.swing.text.LabelView;
 
 public class MainGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	Texture boxTexture;
-	Texture bigBoxTexture;
-	Texture feeling;
+	private Texture img;
+	private Texture boxTexture;
+	private Texture bigBoxTexture;
+	private Texture feeling;
+	public static Skin skin;
+	private ArrayList<ChoiceScreen> screens;
+	private Screen currentScreen;
+
+	public static int currentScreenID = 0;
 	public static int windowWidth;
 	public static int windowHeight;
 
-	ArrayList<String> answers;
-	ArrayList<ChoiceScreen> screens;
-
-	ChoiceScreen screen;
-	ChoiceScreen screen2a;
-	ChoiceScreen screen2b;
-	ChoiceScreen currentScreen;
-	int nextScreensID = 0;
-
-	Skin skin;
+	public String folderToUse = "";
+	public int fontSize;
 
 	@Override
 	public void create () {
+		folderToUse = getPixelDensity();
+		fontSize = getFontSize();
+
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 
-		boxTexture = new Texture("boxshadowmdpi.png");
-		bigBoxTexture = new Texture("bigboxshadowmdpi.png");
-		feeling = new Texture("ilo_reunatmdpi.png");
-		img = new Texture("badlogic.jpg");
+		boxTexture = new Texture(folderToUse+"boxshadow.png");
+		bigBoxTexture = new Texture(folderToUse+"bigboxshadow.png");
+		feeling = new Texture(folderToUse+"ilo_reunat.png");
+		img = new Texture(folderToUse+"badlogic.jpg");
 		skin = createSkin();
 
-		String question1 = "Välitunnilla ystäväsi on vaisu, eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. Hän on selvästi omissa ajatuksissaan. \n Sinä... ";
-		answers = new ArrayList<String>();
-		answers.add(" ...tunnet itsesi hölmöksi. Oletkohan tehnyt jotakin, mistä hän on suuttunut?");
-		answers.add(" ...alat kysellä, mikä vaivaa. Hän ei selvästikään ole oma itsensä.");
-		//answers.add("Another option.");
-		ArrayList<Integer> screenLinks = new ArrayList<Integer>();
-		screenLinks.add(1);
-		screenLinks.add(2);
-		screen = new ChoiceScreen(0, skin, question1, answers, screenLinks);
-		currentScreen = screen;
-
-		String feedback2a = "Tilanne jää mietityttämään. Oliko ystäväsi kuitenkin vihaisen sijaan surullinen? Et oikein tiedä, mitä tilanteesta pitäisi ajatella.";
-		ArrayList<String> answers2a = new ArrayList<String>();
-		answers2a.add("HÄMMENNYS +10");
-		ArrayList<Integer> screenLinks2 = new ArrayList<Integer>();
-		screenLinks2.add(3);
-		screen2a = new ChoiceScreen(1, skin, feedback2a, answers2a, screenLinks2);
-
-		String feedback2b = "Hetken päästä ystäväsi kertoo, että hänen lemmikkinsä kuoli muutama päivä sitten. Juttelette tilanteesta hetken ja ystäväsi vaikuttaa tulevan paremmille mielin. Itseäsi alkaa hiukan surettaa ystäväsi puolesta, mutta olet iloinen että juttelusta tuli hänelle parempi mieli.";
-		ArrayList<String> answers2b = new ArrayList<String>();
-		answers2b.add("SURU +5, ILO +15");
-		ArrayList<Integer> screenLinks3 = new ArrayList<Integer>();
-		screenLinks3.add(3);
-		screen2b = new ChoiceScreen(2, skin, feedback2b, answers2b, screenLinks3);
-
-
-		/*
-		screens = createScreens();
+		screens = createChoiceScreens();
 		currentScreen = screens.get(0);
-
-		 */
-
-
 	}
-	public ArrayList<ChoiceScreen> createScreens() {
+	@Override
+	public void render () {
+		float fraction = 1f / 255f;
+		Gdx.gl.glClearColor(fraction * 81f, fraction * 99f, fraction * 115f, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+		for (Screen screen: screens) {
+			if (screen.getScreenID() == currentScreenID) {
+				currentScreen = screen;
+			}
+		}
+
+		Gdx.input.setInputProcessor(currentScreen);
+		currentScreen.draw();
+		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
+	}
+	public ArrayList<ChoiceScreen> createChoiceScreens() {
 		FileHandle handle = Gdx.files.internal("leveldata.feel");
 		String text = handle.readString();
-		String [] linesArray = text.split("\\r?\\n");
-		int index = 0;
-		int screenID = Integer.parseInt(linesArray[index]);
-		index++;
-		String question = linesArray[index];
-		index++;
-		int oldIndex = index;
-		while(!linesArray[index].equals("")) {
-			index++;
-		}
-		int amountOfAnswers = (index - oldIndex) / 2;
-		ArrayList<String> answers = new ArrayList<>();
-		for (int i = oldIndex; i < oldIndex + amountOfAnswers; i++) {
-			answers.add(linesArray[i]);
-		}
-		oldIndex += amountOfAnswers;
-		ArrayList<Integer> screenLinks = new ArrayList<>();
-		for (int i = oldIndex; i <oldIndex + amountOfAnswers ; i++) {
-			screenLinks.add(Integer.parseInt(linesArray[i]));
-		}
-		ChoiceScreen choiceScreen = new ChoiceScreen(screenID, skin, question, answers, screenLinks);
+		String [] allLines = text.split("\\r?\\n");
+
 		ArrayList<ChoiceScreen> choiceScreens = new ArrayList<>();
-		choiceScreens.add(choiceScreen);
 
+		for (int i = 0; i < allLines.length; i++) {
+			int startingIndex = i;
+			while (!allLines[i].equals("---")) {
+				i++;
+			}
+			int amountOfAnswers = i - startingIndex - 1;
 
+			int screenID = getStartOfLineNumber(allLines[startingIndex]);
+			String question = getEndOfLineText(allLines[startingIndex]);
+
+			ArrayList<Integer> screenLinks = new ArrayList<>();
+			ArrayList<String> answers = new ArrayList<>();
+			for (int j = startingIndex+1; j <startingIndex+1+amountOfAnswers ; j++) {
+				screenLinks.add(getStartOfLineNumber(allLines[j]));
+				answers.add(getEndOfLineText(allLines[j]));
+			}
+			choiceScreens.add(new ChoiceScreen(screenID, question, answers, screenLinks));
+		}
 
 		return choiceScreens;
+	}
+	public int getStartOfLineNumber(String line) {
+		StringBuilder number = new StringBuilder();
+		int index = 0;
+		while (line.charAt(index) != ' ') {
+			number.append(line.charAt(index));
+			index++;
+		}
+		return Integer.parseInt(number.toString());
+	}
+	public String getEndOfLineText(String line) {
+		int index = 0;
+		while (line.charAt(index) != ' ') {
+			index++;
+		}
+		index++;
+		StringBuilder text = new StringBuilder();
+		for (int i = index; i < line.length(); i++) {
+			text.append(line.charAt(i));
+		}
+		return text.toString();
 	}
 	public Skin createSkin() {
 		Skin s = new Skin();
@@ -126,6 +125,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("default", new BitmapFont());
 		s.add("feeling", feeling);
 		s.add("test", img);
+		s.add("font", createFont());
 
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
 		answerStyle.background = s.newDrawable("round_corners", Color.WHITE);
@@ -137,7 +137,7 @@ public class MainGame extends ApplicationAdapter {
 
 		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
 		textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
-		textBoxStyle.font = s.getFont("default");
+		textBoxStyle.font = s.getFont("font");
 
 		Button.ButtonStyle buttonStyle = new Button.ButtonStyle();
 		buttonStyle.up = s.newDrawable("feeling");
@@ -152,7 +152,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("default", buttonStyle);
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
-		s.add("font", createFont());
+
 
 		return s;
 	}
@@ -164,74 +164,71 @@ public class MainGame extends ApplicationAdapter {
 	 * @author Mika Kivennenä
 	 */
 	public BitmapFont createFont() {
-		FreeTypeFontGenerator fontGenerator new FreeTypeFontGenerator(Gdx.files.internal(font/"lato.ttf"));
+		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/lato.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-		fontParameter.size = 100;
+
+		fontParameter.size = fontSize;
 		fontParameter.borderColor = Color.BLACK;
-		fontParameter.color = Color.WHITE
+		fontParameter.color = Color.WHITE;
 
 		BitmapFont font = fontGenerator.generateFont(fontParameter);
 		return font;
 	}
 
-	/** This method creates an array of screens containing longer story texts.
-	 *
-	 * This method takes in the story text, divides it into different screens for easier readibility.
-	 * @param lengthOfText is the float given to determine the length of the story text.
-	 * @param string containing the story text that will be split into separate parts
-	 * @return an array of strings
-	 * @author Mika Kivennenä
-	 */
-	public String[] createStoryScreens(float lengthOfMaxPerScreen, String storyText) {
-		int amountOfScreens = (int)(storyText.length() / lengthOfMaxPerScreen);
-		int characterIndex = 0;
-		int screenIndex = 0;
-		String[] stringArr = new String[amountOfScreens];
-
-		// This loop runs until the current character is the last character of the text.
-		while(characterIndex < storyText.length()) {
-			String tempString;
-			// Saves the story text one character at a time into a temporary string that is later added to the story array.
-			for(int i = 0; i<lengthOfMaxPerScreen; i++) {
-				tempString += storyText.charAt(characterIndex);
-				characterIndex++;
-			}
-			// Adds the tempstring into the string array of the current screen index. Increases screen index by one.
-			stringArr[screenIndex] = tempString;
-			screenIndex++;
-		}
-	}
-
-	@Override
-	public void render () {
-		float fraction = 1f / 255f;
-		Gdx.gl.glClearColor(fraction * 81f, fraction * 99f, fraction * 115f, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-
-		nextScreensID = currentScreen.getNextScreensID();
-
-		if(nextScreensID == 1) {
-			currentScreen = screen2a;
-		}
-		else if(nextScreensID == 2) {
-			currentScreen = screen2b;
-		}
-
-
-
-		Gdx.input.setInputProcessor(currentScreen);
-		currentScreen.draw();
-		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
-	}
-
 	@Override
 	public void dispose () {
-		currentScreen.dispose();
-		batch.dispose();
 		img.dispose();
 		boxTexture.dispose();
 		feeling.dispose();
+	}
+
+	/** getPixelDensity method is used to show correct images
+	 *
+	 * This method uses getDensity() method to determine screen pixel density
+	 * and sets the correct folder to which the images in the project are being used from.
+	 *
+	 * @return returns a string that is used to choose right folder for images
+	 * @author Mika Kivennenä
+	 */
+	public String getPixelDensity() {
+		float density = Gdx.graphics.getDensity();
+		String tempString = "";
+
+		if(density < 1) {
+			tempString = "ldpi/";
+		}
+		else if(density >= 1f && density < 2f) {
+			tempString = "mdpi/";
+		}
+		else if(density >= 2f && density < 3f) {
+			tempString = "hdpi/";
+		}
+		else if(density >= 3f && density < 4f) {
+			tempString = "xhdpi/";
+		}
+
+		return tempString;
+	}
+
+	/** getFontSize method is used to set size for the font
+	 *
+	 * This method uses getDensity() method to determine screen pixel density
+	 * and calculates the correct font size based on pixel density
+	 *
+	 * @return returns an integer that is used to set fontSize
+	 * @author Mika Kivennenä
+	 */
+	public int getFontSize() {
+		float density = Gdx.graphics.getDensity();
+		int tempInt = 0;
+
+		if(density < 1) {
+			tempInt = 150;
+		} else {
+			tempInt = 75 * (int)density;
+		}
+
+		return tempInt;
 	}
 }

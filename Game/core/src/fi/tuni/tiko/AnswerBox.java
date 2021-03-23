@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
+
+import sun.applet.Main;
+
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
@@ -35,17 +38,16 @@ public class AnswerBox extends Group {
      * In the future, different backgrounds might require different text box sizes.
      *
      * @param text the text in the text box
-     * @param skin contains styles for all objects
      * @param x horizontal coordinate in pixels
      * @param y vertical coordinate in pixels
      * @param width width of the background in pixels
      * @param height height of the background in pixels
      * @param screenLink the ID of the screen to move to when this AnswerBox is confirmed
      */
-    public AnswerBox(CharSequence text, Skin skin, float x, float y, float width, float height, final int screenLink) {
+    public AnswerBox(CharSequence text, float x, float y, float width, float height, final int screenLink) {
         this.screenLink = screenLink;
-        background = new Label(null, skin);
-        textBox = new Label(text, skin, "text");
+        background = new Label(null, MainGame.skin);
+        textBox = new Label(text, MainGame.skin, "text");
         background.setBounds(x, y, width, height);
 
         // Calculating the dimensions of the text box
@@ -53,8 +55,8 @@ public class AnswerBox extends Group {
         float yMargin = margin * height;
         textBox.setBounds(x + xMargin * 0.5f, y + yMargin * 0.5f, width - xMargin, height - yMargin);
         startX = getX();
-        textBox.setFontScaleX(0.0025f * windowWidth);
-        textBox.setFontScaleY(0.0015f * windowHeight);
+        textBox.setFontScaleX(0.00025f * windowWidth);
+        textBox.setFontScaleY(0.00015f * windowHeight);
         textBox.setWrap(true);
         textBox.setAlignment(0);
 

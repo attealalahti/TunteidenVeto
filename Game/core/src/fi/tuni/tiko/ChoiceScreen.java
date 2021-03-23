@@ -42,13 +42,12 @@ public class ChoiceScreen extends Screen {
     /** Creates a new ChoiceScreen.
      *
      * @param screenID a unique integer used in MainGame to determine which screen to show
-     * @param skin contains styles for all objects
      * @param question text for the big text box
      * @param answers text for each of the choices
      * @param screenLinks screen IDs for screens the choices lead to. Must be the same size as choices
      */
-    public ChoiceScreen(int screenID, Skin skin, String question, ArrayList<String> answers, ArrayList<Integer> screenLinks) {
-        super(screenID, skin, answers, screenLinks);
+    public ChoiceScreen(int screenID, String question, ArrayList<String> answers, ArrayList<Integer> screenLinks) {
+        super(screenID, answers, screenLinks);
         this.question = question;
 
         // Create groups for easy access of different elements
@@ -62,7 +61,7 @@ public class ChoiceScreen extends Screen {
 
         // Create the big text box
         float roomLeft = windowHeight - (answers.size() * (boxHeight + margin) + margin + buttonHeight + margin);
-        Label questionBox = new Label(question, skin, "question");
+        Label questionBox = new Label(question, MainGame.skin, "question");
         questionBox.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
         questionBox.setAlignment(0);
         questionBox.setFontScaleX(0.005f * windowWidth);
@@ -71,16 +70,16 @@ public class ChoiceScreen extends Screen {
         game.addActor(questionBox);
 
         // Create the FeelingMeter button
-        Button feelingMeterButton = new Button(skin);
+        Button feelingMeterButton = new Button(MainGame.skin);
         feelingMeterButton.setBounds(windowWidth * 0.5f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
         addActor(feelingMeterButton);
-        //feelingMeterButton.setStyle(skin.get("alt", Button.ButtonStyle.class));
+        //feelingMeterButton.setStyle(MainGame.skin.get("alt", Button.ButtonStyle.class));
 
         // Create FeelingMeters
         float meterLocationHeight = meterHeight * 7 + margin * 7;
         float currentY = windowHeight - meterLocationHeight;
         for (int i = 0; i < 7; i++) {
-            Label myLabel = new Label(i + "", skin, "question");
+            Label myLabel = new Label(i + "", MainGame.skin, "question");
             myLabel.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
             myLabel.setAlignment(0);
             myLabel.setFontScaleX(0.005f * windowWidth);
@@ -116,7 +115,7 @@ public class ChoiceScreen extends Screen {
     public void createAnswerBoxes() {
         float currentY = margin * 2 + buttonHeight;
         for (int i = 0; i < getChoices().size(); i++) {
-            answerBoxes.addActor(new AnswerBox(getChoices().get(i), getSkin(), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
+            answerBoxes.addActor(new AnswerBox(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
             currentY += margin + boxHeight;
         }
         game.addActor(answerBoxes);
