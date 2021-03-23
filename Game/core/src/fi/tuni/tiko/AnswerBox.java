@@ -1,16 +1,11 @@
 package fi.tuni.tiko;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
-
-import sun.applet.Main;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 import static fi.tuni.tiko.MainGame.windowHeight;
@@ -32,7 +27,7 @@ public class AnswerBox extends Group {
     private float touchDifferenceX;
     private Label background;
     private Label textBox;
-    private float margin = 0.14f;
+    private float textMargin = 0.14f;
 
     /** Creates a new AnswerBox.
      * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
@@ -52,8 +47,8 @@ public class AnswerBox extends Group {
         background.setBounds(x, y, width, height);
 
         // Calculating the dimensions of the text box
-        float xMargin = margin * width;
-        float yMargin = margin * height;
+        float xMargin = textMargin * width;
+        float yMargin = textMargin * height;
         textBox.setBounds(x + xMargin * 0.5f, y + yMargin * 0.5f, width - xMargin, height - yMargin);
         startX = getX();
         textBox.setFontScaleX(0.00025f * windowWidth);

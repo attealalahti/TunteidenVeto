@@ -38,6 +38,13 @@ public class MainGame extends ApplicationAdapter {
 	private Group settings;
 	private Button settingsButton;
 	private Screen lastFrameCurrentScreen;
+	private FeelingMeter happiness;
+	private FeelingMeter sadness;
+	private FeelingMeter anger;
+	private FeelingMeter love;
+	private FeelingMeter fear;
+	private FeelingMeter astonishment;
+	private FeelingMeter disgust;
 
 	public static int currentScreenID = 0;
 	public static int windowWidth;
@@ -45,14 +52,13 @@ public class MainGame extends ApplicationAdapter {
 	public static Skin skin;
 	public static boolean musicOn = true;
 	public static boolean soundsOn = true;
+	public static float margin;
+	public static float meterHeight;
 
 	private float buttonHeight;
 	private float bigButtonHeight;
-	private float meterWidth;
-	private float meterHeight;
 	// How long it takes to switch between Game and FeelingMeter mode:
 	private float FADE_TIME = 0.2f;
-	private float margin;
 
 
 	private String folderToUse = "";
@@ -67,13 +73,12 @@ public class MainGame extends ApplicationAdapter {
 		windowHeight = Gdx.graphics.getHeight();
 		buttonHeight =  windowHeight * 0.07f;
 		bigButtonHeight = buttonHeight * 2f;
-		meterWidth = windowWidth * 0.8f;
-		meterHeight = windowHeight * 0.1f;
 		margin = windowHeight * 0.025f;
+		meterHeight = windowHeight * 0.1f;
 
 		boxTexture = new Texture(folderToUse+"box.png");
 		bigBoxTexture = new Texture(folderToUse+"textbox.png");
-		happy = new Texture(folderToUse+"ilo_reunat.png");
+		happy = new Texture("ilo_reunatmdpi.png");
 		settingsTexture = new Texture(folderToUse+"hamburgermenu.png");
 		empty = new Texture(folderToUse+"button.png");
 		feelingMeterTexture = new Texture("mittari2.png");
@@ -205,10 +210,6 @@ public class MainGame extends ApplicationAdapter {
 		buttonStyleAlt.up = s.newDrawable("test");
 		buttonStyleAlt.down = s.newDrawable("test", Color.DARK_GRAY);
 
-		ProgressBar.ProgressBarStyle feelingMeterStyle = new ProgressBar.ProgressBarStyle();
-		feelingMeterStyle.background = s.newDrawable("white", Color.CLEAR);
-		feelingMeterStyle.knob = s.newDrawable("white", Color.GREEN);
-
 		Label.LabelStyle feelingMeterForeGroundStyle = new Label.LabelStyle();
 		feelingMeterForeGroundStyle.font = s.getFont("default");
 		feelingMeterForeGroundStyle.background = s.newDrawable("meter");
@@ -222,7 +223,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
 		s.add("settings", settingsButtonStyle);
-		s.add("feelingmeter", feelingMeterStyle);
+		s.add("feelingMeterForeground", feelingMeterForeGroundStyle);
 
 
 		return s;
@@ -247,35 +248,6 @@ public class MainGame extends ApplicationAdapter {
 		return font;
 	}
 
-	public Button createSettingsButton() {
-		final Button button = new Button(skin, "settings");
-		button.setBounds(((float) windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
-		button.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				ChoiceScreen thisScreen = (ChoiceScreen) settingsButton.getStage();
-				if (!settingsButton.isChecked()) {
-					settings.addAction(Actions.fadeOut(FADE_TIME));
-					settings.toBack();
-					if (!feelingMeterButton.isChecked()) {
-						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
-						thisScreen.answersSetPause(false);
-						thisScreen.getGameElements().toFront();
-					}
-				} else {
-					settings.addAction(Actions.fadeIn(FADE_TIME));
-					settings.toFront();
-					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
-					thisScreen.answersSetPause(true);
-					thisScreen.getGameElements().toBack();
-					if (feelingMeterButton.isChecked()) {
-						feelingMeterButton.setChecked(false);
-					}
-				}
-			}
-		});
-		return button;
-	}
 	public Button createFeelingMeterButton() {
 		final Button button = new Button(skin, "happiness");
 		button.setBounds(((float) windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
@@ -308,9 +280,36 @@ public class MainGame extends ApplicationAdapter {
 	public Group createMeters() {
 		Group result = new Group();
 		// Create FeelingMeters
-		float meterLocationHeight = meterHeight * 7 + margin * 7;
+		float meterMargin = margin + meterHeight;
+		float meterLocationHeight = meterMargin * 7;
 		float currentY = windowHeight - meterLocationHeight;
-		/*
+		happiness = new FeelingMeter(currentY, Color.YELLOW);
+		result.addActor(happiness);
+		currentY += meterMargin;
+		sadness = new FeelingMeter(currentY, Color.BLUE);
+		result.addActor(sadness);
+		currentY += meterMargin;
+		love = new FeelingMeter(currentY, Color.PINK);
+		result.addActor(love);
+		currentY += meterMargin;
+		anger = new FeelingMeter(currentY, Color.RED);
+		result.addActor(anger);
+		currentY += meterMargin;
+		fear = new FeelingMeter(currentY, Color.PURPLE);
+		result.addActor(fear);
+		currentY += meterMargin;
+		astonishment = new FeelingMeter(currentY, Color.ORANGE);
+		result.addActor(astonishment);
+		currentY += meterMargin;
+		disgust = new FeelingMeter(currentY, Color.OLIVE);
+		result.addActor(disgust);
+
+		// Hide the meters initially
+		result.toBack();
+		result.addAction(Actions.fadeOut(0));
+
+		return result;
+				/*
 		for (int i = 0; i < 7; i++) {
 			Label myLabel = new Label(i + "", skin, "question");
 			myLabel.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
@@ -321,14 +320,36 @@ public class MainGame extends ApplicationAdapter {
 			currentY += margin + meterHeight;
 		}
 		 */
-		FeelingMeter myFeelingMeter = new FeelingMeter(windowWidth * 0.5f - meterWidth * 0.5f, currentY, meterWidth, meterHeight);
-		result.addActor(myFeelingMeter);
 
-		// Hide the meters initially
-		result.toBack();
-		result.addAction(Actions.fadeOut(0));
-
-		return result;
+	}
+	public Button createSettingsButton() {
+		final Button button = new Button(skin, "settings");
+		button.setBounds(((float) windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
+		button.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				ChoiceScreen thisScreen = (ChoiceScreen) settingsButton.getStage();
+				if (!settingsButton.isChecked()) {
+					settings.addAction(Actions.fadeOut(FADE_TIME));
+					settings.toBack();
+					if (!feelingMeterButton.isChecked()) {
+						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
+						thisScreen.answersSetPause(false);
+						thisScreen.getGameElements().toFront();
+					}
+				} else {
+					settings.addAction(Actions.fadeIn(FADE_TIME));
+					settings.toFront();
+					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
+					thisScreen.answersSetPause(true);
+					thisScreen.getGameElements().toBack();
+					if (feelingMeterButton.isChecked()) {
+						feelingMeterButton.setChecked(false);
+					}
+				}
+			}
+		});
+		return button;
 	}
 	public Group createSettings() {
 		Group result = new Group();

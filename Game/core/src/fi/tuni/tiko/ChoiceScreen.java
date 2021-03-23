@@ -20,6 +20,7 @@ import javax.xml.stream.FactoryConfigurationError;
 
 import sun.applet.Main;
 
+import static fi.tuni.tiko.MainGame.margin;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.MainGame.skin;
@@ -37,8 +38,6 @@ public class ChoiceScreen extends Screen {
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
-    // How much space is in between elements:
-    private final float margin = windowHeight * 0.025f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
 
     /** Creates a new ChoiceScreen.

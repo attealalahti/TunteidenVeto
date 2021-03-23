@@ -4,12 +4,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.graphics.Color;
 
+import static fi.tuni.tiko.MainGame.meterHeight;
 import static fi.tuni.tiko.MainGame.skin;
+import static fi.tuni.tiko.MainGame.windowHeight;
+import static fi.tuni.tiko.MainGame.windowWidth;
 
 /*
 How to use in Main Class
@@ -29,23 +34,25 @@ stage.draw();
 stage.act();
  */
 
-public class FeelingMeter extends ProgressBar {
+public class FeelingMeter extends Group {
+    private ProgressBar meter;
+    private Label foreground;
+
     private static final float MIN_VALUE = 0f;
     private static final float MAX_VALUE = 100f;
+    private float meterWidth = windowWidth * 0.8f;
 
-    public FeelingMeter(float x, float y, float width, float height) {
-        super(0f, 100f, 1f, false, skin, "feelingmeter");
-        /*
-        getStyle().background = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("mittari.png"))));
-        */
-        getStyle().knobBefore = getColoredDrawable((int)width, (int)height, Color.GREEN);
+    public FeelingMeter(float y, Color color) {
+        meter = new ProgressBar(0f, 100f, 1f, false, new ProgressBar.ProgressBarStyle());
+        meter.getStyle().knobBefore = getColoredDrawable((int)(meterWidth / 100f), (int)meterHeight, color);
+        meter.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, y, meterWidth, meterHeight);
+        meter.setAnimateDuration(0.25f);
+        meter.setValue(50f);
+        addActor(meter);
 
-        setBounds(x, y, width, height);
-
-        setAnimateDuration(0.0f);
-        setValue(50f);
-
-        setAnimateDuration(0.25f);
+        foreground = new Label(null, skin, "feelingMeterForeground");
+        foreground.setBounds(meter.getX(), meter.getY(), meter.getWidth(), meter.getHeight());
+        addActor(foreground);
     }
 
     public Drawable getColoredDrawable(int width, int height, Color col) {
@@ -62,22 +69,22 @@ public class FeelingMeter extends ProgressBar {
 
 
     public void addValue(float valueToAdd) {
-        float tempFloat = getValue();
+        float tempFloat = meter.getValue();
         tempFloat += valueToAdd;
         if(tempFloat > MAX_VALUE) {
             Gdx.app.log("Error", "Value exceeds the maximum limit off: " + MAX_VALUE);
         } else {
-            setValue(tempFloat);
+            meter.setValue(tempFloat);
         }
     }
 
     public void reduceValue(float valueToReduce) {
-        float tempFloat = getValue();
+        float tempFloat = meter.getValue();
         tempFloat -= valueToReduce;
         if(tempFloat < MIN_VALUE) {
             Gdx.app.log("Error", "Value exceeds the minimum limit off: " + MIN_VALUE);
         } else {
-            setValue(tempFloat);
+            meter.setValue(tempFloat);
         }
     }
 
