@@ -79,7 +79,9 @@ public class MainGame extends ApplicationAdapter {
 		margin = windowHeight * 0.025f;
 		meterHeight = windowHeight * 0.1f;
 
-		boxTexture = new Texture(folderToUse+"box.png");
+		String endPart = folderToUse + "/";
+
+		boxTexture = new Texture(folderToUse+"box"+endPart+".png");
 		bigBoxTexture = new Texture(folderToUse+"textbox.png");
 		happy = new Texture("ilo_reunatmdpi.png");
 		settingsTexture = new Texture(folderToUse+"hamburgermenu.png");
@@ -104,7 +106,7 @@ public class MainGame extends ApplicationAdapter {
 	@Override
 	public void render () {
 		float fraction = 1f / 255f;
-		Gdx.gl.glClearColor(fraction * 0f, fraction * 131f, fraction * 143f, 1);
+		Gdx.gl.glClearColor(fraction * 0f, fraction * 151, fraction * 167f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		for (Screen screen: screens) {
@@ -434,16 +436,16 @@ public class MainGame extends ApplicationAdapter {
 		String tempString = "";
 
 		if(density < 1) {
-			tempString = "ldpi/";
+			tempString = "ldpi";
 		}
 		else if(density >= 1f && density < 2f) {
-			tempString = "mdpi/";
+			tempString = "mdpi";
 		}
 		else if(density >= 2f && density < 3f) {
-			tempString = "hdpi/";
+			tempString = "hdpi";
 		}
 		else if(density >= 3f && density < 4f) {
-			tempString = "xhdpi/";
+			tempString = "xhdpi";
 		}
 
 		return tempString;
