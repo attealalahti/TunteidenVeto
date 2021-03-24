@@ -462,9 +462,9 @@ public class MainGame extends ApplicationAdapter {
 		int tempInt = 0;
 
 		if(density < 1) {
-			tempInt = 150;
+			tempInt = 140;
 		} else {
-			tempInt = 75 * (int)density;
+			tempInt = 73 * (int)density;
 		}
 
 		return tempInt;
