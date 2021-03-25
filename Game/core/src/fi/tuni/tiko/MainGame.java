@@ -56,6 +56,10 @@ public class MainGame extends ApplicationAdapter {
 	private Color fearColor = new Color(colorFraction * 0, colorFraction * 59, colorFraction * 143, 1);
 	private Color astonishmentColor = new Color(colorFraction * 60, colorFraction * 143, colorFraction * 0, 1);
 	private Color disgustColor = new Color(colorFraction * 51, colorFraction * 51, colorFraction * 51, 1);
+	private Color lightBackgroundColor = new Color(colorFraction * 0f, colorFraction * 151, colorFraction * 167f, 1);
+	private Color darkBackgroundColor = new Color(colorFraction * 0, colorFraction * 131, colorFraction * 143, 1);
+	private Color desiredBackgroundColor = lightBackgroundColor;
+	private Color currentBackgroundColor = desiredBackgroundColor;
 
 
 	public static int currentScreenID = 0;
@@ -115,7 +119,8 @@ public class MainGame extends ApplicationAdapter {
 	}
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor(colorFraction * 0f, colorFraction * 151, colorFraction * 167f, 1);
+		currentBackgroundColor = updateBackgroundColor(currentBackgroundColor, desiredBackgroundColor);
+		Gdx.gl.glClearColor(currentBackgroundColor.r, currentBackgroundColor.g, currentBackgroundColor.b, currentBackgroundColor.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		for (Screen screen: screens) {
@@ -181,6 +186,47 @@ public class MainGame extends ApplicationAdapter {
 			text.append(line.charAt(i));
 		}
 		return text.toString();
+	}
+	public Color updateBackgroundColor(Color currentBGColor, Color desired) {
+		Color current = new Color(currentBGColor);
+		if (!currentBackgroundColor.equals(desiredBackgroundColor)) {
+			System.out.println("THIS HAPPENS");
+			float colorIncrement = 0.3f * Gdx.graphics.getDeltaTime();
+			if (current.r > desired.r - colorIncrement * 2f && current.r < desired.r + colorIncrement * 2f) {
+				current.r = desired.r;
+			}
+			if (current.g > desired.g - colorIncrement * 2f && current.g < desired.g + colorIncrement * 2f) {
+				current.g = desired.g;
+			}
+			if (current.b > desired.b - colorIncrement * 2f && current.b < desired.b + colorIncrement * 2f) {
+				current.b = desired.b;
+			}
+			if (current.a > desired.a - colorIncrement * 2f && current.a < desired.a + colorIncrement * 2f) {
+				current.a = desired.a;
+			}
+
+			if (current.r > desired.r) {
+				current.r -= colorIncrement;
+			} else if (current.r < desired.r) {
+				current.r += colorIncrement;
+			}
+			if (current.g > desired.g) {
+				current.g -= colorIncrement;
+			} else if (current.g < desired.g) {
+				current.g += colorIncrement;
+			}
+			if (current.b > desired.b) {
+				current.b -= colorIncrement;
+			} else if (current.b < desired.b) {
+				current.b += colorIncrement;
+			}
+			if (current.a > desired.a) {
+				current.a -= colorIncrement;
+			} else if (current.a < desired.a) {
+				current.a += colorIncrement;
+			}
+		}
+		return current;
 	}
 	public Skin createSkin() {
 		Skin s = new Skin();
@@ -303,10 +349,12 @@ public class MainGame extends ApplicationAdapter {
 						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
 						thisScreen.answersSetPause(false);
 						thisScreen.getGameElements().toFront();
+						desiredBackgroundColor = lightBackgroundColor;
 					}
 				} else {
 					meters.addAction(Actions.fadeIn(FADE_TIME));
 					meters.toFront();
+					desiredBackgroundColor = darkBackgroundColor;
 					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
 					thisScreen.answersSetPause(true);
 					thisScreen.getGameElements().toBack();
@@ -365,10 +413,12 @@ public class MainGame extends ApplicationAdapter {
 						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
 						thisScreen.answersSetPause(false);
 						thisScreen.getGameElements().toFront();
+						desiredBackgroundColor = lightBackgroundColor;
 					}
 				} else {
 					settings.addAction(Actions.fadeIn(FADE_TIME));
 					settings.toFront();
+					desiredBackgroundColor = darkBackgroundColor;
 					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
 					thisScreen.answersSetPause(true);
 					thisScreen.getGameElements().toBack();
