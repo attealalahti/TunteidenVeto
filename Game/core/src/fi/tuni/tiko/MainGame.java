@@ -48,6 +48,15 @@ public class MainGame extends ApplicationAdapter {
 	private FeelingMeter fear;
 	private FeelingMeter astonishment;
 	private FeelingMeter disgust;
+	private float colorFraction = 1f / 255f;
+	private Color happinessColor = new Color(colorFraction * 234, colorFraction * 140, colorFraction * 128, 1);
+	private Color sadnessColor = new Color(colorFraction * 249, colorFraction * 212, colorFraction * 7, 1);
+	private Color angerColor = new Color(colorFraction * 143, colorFraction * 12, colorFraction * 0, 1);
+	private Color loveColor = new Color(colorFraction * 64, colorFraction * 165, colorFraction * 193, 1);
+	private Color fearColor = new Color(colorFraction * 0, colorFraction * 59, colorFraction * 143, 1);
+	private Color astonishmentColor = new Color(colorFraction * 60, colorFraction * 143, colorFraction * 0, 1);
+	private Color disgustColor = new Color(colorFraction * 51, colorFraction * 51, colorFraction * 51, 1);
+
 
 	public static int currentScreenID = 0;
 	public static int windowWidth;
@@ -64,33 +73,34 @@ public class MainGame extends ApplicationAdapter {
 	private float FADE_TIME = 0.2f;
 
 
-	private String folderToUse = "";
+	private String pixelDensity = "";
 	private int fontSize;
 
 	@Override
 	public void create () {
-		folderToUse = getPixelDensity();
-		fontSize = getFontSize();
-
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 		buttonHeight =  windowHeight * 0.07f;
 		bigButtonHeight = buttonHeight * 2f;
 		margin = windowHeight * 0.025f;
 		meterHeight = windowHeight * 0.1f;
+		fontSize = getFontSize();
 
-		String endPart = folderToUse + "/";
+		pixelDensity = getPixelDensity();
+		String folderToUse = pixelDensity + "/";
+		String endPart = pixelDensity + ".png";
 
-		boxTexture = new Texture(folderToUse+"box"+endPart+".png");
-		bigBoxTexture = new Texture(folderToUse+"textbox.png");
 		happy = new Texture("ilo_reunatmdpi.png");
-		settingsTexture = new Texture(folderToUse+"hamburgermenu.png");
-		empty = new Texture(folderToUse+"button.png");
-		feelingMeterTexture = new Texture("mittari2.png");
-		musicOnTexture = new Texture(folderToUse+"music_on.png");
-		musicOffTexture = new Texture(folderToUse+"music_off.png");
-		soundOnTexture = new Texture(folderToUse+"sound_on.png");
-		soundOffTexture = new Texture(folderToUse+"sound_off.png");
+
+		boxTexture = new Texture(folderToUse+"box"+endPart);
+		bigBoxTexture = new Texture(folderToUse+"textbox"+endPart);
+		settingsTexture = new Texture(folderToUse+"hamburgermenu"+endPart);
+		empty = new Texture(folderToUse+"button"+endPart);
+		feelingMeterTexture = new Texture(folderToUse+"meter"+endPart);
+		musicOnTexture = new Texture(folderToUse+"music_on"+endPart);
+		musicOffTexture = new Texture(folderToUse+"music_off"+endPart);
+		soundOnTexture = new Texture(folderToUse+"sound_on"+endPart);
+		soundOffTexture = new Texture(folderToUse+"sound_off"+endPart);
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
@@ -105,8 +115,7 @@ public class MainGame extends ApplicationAdapter {
 	}
 	@Override
 	public void render () {
-		float fraction = 1f / 255f;
-		Gdx.gl.glClearColor(fraction * 0f, fraction * 151, fraction * 167f, 1);
+		Gdx.gl.glClearColor(colorFraction * 0f, colorFraction * 151, colorFraction * 167f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		for (Screen screen: screens) {
@@ -315,25 +324,25 @@ public class MainGame extends ApplicationAdapter {
 		float meterMargin = margin + meterHeight;
 		float meterLocationHeight = meterMargin * 7;
 		float currentY = windowHeight - meterLocationHeight;
-		happiness = new FeelingMeter(currentY, Color.YELLOW);
+		happiness = new FeelingMeter(currentY, happinessColor);
 		result.addActor(happiness);
 		currentY += meterMargin;
-		sadness = new FeelingMeter(currentY, Color.BLUE);
+		sadness = new FeelingMeter(currentY, sadnessColor);
 		result.addActor(sadness);
 		currentY += meterMargin;
-		love = new FeelingMeter(currentY, Color.PINK);
+		love = new FeelingMeter(currentY, loveColor);
 		result.addActor(love);
 		currentY += meterMargin;
-		anger = new FeelingMeter(currentY, Color.RED);
+		anger = new FeelingMeter(currentY, angerColor);
 		result.addActor(anger);
 		currentY += meterMargin;
-		fear = new FeelingMeter(currentY, Color.PURPLE);
+		fear = new FeelingMeter(currentY, fearColor);
 		result.addActor(fear);
 		currentY += meterMargin;
-		astonishment = new FeelingMeter(currentY, Color.ORANGE);
+		astonishment = new FeelingMeter(currentY, astonishmentColor);
 		result.addActor(astonishment);
 		currentY += meterMargin;
-		disgust = new FeelingMeter(currentY, Color.OLIVE);
+		disgust = new FeelingMeter(currentY, disgustColor);
 		result.addActor(disgust);
 
 		// Hide the meters initially
@@ -464,9 +473,9 @@ public class MainGame extends ApplicationAdapter {
 		int tempInt = 0;
 
 		if(density < 1) {
-			tempInt = 150;
+			tempInt = 140;
 		} else {
-			tempInt = 75 * (int)density;
+			tempInt = 70 * (int)density;
 		}
 
 		return tempInt;

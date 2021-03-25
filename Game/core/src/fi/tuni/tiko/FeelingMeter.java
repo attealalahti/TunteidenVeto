@@ -52,7 +52,13 @@ public class FeelingMeter extends Group {
         addActor(meter);
 
         foreground = new Label(null, skin, "feelingMeterForeground");
-        foreground.setBounds(meter.getX(), meter.getY(), meter.getWidth(), meter.getHeight());
+        float tempMargin = 1.01f;
+        foreground.setBounds(
+                meter.getX() + 0.5f * (meter.getWidth() * (1-tempMargin)),
+                meter.getY() + 0.5f * (meter.getHeight() * (1-tempMargin)),
+                meter.getWidth() * tempMargin,
+                meter.getHeight() * tempMargin
+        );
         addActor(foreground);
     }
 
