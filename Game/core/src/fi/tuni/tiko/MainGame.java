@@ -49,18 +49,18 @@ public class MainGame extends ApplicationAdapter {
 	private FeelingMeter astonishment;
 	private FeelingMeter disgust;
 	private float colorFraction = 1f / 255f;
-	private Color happinessColor = new Color(colorFraction * 234, colorFraction * 140, colorFraction * 128, 1);
-	private Color sadnessColor = new Color(colorFraction * 249, colorFraction * 212, colorFraction * 7, 1);
+	private Color loveColor = new Color(colorFraction * 234, colorFraction * 140, colorFraction * 128, 1);
+	private Color happinessColor = new Color(colorFraction * 249, colorFraction * 212, colorFraction * 7, 1);
 	private Color angerColor = new Color(colorFraction * 143, colorFraction * 12, colorFraction * 0, 1);
-	private Color loveColor = new Color(colorFraction * 64, colorFraction * 165, colorFraction * 193, 1);
-	private Color fearColor = new Color(colorFraction * 0, colorFraction * 59, colorFraction * 143, 1);
-	private Color astonishmentColor = new Color(colorFraction * 60, colorFraction * 143, colorFraction * 0, 1);
-	private Color disgustColor = new Color(colorFraction * 51, colorFraction * 51, colorFraction * 51, 1);
+	private Color astonishmentColor = new Color(colorFraction * 64, colorFraction * 165, colorFraction * 193, 1);
+	private Color sadnessColor = new Color(colorFraction * 0, colorFraction * 59, colorFraction * 143, 1);
+	private Color disgustColor = new Color(colorFraction * 60, colorFraction * 143, colorFraction * 0, 1);
+	private Color fearColor = new Color(colorFraction * 51, colorFraction * 51, colorFraction * 51, 1);
 	private Color lightBackgroundColor = new Color(colorFraction * 0f, colorFraction * 151, colorFraction * 167f, 1);
 	private Color darkBackgroundColor = new Color(colorFraction * 0, colorFraction * 131, colorFraction * 143, 1);
 	private Color desiredBackgroundColor = lightBackgroundColor;
 	private Color currentBackgroundColor = desiredBackgroundColor;
-
+	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
 
 	public static int currentScreenID = 0;
 	public static int windowWidth;
@@ -131,6 +131,7 @@ public class MainGame extends ApplicationAdapter {
 
 		if (currentScreen.getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
 			((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+			updateMeters(((ChoiceScreen) currentScreen).getEffects());
 		}
 		lastFrameCurrentScreen = currentScreen;
 
@@ -139,7 +140,7 @@ public class MainGame extends ApplicationAdapter {
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
 	public ArrayList<ChoiceScreen> createChoiceScreens() {
-		FileHandle handle = Gdx.files.internal("leveldata.feel");
+		FileHandle handle = Gdx.files.internal("testleveldata.feel");
 		String text = handle.readString();
 		String [] allLines = text.split("\\r?\\n");
 
@@ -157,11 +158,14 @@ public class MainGame extends ApplicationAdapter {
 
 			ArrayList<Integer> screenLinks = new ArrayList<>();
 			ArrayList<String> answers = new ArrayList<>();
+			ArrayList<String> effects = new ArrayList<>();
 			for (int j = startingIndex+1; j <startingIndex+1+amountOfAnswers ; j++) {
 				screenLinks.add(getStartOfLineNumber(allLines[j]));
 				answers.add(getEndOfLineText(allLines[j]));
+				ArrayList<String> newEffects = getAnswerEffects(answers.get(answers.size()-1));
+				effects.addAll(newEffects);
 			}
-			choiceScreens.add(new ChoiceScreen(screenID, question, answers, screenLinks));
+			choiceScreens.add(new ChoiceScreen(screenID, question, answers, screenLinks, effects));
 		}
 
 		return choiceScreens;
@@ -187,10 +191,101 @@ public class MainGame extends ApplicationAdapter {
 		}
 		return text.toString();
 	}
+	public ArrayList<String> getAnswerEffects(String myAnswer) {
+		ArrayList<String> answerEffects = new ArrayList<>();
+		for (String indicator : effectIndicators) {
+			if (myAnswer.contains(indicator)) {
+				boolean effectAdded = false;
+				for (int k = 0; k < myAnswer.length() && k + 2 < myAnswer.length() && !effectAdded; k++) {
+					char[] charArray1 = new char[3];
+					char[] charArray2 = new char[3];
+					myAnswer.getChars(k, k + 3, charArray1, 0);
+					indicator.getChars(0, 3, charArray2, 0);
+					String answerTest = "" + charArray1[0] + charArray1[1] + charArray1[2];
+					String indicatorTest = "" + charArray2[0] + charArray2[1] + charArray2[2];
+					if (answerTest.equals(indicatorTest)) {
+						k += 4;
+						String value = "";
+						boolean keepChecking = true;
+						for (int j = k; j < myAnswer.length() && keepChecking; j++) {
+							if (myAnswer.charAt(j) == '+' ||
+									myAnswer.charAt(j) == '-' ||
+									myAnswer.charAt(j) == '0' ||
+									myAnswer.charAt(j) == '1' ||
+									myAnswer.charAt(j) == '2' ||
+									myAnswer.charAt(j) == '3' ||
+									myAnswer.charAt(j) == '4' ||
+									myAnswer.charAt(j) == '5' ||
+									myAnswer.charAt(j) == '6' ||
+									myAnswer.charAt(j) == '7' ||
+									myAnswer.charAt(j) == '8' ||
+									myAnswer.charAt(j) == '9') {
+								keepChecking = false;
+								k = j;
+							}
+						}
+						keepChecking = true;
+						for (int i = k; i < myAnswer.length() && keepChecking; i++) {
+							if (myAnswer.charAt(i) == '+' ||
+								myAnswer.charAt(i) == '-' ||
+								myAnswer.charAt(i) == '0' ||
+								myAnswer.charAt(i) == '1' ||
+								myAnswer.charAt(i) == '2' ||
+								myAnswer.charAt(i) == '3' ||
+								myAnswer.charAt(i) == '4' ||
+								myAnswer.charAt(i) == '5' ||
+								myAnswer.charAt(i) == '6' ||
+								myAnswer.charAt(i) == '7' ||
+								myAnswer.charAt(i) == '8' ||
+								myAnswer.charAt(i) == '9') {
+								value += myAnswer.charAt(i);
+							} else {
+								keepChecking = false;
+							}
+						}
+						answerEffects.add(answerTest+value);
+						effectAdded = true;
+					}
+				}
+			}
+		}
+		return answerEffects;
+	}
+	public void updateMeters(ArrayList<String> effects) {
+		for (String effect: effects) {
+			String indicator = "" + effect.charAt(0) + effect.charAt(1) + effect.charAt(2);
+			String value = "";
+			for (int i = 3; i < effect.length(); i++) {
+				value += effect.charAt(i);
+			}
+			int change = Integer.parseInt(value);
+			String hap = effectIndicators[0].substring(0, 3);
+			String sad = effectIndicators[1].substring(0, 3);
+			String ang = effectIndicators[2].substring(0, 3);
+			String lov = effectIndicators[3].substring(0, 3);
+			String fea = effectIndicators[4].substring(0, 3);
+			String ast = effectIndicators[5].substring(0, 3);
+			String dis = effectIndicators[6].substring(0, 3);
+			if (indicator.equals(hap)) {
+				happiness.addValue(change);
+			} else if (indicator.equals(sad)) {
+				sadness.addValue(change);
+			} else if (indicator.equals(ang)) {
+				anger.addValue(change);
+			} else if (indicator.equals(lov)) {
+				love.addValue(change);
+			} else if (indicator.equals(fea)) {
+				fear.addValue(change);
+			} else if (indicator.equals(ast)) {
+				astonishment.addValue(change);
+			} else if (indicator.equals(dis)) {
+				disgust.addValue(change);
+			}
+		}
+	}
 	public Color updateBackgroundColor(Color currentBGColor, Color desired) {
 		Color current = new Color(currentBGColor);
 		if (!currentBackgroundColor.equals(desiredBackgroundColor)) {
-			System.out.println("THIS HAPPENS");
 			float colorIncrement = 0.3f * Gdx.graphics.getDeltaTime();
 			if (current.r > desired.r - colorIncrement * 2f && current.r < desired.r + colorIncrement * 2f) {
 				current.r = desired.r;
@@ -523,9 +618,9 @@ public class MainGame extends ApplicationAdapter {
 		int tempInt = 0;
 
 		if(density < 1) {
-			tempInt = 140;
+			tempInt = 120;
 		} else {
-			tempInt = 70 * (int)density;
+			tempInt = 60 * (int)density;
 		}
 
 		return tempInt;

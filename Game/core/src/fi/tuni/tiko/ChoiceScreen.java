@@ -35,6 +35,7 @@ public class ChoiceScreen extends Screen {
 
     private Group game;
     private Group answerBoxes;
+    private ArrayList<String> answerEffects;
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
@@ -47,8 +48,9 @@ public class ChoiceScreen extends Screen {
      * @param answers text for each of the choices
      * @param screenLinks screen IDs for screens the choices lead to. Must be the same size as choices
      */
-    public ChoiceScreen(int screenID, String question, final ArrayList<String> answers, ArrayList<Integer> screenLinks) {
+    public ChoiceScreen(int screenID, String question, final ArrayList<String> answers, ArrayList<Integer> screenLinks, ArrayList<String> answerEffects) {
         super(screenID, answers, screenLinks);
+        this.answerEffects = answerEffects;
 
         // Create groups for easy access of different elements
         game = new Group();
@@ -77,7 +79,6 @@ public class ChoiceScreen extends Screen {
         questionBox.addActor(questionBackground);
         questionBox.addActor(questionText);
         game.addActor(questionBox);
-
     }
     public void createAnswerBoxes() {
         answerBoxes = new Group();
@@ -106,5 +107,9 @@ public class ChoiceScreen extends Screen {
     }
     public Group getGameElements() {
         return game;
+    }
+
+    public ArrayList<String> getEffects() {
+        return answerEffects;
     }
 }
