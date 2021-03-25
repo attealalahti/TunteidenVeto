@@ -283,7 +283,7 @@ public class MainGame extends ApplicationAdapter {
 
 		fontParameter.size = fontSize;
 		fontParameter.borderColor = Color.BLACK;
-		fontParameter.color = Color.WHITE;
+		fontParameter.color = Color.BLACK;
 
 		BitmapFont font = fontGenerator.generateFont(fontParameter);
 		return font;

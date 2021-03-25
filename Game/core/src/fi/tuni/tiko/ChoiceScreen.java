@@ -70,7 +70,7 @@ public class ChoiceScreen extends Screen {
         );
         questionText.setAlignment(0);
         questionText.setFontScaleX(0.00045f * windowWidth);
-        questionText.setFontScaleY(0.00027f * windowHeight);
+        questionText.setFontScaleY(0.00025f * windowHeight);
         questionText.setWrap(true);
 
         Group questionBox = new Group();
