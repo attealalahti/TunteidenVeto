@@ -33,6 +33,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture musicOffTexture;
 	private Texture soundOnTexture;
 	private Texture soundOffTexture;
+	private Texture railTexture;
 
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
@@ -105,6 +106,7 @@ public class MainGame extends ApplicationAdapter {
 		musicOffTexture = new Texture(folderToUse+"music_off"+endPart);
 		soundOnTexture = new Texture(folderToUse+"sound_on"+endPart);
 		soundOffTexture = new Texture(folderToUse+"sound_off"+endPart);
+		railTexture = new Texture(folderToUse+"rail"+endPart);
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
@@ -340,6 +342,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("soundOff", soundOffTexture);
 		s.add("musicOn", musicOnTexture);
 		s.add("musicOff", musicOffTexture);
+		s.add("rail_img", railTexture);
 		s.add("test", img);
 		s.add("font", createFont());
 
@@ -393,6 +396,10 @@ public class MainGame extends ApplicationAdapter {
 		feelingMeterForeGroundStyle.font = s.getFont("default");
 		feelingMeterForeGroundStyle.background = s.newDrawable("meter");
 
+		Label.LabelStyle railStyle = new Label.LabelStyle();
+		railStyle.font = s.getFont("default");
+		railStyle.background = s.newDrawable("rail_img");
+
 
 
 		s.add("default", answerStyle);
@@ -406,6 +413,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("music", musicStyle);
 		s.add("exit", exitStyle);
 		s.add("feelingMeterForeground", feelingMeterForeGroundStyle);
+		s.add("rail", railStyle);
 
 
 		return s;

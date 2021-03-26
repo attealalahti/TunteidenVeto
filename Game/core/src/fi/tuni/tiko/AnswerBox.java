@@ -44,6 +44,10 @@ public class AnswerBox extends Group {
      */
     public AnswerBox(CharSequence text, float x, float y, float width, float height, final int screenLink) {
         this.screenLink = screenLink;
+
+        Label rail = new Label(null, skin, "rail");
+        rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
+
         background = new Label(null, skin);
         textBox = new Label(text, skin, "text");
         background.setBounds(x, y, width, height);
@@ -58,6 +62,7 @@ public class AnswerBox extends Group {
         textBox.setWrap(true);
         textBox.setAlignment(0);
 
+        addActor(rail);
         addActor(background);
         addActor(textBox);
 
