@@ -140,7 +140,7 @@ public class MainGame extends ApplicationAdapter {
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
 	public ArrayList<ChoiceScreen> createChoiceScreens() {
-		FileHandle handle = Gdx.files.internal("testleveldata.feel");
+		FileHandle handle = Gdx.files.internal("test2leveldata.feel");
 		String text = handle.readString();
 		String [] allLines = text.split("\\r?\\n");
 

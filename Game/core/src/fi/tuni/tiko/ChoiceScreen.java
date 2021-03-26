@@ -40,6 +40,8 @@ public class ChoiceScreen extends Screen {
     private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
+    private final float questionBoxHeight = windowHeight * 0.4f;
+    private final float roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
 
     /** Creates a new ChoiceScreen.
      *
@@ -61,7 +63,9 @@ public class ChoiceScreen extends Screen {
         // Create the question text box
         float roomLeft = windowHeight - (answers.size() * (boxHeight + margin) + margin + buttonHeight + margin);
         Label questionBackground = new Label(null, skin, "question");
-        questionBackground.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
+        //questionBackground.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
+        questionBackground.setBounds(xBox, windowHeight - questionBoxHeight - margin, boxWidth, questionBoxHeight);
+
 
         Label questionText = new Label(question, skin, "text");
         questionText.setBounds(
@@ -82,10 +86,12 @@ public class ChoiceScreen extends Screen {
     }
     public void createAnswerBoxes() {
         answerBoxes = new Group();
-        float currentY = margin * 2 + buttonHeight;
+        //float currentY = margin * 2 + buttonHeight;
+        float currentY = margin + buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - boxHeight * 0.5f;
         for (int i = 0; i < getChoices().size(); i++) {
             answerBoxes.addActor(new AnswerBox(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
-            currentY += margin + boxHeight;
+            //currentY += margin + boxHeight;
+            currentY += roomForAnswers / (float) (getChoices().size()+1);
         }
         game.addActor(answerBoxes);
     }
