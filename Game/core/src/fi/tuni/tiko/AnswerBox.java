@@ -57,8 +57,8 @@ public class AnswerBox extends Group {
         float yMargin = textMargin * height;
         textBox.setBounds(x + xMargin * 0.5f, y + yMargin * 0.5f, width - xMargin, height - yMargin);
         startX = getX();
-        textBox.setFontScaleX(0.00025f * windowWidth);
-        textBox.setFontScaleY(0.00015f * windowHeight);
+        textBox.setFontScaleX(0.000324f * windowWidth);
+        textBox.setFontScaleY(0.00018f * windowHeight);
         textBox.setWrap(true);
         textBox.setAlignment(0);
 
@@ -120,7 +120,6 @@ public class AnswerBox extends Group {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
                         public void run() {
-                            System.out.println("Switches to next screen.");
                             Screen c = (Screen) getStage();
                             c.nextScreen(screenLink);
                         }
@@ -131,6 +130,9 @@ public class AnswerBox extends Group {
                         public void run() {
                             if (finalEdge) {
                                 atEdge = true;
+                                background.setStyle(skin.get("answer_highlighted", Label.LabelStyle.class));
+                            } else {
+                                background.setStyle(skin.get("default", Label.LabelStyle.class));
                             }
                         }
                     })));

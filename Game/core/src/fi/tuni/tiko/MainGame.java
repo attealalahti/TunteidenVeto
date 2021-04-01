@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class MainGame extends ApplicationAdapter {
 	private Texture img;
 	private Texture boxTexture;
+	private Texture boxHighlightedTexture;
 	private Texture bigBoxTexture;
 	private Texture happy;
 	private Texture settingsTexture;
@@ -93,20 +94,21 @@ public class MainGame extends ApplicationAdapter {
 
 		pixelDensity = getPixelDensity();
 		String folderToUse = pixelDensity + "/";
-		String endPart = pixelDensity + ".png";
+		String suffix = pixelDensity + ".png";
 
 		happy = new Texture("ilo_reunatmdpi.png");
 
-		boxTexture = new Texture(folderToUse+"box"+endPart);
-		bigBoxTexture = new Texture(folderToUse+"textbox"+endPart);
-		settingsTexture = new Texture(folderToUse+"hamburgermenu"+endPart);
-		empty = new Texture(folderToUse+"button"+endPart);
-		feelingMeterTexture = new Texture(folderToUse+"meter"+endPart);
-		musicOnTexture = new Texture(folderToUse+"music_on"+endPart);
-		musicOffTexture = new Texture(folderToUse+"music_off"+endPart);
-		soundOnTexture = new Texture(folderToUse+"sound_on"+endPart);
-		soundOffTexture = new Texture(folderToUse+"sound_off"+endPart);
-		railTexture = new Texture(folderToUse+"rail"+endPart);
+		boxTexture = new Texture(folderToUse+"box"+suffix);
+		boxHighlightedTexture = new Texture(folderToUse+"box2"+suffix);
+		bigBoxTexture = new Texture(folderToUse+"textbox"+suffix);
+		settingsTexture = new Texture(folderToUse+"hamburgermenu"+suffix);
+		empty = new Texture(folderToUse+"button"+suffix);
+		feelingMeterTexture = new Texture(folderToUse+"meter"+suffix);
+		musicOnTexture = new Texture(folderToUse+"music_on"+suffix);
+		musicOffTexture = new Texture(folderToUse+"music_off"+suffix);
+		soundOnTexture = new Texture(folderToUse+"sound_on"+suffix);
+		soundOffTexture = new Texture(folderToUse+"sound_off"+suffix);
+		railTexture = new Texture(folderToUse+"rail"+suffix);
 		img = new Texture("badlogic.jpg");
 		skin = createSkin();
 
@@ -330,7 +332,8 @@ public class MainGame extends ApplicationAdapter {
 		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
-		s.add("round_corners", boxTexture);
+		s.add("answer_box", boxTexture);
+		s.add("highlighted_box", boxHighlightedTexture);
 		s.add("big_box", bigBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
@@ -347,11 +350,15 @@ public class MainGame extends ApplicationAdapter {
 		s.add("font", createFont());
 
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
-		answerStyle.background = s.newDrawable("round_corners", Color.WHITE);
+		answerStyle.background = s.newDrawable("answer_box");
 		answerStyle.font = s.getFont("default");
 
+		Label.LabelStyle answerHighlightedStyle = new Label.LabelStyle();
+		answerHighlightedStyle.background = s.newDrawable("highlighted_box");
+		answerHighlightedStyle.font = s.getFont("default");
+
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
-		questionStyle.background = s.newDrawable("big_box", Color.WHITE);
+		questionStyle.background = s.newDrawable("big_box");
 		questionStyle.font = s.getFont("font");
 
 		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
@@ -403,6 +410,7 @@ public class MainGame extends ApplicationAdapter {
 
 
 		s.add("default", answerStyle);
+		s.add("answer_highlighted", answerHighlightedStyle);
 		s.add("question", questionStyle);
 		s.add("feelings", feelingsButtonStyle);
 		s.add("happiness", happyStyle);
