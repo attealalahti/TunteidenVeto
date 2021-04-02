@@ -6,6 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.utils.SnapshotArray;
+
+import java.util.ArrayList;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 import static fi.tuni.tiko.MainGame.windowHeight;
@@ -22,10 +25,12 @@ public class AnswerBoxMovable extends AnswerBox {
     private float moveDuration = 0.2f;
     private int screenLink;
     private boolean atEdge = false;
+    private boolean currentlyTouched = false;
     private boolean paused = false;
     private float touchDifferenceX;
     private Label rail;
     private float startX;
+    private float y;
     /** Creates a new AnswerBox.
      * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
      * In the future, different backgrounds might require different text box sizes.
@@ -40,6 +45,7 @@ public class AnswerBoxMovable extends AnswerBox {
     public AnswerBoxMovable(CharSequence text, float x, float y, float width, float height, final int screenLink) {
         super(text, x, y, width, height);
         this.screenLink = screenLink;
+        this.y = y;
 
         rail = new Label(null, skin, "rail");
         rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
@@ -49,11 +55,19 @@ public class AnswerBoxMovable extends AnswerBox {
 
         startX = getX();
 
+
         /* MOVEMENT */
         addListener(new InputListener() {
             // Determining which part of the box was touched
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                currentlyTouched = true;
+                for (Actor a : getParent().getChildren()) {
+                    System.out.println(!equals(a));
+                    if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (screenLink != ((AnswerBoxMovable) a).screenLink)) {
+                        currentlyTouched = false;
+                    }
+                }
                 touchDifferenceX = Gdx.input.getX() - getX();
                 return true;
             }
@@ -66,7 +80,8 @@ public class AnswerBoxMovable extends AnswerBox {
                 // You can swipe with two fingers to move multiple boxes at the same time.
                 boolean canMove = true;
                 for (Actor a : getParent().getChildren()) {
-                    if (((AnswerBoxMovable) a).atEdge) {
+                    System.out.println(!equals(a));
+                    if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (screenLink != ((AnswerBoxMovable) a).screenLink)) {
                         canMove = false;
                     }
                 }
@@ -78,6 +93,7 @@ public class AnswerBoxMovable extends AnswerBox {
             // If at the edge, can also move off the screen confirming the choice
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                currentlyTouched = false;
                 float moveX = startX;
                 boolean actionConfirmed = false;
                 boolean movingToEdge = false;
