@@ -1,24 +1,10 @@
 package fi.tuni.tiko;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import java.util.ArrayList;
-
-import javax.xml.stream.FactoryConfigurationError;
-
-import sun.applet.Main;
 
 import static fi.tuni.tiko.MainGame.margin;
 import static fi.tuni.tiko.MainGame.windowHeight;
@@ -86,19 +72,27 @@ public class ChoiceScreen extends Screen {
     }
     public void createAnswerBoxes() {
         answerBoxes = new Group();
-        //float currentY = margin * 2 + buttonHeight;
-        float currentY = margin + buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - boxHeight * 0.5f;
-        for (int i = 0; i < getChoices().size(); i++) {
-            answerBoxes.addActor(new AnswerBox(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
-            //currentY += margin + boxHeight;
-            currentY += roomForAnswers / (float) (getChoices().size()+1);
+        if (answerEffects.size() == 0) {
+            //float currentY = margin * 2 + buttonHeight;
+            float currentY = margin + buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - boxHeight * 0.5f;
+            for (int i = 0; i < getChoices().size(); i++) {
+                answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
+                //currentY += margin + boxHeight;
+                currentY += roomForAnswers / (float) (getChoices().size()+1);
+            }
+        } else {
+            //float currentY = margin * 2 + buttonHeight;
+            float currentY = margin + buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - boxHeight * 0.5f;
+            answerBoxes.addActor(new AnswerBoxMovable("< Siirry eteenpäin >", xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(0)));
+            currentY += roomForAnswers / (float) (getChoices().size()+2);
+            game.addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
         }
         game.addActor(answerBoxes);
     }
 
     public void answersSetPause(boolean pause) {
         for (Actor a: answerBoxes.getChildren()) {
-            AnswerBox ab = (AnswerBox) a;
+            AnswerBoxMovable ab = (AnswerBoxMovable) a;
             ab.setPause(pause);
         }
     }

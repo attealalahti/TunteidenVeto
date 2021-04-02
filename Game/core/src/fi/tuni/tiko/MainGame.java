@@ -28,6 +28,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture bigBoxTexture;
 	private Texture happy;
 	private Texture settingsTexture;
+	private Texture settingsPressedTexture;
 	private Texture empty;
 	private Texture feelingMeterTexture;
 	private Texture musicOnTexture;
@@ -93,6 +94,7 @@ public class MainGame extends ApplicationAdapter {
 		fontSize = getFontSize();
 
 		pixelDensity = getPixelDensity();
+		System.out.println(pixelDensity);
 		String folderToUse = pixelDensity + "/";
 		String suffix = pixelDensity + ".png";
 
@@ -110,6 +112,9 @@ public class MainGame extends ApplicationAdapter {
 		soundOffTexture = new Texture(folderToUse+"sound_off"+suffix);
 		railTexture = new Texture(folderToUse+"rail"+suffix);
 		img = new Texture("badlogic.jpg");
+
+		settingsPressedTexture = new Texture(folderToUse+"hamburgermenu_pressed"+suffix);
+
 		skin = createSkin();
 
 		settingsButton = createSettingsButton();
@@ -349,6 +354,8 @@ public class MainGame extends ApplicationAdapter {
 		s.add("test", img);
 		s.add("font", createFont());
 
+		s.add("settings_pressed", settingsPressedTexture);
+
 		Label.LabelStyle answerStyle = new Label.LabelStyle();
 		answerStyle.background = s.newDrawable("answer_box");
 		answerStyle.font = s.getFont("default");
@@ -376,8 +383,8 @@ public class MainGame extends ApplicationAdapter {
 
 		Button.ButtonStyle settingsButtonStyle = new Button.ButtonStyle();
 		settingsButtonStyle.up = s.newDrawable("settings");
-		settingsButtonStyle.down = s.newDrawable("settings", Color.DARK_GRAY);
-		settingsButtonStyle.checked = s.newDrawable("settings", Color.DARK_GRAY);
+		settingsButtonStyle.down = s.newDrawable("settings_pressed", Color.WHITE);
+		settingsButtonStyle.checked = s.newDrawable("settings_pressed", Color.WHITE);
 
 		Button.ButtonStyle soundStyle = new Button.ButtonStyle();
 		soundStyle.up = s.newDrawable("soundOff");
@@ -409,8 +416,8 @@ public class MainGame extends ApplicationAdapter {
 
 
 
-		s.add("default", answerStyle);
-		s.add("answer_highlighted", answerHighlightedStyle);
+		s.add("answer_movable", answerStyle);
+		s.add("answer_static", answerHighlightedStyle);
 		s.add("question", questionStyle);
 		s.add("feelings", feelingsButtonStyle);
 		s.add("happiness", happyStyle);

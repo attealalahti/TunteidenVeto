@@ -7,8 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
-import java.util.ArrayList;
-
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
@@ -20,17 +18,14 @@ import static fi.tuni.tiko.MainGame.skin;
  * Other AnswerBoxes on the same Screen cannot be dragged once one is on the edge of the screen.
  * @author Atte Ala-Lahti
  */
-public class AnswerBox extends Group {
-    private float startX;
+public class AnswerBoxMovable extends AnswerBox {
     private float moveDuration = 0.2f;
     private int screenLink;
     private boolean atEdge = false;
     private boolean paused = false;
     private float touchDifferenceX;
-    private Label background;
-    private Label textBox;
-    private float textMargin = 0.14f;
-
+    private Label rail;
+    private float startX;
     /** Creates a new AnswerBox.
      * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
      * In the future, different backgrounds might require different text box sizes.
@@ -42,29 +37,17 @@ public class AnswerBox extends Group {
      * @param height height of the background in pixels
      * @param screenLink the ID of the screen to move to when this AnswerBox is confirmed
      */
-    public AnswerBox(CharSequence text, float x, float y, float width, float height, final int screenLink) {
+    public AnswerBoxMovable(CharSequence text, float x, float y, float width, float height, final int screenLink) {
+        super(text, x, y, width, height);
         this.screenLink = screenLink;
 
-        Label rail = new Label(null, skin, "rail");
+        rail = new Label(null, skin, "rail");
         rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
-
-        background = new Label(null, skin);
-        textBox = new Label(text, skin, "text");
-        background.setBounds(x, y, width, height);
-
-        // Calculating the dimensions of the text box
-        float xMargin = textMargin * width;
-        float yMargin = textMargin * height;
-        textBox.setBounds(x + xMargin * 0.5f, y + yMargin * 0.5f, width - xMargin, height - yMargin);
-        startX = getX();
-        textBox.setFontScaleX(0.000324f * windowWidth);
-        textBox.setFontScaleY(0.00018f * windowHeight);
-        textBox.setWrap(true);
-        textBox.setAlignment(0);
-
         addActor(rail);
-        addActor(background);
-        addActor(textBox);
+        rail.toBack();
+        getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
+
+        startX = getX();
 
         /* MOVEMENT */
         addListener(new InputListener() {
@@ -83,7 +66,7 @@ public class AnswerBox extends Group {
                 // You can swipe with two fingers to move multiple boxes at the same time.
                 boolean canMove = true;
                 for (Actor a : getParent().getChildren()) {
-                    if (((AnswerBox) a).atEdge) {
+                    if (((AnswerBoxMovable) a).atEdge) {
                         canMove = false;
                     }
                 }
@@ -130,9 +113,6 @@ public class AnswerBox extends Group {
                         public void run() {
                             if (finalEdge) {
                                 atEdge = true;
-                                background.setStyle(skin.get("answer_highlighted", Label.LabelStyle.class));
-                            } else {
-                                background.setStyle(skin.get("default", Label.LabelStyle.class));
                             }
                         }
                     })));
