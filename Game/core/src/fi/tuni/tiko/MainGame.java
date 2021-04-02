@@ -465,8 +465,6 @@ public class MainGame extends ApplicationAdapter {
 		meterButtonStyle.checked = s.newDrawable("empty", Color.DARK_GRAY);
 
 
-
-
 		s.add("answer_movable", answerStyle);
 		s.add("answer_static", answerHighlightedStyle);
 		s.add("question", questionStyle);

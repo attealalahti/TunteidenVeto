@@ -21,20 +21,39 @@ public class FeelingMeter extends Group {
 
     private final float MIN_VALUE = 0f;
     private final float MAX_VALUE = 100f;
-    private final float imageWidth = meterHeight;
+    private final float textWidth = meterHeight;
+    private final float textHeight = textWidth / 3f;
     private final float imageMargin = windowWidth * 0.05f;
     private final float combinedWidth = windowWidth * 0.8f;
-    private float meterWidth = combinedWidth - imageMargin - imageWidth;
+    private final float meterWidth = combinedWidth - imageMargin - textWidth;
+    private final float imageWidth = textWidth * (2f/3f);
 
     public FeelingMeter(float y, Color color, String imageStyle) {
+        String emotion = "";
+        switch (imageStyle) {
+            case "happiness": emotion = "Ilo"; break;
+            case "sadness": emotion = "Suru"; break;
+            case "anger": emotion = "Viha"; break;
+            case "fear": emotion = "Pelko"; break;
+            case "disgust": emotion = "Inho"; break;
+            case "love": emotion = "Rakkaus"; break;
+            case "astonishment": emotion = "Hämmennys"; break;
+        }
+        Label caption = new Label(emotion, skin, "text");
+        caption.setBounds((windowWidth - combinedWidth) * 0.5f, y, textWidth, textHeight);
+        caption.setFontScaleX(0.000324f * windowWidth);
+        caption.setFontScaleY(0.00018f * windowHeight);
+        caption.setAlignment((int)textHeight - 1, 0);
+        addActor(caption);
+
         Label image = new Label(null, skin, imageStyle);
-        image.setBounds((windowWidth - combinedWidth) * 0.5f, y, imageWidth, meterHeight);
+        image.setBounds((windowWidth - combinedWidth + textWidth - imageWidth) * 0.5f, y + textHeight, imageWidth, imageWidth);
         addActor(image);
 
         meter = new ProgressBar(0f, 100f, 1f, false, new ProgressBar.ProgressBarStyle());
         meter.getStyle().knobBefore = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, color);
         meter.getStyle().knobAfter = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, Color.WHITE);
-        meter.setBounds(image.getX() + imageWidth + imageMargin, y, meterWidth, meterHeight);
+        meter.setBounds(caption.getX() + textWidth + imageMargin, y, meterWidth, meterHeight);
         meter.setAnimateDuration(0.25f);
         meter.setValue(50f);
         addActor(meter);
