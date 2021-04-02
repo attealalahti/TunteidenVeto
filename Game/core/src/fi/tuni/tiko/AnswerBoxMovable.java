@@ -79,26 +79,35 @@ public class AnswerBoxMovable extends AnswerBox {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 float moveX = startX;
-                boolean movingToEdge = false;
-                if (getX() < startX - windowWidth * 0.25f) {
-                    moveX = startX - windowWidth * 0.5f;
-                    movingToEdge = true;
-                } else if (getX() > startX + windowWidth * 0.25f) {
-                    moveX = startX + windowWidth * 0.5f;
-                    movingToEdge = true;
-                } else {
-                    atEdge = false;
-                    movingToEdge = false;
-                }
-                final boolean finalEdge = movingToEdge;
                 boolean actionConfirmed = false;
-                if (getX() < startX - windowWidth * 0.5f && atEdge) {
+                boolean movingToEdge = false;
+                if (getParent().getChildren().size > 1) {
+                    if (getX() < startX - windowWidth * 0.25f) {
+                        moveX = startX - windowWidth * 0.5f;
+                        movingToEdge = true;
+                    } else if (getX() > startX + windowWidth * 0.25f) {
+                        moveX = startX + windowWidth * 0.5f;
+                        movingToEdge = true;
+                    } else {
+                        atEdge = false;
+                        movingToEdge = false;
+                    }
+                    if (getX() < startX - windowWidth * 0.5f && atEdge) {
+                        moveX = startX - windowWidth;
+                        actionConfirmed = true;
+                    } else if (getX() > startX + windowWidth * 0.5f && atEdge) {
+                        moveX = startX + windowWidth;
+                        actionConfirmed = true;
+                    }
+                } else if (getX() < startX) {
                     moveX = startX - windowWidth;
                     actionConfirmed = true;
-                } else if (getX() > startX + windowWidth * 0.5f && atEdge) {
+                } else {
                     moveX = startX + windowWidth;
                     actionConfirmed = true;
                 }
+                final boolean finalEdge = movingToEdge;
+
                 if (actionConfirmed) {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
