@@ -26,7 +26,6 @@ public class MainGame extends ApplicationAdapter {
 	private Texture boxTexture;
 	private Texture boxHighlightedTexture;
 	private Texture bigBoxTexture;
-	private Texture happy;
 	private Texture settingsTexture;
 	private Texture settingsPressedTexture;
 	private Texture empty;
@@ -105,7 +104,6 @@ public class MainGame extends ApplicationAdapter {
 		String folderToUse = pixelDensity + "/";
 		String suffix = pixelDensity + ".png";
 
-		happy = new Texture("ilo_reunatmdpi.png");
 
 		boxTexture = new Texture(folderToUse+"box"+suffix);
 		boxHighlightedTexture = new Texture(folderToUse+"box2"+suffix);
@@ -357,7 +355,6 @@ public class MainGame extends ApplicationAdapter {
 		s.add("big_box", bigBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
-		s.add("happy", happy);
 		s.add("settings", settingsTexture);
 		s.add("empty", empty);
 		s.add("meter", feelingMeterTexture);
@@ -651,7 +648,6 @@ public class MainGame extends ApplicationAdapter {
 		img.dispose();
 		boxTexture.dispose();
 		bigBoxTexture.dispose();
-		happy.dispose();
 		settingsTexture.dispose();
 		empty.dispose();
 	}
