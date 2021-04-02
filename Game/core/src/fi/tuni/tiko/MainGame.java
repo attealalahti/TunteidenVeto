@@ -36,6 +36,13 @@ public class MainGame extends ApplicationAdapter {
 	private Texture soundOnTexture;
 	private Texture soundOffTexture;
 	private Texture railTexture;
+	private Texture angerTexture;
+	private Texture astonishmentTexture;
+	private Texture disgustTexture;
+	private Texture fearTexture;
+	private Texture happinessTexture;
+	private Texture loveTexture;
+	private Texture sadnessTexture;
 
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
@@ -111,6 +118,14 @@ public class MainGame extends ApplicationAdapter {
 		soundOnTexture = new Texture(folderToUse+"sound_on"+suffix);
 		soundOffTexture = new Texture(folderToUse+"sound_off"+suffix);
 		railTexture = new Texture(folderToUse+"rail"+suffix);
+		angerTexture = new Texture(folderToUse+"anger"+suffix);
+		astonishmentTexture = new Texture(folderToUse+"astonishment"+suffix);
+		disgustTexture = new Texture(folderToUse+"disgust"+suffix);
+		fearTexture = new Texture(folderToUse+"fear"+suffix);
+		happinessTexture = new Texture(folderToUse+"joy"+suffix);
+		loveTexture = new Texture(folderToUse+"love"+suffix);
+		sadnessTexture = new Texture(folderToUse+"sadness"+suffix);
+
 		img = new Texture("badlogic.jpg");
 
 		settingsPressedTexture = new Texture(folderToUse+"hamburgermenu_pressed"+suffix);
@@ -353,6 +368,13 @@ public class MainGame extends ApplicationAdapter {
 		s.add("rail_img", railTexture);
 		s.add("test", img);
 		s.add("font", createFont());
+		s.add("anger", angerTexture);
+		s.add("astonishment", astonishmentTexture);
+		s.add("disgust", disgustTexture);
+		s.add("fear", fearTexture);
+		s.add("happiness", happinessTexture);
+		s.add("love", loveTexture);
+		s.add("sadness", sadnessTexture);
 
 		s.add("settings_pressed", settingsPressedTexture);
 
@@ -375,11 +397,6 @@ public class MainGame extends ApplicationAdapter {
 		Button.ButtonStyle feelingsButtonStyle = new Button.ButtonStyle();
 		feelingsButtonStyle.up = s.newDrawable("empty");
 		feelingsButtonStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
-
-		Button.ButtonStyle happyStyle = new Button.ButtonStyle();
-		happyStyle.up = s.newDrawable("empty");
-		happyStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
-		happyStyle.checked = s.newDrawable("empty", Color.DARK_GRAY);
 
 		Button.ButtonStyle settingsButtonStyle = new Button.ButtonStyle();
 		settingsButtonStyle.up = s.newDrawable("settings");
@@ -414,13 +431,46 @@ public class MainGame extends ApplicationAdapter {
 		railStyle.font = s.getFont("default");
 		railStyle.background = s.newDrawable("rail_img");
 
+		Label.LabelStyle angerStyle = new Label.LabelStyle();
+		angerStyle.font = s.getFont("default");
+		angerStyle.background = s.newDrawable("anger");
+
+		Label.LabelStyle astonishmentStyle = new Label.LabelStyle();
+		astonishmentStyle.font = s.getFont("default");
+		astonishmentStyle.background = s.newDrawable("astonishment");
+
+		Label.LabelStyle disgustStyle = new Label.LabelStyle();
+		disgustStyle.font = s.getFont("default");
+		disgustStyle.background = s.newDrawable("disgust");
+
+		Label.LabelStyle fearStyle = new Label.LabelStyle();
+		fearStyle.font = s.getFont("default");
+		fearStyle.background = s.newDrawable("fear");
+
+		Label.LabelStyle happinessStyle = new Label.LabelStyle();
+		happinessStyle.font = s.getFont("default");
+		happinessStyle.background = s.newDrawable("happiness");
+
+		Label.LabelStyle loveStyle = new Label.LabelStyle();
+		loveStyle.font = s.getFont("default");
+		loveStyle.background = s.newDrawable("love");
+
+		Label.LabelStyle sadnessStyle = new Label.LabelStyle();
+		sadnessStyle.font = s.getFont("default");
+		sadnessStyle.background = s.newDrawable("sadness");
+
+		Button.ButtonStyle meterButtonStyle = new Button.ButtonStyle();
+		meterButtonStyle.up = s.newDrawable("empty");
+		meterButtonStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
+		meterButtonStyle.checked = s.newDrawable("empty", Color.DARK_GRAY);
+
+
 
 
 		s.add("answer_movable", answerStyle);
 		s.add("answer_static", answerHighlightedStyle);
 		s.add("question", questionStyle);
 		s.add("feelings", feelingsButtonStyle);
-		s.add("happiness", happyStyle);
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
 		s.add("settings", settingsButtonStyle);
@@ -429,6 +479,14 @@ public class MainGame extends ApplicationAdapter {
 		s.add("exit", exitStyle);
 		s.add("feelingMeterForeground", feelingMeterForeGroundStyle);
 		s.add("rail", railStyle);
+		s.add("anger", angerStyle);
+		s.add("astonishment", astonishmentStyle);
+		s.add("disgust", disgustStyle);
+		s.add("fear", fearStyle);
+		s.add("happiness", happinessStyle);
+		s.add("love", loveStyle);
+		s.add("sadness", sadnessStyle);
+		s.add("meterButton", meterButtonStyle);
 
 
 		return s;
@@ -454,7 +512,7 @@ public class MainGame extends ApplicationAdapter {
 	}
 
 	public Button createFeelingMeterButton() {
-		final Button button = new Button(skin, "happiness");
+		final Button button = new Button(skin, "meterButton");
 		button.setBounds(((float) windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
 		button.addListener(new ChangeListener() {
 			@Override
@@ -490,25 +548,25 @@ public class MainGame extends ApplicationAdapter {
 		float meterMargin = margin + meterHeight;
 		float meterLocationHeight = meterMargin * 7;
 		float currentY = windowHeight - meterLocationHeight;
-		happiness = new FeelingMeter(currentY, happinessColor);
+		happiness = new FeelingMeter(currentY, happinessColor, "happiness");
 		result.addActor(happiness);
 		currentY += meterMargin;
-		sadness = new FeelingMeter(currentY, sadnessColor);
+		sadness = new FeelingMeter(currentY, sadnessColor, "sadness");
 		result.addActor(sadness);
 		currentY += meterMargin;
-		love = new FeelingMeter(currentY, loveColor);
+		love = new FeelingMeter(currentY, loveColor, "love");
 		result.addActor(love);
 		currentY += meterMargin;
-		anger = new FeelingMeter(currentY, angerColor);
+		anger = new FeelingMeter(currentY, angerColor, "anger");
 		result.addActor(anger);
 		currentY += meterMargin;
-		fear = new FeelingMeter(currentY, fearColor);
+		fear = new FeelingMeter(currentY, fearColor, "fear");
 		result.addActor(fear);
 		currentY += meterMargin;
-		astonishment = new FeelingMeter(currentY, astonishmentColor);
+		astonishment = new FeelingMeter(currentY, astonishmentColor, "astonishment");
 		result.addActor(astonishment);
 		currentY += meterMargin;
-		disgust = new FeelingMeter(currentY, disgustColor);
+		disgust = new FeelingMeter(currentY, disgustColor, "disgust");
 		result.addActor(disgust);
 
 		// Hide the meters initially

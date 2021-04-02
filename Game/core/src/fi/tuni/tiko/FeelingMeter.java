@@ -21,13 +21,20 @@ public class FeelingMeter extends Group {
 
     private final float MIN_VALUE = 0f;
     private final float MAX_VALUE = 100f;
-    private float meterWidth = windowWidth * 0.8f;
+    private final float imageWidth = meterHeight;
+    private final float imageMargin = windowWidth * 0.05f;
+    private final float combinedWidth = windowWidth * 0.8f;
+    private float meterWidth = combinedWidth - imageMargin - imageWidth;
 
-    public FeelingMeter(float y, Color color) {
+    public FeelingMeter(float y, Color color, String imageStyle) {
+        Label image = new Label(null, skin, imageStyle);
+        image.setBounds((windowWidth - combinedWidth) * 0.5f, y, imageWidth, meterHeight);
+        addActor(image);
+
         meter = new ProgressBar(0f, 100f, 1f, false, new ProgressBar.ProgressBarStyle());
         meter.getStyle().knobBefore = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, color);
         meter.getStyle().knobAfter = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, Color.WHITE);
-        meter.setBounds(windowWidth * 0.5f - meterWidth * 0.5f, y, meterWidth, meterHeight);
+        meter.setBounds(image.getX() + imageWidth + imageMargin, y, meterWidth, meterHeight);
         meter.setAnimateDuration(0.25f);
         meter.setValue(50f);
         addActor(meter);
@@ -41,6 +48,7 @@ public class FeelingMeter extends Group {
                 meter.getHeight() * tempMargin
         );
         addActor(foreground);
+
     }
 
     public Drawable getColoredDrawable(int width, int height, Color col) {
