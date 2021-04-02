@@ -126,7 +126,7 @@ public class MainGame extends ApplicationAdapter {
 
 		img = new Texture("badlogic.jpg");
 
-		settingsPressedTexture = new Texture(folderToUse+"hamburgermenu_pressed"+suffix);
+		settingsPressedTexture = new Texture("hdpi/hamburgermenu_pressedhdpi.png");
 
 		skin = createSkin();
 
