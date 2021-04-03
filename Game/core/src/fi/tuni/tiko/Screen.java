@@ -43,7 +43,6 @@ abstract public class Screen extends Stage {
      */
     public void nextScreen(int screenLink) {
         MainGame.currentScreenID = screenLink;
-        System.out.println("Link to this screen: " + screenLink);
     }
 
     /** This method creates an array of screens containing longer story texts.

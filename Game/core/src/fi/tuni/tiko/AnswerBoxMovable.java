@@ -58,7 +58,6 @@ public class AnswerBoxMovable extends AnswerBox {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 currentlyTouched = true;
                 for (Actor a : getParent().getChildren()) {
-                    System.out.println(!equals(a));
                     if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (screenLink != ((AnswerBoxMovable) a).screenLink)) {
                         currentlyTouched = false;
                     }
@@ -70,12 +69,8 @@ public class AnswerBoxMovable extends AnswerBox {
             // If paused, does not move
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
-                System.out.println("touching");
-                /* KNOWN BUG */
-                // You can swipe with two fingers to move multiple boxes at the same time.
                 boolean canMove = true;
                 for (Actor a : getParent().getChildren()) {
-                    System.out.println(!equals(a));
                     if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (screenLink != ((AnswerBoxMovable) a).screenLink)) {
                         canMove = false;
                     }
