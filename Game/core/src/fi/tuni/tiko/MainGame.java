@@ -26,6 +26,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture img;
 	private Texture boxTexture;
 	private Texture boxHighlightedTexture;
+	private Texture immobileBoxTexture;
 	private Texture bigBoxTexture;
 	private Texture settingsTexture;
 	private Texture settingsPressedTexture;
@@ -107,7 +108,7 @@ public class MainGame extends ApplicationAdapter {
 
 
 		boxTexture = new Texture(folderToUse+"box"+suffix);
-		boxHighlightedTexture = new Texture(folderToUse+"box2"+suffix);
+		immobileBoxTexture = new Texture(folderToUse+"box2"+suffix);
 		bigBoxTexture = new Texture(folderToUse+"textbox"+suffix);
 		settingsTexture = new Texture(folderToUse+"hamburgermenu"+suffix);
 		empty = new Texture(folderToUse+"button"+suffix);
@@ -128,6 +129,7 @@ public class MainGame extends ApplicationAdapter {
 		img = new Texture("badlogic.jpg");
 
 		settingsPressedTexture = new Texture("hdpi/hamburgermenu_pressedhdpi.png");
+		boxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
 
 		skin = createSkin();
 
@@ -386,6 +388,7 @@ public class MainGame extends ApplicationAdapter {
 		pixmap.fill();
 		s.add("answer_box", boxTexture);
 		s.add("highlighted_box", boxHighlightedTexture);
+		s.add("immobile_box", immobileBoxTexture);
 		s.add("big_box", bigBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
@@ -416,6 +419,10 @@ public class MainGame extends ApplicationAdapter {
 		Label.LabelStyle answerHighlightedStyle = new Label.LabelStyle();
 		answerHighlightedStyle.background = s.newDrawable("highlighted_box");
 		answerHighlightedStyle.font = s.getFont("default");
+
+		Label.LabelStyle immobileAnswerStyle = new Label.LabelStyle();
+		immobileAnswerStyle.background = s.newDrawable("immobile_box");
+		immobileAnswerStyle.font = s.getFont("default");
 
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
 		questionStyle.background = s.newDrawable("big_box");
@@ -497,7 +504,8 @@ public class MainGame extends ApplicationAdapter {
 
 
 		s.add("answer_movable", answerStyle);
-		s.add("answer_static", answerHighlightedStyle);
+		s.add("answer_static", immobileAnswerStyle);
+		s.add("answer_highlighted", answerHighlightedStyle);
 		s.add("question", questionStyle);
 		s.add("feelings", feelingsButtonStyle);
 		s.add("alt", buttonStyleAlt);

@@ -126,9 +126,28 @@ public class AnswerBoxMovable extends AnswerBox {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
                         public void run() {
+
+                            if (finalEdge) {
+                                atEdge = true;
+                                getBackground().setStyle(skin.get("answer_highlighted", Label.LabelStyle.class));
+                            } else {
+                                getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
+                            }
+
+                            /*
                             if (finalEdge) {
                                 atEdge = true;
                             }
+                            for (Actor a : getParent().getChildren()) {
+                                if (screenLink != ((AnswerBoxMovable) a).screenLink) {
+                                    if (atEdge) {
+                                        ((AnswerBoxMovable) a).getBackground().setStyle(skin.get("answer_highlighted", Label.LabelStyle.class));
+                                    } else {
+                                        ((AnswerBoxMovable) a).getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
+                                    }
+                                }
+                            }
+                             */
                         }
                     })));
                 }
