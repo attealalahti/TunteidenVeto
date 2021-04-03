@@ -61,7 +61,11 @@ com_crashlytics_export_strings.xml
 /ios/nbproject/private/
 
 /build/
-/android/build/
+/android/build/generated/
+/android/build/intermediates/
+/android/build/tmp/
+/android/build/outputs/logs/
+/android/build/outputs/apk/debug/output-metadata.json
 /core/build/
 /desktop/build/
 /html/build/
