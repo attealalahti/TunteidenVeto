@@ -3,6 +3,7 @@ package fi.tuni.tiko;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -71,7 +72,7 @@ public class MainGame extends ApplicationAdapter {
 	private Color currentBackgroundColor = desiredBackgroundColor;
 	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
 
-	public static int currentScreenID = 0;
+	public static int currentScreenID;
 	public static int windowWidth;
 	public static int windowHeight;
 	public static Skin skin;
@@ -134,10 +135,11 @@ public class MainGame extends ApplicationAdapter {
 		feelingMeterButton = createFeelingMeterButton();
 		settings = createSettings();
 		meters = createMeters();
-
-
 		screens = createChoiceScreens();
-		currentScreen = screens.get(0);
+		loadProgress();
+		currentScreen = screens.get(currentScreenID);
+		lastFrameCurrentScreen = currentScreen;
+		((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 	}
 	@Override
 	public void render () {
@@ -154,6 +156,7 @@ public class MainGame extends ApplicationAdapter {
 		if (currentScreen.getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
 			((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 			updateMeters(((ChoiceScreen) currentScreen).getEffects());
+			saveProgress();
 		}
 		lastFrameCurrentScreen = currentScreen;
 
@@ -212,6 +215,37 @@ public class MainGame extends ApplicationAdapter {
 			text.append(line.charAt(i));
 		}
 		return text.toString();
+	}
+	public void saveProgress() {
+		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
+		prefs.putInteger("screen", currentScreenID);
+		prefs.putFloat("happiness", happiness.getValue());
+		prefs.putFloat("sadness", sadness.getValue());
+		prefs.putFloat("anger", anger.getValue());
+		prefs.putFloat("love", love.getValue());
+		prefs.putFloat("astonishment", astonishment.getValue());
+		prefs.putFloat("fear", fear.getValue());
+		prefs.putFloat("disgust", disgust.getValue());
+
+		prefs.flush();
+	}
+	public void loadProgress() {
+		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
+		currentScreenID = prefs.getInteger("screen", 0);
+		float meterDefault = 50;
+		happiness.setValue(prefs.getFloat("happiness", meterDefault));
+		sadness.setValue(prefs.getFloat("sadness", meterDefault));
+		anger.setValue(prefs.getFloat("anger", meterDefault));
+		love.setValue(prefs.getFloat("love", meterDefault));
+		astonishment.setValue(prefs.getFloat("astonishment", meterDefault));
+		fear.setValue(prefs.getFloat("fear", meterDefault));
+		disgust.setValue(prefs.getFloat("disgust", meterDefault));
+
+	}
+	public void resetProgress() {
+		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
+		prefs.clear();
+		prefs.flush();
 	}
 	public ArrayList<String> getAnswerEffects(String myAnswer) {
 		ArrayList<String> answerEffects = new ArrayList<>();
@@ -636,6 +670,8 @@ public class MainGame extends ApplicationAdapter {
 				screens = createChoiceScreens();
 				currentScreenID = 0;
 				settingsButton.setChecked(false);
+				resetProgress();
+				loadProgress();
 			}
 		});
 		musicButton.setChecked(musicOn);

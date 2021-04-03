@@ -92,4 +92,10 @@ public class FeelingMeter extends Group {
         }
         meter.setValue(tempFloat);
     }
+    public float getValue() {
+        return meter.getValue();
+    }
+    public void setValue(float value) {
+        meter.setValue(value);
+    }
 }
