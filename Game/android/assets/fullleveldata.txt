@@ -142,7 +142,7 @@
 42 INHO +10
 ---
 42 Koulupäivä alkaa terveystiedolla. Tällä kerralla läpi käytävistä asioista on koe perjantaina, kannattaa siis kuunnella tarkasti!
-43 Valmiina ollaan!
+44 Valmiina ollaan!
 ---
 44 [Kehokuva hämmästyksestä] Hämmästys tuntuu pään ja rintakehän alueella, mutta se ei useinkaan ole kovin selkeä tunne. Sitä kuvaillaan usein sekavaksi, hieman sumeaksi varuillaan olon tunteeksi.
 45 SEURAAVA
@@ -302,10 +302,10 @@
 84 Menet lakki kourassa isän luo pyytämään kyytiä.
 ---
 83 Aluksi juokseminen tuntuu tahmealta, mutta vähitellen se alkaa sujua. Aamun kiukun ja harmituksen saa oikeastaan purettua tässä aika hyvin!
-85 VIHA -10
+86 VIHA -10
 ---
 84 Isä suostuu viemään sinut kouluun, mutta napisee asiasta koko matkan. Et sinä nyt tahallasi pommiin nukkunut! Onneksi sentään ehdit koululle hyvissä ajoin, eikä tarvitse sitä enää murehtia.
-85 VIHA +5, PELKO -10
+86 VIHA +5, PELKO -10
 ---
 86 Keskiviikko alkaa kemialla. Kiidät luokkaan viime hetkillä, ja kaverisi ovat jo valloittaneet yhden nurkan pulpetit. Porukan lähellä ei ole enää vapaita paikkoja. Sinä...
 87 otat ylimääräisen tuolin kavereiden viereen.
@@ -324,10 +324,10 @@
 92 Murrat jään ja moikkaat.
 ---
 89 Yksinäinen tunti tuntuu loputtoman pitkältä. Kaverin seura virkistäisi, vaikkei hänen kanssaan edes juttelisi ihmeempiä.
-93 SURU +5
+94 SURU +5
 ---
 92 Kaveria taisi jännittää aika paljon: ehditte ennen tunnin alkua rupatella hiukan niitä näitä, ja tunti meneekin mukavasti paritöitä yhdessä tehden.
-93 ILO +10
+94 ILO +10
 ---
 94 Ruokatunnilla yksi kavereistasi kiinnittää huomiosi toiselta puolen ruokalaa. Hän esittää heittävänsä lihapullan seinään. Miten reagoit?
 95 Facepalmilla.
@@ -587,8 +587,7 @@
 171 Tunnet itsesi hölmöksi. Oletkohan suututtanut hänet jotenkin?
 172 Alat kysellä, mikä vaivaa. hän ei selvästikään ole oma itsensä.
 ---
-171 Tilanne jää mietityttämään. Oliko ystäväsi kuitenkin surullinen eikä vihainen?
-Et oikein tiedä, mitä tilanteesta pitäisi ajatella.
+171 Tilanne jää mietityttämään. Oliko ystäväsi kuitenkin surullinen eikä vihainen? Et oikein tiedä, mitä tilanteesta pitäisi ajatella.
 173 HÄMMENNYS +15
 ---
 172 Viet kaverin sivummalle ja kysyt, onko kaikki hyvin. Kaverisi menee vaikeaksi, vetää paitaa tiukemmin ympärilleen ja sanoo, ettei halua olla vaivaksi.
@@ -598,8 +597,7 @@ Et oikein tiedä, mitä tilanteesta pitäisi ajatella.
 173 Sanot, että sinulle voi puhua kun siltä tuntuu. Alat kertoilla omia juttujasi häntä piristääkseen, mitä perheenne koira on puuhannut ja miten pikkusiskollasi menee. Ystäväsi hymyilee kiitollisena, muttei innostu mistään. Toivottavasti hän tulee puhumaan, kun on valmis.
 175 ILO +5, HÄMMENNYS +10
 ---
-174 Hetken päästä ystäväsi kertoo, että hänen lemmikkinsä kuoli juuri. Juttelette tilanteesta hetken, ja ystäväsi vaikuttaa tulevan paremmille mielin. Itseäsikin alkaa hiukan surettaa ystäväsi puolesta, mutta olet iloinen että hänelle tuli 
-parempi mieli.
+174 Hetken päästä ystäväsi kertoo, että hänen lemmikkinsä kuoli juuri. Juttelette tilanteesta hetken, ja ystäväsi vaikuttaa tulevan paremmille mielin. Itseäsikin alkaa hiukan surettaa ystäväsi puolesta, mutta olet iloinen että hänelle tuli parempi mieli.
 175 SURU +5, ILO +10
 ---
 175 Jatkat ruokailusta terveystiedon tunnille. Kuten tiistaina lupailtiin, vuorossa on tänään koe! Enimmäkseen koe sujuu ihan ok, mutta muutamaa kysymystä jäät miettimään tarkemmin.
