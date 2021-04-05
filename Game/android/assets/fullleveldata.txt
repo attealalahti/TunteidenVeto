@@ -1,0 +1,903 @@
+266 Tervetuloa pelaamaan! Tässä pelissä pääset kulkemaan nuoren opiskelijan arkiviikon läpi, tekemään valintoja ja seuraamaan, miten ne vaikuttavat tunnetiloihin. Näet tunnetilat koska tahansa painamalla alla näkyvää hymiötä. Itse hymiö näyttää, mikä tunnetila on tällä hetkellä voimakkain.
+0 Jatka eteenpäin swaippaamalla jompaa kumpaa vaihtoehtolaatikkoa oikealle tai vasemmalle.
+0 Laatikko liukuu ensin puoleenväliin, jotta voit tarkistaa valintasi. Jos haluat jatkaa, liu'uta laatikko loppuun asti.
+0 Eteenpäin!
+---
+0 Hello world! On maanantaiaamu ja uusi viikko edessä. Millä mielin nouset tulevaan viikkoon?
+1 Äh, maanantai. Viisi kurjaa päivää viikonloppuun.
+2 Olisihan se kiva nukkua, mutta ei auta. Tästä voi tulla ihan kivakin viikko!
+---
+1 Onneksi kurssia voi vielä kääntää, vaikka aamulla olisikin noussut väärällä jalalla!
+3 ILO -10
+---
+2 Aamun fiilis voi vaikuttaa yllättävän paljon koko loppupäivään!
+4 ILO +10
+---
+3 Koulumatkalla vastaan tulee naapuri, muttet aamukoomaltasi edes huomaa. Noloa!
+5 HÄMMENNYS +10
+---
+4 Koulumatkalla vastaan tulee naapurin vanhempi rouva pikkukoiransa kanssa. Moikkaatko häntä?
+6 No en. Menköön hurttansa kanssa muualle!
+7 Tietysti!
+---
+6 Naapurin rouva katsoo sinua ihmeissään, kun et tervehdi häntä. Ei kaikkia käpyjä ole aikaa moikata!
+5 VIHA +10
+---
+5 Sinua alkaa yhtäkkiä viluttaa ja rintaa puristaa. Toivottavasti naapuri ei valita tästä mummolle: mummo on kyllä todella pettynyt ja antaa sinulle kunnon saarnan, jos saa kuulla tästä.
+8 PELKO +10
+---
+7 Morjestat naapurin mummelille, joka huikkaa iloiset heipat takaisin.
+8 ILO +10
+---
+8 Saavut äidinkielen tunnille. Opettaja antaa ohjeistuksen: hän lukee pari tekstikatkelmaa, ja teidän tulee osata päätellä, mitä päähenkilö tuntee.
+9 Antaa tulla!
+---
+9 "Frank astui ovesta illan vaihtuessa yöksi. Oli ihanaa päästä perille ja nähdä hänet jälleen. Frank tunsi olevansa turvassa - olo oli kevyt, vatsaa kihelmöi ja rinnassa hohkaa lämpö. Frank oli tosiaan tullut kotiin."
+10 Ilo
+11 Rakkaus
+---
+10 Ilossa ja rakkaudessa on paljon samaa, mutta kyse olisi ollut rakkaudesta. Rakkaus on usein syvempi ja turvallisempi tunne esimerkiksi jotakin ihmistä tai asiaa kohtaan, kun taas ilo on ohimenevämpää energistä riemua.
+12 Selvä homma!
+---
+11 Aivan oikein! Rakkaus tuo lämpimän, turvallisen olon. Rakkaus liittyy usein johonkin ihmiseen tai asiaan, kun ilo on irrallisempi hyvä tunne.
+12 ILO +5
+---
+12 "Kurkkuuni nousi pala ja tunsin, kuinka silmiäni kirveli. Kaipuu poltti rinnassani, mutta muuten olin kylmä, kuin jäästä tehty. Millään ei ollut enää väliä, tulevaisuus ei enää tuntunut tarjoavan mitään. Kyyneleet alkoivat valua poskiani pitkin kuumina ja katkerina."
+13 Pelko
+14 Suru
+---
+13 Pelko voi olla hyvin samankaltainen tunne kuin runossa kuvattu suru. Suru on kuitenkin usein lamauttavampaa, kun pelko taas tuntuu ahdistavana tai kiihdyttävänä.
+15 Roger that!
+---
+14 Juuri näin! Suru tuntuu usein kylmältä ja sumuiselta. Ajatus ei kulje eikä yleensä kivoista asioista saa välttämättä mitään irti.
+15 ILO +5
+---
+15 "Hän vei käden suunsa eteen kuvotuksen vallassa. Haistoin myös itse tuon eltaantuneen, kaiken alleen peittävän hajun. Vatsassani kiersi ja minua alkoi oksettaa. Näin, kuinka Elenan nenä oli nyrpistynyt ja suu puristunut tiukaksi viivaksi etovan olon edessä."
+16 Inho
+17 Viha
+---
+16 Olet liekeissä! Inho tuntuu etovalta ja kuvottavalta, oli kyseessä sitten pilaantuneen ruoan aiheuttama fyysinen inho tai esimerkiksi jonkun käytöksestä johtuva moraalinen inho.
+18 ILO +5
+---
+17 Inhossa ja vihassa on samoja piirteitä ja ne saattavat usein liittyä yhteen. Viha on kuitenkin usein kuumempaa ja enemmän päähän liittyvää, kun inho tuntuu vatsassa ja kuvottaa.
+18 Alright!
+---
+18 Valmista tuli! Haluatko käydä runot uudelleen läpi ja kokeilla muita vastauksia, vai oletko valmis?
+9 Haluan käydä runot uudelleen läpi!
+19 Siirrytään eteenpäin!
+---
+19 Välitunnilla rupattelette kavereiden kanssa edellisestä tunnista. Mielestäsi tunti oli...
+20 ihan tylsä ja typerä.
+21 aika kiva!
+---
+20 Kaverisi ihmettelevät kuorossa. Heidän mielestään runojen tulkinta oli todella mielenkiintoista, mitä oikein kuvittelit!
+22 HÄMMENNYS +10
+---
+21 Kaverit ovat samaa mieltä. Toisten tunnetiloista lukeminen voi auttaa tunnistamaan omiakin fiiliksiä paremmin.
+22 HÄMMENNYS -10
+---
+22 Kaverisi näyttää sinulle videon nuoresta tytöstä pelaamassa Minecraftia.
+23 Haha, ainakin tytöllä näyttää olevan hauskaa!
+24 Ihan typerä peli! Räiskintää sen olla pitää, ei tuollaista kukaan halua katsoa.
+25 Nuo asiathan saisi tehtyä pelissä paljon fiksummin, ei tuossa ole järkeä!
+---
+23 Juttelette hetken siitä, kuinka on kiva että jotkut tekevät pelivideoita ja striimailevat pelejään. Ehkä itsekin voisi joskus kokeilla?
+29 ILO +5
+---
+24 Kaverisi naureskelee vieressä. Pitäisikö tytölle lähettää ilkeä kommentti? Tietäisipähän ainakin, ettei kukaan tuollaista halua katsoa, ja voisit itse saada upvoteja.
+26 Lähetä!
+29 Älä lähetä.
+---
+25 Sormesi syyhyävät lähettää tytölle vähän kommenttia pelivideosta. Lähetät...
+28 vinkin siitä, millaista hakkua tuossa tilanteessa kannattaa käyttää.
+26 naureskelua sille, kuinka ei tuollaisten noobien pelaamista halua kukaan katsella.
+---
+26 Alat miettiä itseäsi silloin, kun pelailit nuorena. Silloin jonkun vanhemman pelaajan haukut ja pilkka tuntuivat todella kurjalta. Poskiasi alkaa kuumottaa ja kurkkua puristaa.
+29 INHO +10, SURU +5, ILO -10
+---
+28 Lähetät tytölle kannustavan viestin, johon laitat joitakin vinkkejä pelin jatkamiseen. Sinulle tulee lämmin olo: tytölle tulee varmasti hyvä mieli!
+29 ILO +10
+---
+29 Seuraava tunti on fysiikkaa. Opettaja kiertelee luokassa ja pysähtyy kohdallesi ja kysyy läksyn vastausta. Sydämesi tykyttää rinnassa, sormet kylmenevät ja poskia kuumottaa.
+30 Yrität vastata. Kyllähän se oikeinkin voi mennä, ehkä?
+31 Et todellakaan lähde nolaamaan itseäsi julkisesti. Sanot ettet tiedä.
+---
+30 Mitä ihmettä, se meni oikein!
+32 ILO +10
+---
+31 Mielessäsi ollut arvaus olisi ollut oikein. Hitto!
+32 ILO -5
+---
+32 Saavut kotiin. Huomiselle ei ole pakollista tehtävää, mutta äikän esseen palautus on parin päivän päästä.
+33 Mene lenkille!
+34 Tee osa esseestä jo nyt.
+---
+33 Ulkoilua siis! Eteisessä perheen koira heiluttaa häntäänsä toiveikkaasti. Otatko koiran mukaan?
+35 Ilman muuta! Ei sitten tarvitse mennä kenenkään erikseen sen kanssa, ja on ihan mukavaakin mennä yhdessä lenkkeilemään.
+36 En ota. Käyn mieluummin yksin, käyköön joku muu sitten erikseen koiran kanssa.
+---
+35 Matkalla törmäät suunnilleen ikäiseesi, ja itse asiassa myös aika hyvännäköiseen koiranulkoiluttajaan, jonka kanssa vaihdat pari sanaa. Koiranne käyttäytyy tosi hyvin ja näyttää parhaat puolensa. Aurinkokin paistaa tänään jotenkin kivemmin!
+37 ILO +5, RAKKAUS +5
+---
+36 Lenkin jälkeen äiti alkaa valittaa siitä, ettet ottanut koiraa mukaan samalla vaivalla. Ärsyttävää!
+37 VIHA +10
+---
+37 Oli miten oli, lenkillä tuli hyvä olo! Ajatus kulkee paremmin, rintaa ei enää purista ja olet rauhallisempi. Jes!
+38 ILO +5, VIHA -10
+---
+34 Huh, olipa se puristus! Koville otti, mutta nyt on osa esseestä jo tehtynä.
+38 ILO +5
+---
+38 Maanantai alkaa olla pulkassa. Teet iltahommat ja painut vuoteeseen.
+39 Hyvää yötä!
+---
+39 TIISTAI. Aamiaisella on odottamassa paahtoleipää ja paistettua papumuhennosta. Tunnet, kuinka vatsassasi kiertää ja otsasi vetää ryppyyn. Sinä...
+40 otat pelkkää paahtoleipää ja kieltäydyt iljettävästä muhennoksesta.
+41 otat hammasta purren molempia.
+---
+40 Äiti suuttuu, kun et ota hänen tekemäänsä muhennosta leivän kanssa. Yrität selittää, että jostakin syystä se nyt inhottaa sinua, mutta hän ei ota asiaa kuuleviin korviinsa. Epäreilua!
+42 VIHA +5
+---
+41 Kuvotuksen aalto leviää ylitsesi. Inhottavaa!
+42 INHO +10
+---
+42 Koulupäivä alkaa terveystiedolla. Tällä kerralla läpi käytävistä asioista on koe perjantaina, kannattaa siis kuunnella tarkasti!
+43 Valmiina ollaan!
+---
+44 [Kehokuva hämmästyksestä] Hämmästys tuntuu pään ja rintakehän alueella, mutta se ei useinkaan ole kovin selkeä tunne. Sitä kuvaillaan usein sekavaksi, hieman sumeaksi varuillaan olon tunteeksi.
+45 SEURAAVA
+---
+45 [Kehokuva ilosta] Ilo saa lämpimän olon kuplimaan koko kehossa. Rinnassa ja päässä hehkuu lämpö ja olo on kevyt ja energinen. Sinua hymyilyttää ja kaikki tuntuu mukavammalta.
+46 SEURAAVA
+---
+46 [Kehokuva inhosta] Inho on ollut etenkin aiemmin tarpeen pilaantuneen ruoan tunnistamisessa, mutta se herää myös reaktiona moraaliseen inhottavuuteen. Inho tuntuu vatsan ja suun alueella kuvotuksena, etovana olona ja jopa oksetuksena.
+47 SEURAAVA
+---
+47 [Kehokuva pelosta] Pelko saa sydämen tykyttämään ja kehon valmistautumaan joko pakenemiseen tai taistelemiseen. Pelko tuntuu ennen kaikkea päässä ja rinnassa, minkä lisäksi raajoja voi joko kuumottaa tai ne voivat tuntua kylmiltä ja raskailta. Pelko tekee olosta rauhattoman ja levottoman.
+48 SEURAAVA
+---
+48 [Kehokuva surusta] Suru voi näkyä kehossa monin tavoin: on vatsakipua, päänsärkyä ja jumittamista. Olo voi olla ahdistava ja muisti pätkii. Usein myös nukkuminen kärsii: sureva ihminen voi nukkua normaalia enemmän tai kärsiä unettomuudesta. Itkeminen on tavallinen tapa käsitellä surua, mutta aina itku ei edes tule.
+49 SEURAAVA
+---
+49 [Kehokuva vihasta] Vihaisena voi tuntua kuin veresi kiehuisi. Kädet puristuvat nyrkkiin, lihakset jännittyvät ja puret hampaitasi yhteen. Poskiasi kuumottaa ja äänikin voi kiristyä jopa huomaamattasi.
+265 SEURAAVA
+---
+265 [Kehokuva rakkaudesta] Rakkaus tuntuu lämpönä tai jopa kuumuutena etenkin rinnassa, mutta lähes koko ylävartalossa. Rakkaus on turvallinen ja hyvä olo, joka voi saada sydämen tykyttelemään tai mahanpohjan kihelmöimään. Rakkauden tunne ei ole läheskään aina romanttista, vaan voi olla esimerkiksi myös ystävien tai perheenjäsenten välistä, tai liittyä vaikka omaan kotiin.
+50 SEURAAVA
+---
+50 Näiden lisäksi on lukuisia eri tunteiden yhdistelmiä ja erilaisia tuntemuksia, kuten häpeä, kateus ja mielihyvä. Haluatko kerrata päätunteet ja niiden vaikutukset kehoon, vai oletko valmis perjantain kokeeseen?
+44 Haluan kerrata!
+51 Eteenpäin!
+---
+51 Terveystiedon jälkeen vuorossa on ruokatunti ja enkkua. Kaverisi ovat päättäneet mennä syömisen jälkeen kaupungille ja lintsata englannin tunnilta. Sinä...
+52 menet mukaan.
+53 jäät koululle.
+---
+52 Tämä on seikkailu! Olet kyllä ongelmissa, jos joku näkee sinut... 
+54 PELKO +15
+---
+54 Menette notkumaan ostarille. Kaverisi löytävät meikkitestereitä, ja alkavat pelleillä maalaten toistensa kasvojille mitä mielikuvituksellisempia sotamaalauksia.
+55 Nappaat huulipunan ja hyökkäät kaverisi posken kimppuun.
+56 Naureskelet heille vähän matkan päästä.
+---
+55 Kaverisi taiteilee omaan poskeesi uskomattoman aidon näköisen vesinokkaeläimen. Vasta jälkeenpäin alat miettiä, kuinka likaisia vanhat testerit mahtoivat olla. Hyi!
+61 ILO +5, INHO +10
+---
+56 Mitä ihmettä kaverisi oikein ajattelevat! Tavallaan ihailet heidän heittäytymiskykyään, muttet ymmärrä miten he ilkeävät käyttää vanhoja testereitä.
+57 HÄMMENNYS +10
+---
+57 Kaupan toisella laidalla käytävän päässä näkyy koulun rehtori! Juuri sinun tuuriasi. Ette millään kaikki ehdi pakoon. Nyt tarvitaan pikaisia päätöksiä: juoksetko yksin vai jäätkö porukkaan?
+58 Juoksen!
+59 Jään paikalle.
+---
+58 Ei kaikkien kannata jäädä kiinni! Onnistut välttelemään rehtoria ja juokset suoraan kotiin. Kaverisi laittaa perääsi katkeran viestin, jossa haukkuu sinua oman nahkasi pelastamisesta.
+60 SURU +10, VIHA +5
+---
+59 Kaveria ei jätetä! Jäät porukan mukana paikalle. Kaverisi sanoo sinua kunnon tyypiksi, kun et pelastanut omaa nahkaasi vaan jäit heidän kanssaan.
+61 ILO +5
+---
+61 Ruokatuntia viettämässä ollut rehtori saa teidät kiinni ja soittaa vanhemmillenne. Niin opettajanne kuin vanhemmatkin ovat hyvin pettyneitä pelleilyynne.
+62 SURU +15
+---
+53 Tunnilla kuunnellaan englanninkielistä musiikkia, ja opettaja antaa sinun päättää seuraavan biisin. Kaverisi kuiskuttaa korvaasi oman toiveensa, josta itse et tykkää yhtään.
+63 Sanot silti kaverin toiveen.
+64 Sanot oman toiveesi.
+---
+63 Sanot kaverin toivoman biisin. Miksi oikeastaan sanoit sen?
+65 Ettei kaveri suutu sinulle.
+66 Että kaverisi tulisi iloiseksi.
+---
+65 Sinulle tulee hiukan paha mieli. Miksi ystävyyssuhteessa pitää pelätä toisen suuttumista yhden biisin takia? Sinua harmittaa, ihan kuin huoneessa olisi kylmempikin.
+67 SURU +10
+---
+66 Haluat tehdä kaverisi iloiseksi! Kaverisi alkaa hymyillä, ja hymy tarttuu itsellesikin. Ystäväsi on sinulle kyllä todella tärkeä, onpa kiva nähdä hänet noin onnellisena! 
+67 ILO +10, RAKKAUS +5
+---
+64 Opettaja antoi sinulle mahdollisuuden esittää oman toiveesi, ja sen myös haluat tehdä. Toivot jotakin...
+68 pirteää!
+69 rauhoittavaa!
+70 virkistävää!
+---
+68 Pirteä musiikki lähtee soimaan ja sinulle tulee kevyempi olo. Onpa kiva saada iloa enkun keskelle!
+67 ILO +10
+---
+69 Toivot rauhoittavaa, soljuvaa biisiä. Tunnet ajatustesi käyvän seesteisemmiksi ja selkeytyvän. Tekeepä hyvää!
+67 VIHA -10
+---
+70 Nyt tarvitaan jotakin, joka tuntuu! Intensiivinen musiikki saa ajatuksesi hyrräämään ja vauhdin päälle.
+67 SURU -10
+---
+67 Musiikkivalintaa kehutaan ja lopputunti menee hilpeästi musiikista englanniksi rupatellen. Musiikki on kiva tapa vaikuttaa myös tunnetiloihinsa! Olosi on energisempi ja selkämpi.
+60 ILO +5
+---
+60 Pääset kotiin, ja pitkän päivän jälkeen haluat vain rentoutua pelaten yhtä lempivideopeleistäsi. Tuplaklikkaat kuvaketta ja näytölle aukeaa ilmoitus pakollisesta päivityksestä.
+68 Typerä peli, miksi juuri nyt!
+69 Eikä, miksi aina minä!
+---
+68 Poskiasi kuumottaa, kätesi puristuvat nyrkkiin ja tuntuu, että veresi kiehuu. Nyt ärsyttää ja kunnolla!
+70 VIHA +10
+---
+69 Tuntuu, että voisit vajota maanrakoon. Vedät hupparia tiukemmin päälle ja melkein itkettää. Päivityksessä kestää kuitenkin koko ilta.
+70 SURU +10
+---
+70 Ei auta muu kuin odottaa, että päivitys saadaan kuntoon. Kone arvio ajaksi pari tuntia. Mitä teet tällä välin?
+71 Auta kotitöissä.
+72 Lue kokeeseen.
+73 Makoile vuoteessa ja selaile somea.
+---
+71 Ugh, tiskejä. Inhottavaa. Isäsi tulee kuitenkin todella iloiseksi, kun löytää keittiöstä tyhjän tiskialtaan!
+74 ILO +10, INHO +5
+---
+72 Nappaat koulukirjan käteesi ja alat selailla sitä. Tunteet vaikuttavat kehoon, mutta myös keho voi vaikuttaa tunteisiin: esimerkiksi juoksulenkki voi lievittää vihan tunteita. Mielenkiintoista!
+74 Jokohan päivitys olisi valmis?
+---
+73 Heittäydyt sänkyyn ja katselet hetken kissavideoita. Tässä on mukava ja lämmin, ja pörröisten pentujen hölmöilyä on hauska katsoa.
+74 SURU -5
+---
+74 Peli on viimein saanut päivitykset kuntoon, ja kaverisikin ovat jo linjoilla. Pelaatteko samalla puolella vai toisianne vastaan?
+75 Samalla puolella!
+75 Eri puolilla!
+---
+75 Tunnet, kuinka päivän stressi purkautuu ja hartiasi laskeutuvat korvista takaisin paikalleen. Mikään ei rentouta paremmin kuin tekeminen, josta nauttii!
+76 ILO +5
+---
+62 Vanhempasi ovat hyvin pettyneitä ja ilmoittavat, että tämän illan vietät kotona omassa huoneessasi.
+77 ILO -15
+---
+77 Lojut huoneessasi, ja sinulla on todella tylsää. Kotitöitä tekemällä voisit hyvällä tuurilla saada vanhempasi paremmalle tuulelle. Koitatko onneasi?
+78 En todellakaan.
+79 Tarjoudu auttamaan tiskaamisessa.
+---
+78 Jos he ovat lähteneet sinua rankaisemaan, niin ei kyllä sitten tarvitse apuakaan odottaa. Et todellakaan tiskaa vapaaehtoisesti.
+80 VIHA +10
+---
+79 Ugh, tiskejä. Inhottavaa. Isäsi tulee kuitenkin todella iloiseksi, kun löytää keittiöstä tyhjän tiskialtaan! Tärkeitä ihmisiä on kiva ilahduttaa, vaikka se sitten tarkoittaisikin omien käsien likaamista.
+80 ILO +10, INHO +5, RAKKAUS +5
+---
+80 Kännykkäsi värähtää viestin merkiksi. Kaveriporukan ryhmään on tullut uusi viesti.
+76 Katso viesti!
+---
+76 Kaverisi leikillään pilkkaa toisen ystäväsi pelitaitoja, kun tämä oli tehnyt pelissä amatöörivirheen. Pilkan kohde ei ole vastannut viestiin.
+77 Sitä sattuu parhaillekin! Puolusta kaveriasi.
+78 Noob! Mene mukaan ilveilyyn.
+---
+77 Kaverisi kiittää sinua tuesta ja alkaa itsekin nauraa mokalleen. Sellaista sattuu.
+79 ILO +5
+---
+78 Kaveri vastaa pilkkaan vaisusti ja itseään puolustellen.
+77 Hänestä tämä ei taida olla hauskaa. Puolusta kaveria.
+80 Jatka vitsillä ilkkumista. Pakkohan hänen on nyt huumoria ymmärtää!
+---
+80 Okei, kaverille tuli aivan selvästi paha mieli. Yrität pahoitella tilannetta vielä, mutta tämä on selvästi allapäin. Itseäsikin alkaa tilanne surettaa.
+79 SURU +10
+---
+79 Nukkumaanmenon aika!
+81 Hyvää yötä!
+---
+81 KESKIVIIKKO. Heräät tunteeseen, että jokin on pielessä. Olet nukkunut pommiin! Vatsaasi kouraisee ja lävitsesi hulahtaa kylmä olo. Miksei kello herättänyt! Miten ehdit kouluun? Apua!
+82 ILO -15, PELKO +15, VIHA +5
+---
+82 Heität leivän naamaan, kiskot farkut jalkaan ja heität repun selkään. Alkuperäinen ajatuksesi oli kävellä kouluun, muttet enää ehdi niin. Mitä teet?
+83 Puret hammasta ja juokset. Tuleepahan tehtyä treeni samalla!
+84 Menet lakki kourassa isän luo pyytämään kyytiä.
+---
+83 Aluksi juokseminen tuntuu tahmealta, mutta vähitellen se alkaa sujua. Aamun kiukun ja harmituksen saa oikeastaan purettua tässä aika hyvin!
+85 VIHA -10
+---
+84 Isä suostuu viemään sinut kouluun, mutta napisee asiasta koko matkan. Et sinä nyt tahallasi pommiin nukkunut! Onneksi sentään ehdit koululle hyvissä ajoin, eikä tarvitse sitä enää murehtia.
+85 VIHA +5, PELKO -10
+---
+86 Keskiviikko alkaa kemialla. Kiidät luokkaan viime hetkillä, ja kaverisi ovat jo valloittaneet yhden nurkan pulpetit. Porukan lähellä ei ole enää vapaita paikkoja. Sinä...
+87 otat ylimääräisen tuolin kavereiden viereen.
+88 istut takapenkkiin tuntemattoman rinnakkaisluokkalaisen viereen.
+89 istut yksin etupenkkiin opettajan valvovan katseen alle.
+---
+87 Opettaja ei todellakaan katso hyvällä oma-aloitteisuuttasi. Saat pari tiukkaa sanaa, pistävän katseen ja joudut luopumaan ajatuksestasi. Poskillesi nousee puna, nolottaa ja suututtaa. Miksi ihmeessä opettajan piti tehdä tästä numero? 
+90 VIHA +5
+---
+90 Uusi yritys. Minne istut?
+88 Takapenkkiin tuntemattoman rinnakkaisluokkalaisen viereen.
+89 Yksin etupenkkiin opettajan valvovan katseen alle.
+---
+88 Kävellessäsi kohti paikkaa huomaat, kuinka tyyppi pälyilee hiukan ympärilleen hankalan näköisenä. Hän ei katso sinua silmiin eikä moikkaa. Miten toimit?
+89 Istut viereen sanaakaan sanomatta.
+92 Murrat jään ja moikkaat.
+---
+89 Yksinäinen tunti tuntuu loputtoman pitkältä. Kaverin seura virkistäisi, vaikkei hänen kanssaan edes juttelisi ihmeempiä.
+93 SURU +5
+---
+92 Kaveria taisi jännittää aika paljon: ehditte ennen tunnin alkua rupatella hiukan niitä näitä, ja tunti meneekin mukavasti paritöitä yhdessä tehden.
+93 ILO +10
+---
+94 Ruokatunnilla yksi kavereistasi kiinnittää huomiosi toiselta puolen ruokalaa. Hän esittää heittävänsä lihapullan seinään. Miten reagoit?
+95 Facepalmilla.
+96 Nyökytät ja näytät peukkua.
+---
+95 Kaveri näyttää pitkää naamaa. Myöhemmin keskusteluryhmäänne tulee viesti, jossa sinua moititaan ilonpilaajaksi.
+97 ILO -5
+---
+96 Hetkeäkään epäröimättä kaveri nappaa kastikkeisen lihapullan käteensä ja heittää seinään. Mitä ihmettä! Et tiedä mitä tilanteesta pitäisi ajatella, eihän kukaan tee noin.
+97 HÄMMENNYS +10, INHO +10
+---
+97 Opon tunnilla puhutaan työelämässä tarvittavista taidoista. Varsin pian sinunkin pitäisi alkaa miettiä sitä, minne haluaisit työllistyä. Kämmenesi hikoavat, suutasi kuivaa ja rintaa puristaa. Sydän tykyttelee kuin isommankin lenkin jälkeen.
+98 Hengität muutaman kerran rauhakseen sisään ja ulos.
+99 Alat kuumeisesti miettiä, missä haluat tehdä uraa.
+---
+98 Juuri näin! Pelon yllättäessä rauhallinen hengittely usein helpottaa oloa. Ei mitään syytä paniikkiin, löydät aivan varmasti oman suuntasi.
+100 PELKO -10
+---
+99 Tulevaisuus taitaa hiukan pelottaa sinua. Rauhallinen hengittely on yksi helppo ja nopea tapa rauhoittaa itseä, mikäli huomaa että pelko meinaa ottaa vallan.
+100 Selvä!
+---
+100 Psykologit ja terapeutit on helppo huomata, mutta myös muissa töissä on tärkeää osata erilaisia tunnetaitoja. Omien tunteiden tunnistaminen ja käsitteleminen auttavan pitämään niin muun elämän kuin työtkin hanskassa. Tunteet välittävät tärkeitä viestejä hyvinvoinnistamme. Millainen työ sinua erityisesti kiinnostaa?
+101 Rento työ ja kiva työympäristö
+102 Itsenäinen ja haastava työ
+103 Hyväpalkkainen ja arvostettu työ
+---
+101 Hyvässä työympäristössä työntekijä saa olla oma itsensä tunteineen kaikkineen. Hallitsemattomat tai tunnistamatta jäävät tunteet eivät kuitenkaan ole omiaan ruokkimaan hyvää työilmapiiriä: Työkavereitakin alkaa ärsyttää, jos yksi työntekijä tiuskii huomaamattaan. Toisaalta hyvät tunnetaidot vähentävät muiden vaikutusta omiin fiiliksiin.
+104 Näinhän se on!
+---
+102 Itsenäisessä työssä työntekijällä on itsellään vastuu omasta jaksamisestaan ja työn etenemisestä. Kun negatiiviset tunteet tunnistaa ajoissa ja osaa puuttua niihin, haasteet ja murheet eivät käy ylivoimaisiksi. Tunnetaitojen avulla haastava työ on palkitsevampaa ja siinä jaksaa paremmin.
+104 Aivan!
+---
+103 Hyväpalkkainen ja arvostukseen nojaava työ saattaa tuottaa koviakin paineita ja kilpailua. Tunteensa hallitseva ja ne ajoissa huomaava työntekijä pystyy paremmin pysymään vahvassa työkunnossa ja tekemään kovaa tulosta muun elämän kärsimättä!
+104 Ahaa!
+---
+104 Sekä tunteiden tunnistaminen että käsitteleminen ovat taitoja, joita voi kehittää aktiivisesti harjoittelemalla. Kumpi on sinulle hankalampaa?
+105 Tunteiden tunnistaminen
+106 Tunteiden käsitteleminen
+---
+105 Tunteiden tunnistaminen on yksilöllistä ja helpottaa niiden lähettämien viestien hahmottamisessa sekä tunteiden käsittelyssä. Tunteita kannattaa harjoitella sanoittamaan ääneen tai paperille vähitellen arkielämässä. Aloita pienestä: tulin iloiseksi, koska aurinko paistaa.
+107 Yritän jatkossa pysähtyä kuuntelemaan tunteitani ainakin kerran päivässä!
+---
+107 Haluatko nähdä myös, miten tunteita voi oppia käsittelemään?
+106 Ilman muuta!
+108 En juuri nyt.
+---
+106 Tunteita on tärkeää käsitellä, ja padotut tunteet voivat patoutua pahaksi oloksi kehoon. Tunteiden juurisyitä ja niistä johtuvia oloja kannattaa harjoitella erittelemään ääneen tai paperille. Kiinnitä huomiota myös siihen, mikä sinulla helpottaa eri tunteisiin: joillakin vihaa lievittää juokseminen, toisilla kunnon hevi.
+109 Alan kiinnittää enemmän huomiota tunteiden käsittelyyn!
+---
+109 Haluatko nähdä myös, miten tunteita voi oppia tunnistamaan?
+105 Totta kai!
+108 Ehkä myöhemmin.
+---
+108 Opettaja kysyy vielä loppufiiliksiänne. Millä mielin odotat tulevaa työnhakua ja uran etsimistä?
+110 Toiveikkain mielin!
+111 Kyllä tämä tästä!
+---
+110 Hyvä asenne!
+112 ILO +10
+---
+111 Hyvä asenne!
+112 PELKO -5
+---
+112 Kotimatka sujuu hyvin samaan suuntaan matkanneiden kavereiden kanssa rupatellen. Illalla on äikän esseen palautus, joten nyt pitää tarttua siihen. Pohditko esseetä jo aiemmin?
+113 Kyllä
+114 Ei
+---
+113 Eihän hommia nyt viime tippaan kannata jättää! Joskus ne jäävät kyllä joka tapauksessa, mutta on se aina kiva jos on aloittanut aiemmin.
+115 ILO +5
+---
+114 Kiire tulee! Ei paniikkia, ei paniikkia. Hengität muutaman kerran syvään ja tasaat sykettäsi. 
+115 PELKO +5
+---
+115 Essee käsittelee kirjoittamista tunneilmaisun välineenä. Mitä tunnetta haluat käsitellä esseessä?
+116 Vihaa
+117 Surua
+---
+116 Tutkailet netistä, mitä eri keinoja vihaa on käsitellä kirjoituksen kautta. Vihan kohtaaminen voi olla vaikeaa, mutta kirjoittaminen on myös hyvä keino purkaa ja käsitellä aggressiota ja vihaa, jotka saattavat muuten vaikuttaa jopa fyysisesti. Esimerkiksi vihan syistä kirjoittaminen, aggresion tunteiden kirjaaminen tai vihakirjeen kirjoittaminen ja repiminen voi auttaa vihan käsittelemisessä.
+118 VIHA -10
+---
+117 Googlailet surun käsittelyä kirjoittamalla. Käsittelemätön suru voi sairastuttaa ja aiheuttaa esimerkiksi kipuja. Kirjoittamalla surun syistä ja sen aiheuttamista tuntemuksista voi käsitellä psyykkistä tuskaa ja helpottaa oloaan. 
+118 SURU -10
+---
+118 Juuri kun sait esseen valmiiksi, siskosi rymistelee huoneeseesi. Hän haluaisi pelata kanssasi vielä hiukan korttia ennen nukkumaanmenoa.
+119 Ilman muuta pelataan!
+120 Ei ole aikaa.
+---
+119 Viimeinen erä lähtee käyntiin. Olet hiukan voitolla ja siskoasi alkaa selvästi kiukuttaa: hänen otsansa on rypyssä, häntä ei enää naurata eikä juttelemisestakaan oikein tule mitään. Miten pelaat viimeisen erän?
+121 Yrität parhaasi normaalisti.
+122 Annat siskon voittaa.
+---
+121 Hyvät kortit ja siskon pieni moka vahvistavat voittosi! Siskosi ei kuitenkaan ota tappiota kevyesti, vaan suututus tuntuu vain kasvavan. Miten reagoit?
+123 Lohdutat siskoa.
+124 Menet nukkumaan.
+---
+123 Pelistähän tässä vain on kyse! Jännitys tuntuu laukeavan ja siskoasikin alkaa jo hymyilyttää. Kiva, ettei tarvinut mennä nukkumaan pahoilla mielin! Sisko vielä halaa sinua matkalla huoneeseensa, ja sinulle tulee lämmin olo.
+125 ILO +10, RAKKAUS +10
+---
+124 On aina ikävää mennä huonolla mielin nukkumaan. Siskosi pahasta mielestä jäi sinullekin kurja olo. Kuinka hän nyt pelistä noin harmistui! Voittokaan ei enää tunnu niin hyvältä.
+125 SURU +5
+---
+122 Pelaat tarkoituksella huonosti, minkä seurauksena sisko voittaa. Tämä näyttää tilanteeseen tyytyväiseltä, mutta itsellesi jää kurja mieli. Oliko se nyt oikein, että joudut itse häviämään tarkoituksella toista miellyttääksesi?
+125 SURU +5
+---
+120 Siskosi näyttää pettyneeltä, ja itseäsikin alkaa jälkikäteen hiukan harmittaa. Kyllähän tässä toisaalta olisi hyvin ehtinyt hiukan pelata...
+125 SURU +5
+---
+125 Kello alkaa lähestyä puoltayötä ja on aika mennä nukkumaan.
+126 Hyvää yötä!
+---
+126 TORSTAI. Aamu menee sumussa: kuka, mitä, häh?
+127 HÄMMENNYS +10
+---
+127 Aamu alkaa äidinkielellä. Opettaja toivoo, että joku opiskelijoista lukisi luokalle ääneen oman esseensä. Et tietenkään halua lukea esseetäsi - kuka haluaisi?
+128 Esitä kiireistä.
+129 Toivo, ettei opettaja valitse sinua.
+---
+129 Istut hiljaa paikallasi ja toivot opettajan valitsevan jonkun muun. Kuinka ollakaan, opettaja kutsuu nimeäsi ja pyytää sinua lukemaan esseesi. Voi ei.
+130 Kieltäydy. Et todellakaan lue esseetäsi!
+131 Lue, jos kerran pakko on.
+---
+130 Tiuskaiset opettajalle, että et todellakaan lue esseetäsi. Opettaja näyttää hämmentyneeltä ja pari luokkakaveriasi tirskahtaa taaempana. Miten opettaja edes voi olla noin törkeä, että laittaa juuri sinut tuollaiseen välikäteen!
+132 VIHA +10
+---
+131 Ei kai siinä muukaan auta. Luet esseesi ääni väristen, ja saat yllätyksekseni hyvää palautetta opettajalta ja luokkalaisiltasi! 
+132 ILO +5
+---
+128 Alat kiireesti penkoa repustasi jotakin. Eihän opettaja voi valita sinua, jos et ole valmis! Eihän? Opettaja pysähtyy kohdallesi, mutta päätyy kuitenkin valitsemaan vierustoverisi. Sydämesi pamppailee edelleen kurkussa.
+132 PELKO +10
+---
+132 Äikän jälkeen on ruokailun aika, ja kaverisi ehdottavat ulos syömään menemistä - onhan jo melkein viikonloppu! Kumman valitset, purilaiset vai perunasopan?
+133 Todellakin lähdet hampurilaisille!
+134 Taidat tällä kertaa skipata ulkona syömisen.
+---
+133 Saavutte hampurilaismestaan ja teette tilauksenne. Kaverisi alkaa aukoa päätään kassalla työskentelevälle nuorelle pojalle ja naureskella tämän vaatteille ja hiuksille. Muut kaverisi naureskelevat ympärillä, osa kannustavammin ja osa kiusaantuneemmin. Mitä teet?
+135 Menet mukaan. Ethän sinä halua olla tässä se ilonpilaaja!
+136 Et sano mitään, mutta et lähde naureskeluunkaan mukaan.
+137 Moitit kavereitasi ja puolustat kassaa.
+---
+135 Heität itsekin kommentin kassan silmälaseista ja naurat päälle. Miksi ihmeessä teet näin ja lähdet tällaiseen mukaan? Poskiasi alkaa kuumottaa, sinulle tulee paha mieli ja alat sättiä itseäsi: mikä ihme sai sinut toimimaan noin?
+138 VIHA +5, INHO +10, HÄMMENNYS +10, SURU +10
+---
+136 Miten he saattavat olla tuollaisia, inhottavaa käytöstä. Hetken tuntuu, kuin et edes tuntisi heitä. Vatsasi pohjalla on kylmä möykky: olisiko kuitenkin pitänyt puuttua tilanteeseen jotenkin?
+138 INHO +10, SURU +10, RAKKAUS -5
+---
+137 Käsket kavereidesi pitää mölyt mahassaan ja pahoittelet kassalle. Inhottavaa tuollainen käytös, olet tosi pettynyt kavereihisi. Kaverisi ovat hiukan noloina, mutta itsellesi tuli lämmin olo: saatoit juuri pelastaa myyjän päivän!
+138 ILO +15, INHO +10
+---
+138 Oman tilauksesi numero tulee, ja kävelet hakemaan hampurilaisannoksesi kassalta. Sen antaa sinulle sama myyjä, jota kaverisi äsken morkkasivat. Hän selvästi välttelee katsettasi ja tuntuu, että näet hänen käsiensä hieman vapisevan.
+139 Et sano mitään.
+140 Pahoittelet kavereidesi puolesta.
+---
+139 Ohitat tilanteen mahdollisimman nopeasti mitään sanomatta. Kassa vilkaisee sinuun kysyvästi, mutta nappaat ruokasi ja kiidät takaisin paikallesi. Kummallinen tilanne!
+141 HÄMMENNYS +10
+---
+140 Hymyilet kassalle anteeksipyytävästi ja pahoittelet kaveriporukkasi toimintaa. Kassan pelko silminnähden helpottaa, hartiat laskevat ja hän katsoo sinua silmiin hiukan hymyillen. Vaikkei hän sano juuri mitään, huomaat, että sanoistasi tuli hänelle parempi mieli.
+141 ILO +5
+---
+134 Päätät säästää aikaa ja rahaa, joten huikkaat kavereillesi moikat ja jäät syömään koululle. Aluksi valintasi hiukan harmittaa, mutta et anna sen haitata. Menet ruokalassa istumaan puolituttuun porukkaan, ja teillä onkin oikein hyvät keskustelut viimeisimmistä käänteistä seuraamassanne sarjassa!
+141 ILO +5
+---
+141 Iltapäivällä sinulla on harvinainen tilaisuus valita, menetkö kuvataiteen tunnille vai liikuntaan. Kumpi puhuttelee tänään enemmän?
+142 Taide!
+143 Liikunta!
+---
+142 Tunnilla saatte vapaasti piirtää, mitä mielessänne liikkuu - ilmaista itseänne ja tunteitanne paperille, kuten opettaja asian muotoili. Miten lähestyt tilannetta?
+144 Haluat vakuuttaa muut taiteellisista taidoistasi ja lähdet piirtämään realistista lyijykynäpiirrosta.
+145 Lähdet testailemaan eri tekniikoita ja värejä sen mukaan, mikä tuntuu sinusta sillä hetkellä oikealta.
+---
+144 Lyijykynäasetelmasi ei toimi kuten haluaisit, ja tunnet mielialasi laskevan. Tiesit kyllä, ettei realistinen lyijykynätaide ole sinua varten. Se on toki hienon näköistä, mutta realististen varjostusten pikkutarkka hierominen ei kiinnosta sinua tippaakaan. 
+146 ILO -5
+---
+145 Lopputulosta juuri miettimättä testailet tusseja, hiiliä ja erilaisia kirkkaita värejä. Teet muotoja ja sävyjä sen mukaan, mitä mieleesi tulee. Lopullinen teos ei välttämättä ole kovin helposti hahmotettava tai sellainen, jonka haluaisit seinällesi ripustaa, mutta sen tekeminen oli hauskaa! Muistat taas, miksi ihmiset tykkäävät taiteilla.
+146 ILO +10, RAKKAUS +5
+---
+146 Oli lopputulos mikä tahansa, taiteilu on loistava tapa käsitellä ja purkaa tunteita. Piirtämällä, maalaamalla tai vaikka muovailemalla saa myös ilmaistua tunteitaan helposti näkyvään muotoon.
+147 SURU -5, VIHA -5, HÄMMENNYS -10
+---
+143 Suuntaat liikuntatunnille, jossa alkulämmöt otetaan opettajan ohjeen mukaan juoksemalla. Jotkut luokkalaiset spurttaavat heti jonon kärkeen, toiset jäävät rauhakseen hölkkäämään. Mikä on sinun tyylisi?
+148 Lähdet juoksemaan hyvää vauhtia porukan kärkeen.
+149 Liityt hölkkäämään rauhassa kaveriporukan kanssa.
+---
+148 Haluat ehdottomasti olla ensimmäisten joukossa! Kärjessä juokseminen on yksinäistä, ja tuntuu hiukan hölmöltä ottaa alkulämmittely näin kilpailuhenkisesti, mutta toisaalta reippaasta juoksemisesta tulee hyvä olo.
+150 ILO +5
+---
+149 Otat kaverit kiinni ja hölköttelette rauhassa kroppanne lämpimiksi. Rupattelette ja naureskelette samalla, ja hölkkääminen tuntuukin menevän kuin itsestään.
+150 ILO +5
+---
+150 Jatkatte testailemalla ryhmissä erilaisia urheilulajeja. Liikunta on loistava tapa käsitellä ja purkaa erilaisia tunnetiloja. Toisaalta fyysinen liikkuminen voi myös lieventää ahdistunutta ja alakuloista oloa, selventää ajatuksia ja kääntää huomion pois esimerkiksi fyysisestä ikävästä olosta.
+151 SURU -5, VIHA -5, HÄMMENNYS -10
+---
+151 Jatkat koulusta matkaa jalkkistreeneihin. Valmentajanne kehuu kovasti yhden joukkuelaisenne harhautustekniikkaa, vaikka tämä ei mielestäsi ole juurikaan kehittynyt: sen sijaan toinen joukkuekaverisi Aali on tehnyt kovasti töitä harhautuksien eteen ja kehittynyt paljon pienellä aikaa.
+152 Kerrot valmentajalle huomanneesi, että myös Aali on kehittynyt paljon.
+153 Et kommentoi mitään.
+---
+152 Huomautat, että Aali on tehnyt paljon töitä ja kehittynyt merkittävästi. Vaikka tätä selvästi hiukan nolottaa huomio, on hän myös todella iloinen. Valmentajasi myöntää olevansa samaa mieltä ja kehuu myös sinun asennettasi. Tunnet olevasi arvostettu ja tärkeä tiimin osa.
+154 ILO +5, RAKKAUS +5
+---
+153 Et sano mitään, tuhahtelet vain nurkassa. Miksi valmentaja kehuu vain omia suosikkejaan? Epäreilua!
+154 VIHA +5, ILO -5
+---
+154 Treenien lopuksi pelaatte vielä jonkin aikaa joukkueen kesken. Yksi joukkuekavereistasi pelaa todella huonosti, ei yhtään normaalilla tasollaan. Kätesi puristuvat nyrkkiin ja päätä ja rintaa kuumottaa - miten hän nyt sählää noin!
+155 Anna tyypille palautetta, jossa pyydät häntä keskittymään.
+156 Laske kymmeneen ja hengitä syvään.
+---
+156 Poskiesi kuumotus laskee ja lihakset rentoutuvat. Huh, kiukku alkaa mennä ohi. Miten jatkat tilanteen kanssa?
+157 Älä sano mitään.
+158 Anna tyypille palautetta, jossa pyydät häntä keskittymään.
+---
+157 Kyseessä on kuitenkin vain harjoituspeli, ja voihan kaveri käydä läpi hankalia asioita elämässään. Päätät antaa asian olla ja keskityt omaan peliisi.
+159 ILO +5
+---
+158 Yrität kuulostaa huolettomalta ja kysäiset puoliksi vitsillä kaverilta, ovatko hänen ajatuksensa hiukan muualla. Hän naurahtaa ja lupaa ottaa itseään niskasta kiinni. Lopun pelin hän pelaakin paremmin!
+159 ILO +5
+---
+155 Vaikka yrität olla ihan asiallinen, pinnan alla kupliva kiukku saa kommentin kuulostamaan tökeröltä. Kaveri lehahtaa punaiseksi ja rypistää otsaansa, eikä sano sinulle mitään lopputreenien aikana. Vihaisen lisäksi olet nyt myös surullinen: että pitikin mennä pahoittamaan toisen mieli ilman kunnon syytä!
+159 VIHA +5, SURU +5
+---
+159 Pyöräilet treeneistä kotiin. Rojahdat suihkun jälkeen vuoteeseen, mutta sinua ei ihan vielä nukuta. Yöpöydällä olisi kännykkä ja kirja: kumpaan tartut?
+160 Nappaat kirjan.
+161 Laitat kännykästä rentoutumisharjoituksen pyörimään.
+162 Viestittelet hetken kaverin kanssa.
+---
+160 Luet jonkin aikaa, kunnes lempihahmosi kuolee. Miten tässä voi käydä näin, miksi juuri hänen piti kuolla? Fiktiivisenkin hahmon kuolema tuntuu yllättävän vahvasti, kurkkua kiristää ja silmiä kirvelee. Silti lukeminen oli mukavaakin.
+163 ILO +5, SURU +5
+---
+161 Seuraat harjoituksen pitäjän ohjeita rauhassa hengitellen ja mielikuvia luoden. Hullua, kuinka paljon fyysiseen oloon voikin vaikuttaa ajatuksien kautta, ja toisaalta kuinka fyysinen rentoutuminen voi rauhoittaa myös mieltä!
+163 VIHA -5, INHO -5
+---
+162 Viestittelet hetken kaverin kanssa. Ette ole kunnolla jutelleet aikoihin, mutta nyt on hyvä ottaa kiinni! Käytte läpi viime aikojen tapahtumia, huolianne ja ilojanne, ja olo tuntuu heti hiukan kevyemmältä.
+163 SURU -5, VIHA -5
+---
+163 Silmäsi alkavat vähitellen painua, ja on aika käydä yöpuulle.
+164 Hyvää yötä!
+---
+164 PERJANTAI. Jes, viimeinen koulupäivä ennen viikonloppua! Koulussa on ensimmäisenä yhteiskuntaoppia. Takanasi istuvat oppilaat pelleilevät, ja jostakin opettaja saa päähänsä että sinä olisit heittänyt häntä kumilla! Mitä vastaat opettajan aiheettomaan syytökseen?
+165 Huudahda, ettet ole tehnyt mitään väärää.
+166 Selitä opettajalle, että kyseessä oli joku muu.
+---
+165 Kyseessä et todellakaan ollut sinä! Opettaja ei kuitenkaan usko viattomuuteesi. Sinua alkaa kiukuttaa niin, että voisit paiskata kirjan lattiaan - törkeää syytellä sinua noin! Veri kohisee korvissasi ja luokassakin on hirveän kuuma. Ärsyttävää!
+167 VIHA +15
+---
+166 Yrität rauhallisesti selittää opettajalle, että sinä et heittänyt mitään, vaan kyseessä oli sitten joku muu. Opettaja ei usko sinua. Näinkö vähän sinuun luotetaan? Hartiasi lysähtävät ja koko tunti tuntuu menettävän merkityksensä.
+167 SURU +5
+---
+167 Opettaja lähtee hetkeksi luokasta, ja kaivat kännykän esiin. Pitäisikö laittaa kaverille viestiä ja valittaa saamastasi epäoikeudenmukaisesta kohtelusta?
+168 Ei se mitään auta.
+169 Todellakin!
+---
+168 Eipä kaveri opettajasta vähemmän epäreilua pysty tekemään, ja sinua hiukan nolottaakin oma reaktiosi. Et laita hänelle viestiä, mutta tilanne jää hiukan kalvamaan mieltäsi - olisiko puhuminen sittenkin helpottanut? 
+170 Eteenpäin!
+---
+169 Laitat kaverillesi viestin, jossa selostat tilanteen ja kerrot, kuinka epäreilu opettaja ärsyttää. Olosi kevenee heti, kun saat kerrottua asiasta! 
+170 SURU -5, VIHA -5
+---
+170 Ruokatunnilla ystäväsi on vaisu, eikä vaikuta olevan lainkaan kiinnostunut jutuistasi. Hän on mietteliään oloinen, hymytön ja hänen koko ryhtinsä tuntuu olevan lysyssä. Hän on omissa maailmoissaan eikä heittämäsi vitsikään naurata.
+171 Tunnet itsesi hölmöksi. Oletkohan suututtanut hänet jotenkin?
+172 Alat kysellä, mikä vaivaa. hän ei selvästikään ole oma itsensä.
+---
+171 Tilanne jää mietityttämään. Oliko ystäväsi kuitenkin surullinen eikä vihainen?
+Et oikein tiedä, mitä tilanteesta pitäisi ajatella.
+173 HÄMMENNYS +15
+---
+172 Viet kaverin sivummalle ja kysyt, onko kaikki hyvin. Kaverisi menee vaikeaksi, vetää paitaa tiukemmin ympärilleen ja sanoo, ettei halua olla vaivaksi.
+173 Yrität piristää häntä kertomalla omia juttujasi.
+174 Kannustat ystävääsi puhumaan.
+---
+173 Sanot, että sinulle voi puhua kun siltä tuntuu. Alat kertoilla omia juttujasi häntä piristääkseen, mitä perheenne koira on puuhannut ja miten pikkusiskollasi menee. Ystäväsi hymyilee kiitollisena, muttei innostu mistään. Toivottavasti hän tulee puhumaan, kun on valmis.
+175 ILO +5, HÄMMENNYS +10
+---
+174 Hetken päästä ystäväsi kertoo, että hänen lemmikkinsä kuoli juuri. Juttelette tilanteesta hetken, ja ystäväsi vaikuttaa tulevan paremmille mielin. Itseäsikin alkaa hiukan surettaa ystäväsi puolesta, mutta olet iloinen että hänelle tuli 
+parempi mieli.
+175 SURU +5, ILO +10
+---
+175 Jatkat ruokailusta terveystiedon tunnille. Kuten tiistaina lupailtiin, vuorossa on tänään koe! Enimmäkseen koe sujuu ihan ok, mutta muutamaa kysymystä jäät miettimään tarkemmin.
+176 Eteenpäin!
+---
+176 Mikä tunnetila todennäköisimmin aiheuttaa muun muassa sydämentykytyksiä, rauhatonta oloa ja raajojen kuumotusta tai kylmyyttä?
+177 Inho
+177 Suru
+178 Pelko
+---
+177 Eri tunnetilat voivat vaikuttaa ihmisiin eri tavoin. Sydämentykytyksiä, rauhatonta oloa ja raajojen kuumotusta tai kylmyyttä liittyy kuitenkin useimmiten ennen kaikkea pelkoon.
+179 Selvä juttu!
+---
+178 Aivan oikein! Pelko valmistaa ihmistä pakenemaan tai taistelemaan ja saa kiinnittämään enemmän huomiota ympäristön mahdollisiin uhkiin.
+179 Jes!
+---
+179 Seuraava kokeen kysymys käsittelee inhoa: mikä väittämistä liittyy useimmin inhoon?
+180 Inho liittyy usein ruoansulatuselimistöön ja tuntuu vatsan ja suun alueella.
+181 Inho aiheuttaa usein päänsärkyä.
+181 Inho liittyy aina johonkin fyysisesti kuvottavaan hajuun tai makuun.
+---
+180 Juuri näin! Inho varoittaa ihmistä joko fyysisesti tai eettisesti huonosta asiasta, toiminnasta tai vaikka ruoasta, ja se tuntuu usein kuvotuksena.
+182 Hyvä!
+---
+181 Inho voi olla joko fyysisen tai esimerkiksi eettisesti inhottavan asian aiheuttamaa, ja se keskittyy usein ruoansulatuselimistön ympärille. Inho voi aiheuttaa esimerkiksi kuvotusta ja suoranaista pahoinvointia.
+182 Aivan!
+---
+182 Viimeinen sinua mietityttämään jäänyt kysymys liittyy kuvaan: mitä tunnetilaa tämä kuvastaa?
+183 Inho
+184 Viha
+185 Suru
+---
+183 Kuvassa esitellään surun tunnetta: suru saa kylmän, turran olon etenkin päähän ja rintaan, kuten kuvassa näkyy. Inhoon liittyy usein lämmintä, kuvottavaa tunnetta vatsassa ja suun ympäristössä.
+186 Selvä homma!
+---
+184 Kuvassa esitellään surun tunnetta: suru saa kylmän, turran olon etenkin päähän ja rintaan, kuten kuvassa näkyy. Viha tuntuu usein samoilla alueilla, mutta kuumana ja polttavana.
+186 Ahaa!
+---
+185 Olet ihan oikeassa, kyseessä on suru: se saa saa kylmän, turran olon etenkin päähän ja rintaan, kuten kuvassa näkyy.
+186 Hienoa!
+---
+186 Huh, koe on paketissa! Tulosta saakin sitten jännittää ensi viikkoon. Et ehdi kunnolla kotiovesta sisään, kun isäsi käskee sinua tyhjentämään tiskikoneen ja auttamaan imuroinnissa.
+187 Tyydyt kohtaloosi ja menet tekemään hommat.
+190 Joo joo, kohta!
+191 Neuvottelet tekeväsi hommat illemmalla.
+---
+187 Nappaat tiskiharjan käteen ja laitat musiikkia soimaan. Onpahan nämäkin hommat sitten hoidettu!
+188 ILO +5
+---
+188 Tiukan tiskaus- ja imurointisession jälkeen nappaat puhelimen käteesi. Kaverisi on laittanut viestiä ja pyytänyt sinua viettämään iltaa porukalla hänen luokseen! Onneksi kaikki on tehty. Juokset omaan huoneeseesi vaihtamaan vaatteet ja valmistautumaan iltaa varten.
+189 ILO +5
+---
+190 Mielesi tekisi antaa isän kuulla kunniansa: rankan kouluviikon jälkeen ensimmäisenä tuollaista asiaa! Tiuskaiset hänelle tekeväsi työt kohta ja säntäät huoneeseesi. Raivostuttavaa!
+192 VIHA +5
+---
+191 Sovitte isäsi kanssa, että toivut hetkisen koulusta ja teet työt sitten. Menet hetkeksi huoneeseesi lepäilemään. Kiva, että isä suostui tähän!
+192 ILO +5
+---
+192 Kännykkäsi värähtää. Kaverisi laittaa viestiä ja pyytänyt sinua viettämään iltaa porukalla hänen luokseen. Voi ei, äkkiä tekemään hommat niin pääset istumaan iltaa! Olisitpa tehnyt ne heti tultuasi... Kivaa päästä kavereiden kanssa illaksi!
+193 ILO +5, HÄMMENNYS +10
+---
+193 Haluat totta kai päästä kaverillesi niin pian kuin mahdollista. Teetkö työsi kunnolla vai vähän sinne päin? Kukaan tuskin huomaa, jos jätät kattilat vielä "likoamaan" ja tuupit pölykoiria kaappien alle.
+194 Siivoat nopeasti.
+195 Siivoat hyvin.
+---
+194 Pääseepähän pikaisemmin liikenteeseen! Vakuuttelet itsellesi, että hoidat kyllä hommat loppuun vaikka huomenna. Isä kuitenkin huomaa lusmuiluyrityksesi, ja antaa sinulle tiukan palautteen. Joudut paikkaamaan jälkesi vielä ennen lähtöä, ja olisit loppujen lopuksi ollut nopeammin valmis tekemällä hommat kerralla kunnolla.
+196 VIHA +5, SURU +10
+---
+195 Ärsyttävää, mutta etpähän ainakaan saa valituksia niskaasi. Teet hommasi kunnolla mutta pikavauhtia ja juokset omaan huoneeseesi vaihtamaan vaatteet ja valmistautumaan iltaa varten. Onneksi töitä ei ollut tälle päivälle tuon enempää!
+196 VIHA +5, ILO +5
+---
+196 Saat isältä kyydin kaverille, muut ovatkin siellä jo. Huomaat, että porukka on jakautunut hiukan kahtia: toinen rinki istuskelee olohuoneessa juttelemassa syvällisiä vakavan näköisinä, toinen naureskelee ja pelleilee keittiössä. Kumpaan porukkaan menet?
+197 Olohuoneeseen. Heillä voi olla hyvät keskustelut meneillään!
+198 Keittiöön. Sinäkin haluat pitää hauskaa!
+---
+197 Syvällinen keskustelu osoittautuu teille kaikille tutun TV-sarjan analysoimiseksi. Kaverisi väittelevät kiivaasti uudesta juonikäänteestä, ja kysyvät tietysti heti myös sinun mielipidettäsi asiaan.
+198 Otat kantaa asian puolesta. Hahmo toimi täysin oikein!
+198 Otat kantaa asiaa vastaan. Typerää käytöstä hahmolta!
+199 Vastaat poliittisesti ymmärtäväsi molempia kantoja.
+---
+198 Puolet porukasta tuohtuu vastauksestasi ja puolet ovat haltioissaan tuestasi. Tuntuu, että aihe menee ihmisillä kunnolla tunteisiin: miten tämä voikin olla niin iso asia, että siitä kannattaa riidellä?
+200 HÄMMENNYS +10
+---
+199 Saat hiukan paheksuvia tuhahduksia, kun et halua ottaa asiaan vahvasti kantaa, mutta se myös purkaa kiristynyttä ilmapiiriä. Juttelu jatkuu kevyemmissä merkeissä. Miten se nyt olikaan niin iso asia?
+200 ILO +5, HÄMMENNYS +5
+---
+198 Keittiöporukan hauskanpito ja naureskelu näyttää loppuvan välittömästi kun saavut paikalle. Pieni epäilys alkaa kalvaa mieltästi: nauroivatkohan he sinulle?
+201 Luota siihen, etteivät he sinulle nauraneet.
+202 Kysy asiasta, vaikka sitten vitsiksi naamioiden.
+---
+201 Juttelu jatkuu kohtuullisen normaaliin tapaan, mutta tilanne jää vaivaamaan sinua. Tiedät, että ajatuksesi on todennäköisesti ihan hölmö, muttet voi olla ajattelematta että he nauroivat sinulle.
+203 SURU +5, HÄMMENNYS +10
+---
+202 Kysyt puoliksi leikilläsi, nauroivatko he sinulle. Kaikki repeävät nauruun ja vakuuttavat, etteivät nauraneet sinulle: he vain säikähtivät, kun saavuit yhtäkkiä. Onneksi sinulla on parhaita ystäviä, joiden kanssa voi jutella hölmötkin tunteet läpi!
+203 RAKKAUS +10
+---
+203 Istutte iltaa porukassa rupatellen ja pelaillen, kunnes etäisemmät kaverisi alkavat riidellä ja tunnelma lopahtaa. Sinusta alkaa tuntua siltä, että on aika nostaa kytkintä. Äitisi on aiemmin lupautunut hakemaan sinut kaverilta, joten laitat hänelle viestiä. Miten muotoilet asiasi?
+204 Oon valmis, tule hakemaan.
+205 Haluaisin kotiin, saisinko pian kyydin?
+---
+204 Äitisi vastaa hyvin nihkeästi lähtevänsä pian - taisit loukata häntä viestilläsi. Itsellesikin tulee ikävä olo: miksi ihmeessä laitoit äidille töykeän viestin, kun hän on tulossa hakemaan sinua kotiin?
+206 INHO +10
+---
+205 Äitisi vastaa iloisesti lähtevänsä saman tien ja ehdottaa, että käytte matkalla nappaamassa jotakin hyvää ruokaa. Jes!
+206 ILO +5
+---
+206 Saavutte kotiin ja juttelette vielä hetken illan tapahtumista. Menet omaan huoneeseesi, viestittelet vielä hetken paikalle jääneiden kavereiden kanssa ja sammutat valot. Huomenna saa nukkua pitkään!
+207 Öitä!
+---
+207 LAUANTAI. Nukut pitkään ja hyvin. Alakertaan raahustaessasi sisko alkaa heti valittaa, ettet ehtinyt tehdä hänen kanssaan aamulla mitään. Kierroksesi alkavat saman tien nousta: minkä ihmeen takia sinulla olisi velvollisuus herätä pitämään siskollesi seuraa, etkä saisi nukkua rauhassa?
+208 Perustelet napakasti siskolle, että mitään ei ollut sovittu.
+209 Kivahdat, että ei ole sinun tehtäväsi viihdyttää häntä.
+---
+208 Selität, että koska ette olleet sopineet mitään, oli sinulla täysi oikeus nukkua niin pitkään kun haluat. Jos siskosi olisi halunnut tehdä yhdessä jotakin, hänen olisi pitänyt sopia siitä kanssasi ajoissa. Siskosi alahuuli alkaa väpättää ja hän vetää kätensä ristiin rinnalle.
+210 Ehdota, että pelaatte muutaman erän Skipboa nyt kun olet hereillä.
+211 Antaa siskon mököttää, se ei ole sinun vikasi.
+---
+210 Siskosi ilme kirkastuu ja hän säntää hakemaan kortit. Näinkö helpolla häneltä sai harmituksen pois?
+212 ILO +5
+---
+212 Pelaamisen lomassa jutustelette niitä näitä. Sisko vaikuttaa hiukan mietteliäältä, mutta kuitenkin pääosin iloiselta ja pirteältä. 
+213 Kysy, millaista koulussa on ollut.
+214 Kysy, mitä hänelle kuuluu.
+---
+213 Siskosi kertoilee hauskoista sattumuksista koulussa, ja tuntuu virkistyvän entisestään. Itseäsikin alkaa huvittaa: miten yhden ihmisen ympärillä voikaan tapahtua noin paljon kaikkea hauskaa?
+215 ILO +5, RAKKAUS +5
+---
+214 Sisko kertoo huolistaan ja riidastaan kaverinsa kanssa. Yrität parhaasi mukaan lohduttaa, ja siskosi olo tuntuukin hiukan helpottavan. Myös itsellesi tulee parempi mieli: kyllä tämä vielä tästä.
+215 SURU -5, RAKKAUS +5
+---
+211 Miksi ihmeessä sinun pitäisi huolehtia siskosi viihtymisestä? Jätät tämän olohuoneeseen ja palaat omaan huoneeseesi aamiaisen kanssa.
+215 VIHA +5
+---
+215 Päätät lähteä lenkille purkamaan viikon stressiä ja ottaa suostuttelevasti häntäänsä heiluttavan koiranne mukaan. Taitatko lenkin kävellen vai juosten?
+216 Kävellen
+217 Juosten
+---
+216 Reippaalla kävelylenkillä pystyy nauttimaan täysillä kauniista maisemista. Lähdette koiran kanssa metsäpolulle, missä imet itseesi energiaa. Kyllä suomalainen metsä on hieno!
+218 ILO +5
+---
+217 Rivakka juoksulenkki saa energian virtaamaan ja selventää päätä. Kaikki tuntuu selkeämmältä juoksulenkin jälkeen!
+218 VIHA -5, SURU -5, HÄMMENNYS -5
+---
+218 Lenkin jälkeen koira asettuu kaikkensa antaneena olohuoneen sohvan alle nukkumaan. Muu perhe on lenkkisi aikana ajatellut, että olisi kiva pelata jotakin lautapeliä. Muut haluaisivat välttämättä pelata Aliasta, mutta itseäsi se ei kauheasti huvittaisi.
+219 Pelataan nyt silti. Voi se olla kivaakin!
+220 Eih, ei Aliasta!
+---
+219 Tiimiydyt äitisi kanssa isää ja siskoa vastaan. Innostus alkaa saman tien nousta - tästä se lähtee!
+221 ILO +5
+---
+220 Ilmoitat, ettet haluaisi pelata Aliasta: eikö olisi mitään muuta, mitä voitaisiin pelata? Muuta sellaista peliä ei löydy, mitä edes kaksi perheenjäsentä haluaisi pelata. Perheesi haluaa tietää, etkö tosiaan aio pelata, jos valinta on Alias.
+222 Jos se on noin vaikeaa, et pelaa ollenkaan.
+219 No olkoon sitten, mutta sinä tahdot valita tiimiläisesi ensimmäisenä!
+---
+222 Menet yksin huoneeseesi ja muut jäävät pelaamaan keskenään Aliasta. Makoilet sängyssä ja kuulet, kuinka muilla on hauskaa pelatessa - olisiko pelihetkelle sittenkin pitänyt antaa mahdollisuus, vaikket Aliaksesta tykkääkään?
+229 ILO -10
+---
+221 Peli alkaa: sisko ja isä tekevät ensimmäisellä kierroksella murskapisteet. Tuntuu, ettei isän tarvinut kuin aloittaa parilla sanalla, kun siskosi jo arvasi mitä hän tarkoittaa.
+223 Ette mitenkään voi voittaa enää tässä kohtaa, peli on pelattu!
+224 Jaaha, tästä alkaa tiukka kamppailu!
+---
+223 Et käsitä, miten he saattoivat olla noin hyviä. Huijasivatkohan he? Peli tuntuu olevan pelattu, eikä tilannetta auta se, että hämmennyksesi ohi sen paremmin arvailusta kuin selittämisestäkään ei tunnu tulevan mitään. Koko pääsi on ihan sumea - miten he olivat noin hyviä?
+225 ILO -5, HÄMMENNYS +10
+---
+224 Adrenaliini alkaa virrata suonissasi, ja onnistutte äitisi kanssa melkein tasoittamaan muutamassa kierroksesta. Katsotaan vaikka, tästä tulee tiukka peli!
+225 ILO +5
+---
+225 Kiihkeän pelaamisen jälkeen tulee ratkaiseva vuoro: jos saat arvattua vielä yhden sanan oikein, voitatte! Oletko valmis?
+226 Antaa palaa!
+---
+226 "Ihminen on tälläinen, jos vaikka joku tuttu on kuollut tai on muuten tapahtunut jotain kurjaa. Silloin on tosi tunteet pinnassa eikä mikään tunnu hyvältä, vaan on sitten ihan siinä tapahtumassa kiinni."
+227 Vihainen!
+228 Surullinen!
+---
+227 Jes, oikein! Voititte pelin ja sisko ja isä jäivät nuolemaan näppejään. Se oli hyvä peli!
+229 ILO +5
+---
+228 Eih, oikea vastaus olisi ollut vihainen. Takkiin tuli, mutta oli kivaa pelata porukalla!
+229 ILO +5, RAKKAUS +5
+---
+229 Huomaat, että lapsuudenystävälläsi on tänään syntymäpäivä. Ette ole olleet ihmeemmin tekemisissä muutamaan vuoteen, mutta aikoinaan vietitte paljon aikaa yhdessä. Onnitteletko häntä?
+230 Laitat onnitteluviestin.
+231 Soitat!
+232 Et onnittele.
+---
+230 Lähetät onnitteluviestin, jonka hän käy lukemassa melkein saman tien. Vastausta ei kuitenkaan kuulu.
+233 Odottele rauhassa, hänellä on varmaan kiireitä.
+234 Laita perään viesti, jossa kysyt ettekö vai ole enää väleissä.
+---
+233 Hänellähän voi olla vaikka mitä menoa, ja onnitteluviestien tulvakin on varmasti iso. Muutaman tunnin päästä saatkin iloisen, pitkän viestin, jossa hän kertoilee elämästään nykyään ja kiittelee onnitteluistasi. Vaihdatte useamman viestin, onpa kiva jutella pitkästä aikaa!
+235 ILO +10
+---
+234 Laitat kaverille tilityksen, jossa ilmoitat ettei teidän tarvitse olla kavereita, jollei hän halua. Sinua ei ilman seurauksia jätetä luetulle!
+232 VIHA +10
+---
+232 Olisikohan hän kuitenkin halunnut olla vielä yhteyksissä? Jäät vielä miettimään tilannetta, ja vatsaasi kylmää. Harmittaa, jos pitkä ystävyyssuhde nyt kärsi tämän takia.
+235 SURU +10
+---
+231 Kaverisi vastaa ja vaikuttaa iloisesti yllättyneeltä. Juttelette hyvän aikaa, ja se on aivan yhtä helppoa kuin vuosia sitten! Sovitte näkevänne toisenne lähiaikoina. Etpä olisi uskonut, että yksi onnittelu johtaa vanhan ystävyyssuhteen elpymiseen!
+235 ILO +10, HÄMMENNYS +5, RAKKAUS +5
+---
+235 Lauantai-illan päätteeksi rojahdat sohvalle ja haluat rentoutua elokuvaa katsomalla. Tiedät, että vihaisena tykkäät eniten toiminnasta, surullisena komediasta ja hämmentyneenä kauhusta. Olosi on hiukan outo, eikä kauhean selkeä: olet tavallaan varuillasi, muttet kuitenkaan varsinaisesti säikky. Ajatuksesi eivät meinaa pysyä kasassa ja et tiedä, mitä ajatella. Laitat pyörimään...
+236 ...toimintaa
+237 ...komedian
+238 ...kauhua
+---
+236 Arska ruudulle ja pelti rymisemään! Jälkeenpäin ajateltuna olosi olisi kuitenkin ollut enemmän omiaan kauhuleffalle, mutta tämäkin oli kuitenkin hyvä valinta.
+239 VIHA -5
+---
+237 Nyt jotakin naurattavaa kehiin! Jälkeenpäin ajateltuna olosi olisi kuitenkin ollut enemmän omiaan kauhuleffalle, mutta tämäkin oli kuitenkin hyvä valinta.
+239 SURU -5
+---
+238 Jes, juuri tätä kaipasitkin! Joukko nuoria lähdössä mökille, ongelmia luvassa. Tunnet ajatustesi kirkastuvan ja koko olemuksesi rentoutuvan.
+239 ILO +5, HÄMMENNYS -10
+---
+239 Hetken sohvalla torkuttuasi päätät siirtyä sängyn puolelle. 
+240 Hyvää yötä!
+---
+240 SUNNUNTAI. Aamupäivällä isä tulee herättelemään sinua ja kysyy, tuletko mukaan mummolaan.
+241 Et tule. Haluat nukkua!
+242 Taitaa olla parempi, että jäät tekemään kouluhommia.
+243 Ilman muuta!
+---
+243 Puet päällesi, loikkaat autoon ja ajelette mummolaan. Hän on ovella vastassa ja halaa sinua iloisesti saman tien, kun saat edes suunnilleen noustua autosta. Onpa kiva nähdä, kuinka onnelliseksi hän tuli siitä että lähdit mukaan!
+244 ILO +5
+---
+244 Hetken aikaa rupateltuanne mummo pyytää teidät kahvipöytään. Tarjolla on kaneliässiä, jotka saavat veden herahtamaan kielellesi, mutta epämääräiset rahkapullat saavat suuhusi nousemaan pikemminkin oksennusta. Vatsassasi alkaa kiertää pelkkä ajatus pullien syömisestä. Miten reagoit, kun mummo tarjoaa niitä sinulle?
+245 Sanot, että pullat näyttävät pilaantuneilta.
+246 Sanot jatkavasi mieluummin kaneliässien parissa.
+---
+245 Sanot mummolle, ettet ota pullia jotka näyttävät noin pilalle menneiltä. Tämä menee selvästi hämilleen eikä oikein osaa reagoida, pahoittelee vain ja vakuuttaa, ettei niissä mitään vikaa ole. Onneksi et joutunut syömään pullia, mutta ikävää nähdä mummo noin tolaltaan.
+247 ILO -5
+---
+246 Kiität ja sanot kaneliässien olleen niin hyviä, että jatkat mielelläsi niiden parissa. Selitys menee mummollesi läpi, jes! Hetken päästä äitisi alkaa kovasti kehua rahkapullia: mitä ihmettä, niidenkö oikeasti kuuluu näyttää tuolta?
+247 HÄMMENNYS +5
+---
+247 Alatte tehdä lähtöä, ja mummo tulee vielä uudestaan kertomaan kuinka kiva oli että tulit myös mukaan. Tulipa hän onnelliseksi tällaisesta asiasta! Itsellesikin tulee lämmin ja tyytyväinen fiilis, kun näen mummon onnen. Onneksi tulit mukaan viettämään aikaa hänen+
+251 ILO +5, RAKKAUS +10
+---
+242 Sanot isälle jääväsi tekemään kouluhommia ja pyydät heitä viemään mummolaan terveisiä. Ovi kolahtaa heidän takanaan kiinni. Alatko oikeasti tehdä läksyjä vai käytätkö saamasi yksinoloajan vuoteessa makoiluun ja rentoutumiseen?
+248 Nouset ylös ja käyt koulutöiden kimppuun.
+249 Jäät selaamaan somea sänkyyn.
+---
+248 Puurrat läksyjen ja laajempien tehtävien kanssa armotta, ja vähitellen to do -listasi alkaakin lyhetä. Mummo olisi varmasti halunnut, että menet mukaan, mutta nyt on ainakin koulutöitä saatu hyvin ajan tasalle!
+251 ILO +5
+---
+241 Sanot isälle jääväsi nukkumaan. Ovi kolahtaa heidän takanaan kiinni ja jäät yksin kotiin. Yritätkö saada jatkettua vielä unia vai alatko selailla somea? 
+249 Jäät selaamaan somea sänkyyn.
+250 Yrität saada nukahdettua uudelleen.
+---
+249 Muun perheen mummolassaoloaika kuluu huomaamatta, ja olet vain selaillut samoja somekanavia uudelleen ja uudelleen läpi ilman, että niistä on jäänyt mitään käteen. Sinulle tulee hiukan paha mieli: mummo olisi varmasti ollut tosi iloinen, jos olisit mennyt käymään!
+251 SURU +5
+---
+250 Uni tuleekin yllättävän nopeasti, ja heräät muutamaa tuntia myöhemmin virkeänä ja levänneenä. Tiedät kyllä, kuinka tärkeää hyvistä yöunista huolehtiminen on, muttet ollut edes tajunnut, kuinka väsynyt olitkaan ollut!
+251 HÄMMENNYS -5
+---
+251 Hetken kuluttua äitisi tulee huikkaamaan sinua siivoamaan huoneesi. Kiukku kuumentaa koko kehosi ja saa lihaksesi jännittymään. Onhan täällä tietysti vaikka mitä - äkkisilmäyksellä näkyy ainakin kolme lautastakin - mutta tänään on sentään sunnuntai ja kaikkea! 
+252 Ei hän voi sinua noin vain tulla komentelemaan!
+253 Miksi et koskaan saa nauttia vapaapäivästä?
+254 Nyt pitää punnertaa!
+---
+252 Tiuskit äidille ja veri kohisee korvissasi. Sinun huoneesihan se on, mitä se äidille kuuluu! Tuntuu, ettei kiukku millään helpota.
+255 VHA +10
+---
+253 Miksi tässä käy aina näin? Jos sinulla on hetki vapaata, jolloin voisit tehdä mitä haluat, joudut heti töihin. Sinua alkaa itkettää: et varmaan ehdi tekemään mitään kivaa enää tänään!
+255 SURU +5
+---
+254 Teet lattialla jokusen punnerruksen ja haaraperushyppyjä niin, että saat sykkeesi nousemaan kunnolla. Olosi rauhoittuu nopeasti, eikä pikasiivouksen tekeminen tunnu enää niin kamalalta. Vaikkei sotku varsinaisesti itseäsi haittaakaan, voi huoneessa tietysti olla mukavampaa olla siivoamisen jälkeen.
+255 ILO +5
+---
+255 Huoneen siivoaminen käykin yllättävän pikaisesti! Menet viettämään iltaa pelaillen randomien kanssa. Pelaatte useamman erän samoissa tiimeissä, ja yksi tiimiläinen moittii kokemattomampaa pelaajaa kaiken aikaa.
+256 Puutut asiaan. Ärsyttävää tuollainen!
+257 Naurat partaasi. Kerrankin joku sanoo mitä ajattelee!
+---
+256 Pyydät pelaajaa olemaan aukomatta päätään. Jollei ole fiksua sanottavaa, voisi sitten olla hiljaa. Pelaamisen kuuluisi olla kivaa, eikä jatkuva toisten mollaaminen todellakaan paranna yleistä fiilistä.
+258 INHO +5
+---
+258 Pelaaja ei anna kommenttisi häiritä, vaan jatkaa muiden haukkumista. Pystyt potkaisemaan tämän tiimistänne ulos, mutta toisaalta kyseessä on erittäin hyvä pelaaja... Miten toimit?
+259 Mykistät kyseisen pelaajan itseltäsi.
+260 Heität tämän ulos.
+---
+259 Mykistät pelaajan niin, etteivät hänen puheensa tai viestinsä tule enää sinulle perille, mutta hän pelaa edelleen tiimissänne. Jäät miettimään, kuinka paha mieli muille tulee tämän möykkäämisestä.
+257 SURU +5
+---
+260 Annat öykkärille lähtöpassit ja jatkatte peliä vajaalla miehityksellä. Pärjäätte huonommin vihollisia vastaan, mutta kaikilla tuntuu olevan nyt paljon kivempaa!
+262 ILO +5
+---
+257 Haukuttu pelaaja kysyy muilta, onko hän niin huono ettei saisi pelata. Muut eivät kommentoi mitään. Sinä...
+261 ...et vastaa mitään.
+261 ...kehotat häntä lähtemään.
+262 ...kehotat jäämään pelaamaan.
+---
+261 Pelaaja laittaa viestin, jossa kertoo kuinka paha mieli hänelle tuli, ja poistuu pelistä. Rintaasi puristaa ja olosi on kauttaaltaan kylmä - eihän tämän nyt noin vakavaa pitänyt olla!
+263 SURU +10
+---
+262 Haukuttu pelaaja laittaa sinulle vielä yksityisviestiä, jossa kiittää sinua tuesta. Hän kertoo tämän olevan ensimmäinen kerta, jolloin hän uskaltautui pelaamaan yhdessä muiden kanssa. Pelaajan mukaan on sinun ansiotasi, että hänelle jäi hyvä fiilis ja ajatus, että voisi pelailla uudelleenkin.
+263 ILO +10
+---
+263 Sunnuntai alkaa vierähtää loppuun. Takana on rankka mutta antoisa viikko: suuri osa ajasta kului koulussa, mutta ehdit tehdä myös vaikka mitä muuta. Seitsemässä päivässä tuli käytyä läpi tunnekuohuja suuntaan ja toiseen, tehtyä yksi koe ja valittua parhaat tavat viettää vapahetket. Käyt nukkumaan hyvillä mielin - ensi viikkoon!
+264 PÄÄVALIKKOON
+---
