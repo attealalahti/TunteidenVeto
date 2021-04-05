@@ -504,7 +504,7 @@
 146 ILO +10, RAKKAUS +5
 ---
 146 Oli lopputulos mikä tahansa, taiteilu on loistava tapa käsitellä ja purkaa tunteita. Piirtämällä, maalaamalla tai vaikka muovailemalla saa myös ilmaistua tunteitaan helposti näkyvään muotoon.
-147 SURU -5, VIHA -5, HÄMMENNYS -10
+151 SURU -5, VIHA -5, HÄMMENNYS -10
 ---
 143 Suuntaat liikuntatunnille, jossa alkulämmöt otetaan opettajan ohjeen mukaan juoksemalla. Jotkut luokkalaiset spurttaavat heti jonon kärkeen, toiset jäävät rauhakseen hölkkäämään. Mikä on sinun tyylisi?
 148 Lähdet juoksemaan hyvää vauhtia porukan kärkeen.
@@ -648,7 +648,7 @@
 188 ILO +5
 ---
 188 Tiukan tiskaus- ja imurointisession jälkeen nappaat puhelimen käteesi. Kaverisi on laittanut viestiä ja pyytänyt sinua viettämään iltaa porukalla hänen luokseen! Onneksi kaikki on tehty. Juokset omaan huoneeseesi vaihtamaan vaatteet ja valmistautumaan iltaa varten.
-189 ILO +5
+196 ILO +5
 ---
 190 Mielesi tekisi antaa isän kuulla kunniansa: rankan kouluviikon jälkeen ensimmäisenä tuollaista asiaa! Tiuskaiset hänelle tekeväsi työt kohta ja säntäät huoneeseesi. Raivostuttavaa!
 192 VIHA +5
@@ -710,6 +710,9 @@
 207 LAUANTAI. Nukut pitkään ja hyvin. Alakertaan raahustaessasi sisko alkaa heti valittaa, ettet ehtinyt tehdä hänen kanssaan aamulla mitään. Kierroksesi alkavat saman tien nousta: minkä ihmeen takia sinulla olisi velvollisuus herätä pitämään siskollesi seuraa, etkä saisi nukkua rauhassa?
 208 Perustelet napakasti siskolle, että mitään ei ollut sovittu.
 209 Kivahdat, että ei ole sinun tehtäväsi viihdyttää häntä.
+---
+209 Sisko juoksee itkien omaan huoneeseensa. Eihän sinun tosiaan siskoa viihdyttää tarvitse, mutta olisit voinut ilmaista asian kauniimminkin... Sinulle tulee paha mieli, kun tajuat kuinka tahditon olit. Koputat siskon ovelle, mutta hän ei vastaa. Menet omaan huoneeseesi syömään aamiaista.
+215 SURU +10
 ---
 208 Selität, että koska ette olleet sopineet mitään, oli sinulla täysi oikeus nukkua niin pitkään kun haluat. Jos siskosi olisi halunnut tehdä yhdessä jotakin, hänen olisi pitänyt sopia siitä kanssasi ajoissa. Siskosi alahuuli alkaa väpättää ja hän vetää kätensä ristiin rinnalle.
 210 Ehdota, että pelaatte muutaman erän Skipboa nyt kun olet hereillä.
