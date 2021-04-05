@@ -81,6 +81,8 @@ public class MainGame extends ApplicationAdapter {
 	private Color currentBackgroundColor = desiredBackgroundColor;
 	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
 
+	private Color secondaryColor = new Color(colorFraction * 234, colorFraction * 158, colorFraction * 128, 1);
+
 	public static int currentScreenID;
 	public static int windowWidth;
 	public static int windowHeight;
@@ -496,19 +498,19 @@ public class MainGame extends ApplicationAdapter {
 
 		Button.ButtonStyle soundStyle = new Button.ButtonStyle();
 		soundStyle.up = s.newDrawable("soundOff");
-		soundStyle.down = s.newDrawable("soundOff", Color.DARK_GRAY);
+		soundStyle.down = s.newDrawable("soundOff", secondaryColor);
 		soundStyle.checked = s.newDrawable("soundOn");
-		soundStyle.checkedDown = s.newDrawable("soundOn", Color.DARK_GRAY);
+		soundStyle.checkedDown = s.newDrawable("soundOn", secondaryColor);
 
 		Button.ButtonStyle musicStyle = new Button.ButtonStyle();
 		musicStyle.up = s.newDrawable("musicOff");
-		musicStyle.down = s.newDrawable("musicOff", Color.DARK_GRAY);
+		musicStyle.down = s.newDrawable("musicOff", secondaryColor);
 		musicStyle.checked = s.newDrawable("musicOn");
-		musicStyle.checkedDown = s.newDrawable("musicOn", Color.DARK_GRAY);
+		musicStyle.checkedDown = s.newDrawable("musicOn", secondaryColor);
 
 		Button.ButtonStyle exitStyle = new Button.ButtonStyle();
 		exitStyle.up = s.newDrawable("empty");
-		exitStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
+		exitStyle.down = s.newDrawable("empty", secondaryColor);
 
 		Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
 		buttonStyleAlt.up = s.newDrawable("test");
