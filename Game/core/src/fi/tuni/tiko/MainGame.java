@@ -112,7 +112,6 @@ public class MainGame extends ApplicationAdapter {
 		fontSize = getFontSize();
 
 
-
 		boxTexture = new Texture(getPath("box"));
 		immobileBoxTexture = new Texture(getPath("box2"));
 		bigBoxTexture = new Texture(getPath("textbox"));
@@ -554,38 +553,38 @@ public class MainGame extends ApplicationAdapter {
 
 		Button.ButtonStyle happinessButtonStyle = new Button.ButtonStyle();
 		happinessButtonStyle.up = s.newDrawable("happinessButton");
-		happinessButtonStyle.down = s.newDrawable("happinessButton", Color.DARK_GRAY);
-		happinessButtonStyle.checked = s.newDrawable("happinessButton", Color.DARK_GRAY);
+		happinessButtonStyle.down = s.newDrawable("happinessButton", secondaryColor);
+		happinessButtonStyle.checked = s.newDrawable("happinessButton", secondaryColor);
 
 		Button.ButtonStyle sadnessButtonStyle = new Button.ButtonStyle();
 		sadnessButtonStyle.up = s.newDrawable("sadnessButton");
-		sadnessButtonStyle.down = s.newDrawable("sadnessButton", Color.DARK_GRAY);
-		sadnessButtonStyle.checked = s.newDrawable("sadnessButton", Color.DARK_GRAY);
+		sadnessButtonStyle.down = s.newDrawable("sadnessButton", secondaryColor);
+		sadnessButtonStyle.checked = s.newDrawable("sadnessButton", secondaryColor);
 
 		Button.ButtonStyle angerButtonStyle = new Button.ButtonStyle();
 		angerButtonStyle.up = s.newDrawable("angerButton");
-		angerButtonStyle.down = s.newDrawable("angerButton", Color.DARK_GRAY);
-		angerButtonStyle.checked = s.newDrawable("angerButton", Color.DARK_GRAY);
+		angerButtonStyle.down = s.newDrawable("angerButton", secondaryColor);
+		angerButtonStyle.checked = s.newDrawable("angerButton", secondaryColor);
 
 		Button.ButtonStyle loveButtonStyle = new Button.ButtonStyle();
 		loveButtonStyle.up = s.newDrawable("loveButton");
-		loveButtonStyle.down = s.newDrawable("loveButton", Color.DARK_GRAY);
-		loveButtonStyle.checked = s.newDrawable("loveButton", Color.DARK_GRAY);
+		loveButtonStyle.down = s.newDrawable("loveButton", secondaryColor);
+		loveButtonStyle.checked = s.newDrawable("loveButton", secondaryColor);
 
 		Button.ButtonStyle disgustButtonStyle = new Button.ButtonStyle();
 		disgustButtonStyle.up = s.newDrawable("disgustButton");
-		disgustButtonStyle.down = s.newDrawable("disgustButton", Color.DARK_GRAY);
-		disgustButtonStyle.checked = s.newDrawable("disgustButton", Color.DARK_GRAY);
+		disgustButtonStyle.down = s.newDrawable("disgustButton", secondaryColor);
+		disgustButtonStyle.checked = s.newDrawable("disgustButton", secondaryColor);
 
 		Button.ButtonStyle fearButtonStyle = new Button.ButtonStyle();
 		fearButtonStyle.up = s.newDrawable("fearButton");
-		fearButtonStyle.down = s.newDrawable("fearButton", Color.DARK_GRAY);
-		fearButtonStyle.checked = s.newDrawable("fearButton", Color.DARK_GRAY);
+		fearButtonStyle.down = s.newDrawable("fearButton", secondaryColor);
+		fearButtonStyle.checked = s.newDrawable("fearButton", secondaryColor);
 
 		Button.ButtonStyle astonishmentButtonStyle = new Button.ButtonStyle();
 		astonishmentButtonStyle.up = s.newDrawable("astonishmentButton");
-		astonishmentButtonStyle.down = s.newDrawable("astonishmentButton", Color.DARK_GRAY);
-		astonishmentButtonStyle.checked = s.newDrawable("astonishmentButton", Color.DARK_GRAY);
+		astonishmentButtonStyle.down = s.newDrawable("astonishmentButton", secondaryColor);
+		astonishmentButtonStyle.checked = s.newDrawable("astonishmentButton", secondaryColor);
 
 
 
