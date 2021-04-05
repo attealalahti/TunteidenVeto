@@ -83,7 +83,9 @@ public class ChoiceScreen extends Screen {
         } else {
             //float currentY = margin * 2 + buttonHeight;
             float currentY = margin + buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - boxHeight * 0.5f;
-            answerBoxes.addActor(new AnswerBoxMovable("< Siirry eteenpäin >", xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(0)));
+            AnswerBoxMovable arrowBox = new AnswerBoxMovable(null, xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(0));
+            arrowBox.getBackground().setStyle(skin.get("arrow", Label.LabelStyle.class));
+            answerBoxes.addActor(arrowBox);
             currentY += roomForAnswers / (float) (getChoices().size()+2);
             game.addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
         }

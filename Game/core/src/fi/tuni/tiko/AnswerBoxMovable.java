@@ -127,6 +127,7 @@ public class AnswerBoxMovable extends AnswerBox {
                         @Override
                         public void run() {
 
+                            /*
                             if (finalEdge) {
                                 atEdge = true;
                                 getBackground().setStyle(skin.get("answer_highlighted", Label.LabelStyle.class));
@@ -134,7 +135,9 @@ public class AnswerBoxMovable extends AnswerBox {
                                 getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
                             }
 
-                            /*
+                             */
+
+
                             if (finalEdge) {
                                 atEdge = true;
                             }
@@ -147,7 +150,7 @@ public class AnswerBoxMovable extends AnswerBox {
                                     }
                                 }
                             }
-                             */
+
                         }
                     })));
                 }

@@ -30,6 +30,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture bigBoxTexture;
 	private Texture settingsTexture;
 	private Texture settingsPressedTexture;
+	private Texture arrowBoxTexture;
 	private Texture empty;
 	private Texture feelingMeterTexture;
 	private Texture musicOnTexture;
@@ -130,6 +131,7 @@ public class MainGame extends ApplicationAdapter {
 
 		settingsPressedTexture = new Texture("hdpi/hamburgermenu_pressedhdpi.png");
 		boxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
+		arrowBoxTexture = new Texture("hdpi/arrowboxhdpi.png");
 
 		skin = createSkin();
 
@@ -390,6 +392,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("highlighted_box", boxHighlightedTexture);
 		s.add("immobile_box", immobileBoxTexture);
 		s.add("big_box", bigBoxTexture);
+		s.add("arrow_box", arrowBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
 		s.add("settings", settingsTexture);
@@ -427,6 +430,10 @@ public class MainGame extends ApplicationAdapter {
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
 		questionStyle.background = s.newDrawable("big_box");
 		questionStyle.font = s.getFont("font");
+
+		Label.LabelStyle arrowStyle = new Label.LabelStyle();
+		arrowStyle.background = s.newDrawable("arrow_box");
+		arrowStyle.font = s.getFont("default");
 
 		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
 		textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
@@ -507,6 +514,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("answer_static", immobileAnswerStyle);
 		s.add("answer_highlighted", answerHighlightedStyle);
 		s.add("question", questionStyle);
+		s.add("arrow", arrowStyle);
 		s.add("feelings", feelingsButtonStyle);
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
