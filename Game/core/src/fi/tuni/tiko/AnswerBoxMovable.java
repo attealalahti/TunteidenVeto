@@ -111,7 +111,7 @@ public class AnswerBoxMovable extends AnswerBox {
                 }
                 final boolean finalEdge = movingToEdge;
 
-                if (actionConfirmed) {
+                if (actionConfirmed && moveX != getX()) {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
                         public void run() {
@@ -119,7 +119,7 @@ public class AnswerBoxMovable extends AnswerBox {
                             c.nextScreen(screenLink);
                         }
                     })));
-                } else {
+                } else if (moveX != getX()) {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
                         public void run() {

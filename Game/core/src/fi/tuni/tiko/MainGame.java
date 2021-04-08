@@ -24,12 +24,14 @@ import java.util.ArrayList;
 
 public class MainGame extends ApplicationAdapter {
 	private Texture img;
-	private Texture boxTexture;
-	private Texture boxHighlightedTexture;
+	private Texture answerBoxTexture;
+	private Texture answerBoxHighlightedTexture;
 	private Texture immobileBoxTexture;
-	private Texture bigBoxTexture;
+	private Texture questionBoxTexture;
+	private Texture bigQuestionBoxTexture;
 	private Texture settingsTexture;
 	private Texture settingsPressedTexture;
+	private Texture mainMenuTexture;
 	private Texture arrowBoxTexture;
 	private Texture empty;
 	private Texture feelingMeterTexture;
@@ -112,10 +114,11 @@ public class MainGame extends ApplicationAdapter {
 		fontSize = getFontSize();
 
 
-		boxTexture = new Texture(getPath("box"));
+		answerBoxTexture = new Texture(getPath("box"));
 		immobileBoxTexture = new Texture(getPath("box2"));
-		bigBoxTexture = new Texture(getPath("textbox"));
+		questionBoxTexture = new Texture(getPath("textbox"));
 		settingsTexture = new Texture(getPath("hamburgermenu"));
+		mainMenuTexture = new Texture(getPath("mainmenubutton"));
 		empty = new Texture(getPath("button"));
 		feelingMeterTexture = new Texture(getPath("meter"));
 		musicOnTexture = new Texture(getPath("music_on"));
@@ -143,8 +146,9 @@ public class MainGame extends ApplicationAdapter {
 		img = new Texture("badlogic.jpg");
 
 		settingsPressedTexture = new Texture("hdpi/hamburgermenu_pressedhdpi.png");
-		boxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
+		answerBoxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
 		arrowBoxTexture = new Texture("hdpi/arrowboxhdpi.png");
+		bigQuestionBoxTexture = new Texture("hdpi/bigtextboxhdpi.png");
 
 		skin = createSkin();
 
@@ -427,14 +431,16 @@ public class MainGame extends ApplicationAdapter {
 		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
-		s.add("answer_box", boxTexture);
-		s.add("highlighted_box", boxHighlightedTexture);
+		s.add("answer_box", answerBoxTexture);
+		s.add("highlighted_box", answerBoxHighlightedTexture);
 		s.add("immobile_box", immobileBoxTexture);
-		s.add("big_box", bigBoxTexture);
+		s.add("questionBox", questionBoxTexture);
+		s.add("bigQuestionBox", bigQuestionBoxTexture);
 		s.add("arrow_box", arrowBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
 		s.add("settings", settingsTexture);
+		s.add("mainMenu", mainMenuTexture);
 		s.add("empty", empty);
 		s.add("meter", feelingMeterTexture);
 		s.add("soundOn", soundOnTexture);
@@ -475,8 +481,12 @@ public class MainGame extends ApplicationAdapter {
 		immobileAnswerStyle.font = s.getFont("default");
 
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
-		questionStyle.background = s.newDrawable("big_box");
+		questionStyle.background = s.newDrawable("questionBox");
 		questionStyle.font = s.getFont("font");
+
+		Label.LabelStyle questionStyleBig = new Label.LabelStyle();
+		questionStyleBig.background = s.newDrawable("bigQuestionBox");
+		questionStyleBig.font = s.getFont("font");
 
 		Label.LabelStyle arrowStyle = new Label.LabelStyle();
 		arrowStyle.background = s.newDrawable("arrow_box");
@@ -508,8 +518,8 @@ public class MainGame extends ApplicationAdapter {
 		musicStyle.checkedDown = s.newDrawable("musicOn", secondaryColor);
 
 		Button.ButtonStyle exitStyle = new Button.ButtonStyle();
-		exitStyle.up = s.newDrawable("empty");
-		exitStyle.down = s.newDrawable("empty", secondaryColor);
+		exitStyle.up = s.newDrawable("mainMenu");
+		exitStyle.down = s.newDrawable("mainMenu", secondaryColor);
 
 		Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
 		buttonStyleAlt.up = s.newDrawable("test");
@@ -592,6 +602,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("answer_static", immobileAnswerStyle);
 		s.add("answer_highlighted", answerHighlightedStyle);
 		s.add("question", questionStyle);
+		s.add("bigQuestion", questionStyleBig);
 		s.add("arrow", arrowStyle);
 		s.add("feelings", feelingsButtonStyle);
 		s.add("alt", buttonStyleAlt);
@@ -782,8 +793,8 @@ public class MainGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		img.dispose();
-		boxTexture.dispose();
-		bigBoxTexture.dispose();
+		answerBoxTexture.dispose();
+		questionBoxTexture.dispose();
 		settingsTexture.dispose();
 		empty.dispose();
 	}

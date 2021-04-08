@@ -26,8 +26,8 @@ public class ChoiceScreen extends Screen {
     private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
-    private final float questionBoxHeight = windowHeight * 0.4f;
-    private final float roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
+    private final int questionSizeThreshold = 30;
+    float roomForAnswers;
 
     /** Creates a new ChoiceScreen.
      *
@@ -40,6 +40,14 @@ public class ChoiceScreen extends Screen {
         super(screenID, answers, screenLinks);
         this.answerEffects = answerEffects;
 
+        float questionBoxHeight = windowHeight * 0.4f;
+        String questionBoxStyle = "question";
+        if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
+            questionBoxHeight = windowHeight * 0.6f;
+            questionBoxStyle = "bigQuestion";
+        }
+        roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
+
         // Create groups for easy access of different elements
         game = new Group();
         addActor(game);
@@ -48,7 +56,7 @@ public class ChoiceScreen extends Screen {
 
         // Create the question text box
         float roomLeft = windowHeight - (answers.size() * (boxHeight + margin) + margin + buttonHeight + margin);
-        Label questionBackground = new Label(null, skin, "question");
+        Label questionBackground = new Label(null, skin, questionBoxStyle);
         //questionBackground.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
         questionBackground.setBounds(xBox, windowHeight - questionBoxHeight - margin, boxWidth, questionBoxHeight);
 
