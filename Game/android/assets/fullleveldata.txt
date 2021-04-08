@@ -679,10 +679,10 @@
 199 Vastaat poliittisesti ymmärtäväsi molempia kantoja.
 ---
 198 Puolet porukasta tuohtuu vastauksestasi ja puolet ovat haltioissaan tuestasi. Tuntuu, että aihe menee ihmisillä kunnolla tunteisiin: miten tämä voikin olla niin iso asia, että siitä kannattaa riidellä?
-200 HÄMMENNYS +10
+203 HÄMMENNYS +10
 ---
 199 Saat hiukan paheksuvia tuhahduksia, kun et halua ottaa asiaan vahvasti kantaa, mutta se myös purkaa kiristynyttä ilmapiiriä. Juttelu jatkuu kevyemmissä merkeissä. Miten se nyt olikaan niin iso asia?
-200 ILO +5, HÄMMENNYS +5
+203 ILO +5, HÄMMENNYS +5
 ---
 198 Keittiöporukan hauskanpito ja naureskelu näyttää loppuvan välittömästi kun saavut paikalle. Pieni epäilys alkaa kalvaa mieltästi: nauroivatkohan he sinulle?
 201 Luota siihen, etteivät he sinulle nauraneet.
