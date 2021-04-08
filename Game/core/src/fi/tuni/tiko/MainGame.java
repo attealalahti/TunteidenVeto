@@ -54,6 +54,14 @@ public class MainGame extends ApplicationAdapter {
 	private Texture happinessButtonTexture;
 	private Texture loveButtonTexture;
 	private Texture sadnessButtonTexture;
+	private Texture angerButtonPressedTexture;
+	private Texture astonishmentButtonPressedTexture;
+	private Texture disgustButtonPressedTexture;
+	private Texture fearButtonPressedTexture;
+	private Texture happinessButtonPressedTexture;
+	private Texture loveButtonPressedTexture;
+	private Texture sadnessButtonPressedTexture;
+
 
 	private ArrayList<ChoiceScreen> screens;
 	private Screen currentScreen;
@@ -133,14 +141,23 @@ public class MainGame extends ApplicationAdapter {
 		happinessTexture = new Texture(getPath("joy"));
 		loveTexture = new Texture(getPath("love"));
 		sadnessTexture = new Texture(getPath("sadness"));
-		String button = "_button";
-		angerButtonTexture = new Texture(getPath("anger"+button));
-		astonishmentButtonTexture = new Texture(getPath("astonishment"+button));
-		disgustButtonTexture = new Texture(getPath("disgust"+button));
-		fearButtonTexture = new Texture(getPath("fear"+button));
-		happinessButtonTexture = new Texture(getPath("joy"+button));
-		loveButtonTexture = new Texture(getPath("love"+button));
-		sadnessButtonTexture = new Texture(getPath("sadness"+button));
+		String modification = "_button";
+		angerButtonTexture = new Texture(getPath("anger"+modification));
+		astonishmentButtonTexture = new Texture(getPath("astonishment"+modification));
+		disgustButtonTexture = new Texture(getPath("disgust"+modification));
+		fearButtonTexture = new Texture(getPath("fear"+modification));
+		happinessButtonTexture = new Texture(getPath("joy"+modification));
+		loveButtonTexture = new Texture(getPath("love"+modification));
+		sadnessButtonTexture = new Texture(getPath("sadness"+modification));
+		modification = "_pressed";
+		angerButtonPressedTexture = new Texture(getPath("anger"+modification));
+		astonishmentButtonPressedTexture = new Texture(getPath("astonishment"+modification));
+		disgustButtonPressedTexture = new Texture(getPath("disgust"+modification));
+		fearButtonPressedTexture = new Texture(getPath("fear"+modification));
+		happinessButtonPressedTexture = new Texture(getPath("joy"+modification));
+		loveButtonPressedTexture = new Texture(getPath("love"+modification));
+		sadnessButtonPressedTexture = new Texture(getPath("sadness"+modification));
+
 
 
 		img = new Texture("badlogic.jpg");
@@ -464,6 +481,14 @@ public class MainGame extends ApplicationAdapter {
 		s.add("happinessButton", happinessButtonTexture);
 		s.add("loveButton", loveButtonTexture);
 		s.add("sadnessButton", sadnessButtonTexture);
+		s.add("angerButtonPressed", angerButtonPressedTexture);
+		s.add("astonishmentButtonPressed", astonishmentButtonPressedTexture);
+		s.add("disgustButtonPressed", disgustButtonPressedTexture);
+		s.add("fearButtonPressed", fearButtonPressedTexture);
+		s.add("happinessButtonPressed", happinessButtonPressedTexture);
+		s.add("loveButtonPressed", loveButtonPressedTexture);
+		s.add("sadnessButtonPressed", sadnessButtonPressedTexture);
+
 
 
 		s.add("settings_pressed", settingsPressedTexture);
@@ -563,38 +588,38 @@ public class MainGame extends ApplicationAdapter {
 
 		Button.ButtonStyle happinessButtonStyle = new Button.ButtonStyle();
 		happinessButtonStyle.up = s.newDrawable("happinessButton");
-		happinessButtonStyle.down = s.newDrawable("happinessButton", secondaryColor);
-		happinessButtonStyle.checked = s.newDrawable("happinessButton", secondaryColor);
+		happinessButtonStyle.down = s.newDrawable("happinessButtonPressed");
+		happinessButtonStyle.checked = s.newDrawable("happinessButtonPressed");
 
 		Button.ButtonStyle sadnessButtonStyle = new Button.ButtonStyle();
 		sadnessButtonStyle.up = s.newDrawable("sadnessButton");
-		sadnessButtonStyle.down = s.newDrawable("sadnessButton", secondaryColor);
-		sadnessButtonStyle.checked = s.newDrawable("sadnessButton", secondaryColor);
+		sadnessButtonStyle.down = s.newDrawable("sadnessButtonPressed");
+		sadnessButtonStyle.checked = s.newDrawable("sadnessButtonPressed");
 
 		Button.ButtonStyle angerButtonStyle = new Button.ButtonStyle();
 		angerButtonStyle.up = s.newDrawable("angerButton");
-		angerButtonStyle.down = s.newDrawable("angerButton", secondaryColor);
-		angerButtonStyle.checked = s.newDrawable("angerButton", secondaryColor);
+		angerButtonStyle.down = s.newDrawable("angerButtonPressed");
+		angerButtonStyle.checked = s.newDrawable("angerButtonPressed");
 
 		Button.ButtonStyle loveButtonStyle = new Button.ButtonStyle();
 		loveButtonStyle.up = s.newDrawable("loveButton");
-		loveButtonStyle.down = s.newDrawable("loveButton", secondaryColor);
-		loveButtonStyle.checked = s.newDrawable("loveButton", secondaryColor);
+		loveButtonStyle.down = s.newDrawable("loveButtonPressed");
+		loveButtonStyle.checked = s.newDrawable("loveButtonPressed");
 
 		Button.ButtonStyle disgustButtonStyle = new Button.ButtonStyle();
 		disgustButtonStyle.up = s.newDrawable("disgustButton");
-		disgustButtonStyle.down = s.newDrawable("disgustButton", secondaryColor);
-		disgustButtonStyle.checked = s.newDrawable("disgustButton", secondaryColor);
+		disgustButtonStyle.down = s.newDrawable("disgustButtonPressed");
+		disgustButtonStyle.checked = s.newDrawable("disgustButtonPressed");
 
 		Button.ButtonStyle fearButtonStyle = new Button.ButtonStyle();
 		fearButtonStyle.up = s.newDrawable("fearButton");
-		fearButtonStyle.down = s.newDrawable("fearButton", secondaryColor);
-		fearButtonStyle.checked = s.newDrawable("fearButton", secondaryColor);
+		fearButtonStyle.down = s.newDrawable("fearButtonPressed");
+		fearButtonStyle.checked = s.newDrawable("fearButtonPressed");
 
 		Button.ButtonStyle astonishmentButtonStyle = new Button.ButtonStyle();
 		astonishmentButtonStyle.up = s.newDrawable("astonishmentButton");
-		astonishmentButtonStyle.down = s.newDrawable("astonishmentButton", secondaryColor);
-		astonishmentButtonStyle.checked = s.newDrawable("astonishmentButton", secondaryColor);
+		astonishmentButtonStyle.down = s.newDrawable("astonishmentButtonPressed");
+		astonishmentButtonStyle.checked = s.newDrawable("astonishmentButtonPressed");
 
 
 

@@ -26,7 +26,7 @@ public class ChoiceScreen extends Screen {
     private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
-    private final int questionSizeThreshold = 30;
+    private final int questionSizeThreshold = 200;
     float roomForAnswers;
 
     /** Creates a new ChoiceScreen.
