@@ -63,7 +63,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture sadnessButtonPressedTexture;
 
 
-	private ArrayList<ChoiceScreen> screens;
+	private ArrayList<Screen> screens;
 	private Screen currentScreen;
 	private Group meters;
 	private Button feelingMeterButton;
@@ -173,7 +173,7 @@ public class MainGame extends ApplicationAdapter {
 		feelingMeterButton = createFeelingMeterButton();
 		settings = createSettings();
 		meters = createMeters();
-		screens = createChoiceScreens();
+		screens = createScreens();
 		loadProgress();
 		currentScreen = screens.get(currentScreenID);
 		lastFrameCurrentScreen = currentScreen;
@@ -191,12 +191,22 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(currentBackgroundColor.r, currentBackgroundColor.g, currentBackgroundColor.b, currentBackgroundColor.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		for (Screen screen: screens) {
-			if (screen.getScreenID() == currentScreenID) {
-				currentScreen = screen;
+		for (int i = 0; i < screens.size(); i++) {
+			if (screens.get(i).getScreenID() == currentScreenID) {
+				currentScreen = screens.get(i);
+				if (screens.get(i).getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
+					screens.set(i, new ChoiceScreen(
+							screens.get(i).getScreenID(),
+							((ChoiceScreen)screens.get(i)).getQuestion(),
+							screens.get(i).getChoices(),
+							screens.get(i).getScreenLinks(),
+							((ChoiceScreen)screens.get(i)).getEffects()));
+					currentScreen = screens.get(i);
+				} else {
+
+				}
 			}
 		}
-
 		if (currentScreen.getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
 			((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 			updateMeters(((ChoiceScreen) currentScreen).getEffects());
@@ -208,6 +218,12 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
+	}
+	public ArrayList<Screen> createScreens() {
+		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens();
+		ArrayList<Screen> allScreens = new ArrayList<>();
+		allScreens.addAll(choiceScreens);
+		return allScreens;
 	}
 	public ArrayList<ChoiceScreen> createChoiceScreens() {
 		FileHandle handle = Gdx.files.internal("fullleveldata.txt");
@@ -803,7 +819,7 @@ public class MainGame extends ApplicationAdapter {
 		exitButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				screens = createChoiceScreens();
+				screens = createScreens();
 				currentScreenID = 0;
 				settingsButton.setChecked(false);
 				resetProgress();
