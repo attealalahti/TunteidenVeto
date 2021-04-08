@@ -165,7 +165,7 @@ public class MainGame extends ApplicationAdapter {
 		settingsPressedTexture = new Texture("hdpi/hamburgermenu_pressedhdpi.png");
 		answerBoxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
 		arrowBoxTexture = new Texture("hdpi/arrowboxhdpi.png");
-		bigQuestionBoxTexture = new Texture("hdpi/bigtextboxhdpi.png");
+		bigQuestionBoxTexture = new Texture("hdpi/biggertextboxhdpi.png");
 
 		skin = createSkin();
 
