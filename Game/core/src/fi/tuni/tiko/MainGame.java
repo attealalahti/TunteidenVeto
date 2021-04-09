@@ -698,23 +698,27 @@ public class MainGame extends ApplicationAdapter {
 		button.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				ChoiceScreen thisScreen = (ChoiceScreen) feelingMeterButton.getStage();
+				Screen thisScreen = (Screen) feelingMeterButton.getStage();
 				if (!feelingMeterButton.isChecked()) {
 					meters.addAction(Actions.fadeOut(FADE_TIME));
 					meters.toBack();
 					if (!settingsButton.isChecked()) {
-						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
-						thisScreen.answersSetPause(false);
-						thisScreen.getGameElements().toFront();
+						thisScreen.getElements().addAction(Actions.fadeIn(FADE_TIME));
+						if (thisScreen.getClass() == ChoiceScreen.class) {
+							((ChoiceScreen) thisScreen).answersSetPause(false);
+						}
+						thisScreen.getElements().toFront();
 						desiredBackgroundColor = lightBackgroundColor;
 					}
 				} else {
 					meters.addAction(Actions.fadeIn(FADE_TIME));
 					meters.toFront();
 					desiredBackgroundColor = darkBackgroundColor;
-					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
-					thisScreen.answersSetPause(true);
-					thisScreen.getGameElements().toBack();
+					thisScreen.getElements().addAction(Actions.fadeOut(FADE_TIME));
+					if (thisScreen.getClass() == ChoiceScreen.class) {
+						((ChoiceScreen) thisScreen).answersSetPause(true);
+					}
+					thisScreen.getElements().toBack();
 					if (settingsButton.isChecked()) {
 						settingsButton.setChecked(false);
 					}
@@ -762,23 +766,27 @@ public class MainGame extends ApplicationAdapter {
 		button.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				ChoiceScreen thisScreen = (ChoiceScreen) settingsButton.getStage();
+				Screen thisScreen = (Screen) settingsButton.getStage();
 				if (!settingsButton.isChecked()) {
 					settings.addAction(Actions.fadeOut(FADE_TIME));
 					settings.toBack();
 					if (!feelingMeterButton.isChecked()) {
-						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
-						thisScreen.answersSetPause(false);
-						thisScreen.getGameElements().toFront();
+						thisScreen.getElements().addAction(Actions.fadeIn(FADE_TIME));
+						if (thisScreen.getClass() == ChoiceScreen.class) {
+							((ChoiceScreen) thisScreen).answersSetPause(false);
+						}
+						thisScreen.getElements().toFront();
 						desiredBackgroundColor = lightBackgroundColor;
 					}
 				} else {
 					settings.addAction(Actions.fadeIn(FADE_TIME));
 					settings.toFront();
 					desiredBackgroundColor = darkBackgroundColor;
-					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
-					thisScreen.answersSetPause(true);
-					thisScreen.getGameElements().toBack();
+					thisScreen.getElements().addAction(Actions.fadeOut(FADE_TIME));
+					if (thisScreen.getClass() == ChoiceScreen.class) {
+						((ChoiceScreen) thisScreen).answersSetPause(true);
+					}
+					thisScreen.getElements().toBack();
 					if (feelingMeterButton.isChecked()) {
 						feelingMeterButton.setChecked(false);
 					}

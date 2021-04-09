@@ -19,7 +19,6 @@ import static fi.tuni.tiko.MainGame.skin;
  */
 public class ChoiceScreen extends Screen {
 
-    private Group game;
     private Group answerBoxes;
     private ArrayList<String> answerEffects;
     private final float boxWidth = windowWidth * 0.9f;
@@ -50,10 +49,6 @@ public class ChoiceScreen extends Screen {
         }
         roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
 
-        // Create groups for easy access of different elements
-        game = new Group();
-        addActor(game);
-
         createAnswerBoxes();
 
         // Create the question text box
@@ -78,7 +73,7 @@ public class ChoiceScreen extends Screen {
         Group questionBox = new Group();
         questionBox.addActor(questionBackground);
         questionBox.addActor(questionText);
-        game.addActor(questionBox);
+        getElements().addActor(questionBox);
     }
     public void createAnswerBoxes() {
         answerBoxes = new Group();
@@ -97,9 +92,9 @@ public class ChoiceScreen extends Screen {
             arrowBox.getBackground().setStyle(skin.get("arrow", Label.LabelStyle.class));
             answerBoxes.addActor(arrowBox);
             currentY += roomForAnswers / (float) (getChoices().size()+2);
-            game.addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
+            getElements().addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
         }
-        game.addActor(answerBoxes);
+        getElements().addActor(answerBoxes);
     }
 
     public void answersSetPause(boolean pause) {
@@ -120,10 +115,6 @@ public class ChoiceScreen extends Screen {
             ((AnswerBoxMovable) a).addRail();
         }
     }
-    public Group getGameElements() {
-        return game;
-    }
-
     public ArrayList<String> getEffects() {
         return answerEffects;
     }
