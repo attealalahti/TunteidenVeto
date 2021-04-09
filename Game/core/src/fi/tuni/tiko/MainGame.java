@@ -177,7 +177,7 @@ public class MainGame extends ApplicationAdapter {
 		loadProgress();
 		currentScreen = screens.get(currentScreenID);
 		lastFrameCurrentScreen = currentScreen;
-		((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 	}
 	public String getPath(String texture) {
 		pixelDensity = getPixelDensity();
@@ -207,11 +207,16 @@ public class MainGame extends ApplicationAdapter {
 				}
 			}
 		}
-		if (currentScreen.getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
-			((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
-			updateMeters(((ChoiceScreen) currentScreen).getEffects());
-			feelingMeterButton.setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
-			saveProgress();
+		if (currentScreen != lastFrameCurrentScreen) {
+			if (currentScreen.getClass() == ChoiceScreen.class) {
+				((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+				updateMeters(((ChoiceScreen) currentScreen).getEffects());
+				feelingMeterButton.setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
+				saveProgress();
+			} else {
+				currentScreen.addActor(settings);
+				settings.toBack();
+			}
 		}
 		lastFrameCurrentScreen = currentScreen;
 
