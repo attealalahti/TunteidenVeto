@@ -111,6 +111,7 @@ public class ChoiceScreen extends Screen {
         feelingMeterButton.toBack();
         meters.toBack();
         settings.toBack();
+
         for (Actor a: answerBoxes.getChildren()) {
             ((AnswerBoxMovable) a).addRail();
         }
