@@ -1,6 +1,8 @@
 package fi.tuni.tiko;
 
+import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -26,6 +28,8 @@ public class AnswerBoxMovable extends AnswerBox {
     private Label rail;
     private float startX;
     private float y;
+    private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
+
     /** Creates a new AnswerBox.
      * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
      * In the future, different backgrounds might require different text box sizes.
@@ -47,7 +51,7 @@ public class AnswerBoxMovable extends AnswerBox {
         addActor(rail);
         rail.toBack();
         getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
-
+        getTextBox().setStyle(skin.get("text", Label.LabelStyle.class));
         startX = getX();
 
 
@@ -77,12 +81,14 @@ public class AnswerBoxMovable extends AnswerBox {
                 }
                 if ((canMove || atEdge) && !paused) {
                     setX(Gdx.input.getX() - touchDifferenceX);
+
                 }
             }
             // Upon release moves to the center or the edges based on what is closest
             // If at the edge, can also move off the screen confirming the choice
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                AudioPlayer.playSound(swipeSound); // <<<<<<<<<<------------------------------------------------------------------------ MIKA TÄÄLLÄ SE SOUND PLAY ON!!!!!
                 currentlyTouched = false;
                 float moveX = startX;
                 boolean actionConfirmed = false;

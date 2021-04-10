@@ -21,6 +21,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import java.util.ArrayList;
 
+import sun.font.TrueTypeFont;
+
 
 public class MainGame extends ApplicationAdapter {
 	private Texture img;
@@ -98,7 +100,7 @@ public class MainGame extends ApplicationAdapter {
 
 	private String pixelDensity = "";
 	private int fontSize;
-
+	AudioPlayer audioPlayer;
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
@@ -108,8 +110,7 @@ public class MainGame extends ApplicationAdapter {
 		margin = windowHeight * 0.025f;
 		meterHeight = windowHeight * 0.1f;
 		fontSize = getFontSize();
-
-
+		audioPlayer = new AudioPlayer();
 
 		boxTexture = new Texture(getPath("box"));
 		immobileBoxTexture = new Texture(getPath("box2"));
@@ -185,6 +186,7 @@ public class MainGame extends ApplicationAdapter {
 
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
+		audioPlayer.playMenuMusic();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
 	public ArrayList<ChoiceScreen> createChoiceScreens() {
@@ -442,7 +444,9 @@ public class MainGame extends ApplicationAdapter {
 		s.add("musicOff", musicOffTexture);
 		s.add("rail_img", railTexture);
 		s.add("test", img);
-		s.add("font", createFont());
+		s.add("defaultFont", createFont("lato")); //<<<<<<<<<<<<<<<<<<<<------------- TÄÄÄLLÄ ON FONTIT MIKA
+		s.add("mediumItalicFont", createFont("latoMediumItalic"));
+		s.add("italicFont", createFont("latoItalic"));
 		s.add("anger", angerTexture);
 		s.add("astonishment", astonishmentTexture);
 		s.add("disgust", disgustTexture);
@@ -471,11 +475,11 @@ public class MainGame extends ApplicationAdapter {
 
 		Label.LabelStyle immobileAnswerStyle = new Label.LabelStyle();
 		immobileAnswerStyle.background = s.newDrawable("immobile_box");
-		immobileAnswerStyle.font = s.getFont("default");
+		immobileAnswerStyle.font = s.getFont("mediumItalicFont");
 
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
 		questionStyle.background = s.newDrawable("big_box");
-		questionStyle.font = s.getFont("font");
+		questionStyle.font = s.getFont("defaultFont");
 
 		Label.LabelStyle arrowStyle = new Label.LabelStyle();
 		arrowStyle.background = s.newDrawable("arrow_box");
@@ -483,7 +487,15 @@ public class MainGame extends ApplicationAdapter {
 
 		Label.LabelStyle textBoxStyle = new Label.LabelStyle();
 		textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
-		textBoxStyle.font = s.getFont("font");
+		textBoxStyle.font = s.getFont("defaultFont");
+
+		Label.LabelStyle emotionScore = new Label.LabelStyle();
+		emotionScore.background = s.newDrawable("white", Color.CLEAR);
+		emotionScore.font = s.getFont("mediumItalicFont");
+
+		Label.LabelStyle imageCaption = new Label.LabelStyle();
+		imageCaption.background = s.newDrawable("white", Color.CLEAR);
+		imageCaption.font = s.getFont("italicFont");
 
 		Button.ButtonStyle feelingsButtonStyle = new Button.ButtonStyle();
 		feelingsButtonStyle.up = s.newDrawable("empty");
@@ -595,6 +607,8 @@ public class MainGame extends ApplicationAdapter {
 		s.add("feelings", feelingsButtonStyle);
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
+		s.add("emotionScoreText", emotionScore);
+		s.add("imageCaptionText", imageCaption);
 		s.add("settings", settingsButtonStyle);
 		s.add("sound", soundStyle);
 		s.add("music", musicStyle);
@@ -626,8 +640,8 @@ public class MainGame extends ApplicationAdapter {
 	 * @return returns a BitmapFont
 	 * @author Mika Kivennenä
 	 */
-	public BitmapFont createFont() {
-		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/lato.ttf"));
+	public BitmapFont createFont(String nameOfFont) {
+		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/"+nameOfFont+".ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
 

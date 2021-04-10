@@ -25,7 +25,7 @@ public class AnswerBox extends Group {
      */
     public AnswerBox(CharSequence text, float x, float y, float width, float height) {
         background = new Label(null, skin, "answer_static");
-        textBox = new Label(text, skin, "text");
+        textBox = new Label(text, skin, "emotionScoreText");
         background.setBounds(x, y, width, height);
 
         // Calculating the dimensions of the text box
@@ -42,5 +42,9 @@ public class AnswerBox extends Group {
     }
     public Label getBackground() {
         return background;
+    }
+
+    public Label getTextBox() {
+        return textBox;
     }
 }
