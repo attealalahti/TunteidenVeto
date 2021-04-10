@@ -26,12 +26,14 @@ import sun.font.TrueTypeFont;
 
 public class MainGame extends ApplicationAdapter {
 	private Texture img;
-	private Texture boxTexture;
-	private Texture boxHighlightedTexture;
+	private Texture answerBoxTexture;
+	private Texture answerBoxHighlightedTexture;
 	private Texture immobileBoxTexture;
-	private Texture bigBoxTexture;
+	private Texture questionBoxTexture;
+	private Texture bigQuestionBoxTexture;
 	private Texture settingsTexture;
 	private Texture settingsPressedTexture;
+	private Texture mainMenuTexture;
 	private Texture arrowBoxTexture;
 	private Texture empty;
 	private Texture feelingMeterTexture;
@@ -54,8 +56,16 @@ public class MainGame extends ApplicationAdapter {
 	private Texture happinessButtonTexture;
 	private Texture loveButtonTexture;
 	private Texture sadnessButtonTexture;
+	private Texture angerButtonPressedTexture;
+	private Texture astonishmentButtonPressedTexture;
+	private Texture disgustButtonPressedTexture;
+	private Texture fearButtonPressedTexture;
+	private Texture happinessButtonPressedTexture;
+	private Texture loveButtonPressedTexture;
+	private Texture sadnessButtonPressedTexture;
 
-	private ArrayList<ChoiceScreen> screens;
+
+	private ArrayList<Screen> screens;
 	private Screen currentScreen;
 	private Group meters;
 	private Button feelingMeterButton;
@@ -82,6 +92,8 @@ public class MainGame extends ApplicationAdapter {
 	private Color desiredBackgroundColor = lightBackgroundColor;
 	private Color currentBackgroundColor = desiredBackgroundColor;
 	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
+
+	private Color secondaryColor = new Color(colorFraction * 234, colorFraction * 158, colorFraction * 128, 1);
 
 	public static int currentScreenID;
 	public static int windowWidth;
@@ -111,11 +123,11 @@ public class MainGame extends ApplicationAdapter {
 		meterHeight = windowHeight * 0.1f;
 		fontSize = getFontSize();
 		audioPlayer = new AudioPlayer();
-
-		boxTexture = new Texture(getPath("box"));
+		answerBoxTexture = new Texture(getPath("box"));
 		immobileBoxTexture = new Texture(getPath("box2"));
-		bigBoxTexture = new Texture(getPath("textbox"));
+		questionBoxTexture = new Texture(getPath("textbox"));
 		settingsTexture = new Texture(getPath("hamburgermenu"));
+		mainMenuTexture = new Texture(getPath("mainmenubutton"));
 		empty = new Texture(getPath("button"));
 		feelingMeterTexture = new Texture(getPath("meter"));
 		musicOnTexture = new Texture(getPath("music_on"));
@@ -130,21 +142,31 @@ public class MainGame extends ApplicationAdapter {
 		happinessTexture = new Texture(getPath("joy"));
 		loveTexture = new Texture(getPath("love"));
 		sadnessTexture = new Texture(getPath("sadness"));
-		String button = "_button";
-		angerButtonTexture = new Texture(getPath("anger"+button));
-		astonishmentButtonTexture = new Texture(getPath("astonishment"+button));
-		disgustButtonTexture = new Texture(getPath("disgust"+button));
-		fearButtonTexture = new Texture(getPath("fear"+button));
-		happinessButtonTexture = new Texture(getPath("joy"+button));
-		loveButtonTexture = new Texture(getPath("love"+button));
-		sadnessButtonTexture = new Texture(getPath("sadness"+button));
+		String modification = "_button";
+		angerButtonTexture = new Texture(getPath("anger"+modification));
+		astonishmentButtonTexture = new Texture(getPath("astonishment"+modification));
+		disgustButtonTexture = new Texture(getPath("disgust"+modification));
+		fearButtonTexture = new Texture(getPath("fear"+modification));
+		happinessButtonTexture = new Texture(getPath("joy"+modification));
+		loveButtonTexture = new Texture(getPath("love"+modification));
+		sadnessButtonTexture = new Texture(getPath("sadness"+modification));
+		modification = "_pressed";
+		angerButtonPressedTexture = new Texture(getPath("anger"+modification));
+		astonishmentButtonPressedTexture = new Texture(getPath("astonishment"+modification));
+		disgustButtonPressedTexture = new Texture(getPath("disgust"+modification));
+		fearButtonPressedTexture = new Texture(getPath("fear"+modification));
+		happinessButtonPressedTexture = new Texture(getPath("joy"+modification));
+		loveButtonPressedTexture = new Texture(getPath("love"+modification));
+		sadnessButtonPressedTexture = new Texture(getPath("sadness"+modification));
+
 
 
 		img = new Texture("badlogic.jpg");
 
 		settingsPressedTexture = new Texture("hdpi/hamburgermenu_pressedhdpi.png");
-		boxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
+		answerBoxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
 		arrowBoxTexture = new Texture("hdpi/arrowboxhdpi.png");
+		bigQuestionBoxTexture = new Texture("hdpi/biggertextboxhdpi.png");
 
 		skin = createSkin();
 
@@ -152,11 +174,11 @@ public class MainGame extends ApplicationAdapter {
 		feelingMeterButton = createFeelingMeterButton();
 		settings = createSettings();
 		meters = createMeters();
-		screens = createChoiceScreens();
+		screens = createScreens();
 		loadProgress();
 		currentScreen = screens.get(currentScreenID);
 		lastFrameCurrentScreen = currentScreen;
-		((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 	}
 	public String getPath(String texture) {
 		pixelDensity = getPixelDensity();
@@ -170,17 +192,32 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(currentBackgroundColor.r, currentBackgroundColor.g, currentBackgroundColor.b, currentBackgroundColor.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		for (Screen screen: screens) {
-			if (screen.getScreenID() == currentScreenID) {
-				currentScreen = screen;
+		for (int i = 0; i < screens.size(); i++) {
+			if (screens.get(i).getScreenID() == currentScreenID) {
+				currentScreen = screens.get(i);
+				if (screens.get(i).getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
+					screens.set(i, new ChoiceScreen(
+							screens.get(i).getScreenID(),
+							((ChoiceScreen)screens.get(i)).getQuestion(),
+							screens.get(i).getChoices(),
+							screens.get(i).getScreenLinks(),
+							((ChoiceScreen)screens.get(i)).getEffects()));
+					currentScreen = screens.get(i);
+				} else {
+
+				}
 			}
 		}
-
-		if (currentScreen.getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
-			((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
-			updateMeters(((ChoiceScreen) currentScreen).getEffects());
-			feelingMeterButton.setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
-			saveProgress();
+		if (currentScreen != lastFrameCurrentScreen) {
+			if (currentScreen.getClass() == ChoiceScreen.class) {
+				((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+				updateMeters(((ChoiceScreen) currentScreen).getEffects());
+				feelingMeterButton.setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
+				saveProgress();
+			} else {
+				currentScreen.addActor(settings);
+				settings.toBack();
+			}
 		}
 		lastFrameCurrentScreen = currentScreen;
 
@@ -189,8 +226,14 @@ public class MainGame extends ApplicationAdapter {
 		audioPlayer.playMenuMusic();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
+	public ArrayList<Screen> createScreens() {
+		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens();
+		ArrayList<Screen> allScreens = new ArrayList<>();
+		allScreens.addAll(choiceScreens);
+		return allScreens;
+	}
 	public ArrayList<ChoiceScreen> createChoiceScreens() {
-		FileHandle handle = Gdx.files.internal("test2leveldata.feel");
+		FileHandle handle = Gdx.files.internal("fullleveldata.txt");
 		String text = handle.readString();
 		String [] allLines = text.split("\\r?\\n");
 
@@ -428,14 +471,16 @@ public class MainGame extends ApplicationAdapter {
 		Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
 		pixmap.setColor(Color.WHITE);
 		pixmap.fill();
-		s.add("answer_box", boxTexture);
-		s.add("highlighted_box", boxHighlightedTexture);
+		s.add("answer_box", answerBoxTexture);
+		s.add("highlighted_box", answerBoxHighlightedTexture);
 		s.add("immobile_box", immobileBoxTexture);
-		s.add("big_box", bigBoxTexture);
+		s.add("questionBox", questionBoxTexture);
+		s.add("bigQuestionBox", bigQuestionBoxTexture);
 		s.add("arrow_box", arrowBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
 		s.add("settings", settingsTexture);
+		s.add("mainMenu", mainMenuTexture);
 		s.add("empty", empty);
 		s.add("meter", feelingMeterTexture);
 		s.add("soundOn", soundOnTexture);
@@ -461,6 +506,14 @@ public class MainGame extends ApplicationAdapter {
 		s.add("happinessButton", happinessButtonTexture);
 		s.add("loveButton", loveButtonTexture);
 		s.add("sadnessButton", sadnessButtonTexture);
+		s.add("angerButtonPressed", angerButtonPressedTexture);
+		s.add("astonishmentButtonPressed", astonishmentButtonPressedTexture);
+		s.add("disgustButtonPressed", disgustButtonPressedTexture);
+		s.add("fearButtonPressed", fearButtonPressedTexture);
+		s.add("happinessButtonPressed", happinessButtonPressedTexture);
+		s.add("loveButtonPressed", loveButtonPressedTexture);
+		s.add("sadnessButtonPressed", sadnessButtonPressedTexture);
+
 
 
 		s.add("settings_pressed", settingsPressedTexture);
@@ -478,8 +531,12 @@ public class MainGame extends ApplicationAdapter {
 		immobileAnswerStyle.font = s.getFont("mediumItalicFont");
 
 		Label.LabelStyle questionStyle = new Label.LabelStyle();
-		questionStyle.background = s.newDrawable("big_box");
+		questionStyle.background = s.newDrawable("questionBox");
 		questionStyle.font = s.getFont("defaultFont");
+
+		Label.LabelStyle questionStyleBig = new Label.LabelStyle();
+		questionStyleBig.background = s.newDrawable("bigQuestionBox");
+		questionStyleBig.font = s.getFont("font");
 
 		Label.LabelStyle arrowStyle = new Label.LabelStyle();
 		arrowStyle.background = s.newDrawable("arrow_box");
@@ -508,19 +565,19 @@ public class MainGame extends ApplicationAdapter {
 
 		Button.ButtonStyle soundStyle = new Button.ButtonStyle();
 		soundStyle.up = s.newDrawable("soundOff");
-		soundStyle.down = s.newDrawable("soundOff", Color.DARK_GRAY);
+		soundStyle.down = s.newDrawable("soundOff", secondaryColor);
 		soundStyle.checked = s.newDrawable("soundOn");
-		soundStyle.checkedDown = s.newDrawable("soundOn", Color.DARK_GRAY);
+		soundStyle.checkedDown = s.newDrawable("soundOn", secondaryColor);
 
 		Button.ButtonStyle musicStyle = new Button.ButtonStyle();
 		musicStyle.up = s.newDrawable("musicOff");
-		musicStyle.down = s.newDrawable("musicOff", Color.DARK_GRAY);
+		musicStyle.down = s.newDrawable("musicOff", secondaryColor);
 		musicStyle.checked = s.newDrawable("musicOn");
-		musicStyle.checkedDown = s.newDrawable("musicOn", Color.DARK_GRAY);
+		musicStyle.checkedDown = s.newDrawable("musicOn", secondaryColor);
 
 		Button.ButtonStyle exitStyle = new Button.ButtonStyle();
-		exitStyle.up = s.newDrawable("empty");
-		exitStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
+		exitStyle.up = s.newDrawable("mainMenu");
+		exitStyle.down = s.newDrawable("mainMenu", secondaryColor);
 
 		Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
 		buttonStyleAlt.up = s.newDrawable("test");
@@ -564,38 +621,38 @@ public class MainGame extends ApplicationAdapter {
 
 		Button.ButtonStyle happinessButtonStyle = new Button.ButtonStyle();
 		happinessButtonStyle.up = s.newDrawable("happinessButton");
-		happinessButtonStyle.down = s.newDrawable("happinessButton", Color.DARK_GRAY);
-		happinessButtonStyle.checked = s.newDrawable("happinessButton", Color.DARK_GRAY);
+		happinessButtonStyle.down = s.newDrawable("happinessButtonPressed");
+		happinessButtonStyle.checked = s.newDrawable("happinessButtonPressed");
 
 		Button.ButtonStyle sadnessButtonStyle = new Button.ButtonStyle();
 		sadnessButtonStyle.up = s.newDrawable("sadnessButton");
-		sadnessButtonStyle.down = s.newDrawable("sadnessButton", Color.DARK_GRAY);
-		sadnessButtonStyle.checked = s.newDrawable("sadnessButton", Color.DARK_GRAY);
+		sadnessButtonStyle.down = s.newDrawable("sadnessButtonPressed");
+		sadnessButtonStyle.checked = s.newDrawable("sadnessButtonPressed");
 
 		Button.ButtonStyle angerButtonStyle = new Button.ButtonStyle();
 		angerButtonStyle.up = s.newDrawable("angerButton");
-		angerButtonStyle.down = s.newDrawable("angerButton", Color.DARK_GRAY);
-		angerButtonStyle.checked = s.newDrawable("angerButton", Color.DARK_GRAY);
+		angerButtonStyle.down = s.newDrawable("angerButtonPressed");
+		angerButtonStyle.checked = s.newDrawable("angerButtonPressed");
 
 		Button.ButtonStyle loveButtonStyle = new Button.ButtonStyle();
 		loveButtonStyle.up = s.newDrawable("loveButton");
-		loveButtonStyle.down = s.newDrawable("loveButton", Color.DARK_GRAY);
-		loveButtonStyle.checked = s.newDrawable("loveButton", Color.DARK_GRAY);
+		loveButtonStyle.down = s.newDrawable("loveButtonPressed");
+		loveButtonStyle.checked = s.newDrawable("loveButtonPressed");
 
 		Button.ButtonStyle disgustButtonStyle = new Button.ButtonStyle();
 		disgustButtonStyle.up = s.newDrawable("disgustButton");
-		disgustButtonStyle.down = s.newDrawable("disgustButton", Color.DARK_GRAY);
-		disgustButtonStyle.checked = s.newDrawable("disgustButton", Color.DARK_GRAY);
+		disgustButtonStyle.down = s.newDrawable("disgustButtonPressed");
+		disgustButtonStyle.checked = s.newDrawable("disgustButtonPressed");
 
 		Button.ButtonStyle fearButtonStyle = new Button.ButtonStyle();
 		fearButtonStyle.up = s.newDrawable("fearButton");
-		fearButtonStyle.down = s.newDrawable("fearButton", Color.DARK_GRAY);
-		fearButtonStyle.checked = s.newDrawable("fearButton", Color.DARK_GRAY);
+		fearButtonStyle.down = s.newDrawable("fearButtonPressed");
+		fearButtonStyle.checked = s.newDrawable("fearButtonPressed");
 
 		Button.ButtonStyle astonishmentButtonStyle = new Button.ButtonStyle();
 		astonishmentButtonStyle.up = s.newDrawable("astonishmentButton");
-		astonishmentButtonStyle.down = s.newDrawable("astonishmentButton", Color.DARK_GRAY);
-		astonishmentButtonStyle.checked = s.newDrawable("astonishmentButton", Color.DARK_GRAY);
+		astonishmentButtonStyle.down = s.newDrawable("astonishmentButtonPressed");
+		astonishmentButtonStyle.checked = s.newDrawable("astonishmentButtonPressed");
 
 
 
@@ -603,6 +660,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("answer_static", immobileAnswerStyle);
 		s.add("answer_highlighted", answerHighlightedStyle);
 		s.add("question", questionStyle);
+		s.add("bigQuestion", questionStyleBig);
 		s.add("arrow", arrowStyle);
 		s.add("feelings", feelingsButtonStyle);
 		s.add("alt", buttonStyleAlt);
@@ -659,23 +717,15 @@ public class MainGame extends ApplicationAdapter {
 		button.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				ChoiceScreen thisScreen = (ChoiceScreen) feelingMeterButton.getStage();
+				Screen thisScreen = (Screen) feelingMeterButton.getStage();
 				if (!feelingMeterButton.isChecked()) {
-					meters.addAction(Actions.fadeOut(FADE_TIME));
-					meters.toBack();
+					hideMeters();
 					if (!settingsButton.isChecked()) {
-						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
-						thisScreen.answersSetPause(false);
-						thisScreen.getGameElements().toFront();
-						desiredBackgroundColor = lightBackgroundColor;
+						showScreenElements(thisScreen);
 					}
 				} else {
-					meters.addAction(Actions.fadeIn(FADE_TIME));
-					meters.toFront();
-					desiredBackgroundColor = darkBackgroundColor;
-					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
-					thisScreen.answersSetPause(true);
-					thisScreen.getGameElements().toBack();
+					showMeters();
+					hideScreenElements(thisScreen);
 					if (settingsButton.isChecked()) {
 						settingsButton.setChecked(false);
 					}
@@ -683,6 +733,39 @@ public class MainGame extends ApplicationAdapter {
 			}
 		});
 		return button;
+	}
+	public void hideMeters() {
+		meters.addAction(Actions.fadeOut(FADE_TIME));
+		meters.toBack();
+	}
+	public void showMeters() {
+		meters.addAction(Actions.fadeIn(FADE_TIME));
+		meters.toFront();
+		desiredBackgroundColor = darkBackgroundColor;
+	}
+	public void showSettings() {
+		settings.addAction(Actions.fadeIn(FADE_TIME));
+		settings.toFront();
+		desiredBackgroundColor = darkBackgroundColor;
+	}
+	public void hideSettings() {
+		settings.addAction(Actions.fadeOut(FADE_TIME));
+		settings.toBack();
+	}
+	public void showScreenElements(Screen thisScreen) {
+		thisScreen.getElements().addAction(Actions.fadeIn(FADE_TIME));
+		if (thisScreen.getClass() == ChoiceScreen.class) {
+			((ChoiceScreen) thisScreen).answersSetPause(false);
+		}
+		thisScreen.getElements().toFront();
+		desiredBackgroundColor = lightBackgroundColor;
+	}
+	public void hideScreenElements(Screen thisScreen) {
+		thisScreen.getElements().addAction(Actions.fadeOut(FADE_TIME));
+		if (thisScreen.getClass() == ChoiceScreen.class) {
+			((ChoiceScreen) thisScreen).answersSetPause(true);
+		}
+		thisScreen.getElements().toBack();
 	}
 	public Group createMeters() {
 		Group result = new Group();
@@ -723,23 +806,15 @@ public class MainGame extends ApplicationAdapter {
 		button.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				ChoiceScreen thisScreen = (ChoiceScreen) settingsButton.getStage();
+				Screen thisScreen = (Screen) settingsButton.getStage();
 				if (!settingsButton.isChecked()) {
-					settings.addAction(Actions.fadeOut(FADE_TIME));
-					settings.toBack();
+					hideSettings();
 					if (!feelingMeterButton.isChecked()) {
-						thisScreen.getGameElements().addAction(Actions.fadeIn(FADE_TIME));
-						thisScreen.answersSetPause(false);
-						thisScreen.getGameElements().toFront();
-						desiredBackgroundColor = lightBackgroundColor;
+						showScreenElements(thisScreen);
 					}
 				} else {
-					settings.addAction(Actions.fadeIn(FADE_TIME));
-					settings.toFront();
-					desiredBackgroundColor = darkBackgroundColor;
-					thisScreen.getGameElements().addAction(Actions.fadeOut(FADE_TIME));
-					thisScreen.answersSetPause(true);
-					thisScreen.getGameElements().toBack();
+					showSettings();
+					hideScreenElements(thisScreen);
 					if (feelingMeterButton.isChecked()) {
 						feelingMeterButton.setChecked(false);
 					}
@@ -780,7 +855,7 @@ public class MainGame extends ApplicationAdapter {
 		exitButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				screens = createChoiceScreens();
+				screens = createScreens();
 				currentScreenID = 0;
 				settingsButton.setChecked(false);
 				resetProgress();
@@ -795,8 +870,8 @@ public class MainGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		img.dispose();
-		boxTexture.dispose();
-		bigBoxTexture.dispose();
+		answerBoxTexture.dispose();
+		questionBoxTexture.dispose();
 		settingsTexture.dispose();
 		empty.dispose();
 	}

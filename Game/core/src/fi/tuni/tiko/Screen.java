@@ -1,5 +1,6 @@
 package fi.tuni.tiko;
 
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ abstract public class Screen extends Stage {
     private int screenID;
     private ArrayList<String> choices;
     private ArrayList<Integer> screenLinks;
+    private Group elements = new Group();
 
     /** Creates a new screen.
      *
@@ -24,6 +26,7 @@ abstract public class Screen extends Stage {
         this.screenID = screenID;
         this.choices = choices;
         this.screenLinks = screenLinks;
+        addActor(elements);
         if (choices.size() != screenLinks.size()) {
             throw new IllegalArgumentException("Choice and screen link amounts don't match.");
         }
@@ -72,5 +75,13 @@ abstract public class Screen extends Stage {
             screenIndex++;
         }
         return stringArr;
+    }
+
+    /**
+     *
+     * @return a group that should contain all visual elements of the screen
+     */
+    public Group getElements() {
+        return elements;
     }
 }

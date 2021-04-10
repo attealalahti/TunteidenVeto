@@ -25,11 +25,11 @@ public class AnswerBoxMovable extends AnswerBox {
     private boolean currentlyTouched = false;
     private boolean paused = false;
     private float touchDifferenceX;
-    private Label rail;
     private float startX;
     private float y;
     private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
 
+    private float height;
     /** Creates a new AnswerBox.
      * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
      * In the future, different backgrounds might require different text box sizes.
@@ -45,11 +45,8 @@ public class AnswerBoxMovable extends AnswerBox {
         super(text, x, y, width, height);
         this.screenLink = screenLink;
         this.y = y;
+        this.height = height;
 
-        rail = new Label(null, skin, "rail");
-        rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
-        addActor(rail);
-        rail.toBack();
         getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
         getTextBox().setStyle(skin.get("text", Label.LabelStyle.class));
         startX = getX();
@@ -120,7 +117,7 @@ public class AnswerBoxMovable extends AnswerBox {
                 }
                 final boolean finalEdge = movingToEdge;
 
-                if (actionConfirmed) {
+                if (actionConfirmed && moveX != getX()) {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
                         public void run() {
@@ -128,22 +125,10 @@ public class AnswerBoxMovable extends AnswerBox {
                             c.nextScreen(screenLink);
                         }
                     })));
-                } else {
+                } else if (moveX != getX()) {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
                         public void run() {
-
-                            /*
-                            if (finalEdge) {
-                                atEdge = true;
-                                getBackground().setStyle(skin.get("answer_highlighted", Label.LabelStyle.class));
-                            } else {
-                                getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
-                            }
-
-                             */
-
-
                             if (finalEdge) {
                                 atEdge = true;
                             }
@@ -169,5 +154,12 @@ public class AnswerBoxMovable extends AnswerBox {
      */
     public void setPause(boolean pause) {
         paused = pause;
+    }
+
+    public void addRail() {
+        Label rail = new Label(null, skin, "rail");
+        rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
+        getParent().getParent().addActor(rail);
+        rail.toBack();
     }
 }

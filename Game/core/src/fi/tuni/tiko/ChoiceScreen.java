@@ -19,15 +19,15 @@ import static fi.tuni.tiko.MainGame.skin;
  */
 public class ChoiceScreen extends Screen {
 
-    private Group game;
     private Group answerBoxes;
     private ArrayList<String> answerEffects;
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
     private final float xBox = (windowWidth - boxWidth) / 2f;
-    private final float questionBoxHeight = windowHeight * 0.4f;
-    private final float roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
+    private final int questionSizeThreshold = 200;
+    private float roomForAnswers;
+    private String question;
 
     /** Creates a new ChoiceScreen.
      *
@@ -38,17 +38,22 @@ public class ChoiceScreen extends Screen {
      */
     public ChoiceScreen(int screenID, String question, final ArrayList<String> answers, ArrayList<Integer> screenLinks, ArrayList<String> answerEffects) {
         super(screenID, answers, screenLinks);
+        this.question = question;
         this.answerEffects = answerEffects;
 
-        // Create groups for easy access of different elements
-        game = new Group();
-        addActor(game);
+        float questionBoxHeight = windowHeight * 0.4f;
+        String questionBoxStyle = "question";
+        if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
+            questionBoxHeight = windowHeight * 0.6f;
+            questionBoxStyle = "bigQuestion";
+        }
+        roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
 
         createAnswerBoxes();
 
         // Create the question text box
         float roomLeft = windowHeight - (answers.size() * (boxHeight + margin) + margin + buttonHeight + margin);
-        Label questionBackground = new Label(null, skin, "question");
+        Label questionBackground = new Label(null, skin, questionBoxStyle);
         //questionBackground.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
         questionBackground.setBounds(xBox, windowHeight - questionBoxHeight - margin, boxWidth, questionBoxHeight);
 
@@ -68,7 +73,7 @@ public class ChoiceScreen extends Screen {
         Group questionBox = new Group();
         questionBox.addActor(questionBackground);
         questionBox.addActor(questionText);
-        game.addActor(questionBox);
+        getElements().addActor(questionBox);
     }
     public void createAnswerBoxes() {
         answerBoxes = new Group();
@@ -87,9 +92,9 @@ public class ChoiceScreen extends Screen {
             arrowBox.getBackground().setStyle(skin.get("arrow", Label.LabelStyle.class));
             answerBoxes.addActor(arrowBox);
             currentY += roomForAnswers / (float) (getChoices().size()+2);
-            game.addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
+            getElements().addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
         }
-        game.addActor(answerBoxes);
+        getElements().addActor(answerBoxes);
     }
 
     public void answersSetPause(boolean pause) {
@@ -106,12 +111,16 @@ public class ChoiceScreen extends Screen {
         feelingMeterButton.toBack();
         meters.toBack();
         settings.toBack();
-    }
-    public Group getGameElements() {
-        return game;
-    }
 
+        for (Actor a: answerBoxes.getChildren()) {
+            ((AnswerBoxMovable) a).addRail();
+        }
+    }
     public ArrayList<String> getEffects() {
         return answerEffects;
+    }
+
+    public String getQuestion() {
+        return question;
     }
 }
