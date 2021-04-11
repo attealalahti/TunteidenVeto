@@ -67,6 +67,7 @@ public class MainGame extends ApplicationAdapter {
 
 	private ArrayList<Screen> screens;
 	private Screen currentScreen;
+	private MainMenuScreen mainMenu;
 	private Group meters;
 	private Button feelingMeterButton;
 	private Group settings;
@@ -96,6 +97,8 @@ public class MainGame extends ApplicationAdapter {
 	private Color secondaryColor = new Color(colorFraction * 234, colorFraction * 158, colorFraction * 128, 1);
 
 	public static int currentScreenID;
+	public static int saveScreenID;
+	public static int mainMenuChecker;
 	public static int windowWidth;
 	public static int windowHeight;
 	public static Skin skin;
@@ -176,10 +179,43 @@ public class MainGame extends ApplicationAdapter {
 		meters = createMeters();
 		screens = createScreens();
 		loadProgress();
-		currentScreen = screens.get(currentScreenID);
-		lastFrameCurrentScreen = currentScreen;
+
+		ArrayList<String> choices = new ArrayList<String>();
+		choices.add("POISTU PELISTÄ");
+		choices.add("ASETUKSET");
+		choices.add("JATKA PELIÄ");
+		choices.add("UUSI PELI");
+		ArrayList<Integer> menuScreenLinks = new ArrayList<Integer>();
+		menuScreenLinks.add(4);
+		menuScreenLinks.add(3);
+		menuScreenLinks.add(2);
+		menuScreenLinks.add(1);
+		mainMenu = new MainMenuScreen(999, choices, menuScreenLinks);
+		currentScreen = mainMenu;
+		currentScreenID = 999;
+
+		//currentScreen = screens.get(currentScreenID);
+		//lastFrameCurrentScreen = currentScreen;
 		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 	}
+
+	public void checkMenuChoice() {
+		mainMenuChecker = MainMenuScreen.getChecker();
+
+		if (mainMenuChecker == 1) {
+			resetProgress();
+			loadProgress();
+			currentScreenID = 266;
+		} else if (mainMenuChecker == 2) {
+			currentScreenID = saveScreenID;
+		} else if (mainMenuChecker == 3) {
+			hideScreenElements(mainMenu);
+			showSettings();
+		} else if (mainMenuChecker == 4) {
+			Gdx.app.exit();
+		}
+	}
+
 	public String getPath(String texture) {
 		pixelDensity = getPixelDensity();
 		String folderToUse = pixelDensity + "/";
@@ -225,6 +261,10 @@ public class MainGame extends ApplicationAdapter {
 		currentScreen.draw();
 		audioPlayer.playMenuMusic();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
+
+		if (currentScreen == mainMenu) {
+			checkMenuChoice();
+		}
 	}
 	public ArrayList<Screen> createScreens() {
 		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens();
@@ -300,6 +340,7 @@ public class MainGame extends ApplicationAdapter {
 	public void loadProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		currentScreenID = prefs.getInteger("screen", 0);
+		saveScreenID = currentScreenID;
 		float meterDefault = 50;
 		happiness.setValue(prefs.getFloat("happiness", meterDefault));
 		sadness.setValue(prefs.getFloat("sadness", meterDefault));
@@ -536,7 +577,7 @@ public class MainGame extends ApplicationAdapter {
 
 		Label.LabelStyle questionStyleBig = new Label.LabelStyle();
 		questionStyleBig.background = s.newDrawable("bigQuestionBox");
-		questionStyleBig.font = s.getFont("font");
+		questionStyleBig.font = s.getFont("defaultFont");
 
 		Label.LabelStyle arrowStyle = new Label.LabelStyle();
 		arrowStyle.background = s.newDrawable("arrow_box");
