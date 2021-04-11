@@ -27,7 +27,7 @@ public class AnswerBoxMovable extends AnswerBox {
     private float touchDifferenceX;
     private float startX;
     private float y;
-    private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
+    //private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
 
     private float height;
     /** Creates a new AnswerBox.
@@ -85,7 +85,7 @@ public class AnswerBoxMovable extends AnswerBox {
             // If at the edge, can also move off the screen confirming the choice
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                AudioPlayer.playSound(swipeSound); // <<<<<<<<<<------------------------------------------------------------------------ MIKA TÄÄLLÄ SE SOUND PLAY ON!!!!!
+                //AudioPlayer.playSound(swipeSound); // <<<<<<<<<<------------------------------------------------------------------------ MIKA TÄÄLLÄ SE SOUND PLAY ON!!!!!
                 currentlyTouched = false;
                 float moveX = startX;
                 boolean actionConfirmed = false;

@@ -197,6 +197,7 @@ public class MainGame extends ApplicationAdapter {
 		//currentScreen = screens.get(currentScreenID);
 		//lastFrameCurrentScreen = currentScreen;
 		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+		audioPlayer.playMenuMusic();
 	}
 
 	public void checkMenuChoice() {
@@ -259,7 +260,6 @@ public class MainGame extends ApplicationAdapter {
 
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
-		audioPlayer.playMenuMusic();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 
 		if (currentScreen == mainMenu) {
