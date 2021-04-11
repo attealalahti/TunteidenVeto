@@ -900,5 +900,5 @@
 263 ILO +10
 ---
 263 Sunnuntai alkaa vierähtää loppuun. Takana on rankka mutta antoisa viikko: suuri osa ajasta kului koulussa, mutta ehdit tehdä myös vaikka mitä muuta. Seitsemässä päivässä tuli käytyä läpi tunnekuohuja suuntaan ja toiseen, tehtyä yksi koe ja valittua parhaat tavat viettää vapahetket. Käyt nukkumaan hyvillä mielin - ensi viikkoon!
-264 PÄÄVALIKKOON
+999 PÄÄVALIKKOON
 ---
