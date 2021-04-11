@@ -179,6 +179,7 @@ public class MainGame extends ApplicationAdapter {
 		currentScreen = screens.get(currentScreenID);
 		lastFrameCurrentScreen = currentScreen;
 		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+		audioPlayer.playMenuMusic();
 	}
 	public String getPath(String texture) {
 		pixelDensity = getPixelDensity();
@@ -223,7 +224,6 @@ public class MainGame extends ApplicationAdapter {
 
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
-		audioPlayer.playMenuMusic();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
 	public ArrayList<Screen> createScreens() {
@@ -536,7 +536,7 @@ public class MainGame extends ApplicationAdapter {
 
 		Label.LabelStyle questionStyleBig = new Label.LabelStyle();
 		questionStyleBig.background = s.newDrawable("bigQuestionBox");
-		questionStyleBig.font = s.getFont("font");
+		questionStyleBig.font = s.getFont("defaultFont");
 
 		Label.LabelStyle arrowStyle = new Label.LabelStyle();
 		arrowStyle.background = s.newDrawable("arrow_box");

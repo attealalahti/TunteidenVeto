@@ -10,7 +10,7 @@ import com.badlogic.gdx.audio.Sound;
  */
 public class AudioPlayer {
     private Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/backgroundMusic.mp3"));
-    private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
+    //private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
     private static boolean canPlayMusic= true;
     private static boolean canPlaySound = true;
 
