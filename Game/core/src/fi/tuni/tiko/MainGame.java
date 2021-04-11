@@ -97,8 +97,7 @@ public class MainGame extends ApplicationAdapter {
 	private Color secondaryColor = new Color(colorFraction * 234, colorFraction * 158, colorFraction * 128, 1);
 
 	public static int currentScreenID;
-	public static int saveScreenID;
-	public static int mainMenuChecker;
+	public static int mainMenuChecker = 0;
 	public static int windowWidth;
 	public static int windowHeight;
 	public static Skin skin;
@@ -180,6 +179,18 @@ public class MainGame extends ApplicationAdapter {
 		screens = createScreens();
 		loadProgress();
 
+		mainMenu = createMainMenu();
+		screens.add(mainMenu);
+		currentScreen = mainMenu;
+		currentScreenID = 999;
+
+		//currentScreen = screens.get(currentScreenID);
+		//lastFrameCurrentScreen = currentScreen;
+		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+		//audioPlayer.playMenuMusic();
+	}
+
+	public MainMenuScreen createMainMenu() {
 		ArrayList<String> choices = new ArrayList<String>();
 		choices.add("POISTU PELISTÄ");
 		choices.add("ASETUKSET");
@@ -190,31 +201,23 @@ public class MainGame extends ApplicationAdapter {
 		menuScreenLinks.add(3);
 		menuScreenLinks.add(2);
 		menuScreenLinks.add(1);
-		mainMenu = new MainMenuScreen(999, choices, menuScreenLinks);
-		currentScreen = mainMenu;
-		currentScreenID = 999;
-
-		//currentScreen = screens.get(currentScreenID);
-		//lastFrameCurrentScreen = currentScreen;
-		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
-		audioPlayer.playMenuMusic();
+		MainMenuScreen result = new MainMenuScreen(999, choices, menuScreenLinks);
+		return result;
 	}
-
 	public void checkMenuChoice() {
-		mainMenuChecker = MainMenuScreen.getChecker();
-
 		if (mainMenuChecker == 1) {
 			resetProgress();
 			loadProgress();
 			currentScreenID = 266;
 		} else if (mainMenuChecker == 2) {
-			currentScreenID = saveScreenID;
+			loadProgress();
 		} else if (mainMenuChecker == 3) {
 			hideScreenElements(mainMenu);
 			showSettings();
 		} else if (mainMenuChecker == 4) {
 			Gdx.app.exit();
 		}
+		mainMenuChecker = 0;
 	}
 
 	public String getPath(String texture) {
@@ -340,7 +343,6 @@ public class MainGame extends ApplicationAdapter {
 	public void loadProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		currentScreenID = prefs.getInteger("screen", 0);
-		saveScreenID = currentScreenID;
 		float meterDefault = 50;
 		happiness.setValue(prefs.getFloat("happiness", meterDefault));
 		sadness.setValue(prefs.getFloat("sadness", meterDefault));
@@ -896,11 +898,17 @@ public class MainGame extends ApplicationAdapter {
 		exitButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				screens = createScreens();
-				currentScreenID = 0;
+				//screens = createScreens();
+				currentScreenID = 999;
 				settingsButton.setChecked(false);
-				resetProgress();
-				loadProgress();
+				for (int i = 0; i < screens.size(); i++) {
+					if (screens.get(i).getClass() == MainMenuScreen.class) {
+						screens.set(i, createMainMenu());
+						mainMenu = ((MainMenuScreen)screens.get(i));
+					}
+				}
+				hideSettings();
+				showScreenElements(mainMenu);
 			}
 		});
 		musicButton.setChecked(musicOn);
