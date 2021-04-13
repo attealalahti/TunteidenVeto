@@ -61,6 +61,14 @@ public class MainGame extends ApplicationAdapter {
 	private Texture happinessButtonPressedTexture;
 	private Texture loveButtonPressedTexture;
 	private Texture sadnessButtonPressedTexture;
+	private Texture angerBodyTexture;
+	private Texture astonishmentBodyTexture;
+	private Texture disgustBodyTexture;
+	private Texture fearBodyTexture;
+	private Texture happinessBodyTexture;
+	private Texture loveBodyTexture;
+	private Texture sadnessBodyTexture;
+
 
 
 	private ArrayList<Screen> screens;
@@ -167,6 +175,14 @@ public class MainGame extends ApplicationAdapter {
 		happinessButtonPressedTexture = new Texture(getPath("joy"+modification));
 		loveButtonPressedTexture = new Texture(getPath("love"+modification));
 		sadnessButtonPressedTexture = new Texture(getPath("sadness"+modification));
+		modification = "_body";
+		angerBodyTexture = new Texture(getPath("anger"+modification));
+		astonishmentBodyTexture = new Texture(getPath("astonishment"+modification));
+		disgustBodyTexture = new Texture(getPath("disgust"+modification));
+		fearBodyTexture = new Texture(getPath("fear"+modification));
+		happinessBodyTexture = new Texture(getPath("joy"+modification));
+		loveBodyTexture = new Texture(getPath("love"+modification));
+		sadnessBodyTexture = new Texture(getPath("sadness"+modification));
 
 
 
@@ -590,6 +606,14 @@ public class MainGame extends ApplicationAdapter {
 		s.add("happinessButtonPressed", happinessButtonPressedTexture);
 		s.add("loveButtonPressed", loveButtonPressedTexture);
 		s.add("sadnessButtonPressed", sadnessButtonPressedTexture);
+		s.add("angerBody", angerBodyTexture);
+		s.add("astonishmentBody", astonishmentBodyTexture);
+		s.add("disgustBody", disgustBodyTexture);
+		s.add("fearBody", fearBodyTexture);
+		s.add("happinessBody", happinessBodyTexture);
+		s.add("loveBody", loveBodyTexture);
+		s.add("sadnessBody", sadnessBodyTexture);
+
 
 
 
@@ -739,6 +763,35 @@ public class MainGame extends ApplicationAdapter {
 		astonishmentButtonStyle.down = s.newDrawable("astonishmentButtonPressed");
 		astonishmentButtonStyle.checked = s.newDrawable("astonishmentButtonPressed");
 
+		Label.LabelStyle angerBodyStyle = new Label.LabelStyle();
+		angerBodyStyle.font = s.getFont("default");
+		angerBodyStyle.background = s.newDrawable("angerBody");
+
+		Label.LabelStyle astonishmentBodyStyle = new Label.LabelStyle();
+		astonishmentBodyStyle.font = s.getFont("default");
+		astonishmentBodyStyle.background = s.newDrawable("astonishmentBody");
+
+		Label.LabelStyle disgustBodyStyle = new Label.LabelStyle();
+		disgustBodyStyle.font = s.getFont("default");
+		disgustBodyStyle.background = s.newDrawable("disgustBody");
+
+		Label.LabelStyle fearBodyStyle = new Label.LabelStyle();
+		fearBodyStyle.font = s.getFont("default");
+		fearBodyStyle.background = s.newDrawable("fearBody");
+
+		Label.LabelStyle happinessBodyStyle = new Label.LabelStyle();
+		happinessBodyStyle.font = s.getFont("default");
+		happinessBodyStyle.background = s.newDrawable("happinessBody");
+
+		Label.LabelStyle loveBodyStyle = new Label.LabelStyle();
+		loveBodyStyle.font = s.getFont("default");
+		loveBodyStyle.background = s.newDrawable("loveBody");
+
+		Label.LabelStyle sadnessBodyStyle = new Label.LabelStyle();
+		sadnessBodyStyle.font = s.getFont("default");
+		sadnessBodyStyle.background = s.newDrawable("sadnessBody");
+
+
 
 
 		s.add("answer_movable", answerStyle);
@@ -774,6 +827,14 @@ public class MainGame extends ApplicationAdapter {
 		s.add("happiness", happinessButtonStyle);
 		s.add("love", loveButtonStyle);
 		s.add("sadness", sadnessButtonStyle);
+		s.add("anger_body", angerBodyStyle);
+		s.add("astonishment_body", astonishmentBodyStyle);
+		s.add("disgust_body", disgustBodyStyle);
+		s.add("fear_body", fearBodyStyle);
+		s.add("joy_body", happinessBodyStyle);
+		s.add("love_body", loveBodyStyle);
+		s.add("sadness_body", sadnessBodyStyle);
+
 
 
 		return s;

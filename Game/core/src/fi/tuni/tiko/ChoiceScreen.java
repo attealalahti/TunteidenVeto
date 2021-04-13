@@ -28,8 +28,9 @@ public class ChoiceScreen extends Screen {
     private final float buttonHeight = windowHeight * 0.07f;
     private final float xBox = (windowWidth - boxWidth) * 0.5f;
     private final float dayBoxHeight = windowHeight * 0.03f;
+    private final float captionHeight = windowHeight * 0.06f;
     private final int questionSizeThreshold = 200;
-    private float roomForAnswers;
+    private float roomForAnswers = windowHeight - dayBoxHeight - margin - buttonHeight;
     private String question;
 
     /** Creates a new ChoiceScreen.
@@ -54,42 +55,78 @@ public class ChoiceScreen extends Screen {
         getElements().addActor(dayBox);
 
 
-        float questionBoxHeight = windowHeight * 0.4f;
-        String questionBoxStyle = "question";
-        if (question.length() > questionSizeThreshold && ((answers.size() == 2 && answerEffects.size() == 0) || (answers.size() == 1 && answerEffects.size() > 0))) {
-            questionBoxHeight = windowHeight * 0.5f;
-            questionBoxStyle = "bigQuestion";
-        } else if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
-            questionBoxHeight = windowHeight * 0.6f;
-            questionBoxStyle = "biggerQuestion";
+        if (!question.contains("[")) {
+            float questionBoxHeight = windowHeight * 0.4f;
+            String questionBoxStyle = "question";
+            if (question.length() > questionSizeThreshold && ((answers.size() == 2 && answerEffects.size() == 0) || (answers.size() == 1 && answerEffects.size() > 0))) {
+                questionBoxHeight = windowHeight * 0.5f;
+                questionBoxStyle = "bigQuestion";
+            } else if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
+                questionBoxHeight = windowHeight * 0.6f;
+                questionBoxStyle = "biggerQuestion";
+            }
+            roomForAnswers -= questionBoxHeight;
+
+            // Create the question text box
+            Label questionBackground = new Label(null, skin, questionBoxStyle);
+            questionBackground.setBounds(xBox, windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, boxWidth, questionBoxHeight);
+
+
+            Label questionText = new Label(question, skin, "text");
+            questionText.setBounds(
+                    questionBackground.getX() + questionBackground.getWidth() * 0.04f,
+                    questionBackground.getY() + questionBackground.getHeight() * 0.08f,
+                    questionBackground.getWidth() * 0.9f,
+                    questionBackground.getHeight() * 0.88f
+            );
+            questionText.setAlignment(0);
+            questionText.setFontScaleX(0.00045f * windowWidth);
+            questionText.setFontScaleY(0.00025f * windowHeight);
+            questionText.setWrap(true);
+
+            Group questionBox = new Group();
+            questionBox.addActor(questionBackground);
+            questionBox.addActor(questionText);
+            getElements().addActor(questionBox);
+        } else {
+            boolean stop = false;
+            int index = 0;
+            for (int i = question.length()-1; i > 0 && !stop ; i--) {
+                if (question.charAt(i) == '[') {
+                    index = i;
+                    stop = true;
+                }
+            }
+            StringBuilder style = new StringBuilder();
+            for (int i = index+1; i < question.length()-1; i++) {
+                style.append(question.charAt(i));
+            }
+
+            Label image = new Label(null, skin, style.toString());
+            float imageWidth = windowWidth * 0.5f;
+            float imageHeight = imageWidth * 2;
+            image.setBounds((windowWidth - imageWidth) * 0.5f, windowHeight - dayBoxHeight - margin * 2f - imageHeight, imageWidth, imageHeight);
+
+            StringBuilder captionText = new StringBuilder();
+            for (int i = 0; i < index-1; i++) {
+                captionText.append(question.charAt(i));
+            }
+            Label caption = new Label(captionText.toString(), skin, "imageCaptionText");
+            caption.setBounds(xBox, image.getY() - margin - captionHeight, boxWidth, boxHeight);
+            caption.setAlignment(0);
+            caption.setFontScaleX(0.00045f * windowWidth);
+            caption.setFontScaleY(0.00025f * windowHeight);
+            caption.setWrap(true);
+
+            Group bodyImage = new Group();
+            bodyImage.addActor(image);
+            bodyImage.addActor(caption);
+            getElements().addActor(bodyImage);
+
+            roomForAnswers -= imageHeight + captionHeight;
         }
-        roomForAnswers = windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f - buttonHeight;
 
         createAnswerBoxes();
-
-        // Create the question text box
-        float roomLeft = windowHeight - (answers.size() * (boxHeight + margin) + margin + buttonHeight + margin);
-        Label questionBackground = new Label(null, skin, questionBoxStyle);
-        //questionBackground.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
-        questionBackground.setBounds(xBox, windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, boxWidth, questionBoxHeight);
-
-
-        Label questionText = new Label(question, skin, "text");
-        questionText.setBounds(
-                questionBackground.getX() + questionBackground.getWidth() * 0.04f,
-                questionBackground.getY() + questionBackground.getHeight() * 0.08f,
-                questionBackground.getWidth() * 0.9f,
-                questionBackground.getHeight() * 0.88f
-        );
-        questionText.setAlignment(0);
-        questionText.setFontScaleX(0.00045f * windowWidth);
-        questionText.setFontScaleY(0.00025f * windowHeight);
-        questionText.setWrap(true);
-
-        Group questionBox = new Group();
-        questionBox.addActor(questionBackground);
-        questionBox.addActor(questionText);
-        getElements().addActor(questionBox);
     }
     public void createAnswerBoxes() {
         answerBoxes = new Group();
