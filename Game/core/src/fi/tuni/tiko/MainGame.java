@@ -18,10 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
 import java.util.ArrayList;
-
-import sun.font.TrueTypeFont;
 
 
 public class MainGame extends ApplicationAdapter {
@@ -569,9 +566,10 @@ public class MainGame extends ApplicationAdapter {
 		s.add("musicOff", musicOffTexture);
 		s.add("rail_img", railTexture);
 		s.add("test", img);
-		s.add("defaultFont", createFont("lato")); //<<<<<<<<<<<<<<<<<<<<------------- TÄÄÄLLÄ ON FONTIT MIKA
-		s.add("mediumItalicFont", createFont("latoMediumItalic"));
-		s.add("italicFont", createFont("latoItalic"));
+		s.add("defaultFont", createFont("lato", Color.BLACK)); //<<<<<<<<<<<<<<<<<<<<------------- TÄÄÄLLÄ ON FONTIT MIKA
+		s.add("mediumFont", createFont("latoMedium", Color.WHITE));
+		s.add("mediumItalicFont", createFont("latoMediumItalic", Color.BLACK));
+		s.add("italicFont", createFont("latoItalic", Color.BLACK));
 		s.add("anger", angerTexture);
 		s.add("astonishment", astonishmentTexture);
 		s.add("disgust", disgustTexture);
@@ -633,6 +631,10 @@ public class MainGame extends ApplicationAdapter {
 		Label.LabelStyle emotionScore = new Label.LabelStyle();
 		emotionScore.background = s.newDrawable("white", Color.CLEAR);
 		emotionScore.font = s.getFont("mediumItalicFont");
+
+		Label.LabelStyle dayText = new Label.LabelStyle();
+		dayText.background = s.newDrawable("white", Color.CLEAR);
+		dayText.font = s.getFont("mediumFont");
 
 		Label.LabelStyle imageCaption = new Label.LabelStyle();
 		imageCaption.background = s.newDrawable("white", Color.CLEAR);
@@ -751,6 +753,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("alt", buttonStyleAlt);
 		s.add("text", textBoxStyle);
 		s.add("emotionScoreText", emotionScore);
+		s.add("dayText", dayText);
 		s.add("imageCaptionText", imageCaption);
 		s.add("settings", settingsButtonStyle);
 		s.add("sound", soundStyle);
@@ -783,14 +786,14 @@ public class MainGame extends ApplicationAdapter {
 	 * @return returns a BitmapFont
 	 * @author Mika Kivennenä
 	 */
-	public BitmapFont createFont(String nameOfFont) {
+	public BitmapFont createFont(String nameOfFont, Color color) {
 		FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/"+nameOfFont+".ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
 
 		fontParameter.size = fontSize;
-		fontParameter.borderColor = Color.BLACK;
-		fontParameter.color = Color.BLACK;
+		fontParameter.borderColor = color;
+		fontParameter.color = color;
 
 		BitmapFont font = fontGenerator.generateFont(fontParameter);
 		return font;

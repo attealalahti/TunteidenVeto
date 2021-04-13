@@ -1,5 +1,6 @@
 package fi.tuni.tiko;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -43,11 +44,11 @@ public class ChoiceScreen extends Screen {
         this.question = question;
         this.answerEffects = answerEffects;
 
-        dayBox = new Label("Viikonpäivä", skin, "text");
+        dayBox = new Label("Viikonpäivä", skin, "dayText");
         dayBox.setBounds(xBox, windowHeight - margin - dayBoxHeight, boxWidth, dayBoxHeight);
         dayBox.setAlignment(0);
-        dayBox.setFontScaleX(0.00045f * windowWidth);
-        dayBox.setFontScaleY(0.00025f * windowHeight);
+        dayBox.setFontScaleX(0.000675f * windowWidth);
+        dayBox.setFontScaleY(0.000375f * windowHeight);
         dayBox.setWrap(true);
         addActor(dayBox);
         getElements().addActor(dayBox);
@@ -125,7 +126,7 @@ public class ChoiceScreen extends Screen {
         meters.toBack();
         settings.toBack();
 
-        dayBox.setText(weekDay);
+        dayBox.setText(weekDay.toUpperCase());
 
         for (Actor a: answerBoxes.getChildren()) {
             ((AnswerBoxMovable) a).addRail();
