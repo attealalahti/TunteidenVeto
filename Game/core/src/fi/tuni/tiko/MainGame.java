@@ -31,6 +31,7 @@ public class MainGame extends ApplicationAdapter {
 	private Texture immobileBoxTexture;
 	private Texture questionBoxTexture;
 	private Texture bigQuestionBoxTexture;
+	private Texture biggerQuestionBoxTexture;
 	private Texture settingsTexture;
 	private Texture settingsPressedTexture;
 	private Texture mainMenuTexture;
@@ -127,8 +128,13 @@ public class MainGame extends ApplicationAdapter {
 		audioPlayer = new AudioPlayer();
 		answerBoxTexture = new Texture(getPath("box"));
 		immobileBoxTexture = new Texture(getPath("box2"));
+		answerBoxHighlightedTexture = new Texture(getPath("box3"));
+		arrowBoxTexture = new Texture(getPath("arrowbox"));
 		questionBoxTexture = new Texture(getPath("textbox"));
+		bigQuestionBoxTexture = new Texture(getPath("bigtextbox"));
+		biggerQuestionBoxTexture = new Texture(getPath("biggertextbox"));
 		settingsTexture = new Texture(getPath("hamburgermenu"));
+		settingsPressedTexture = new Texture(getPath("hamburgermenu_pressed"));
 		mainMenuTexture = new Texture(getPath("mainmenubutton"));
 		empty = new Texture(getPath("button"));
 		feelingMeterTexture = new Texture(getPath("meter"));
@@ -164,11 +170,6 @@ public class MainGame extends ApplicationAdapter {
 
 
 		img = new Texture("badlogic.jpg");
-
-		settingsPressedTexture = new Texture("hdpi/hamburgermenu_pressedhdpi.png");
-		answerBoxHighlightedTexture = new Texture("hdpi/box3hdpi.png");
-		arrowBoxTexture = new Texture("hdpi/arrowboxhdpi.png");
-		bigQuestionBoxTexture = new Texture("hdpi/biggertextboxhdpi.png");
 
 		skin = createSkin();
 
@@ -519,6 +520,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("immobile_box", immobileBoxTexture);
 		s.add("questionBox", questionBoxTexture);
 		s.add("bigQuestionBox", bigQuestionBoxTexture);
+		s.add("biggerQuestionBox", biggerQuestionBoxTexture);
 		s.add("arrow_box", arrowBoxTexture);
 		s.add("white", new Texture(pixmap));
 		s.add("default", new BitmapFont());
@@ -580,6 +582,10 @@ public class MainGame extends ApplicationAdapter {
 		Label.LabelStyle questionStyleBig = new Label.LabelStyle();
 		questionStyleBig.background = s.newDrawable("bigQuestionBox");
 		questionStyleBig.font = s.getFont("defaultFont");
+
+		Label.LabelStyle questionStyleBigger = new Label.LabelStyle();
+		questionStyleBigger.background = s.newDrawable("biggerQuestionBox");
+		questionStyleBigger.font = s.getFont("defaultFont");
 
 		Label.LabelStyle arrowStyle = new Label.LabelStyle();
 		arrowStyle.background = s.newDrawable("arrow_box");
@@ -704,6 +710,7 @@ public class MainGame extends ApplicationAdapter {
 		s.add("answer_highlighted", answerHighlightedStyle);
 		s.add("question", questionStyle);
 		s.add("bigQuestion", questionStyleBig);
+		s.add("biggerQuestion", questionStyleBigger);
 		s.add("arrow", arrowStyle);
 		s.add("feelings", feelingsButtonStyle);
 		s.add("alt", buttonStyleAlt);

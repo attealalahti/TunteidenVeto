@@ -43,9 +43,12 @@ public class ChoiceScreen extends Screen {
 
         float questionBoxHeight = windowHeight * 0.4f;
         String questionBoxStyle = "question";
-        if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
-            questionBoxHeight = windowHeight * 0.6f;
+        if (question.length() > questionSizeThreshold && ((answers.size() == 2 && answerEffects.size() == 0) || (answers.size() == 1 && answerEffects.size() > 0))) {
+            questionBoxHeight = windowHeight * 0.5f;
             questionBoxStyle = "bigQuestion";
+        } else if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
+            questionBoxHeight = windowHeight * 0.6f;
+            questionBoxStyle = "biggerQuestion";
         }
         roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
 
