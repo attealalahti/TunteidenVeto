@@ -20,11 +20,13 @@ import static fi.tuni.tiko.MainGame.skin;
 public class ChoiceScreen extends Screen {
 
     private Group answerBoxes;
+    private Label dayBox;
     private ArrayList<String> answerEffects;
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
-    private final float xBox = (windowWidth - boxWidth) / 2f;
+    private final float xBox = (windowWidth - boxWidth) * 0.5f;
+    private final float dayBoxHeight = windowHeight * 0.03f;
     private final int questionSizeThreshold = 200;
     private float roomForAnswers;
     private String question;
@@ -41,6 +43,16 @@ public class ChoiceScreen extends Screen {
         this.question = question;
         this.answerEffects = answerEffects;
 
+        dayBox = new Label("Viikonpäivä", skin, "text");
+        dayBox.setBounds(xBox, windowHeight - margin - dayBoxHeight, boxWidth, dayBoxHeight);
+        dayBox.setAlignment(0);
+        dayBox.setFontScaleX(0.00045f * windowWidth);
+        dayBox.setFontScaleY(0.00025f * windowHeight);
+        dayBox.setWrap(true);
+        addActor(dayBox);
+        getElements().addActor(dayBox);
+
+
         float questionBoxHeight = windowHeight * 0.4f;
         String questionBoxStyle = "question";
         if (question.length() > questionSizeThreshold && ((answers.size() == 2 && answerEffects.size() == 0) || (answers.size() == 1 && answerEffects.size() > 0))) {
@@ -50,7 +62,7 @@ public class ChoiceScreen extends Screen {
             questionBoxHeight = windowHeight * 0.6f;
             questionBoxStyle = "biggerQuestion";
         }
-        roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
+        roomForAnswers = windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f - buttonHeight;
 
         createAnswerBoxes();
 
@@ -58,7 +70,7 @@ public class ChoiceScreen extends Screen {
         float roomLeft = windowHeight - (answers.size() * (boxHeight + margin) + margin + buttonHeight + margin);
         Label questionBackground = new Label(null, skin, questionBoxStyle);
         //questionBackground.setBounds(xBox, windowHeight - roomLeft, boxWidth, roomLeft - margin);
-        questionBackground.setBounds(xBox, windowHeight - questionBoxHeight - margin, boxWidth, questionBoxHeight);
+        questionBackground.setBounds(xBox, windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, boxWidth, questionBoxHeight);
 
 
         Label questionText = new Label(question, skin, "text");
@@ -81,16 +93,14 @@ public class ChoiceScreen extends Screen {
     public void createAnswerBoxes() {
         answerBoxes = new Group();
         if (answerEffects.size() == 0) {
-            //float currentY = margin * 2 + buttonHeight;
-            float currentY = margin + buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - boxHeight * 0.5f;
+            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - boxHeight * 0.5f;
             for (int i = 0; i < getChoices().size(); i++) {
                 answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
                 //currentY += margin + boxHeight;
                 currentY += roomForAnswers / (float) (getChoices().size()+1);
             }
         } else {
-            //float currentY = margin * 2 + buttonHeight;
-            float currentY = margin + buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - boxHeight * 0.5f;
+            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - boxHeight * 0.5f;
             AnswerBoxMovable arrowBox = new AnswerBoxMovable(null, xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(0));
             arrowBox.getBackground().setStyle(skin.get("arrow", Label.LabelStyle.class));
             answerBoxes.addActor(arrowBox);
@@ -106,7 +116,7 @@ public class ChoiceScreen extends Screen {
             ab.setPause(pause);
         }
     }
-    public void addGlobalElements(Button feelingMeterButton, Group meters, Button settingsButton, Group settings) {
+    public void addGlobalElements(Button feelingMeterButton, Group meters, Button settingsButton, Group settings, String weekDay) {
         addActor(feelingMeterButton);
         addActor(meters);
         addActor(settingsButton);
@@ -114,6 +124,8 @@ public class ChoiceScreen extends Screen {
         feelingMeterButton.toBack();
         meters.toBack();
         settings.toBack();
+
+        dayBox.setText(weekDay);
 
         for (Actor a: answerBoxes.getChildren()) {
             ((AnswerBoxMovable) a).addRail();

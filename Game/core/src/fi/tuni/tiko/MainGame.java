@@ -73,6 +73,9 @@ public class MainGame extends ApplicationAdapter {
 	private Button feelingMeterButton;
 	private Group settings;
 	private Button settingsButton;
+	private Button musicButton;
+	private Button soundButton;
+	private Button exitButton;
 	private Screen lastFrameCurrentScreen;
 	private FeelingMeter happiness;
 	private FeelingMeter sadness;
@@ -94,6 +97,7 @@ public class MainGame extends ApplicationAdapter {
 	private Color desiredBackgroundColor = lightBackgroundColor;
 	private Color currentBackgroundColor = desiredBackgroundColor;
 	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
+	private String weekDay = "Maanantai";
 
 	private Color secondaryColor = new Color(colorFraction * 234, colorFraction * 158, colorFraction * 128, 1);
 
@@ -102,8 +106,8 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowWidth;
 	public static int windowHeight;
 	public static Skin skin;
-	public static boolean musicOn = true;
-	public static boolean soundOn = true;
+	public static boolean musicOn;
+	public static boolean soundOn;
 	public static float margin;
 	public static float meterHeight;
 
@@ -173,11 +177,13 @@ public class MainGame extends ApplicationAdapter {
 
 		skin = createSkin();
 
+
 		settingsButton = createSettingsButton();
 		feelingMeterButton = createFeelingMeterButton();
-		settings = createSettings();
 		meters = createMeters();
 		screens = createScreens();
+		settings = createSettings();
+
 		loadProgress();
 
 		mainMenu = createMainMenu();
@@ -251,7 +257,21 @@ public class MainGame extends ApplicationAdapter {
 		}
 		if (currentScreen != lastFrameCurrentScreen) {
 			if (currentScreen.getClass() == ChoiceScreen.class) {
-				((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
+				switch (currentScreenID) {
+					case 39: weekDay = "Tiistai";
+						break;
+					case 81: weekDay = "Keskiviikko";
+						break;
+					case 126: weekDay = "Torstai";
+						break;
+					case 164: weekDay = "Perjantai";
+						break;
+					case 207: weekDay = "Lauantai";
+						break;
+					case 240: weekDay = "Sunnuntai";
+						break;
+				}
+				((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings, weekDay);
 				updateMeters(((ChoiceScreen) currentScreen).getEffects());
 				feelingMeterButton.setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
 				saveProgress();
@@ -331,6 +351,7 @@ public class MainGame extends ApplicationAdapter {
 	public void saveProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		prefs.putInteger("screen", currentScreenID);
+		prefs.putString("day", weekDay);
 		prefs.putFloat("happiness", happiness.getValue());
 		prefs.putFloat("sadness", sadness.getValue());
 		prefs.putFloat("anger", anger.getValue());
@@ -338,12 +359,13 @@ public class MainGame extends ApplicationAdapter {
 		prefs.putFloat("astonishment", astonishment.getValue());
 		prefs.putFloat("fear", fear.getValue());
 		prefs.putFloat("disgust", disgust.getValue());
-
+		saveSettings();
 		prefs.flush();
 	}
 	public void loadProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		currentScreenID = prefs.getInteger("screen", 0);
+		weekDay = prefs.getString("day", "Maanantai");
 		float meterDefault = 50;
 		happiness.setValue(prefs.getFloat("happiness", meterDefault));
 		sadness.setValue(prefs.getFloat("sadness", meterDefault));
@@ -352,7 +374,20 @@ public class MainGame extends ApplicationAdapter {
 		astonishment.setValue(prefs.getFloat("astonishment", meterDefault));
 		fear.setValue(prefs.getFloat("fear", meterDefault));
 		disgust.setValue(prefs.getFloat("disgust", meterDefault));
-
+		loadSettings();
+	}
+	public void saveSettings() {
+		Preferences prefs = Gdx.app.getPreferences("MySettings");
+		prefs.putBoolean("music", musicOn);
+		prefs.putBoolean("sound", soundOn);
+		prefs.flush();
+	}
+	public void loadSettings() {
+		Preferences prefs = Gdx.app.getPreferences("MySettings");
+		musicOn = prefs.getBoolean("music", true);
+		soundOn = prefs.getBoolean("sound", true);
+		musicButton.setChecked(musicOn);
+		soundButton.setChecked(soundOn);
 	}
 	public void resetProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
@@ -876,9 +911,9 @@ public class MainGame extends ApplicationAdapter {
 	public Group createSettings() {
 		Group result = new Group();
 		// Create buttons for settings
-		final Button musicButton = new Button(skin, "music");
-		final Button soundButton = new Button(skin, "sound");
-		final Button exitButton = new Button(skin, "exit");
+		musicButton = new Button(skin, "music");
+		soundButton = new Button(skin, "sound");
+		exitButton = new Button(skin, "exit");
 		float centerX = windowWidth * 0.5f - bigButtonHeight * 0.5f;
 		float centerY = windowHeight * 0.5f - bigButtonHeight * 0.5f;
 		musicButton.setBounds(centerX, centerY + bigButtonHeight + margin, bigButtonHeight, bigButtonHeight);
@@ -894,12 +929,14 @@ public class MainGame extends ApplicationAdapter {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				musicOn = musicButton.isChecked();
+				saveSettings();
 			}
 		});
 		soundButton.addListener(new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				soundOn = soundButton.isChecked();
+				saveSettings();
 			}
 		});
 		exitButton.addListener(new ChangeListener() {
