@@ -144,25 +144,46 @@
 42 Koulupäivä alkaa terveystiedolla. Tällä kerralla läpi käytävistä asioista on koe perjantaina, kannattaa siis kuunnella tarkasti!
 44 Valmiina ollaan!
 ---
-44 [Kehokuva hämmästyksestä] Hämmästys tuntuu pään ja rintakehän alueella, mutta se ei useinkaan ole kovin selkeä tunne. Sitä kuvaillaan usein sekavaksi, hieman sumeaksi varuillaan olon tunteeksi.
+44 Hämmästys tuntuu pään ja rintakehän alueella, mutta se ei useinkaan ole kovin selkeä tunne. Sitä kuvaillaan usein sekavaksi, hieman sumeaksi varuillaan olon tunteeksi.
+300 SEURAAVA
+---
+300 Kehokuva hämmästyksestä [astonishment_body]
 45 SEURAAVA
 ---
-45 [Kehokuva ilosta] Ilo saa lämpimän olon kuplimaan koko kehossa. Rinnassa ja päässä hehkuu lämpö ja olo on kevyt ja energinen. Sinua hymyilyttää ja kaikki tuntuu mukavammalta.
+45 Ilo saa lämpimän olon kuplimaan koko kehossa. Rinnassa ja päässä hehkuu lämpö ja olo on kevyt ja energinen. Sinua hymyilyttää ja kaikki tuntuu mukavammalta.
+301 SEURAAVA
+---
+301 Kehokuva ilosta [joy_body]
 46 SEURAAVA
 ---
-46 [Kehokuva inhosta] Inho on ollut etenkin aiemmin tarpeen pilaantuneen ruoan tunnistamisessa, mutta se herää myös reaktiona moraaliseen inhottavuuteen. Inho tuntuu vatsan ja suun alueella kuvotuksena, etovana olona ja jopa oksetuksena.
+46 Inho on ollut etenkin aiemmin tarpeen pilaantuneen ruoan tunnistamisessa, mutta se herää myös reaktiona moraaliseen inhottavuuteen. Inho tuntuu vatsan ja suun alueella kuvotuksena, etovana olona ja jopa oksetuksena.
+302 SEURAAVA
+---
+302 Kehokuva inhosta [disgust_body]
 47 SEURAAVA
 ---
-47 [Kehokuva pelosta] Pelko saa sydämen tykyttämään ja kehon valmistautumaan joko pakenemiseen tai taistelemiseen. Pelko tuntuu ennen kaikkea päässä ja rinnassa, minkä lisäksi raajoja voi joko kuumottaa tai ne voivat tuntua kylmiltä ja raskailta. Pelko tekee olosta rauhattoman ja levottoman.
+47 Pelko saa sydämen tykyttämään ja kehon valmistautumaan joko pakenemiseen tai taistelemiseen. Pelko tuntuu ennen kaikkea päässä ja rinnassa, minkä lisäksi raajoja voi joko kuumottaa tai ne voivat tuntua kylmiltä ja raskailta. Pelko tekee olosta rauhattoman ja levottoman.
+303 SEURAAVA
+---
+303 Kehokuva pelosta [fear_body]
 48 SEURAAVA
 ---
-48 [Kehokuva surusta] Suru voi näkyä kehossa monin tavoin: on vatsakipua, päänsärkyä ja jumittamista. Olo voi olla ahdistava ja muisti pätkii. Usein myös nukkuminen kärsii: sureva ihminen voi nukkua normaalia enemmän tai kärsiä unettomuudesta. Itkeminen on tavallinen tapa käsitellä surua, mutta aina itku ei edes tule.
+48 Suru voi näkyä kehossa monin tavoin: on vatsakipua, päänsärkyä ja jumittamista. Olo voi olla ahdistava ja muisti pätkii. Usein myös nukkuminen kärsii: sureva ihminen voi nukkua normaalia enemmän tai kärsiä unettomuudesta. Itkeminen on tavallinen tapa käsitellä surua, mutta aina itku ei edes tule.
+304 SEURAAVA
+---
+304 Kehokuva surusta [sadness_body]
 49 SEURAAVA
 ---
-49 [Kehokuva vihasta] Vihaisena voi tuntua kuin veresi kiehuisi. Kädet puristuvat nyrkkiin, lihakset jännittyvät ja puret hampaitasi yhteen. Poskiasi kuumottaa ja äänikin voi kiristyä jopa huomaamattasi.
+49 Vihaisena voi tuntua kuin veresi kiehuisi. Kädet puristuvat nyrkkiin, lihakset jännittyvät ja puret hampaitasi yhteen. Poskiasi kuumottaa ja äänikin voi kiristyä jopa huomaamattasi.
+305 SEURAAVA
+---
+305 Kehokuva vihasta [anger_body]
 265 SEURAAVA
 ---
-265 [Kehokuva rakkaudesta] Rakkaus tuntuu lämpönä tai jopa kuumuutena etenkin rinnassa, mutta lähes koko ylävartalossa. Rakkaus on turvallinen ja hyvä olo, joka voi saada sydämen tykyttelemään tai mahanpohjan kihelmöimään. Rakkauden tunne ei ole läheskään aina romanttista, vaan voi olla esimerkiksi myös ystävien tai perheenjäsenten välistä, tai liittyä vaikka omaan kotiin.
+265 Rakkaus tuntuu lämpönä tai jopa kuumuutena etenkin rinnassa, mutta lähes koko ylävartalossa. Rakkaus on turvallinen ja hyvä olo, joka voi saada sydämen tykyttelemään tai mahanpohjan kihelmöimään. Rakkauden tunne ei ole läheskään aina romanttista, vaan voi olla esimerkiksi myös ystävien tai perheenjäsenten välistä, tai liittyä vaikka omaan kotiin.
+306 SEURAAVA
+---
+306 Kehokuva rakkaudesta [love_body]
 50 SEURAAVA
 ---
 50 Näiden lisäksi on lukuisia eri tunteiden yhdistelmiä ja erilaisia tuntemuksia, kuten häpeä, kateus ja mielihyvä. Haluatko kerrata päätunteet ja niiden vaikutukset kehoon, vai oletko valmis perjantain kokeeseen?

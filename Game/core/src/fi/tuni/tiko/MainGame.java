@@ -205,8 +205,7 @@ public class MainGame extends ApplicationAdapter {
 		menuScreenLinks.add(3);
 		menuScreenLinks.add(2);
 		menuScreenLinks.add(1);
-		MainMenuScreen result = new MainMenuScreen(999, choices, menuScreenLinks);
-		return result;
+		return new MainMenuScreen(999, choices, menuScreenLinks);
 	}
 	public void checkMenuChoice() {
 		if (mainMenuChecker == 1) {
