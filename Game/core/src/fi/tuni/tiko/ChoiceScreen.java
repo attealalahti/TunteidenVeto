@@ -48,8 +48,8 @@ public class ChoiceScreen extends Screen {
         dayBox = new Label("Viikonpäivä", skin, "dayText");
         dayBox.setBounds(xBox, windowHeight - margin - dayBoxHeight, boxWidth, dayBoxHeight);
         dayBox.setAlignment(0);
-        dayBox.setFontScaleX(0.000675f * windowWidth);
-        dayBox.setFontScaleY(0.000375f * windowHeight);
+        dayBox.setFontScaleX(0.00045f * windowWidth);
+        dayBox.setFontScaleY(0.00025f * windowHeight);
         dayBox.setWrap(true);
         addActor(dayBox);
         getElements().addActor(dayBox);
