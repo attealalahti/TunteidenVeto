@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class MySkin extends Skin {
-    private Texture img;
     private Texture answerBoxTexture;
     private Texture answerBoxHighlightedTexture;
     private Texture immobileBoxTexture;
@@ -59,7 +58,7 @@ public class MySkin extends Skin {
     private Texture sadnessBodyTexture;
     private Color secondaryColor = MainGame.colorMax255(234, 158, 128);
 
-    public void addTexturesToStuff() {
+    public MySkin() {
         answerBoxTexture = new Texture(getPath("box"));
         immobileBoxTexture = new Texture(getPath("box2"));
         answerBoxHighlightedTexture = new Texture(getPath("box3"));
@@ -108,6 +107,8 @@ public class MySkin extends Skin {
         happinessBodyTexture = new Texture(getPath("joy"+modification));
         loveBodyTexture = new Texture(getPath("love"+modification));
         sadnessBodyTexture = new Texture(getPath("sadness"+modification));
+
+        createSkin();
     }
 
     public String getPath(String texture) {
@@ -117,287 +118,272 @@ public class MySkin extends Skin {
         return folderToUse + texture + suffix;
     }
 
-    public Skin createSkin() {
-        Skin s = new Skin();
+    public void createSkin() {
         Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.WHITE);
         pixmap.fill();
-        s.add("answer_box", answerBoxTexture);
-        s.add("highlighted_box", answerBoxHighlightedTexture);
-        s.add("immobile_box", immobileBoxTexture);
-        s.add("questionBox", questionBoxTexture);
-        s.add("bigQuestionBox", bigQuestionBoxTexture);
-        s.add("biggerQuestionBox", biggerQuestionBoxTexture);
-        s.add("arrow_box", arrowBoxTexture);
-        s.add("white", new Texture(pixmap));
-        s.add("default", new BitmapFont());
-        s.add("settings", settingsTexture);
-        s.add("mainMenu", mainMenuTexture);
-        s.add("empty", empty);
-        s.add("meter", feelingMeterTexture);
-        s.add("soundOn", soundOnTexture);
-        s.add("soundOff", soundOffTexture);
-        s.add("musicOn", musicOnTexture);
-        s.add("musicOff", musicOffTexture);
-        s.add("rail_img", railTexture);
-        s.add("test", img);
-        s.add("defaultFont", createFont("lato", Color.BLACK)); //<<<<<<<<<<<<<<<<<<<<------------- TÄÄÄLLÄ ON FONTIT MIKA
-        s.add("mediumFont", createFont("latoMedium", Color.WHITE));
-        s.add("mediumItalicFont", createFont("latoMediumItalic", Color.BLACK));
-        s.add("italicFont", createFont("latoItalic", Color.BLACK));
-        s.add("anger", angerTexture);
-        s.add("astonishment", astonishmentTexture);
-        s.add("disgust", disgustTexture);
-        s.add("fear", fearTexture);
-        s.add("happiness", happinessTexture);
-        s.add("love", loveTexture);
-        s.add("sadness", sadnessTexture);
-        s.add("angerButton", angerButtonTexture);
-        s.add("astonishmentButton", astonishmentButtonTexture);
-        s.add("disgustButton", disgustButtonTexture);
-        s.add("fearButton", fearButtonTexture);
-        s.add("happinessButton", happinessButtonTexture);
-        s.add("loveButton", loveButtonTexture);
-        s.add("sadnessButton", sadnessButtonTexture);
-        s.add("angerButtonPressed", angerButtonPressedTexture);
-        s.add("astonishmentButtonPressed", astonishmentButtonPressedTexture);
-        s.add("disgustButtonPressed", disgustButtonPressedTexture);
-        s.add("fearButtonPressed", fearButtonPressedTexture);
-        s.add("happinessButtonPressed", happinessButtonPressedTexture);
-        s.add("loveButtonPressed", loveButtonPressedTexture);
-        s.add("sadnessButtonPressed", sadnessButtonPressedTexture);
-        s.add("angerBody", angerBodyTexture);
-        s.add("astonishmentBody", astonishmentBodyTexture);
-        s.add("disgustBody", disgustBodyTexture);
-        s.add("fearBody", fearBodyTexture);
-        s.add("happinessBody", happinessBodyTexture);
-        s.add("loveBody", loveBodyTexture);
-        s.add("sadnessBody", sadnessBodyTexture);
-
-
-
-
-        s.add("settings_pressed", settingsPressedTexture);
+        add("answer_box", answerBoxTexture);
+        add("highlighted_box", answerBoxHighlightedTexture);
+        add("immobile_box", immobileBoxTexture);
+        add("questionBox", questionBoxTexture);
+        add("bigQuestionBox", bigQuestionBoxTexture);
+        add("biggerQuestionBox", biggerQuestionBoxTexture);
+        add("arrow_box", arrowBoxTexture);
+        add("white", new Texture(pixmap));
+        add("default", new BitmapFont());
+        add("settings", settingsTexture);
+        add("mainMenu", mainMenuTexture);
+        add("empty", empty);
+        add("meter", feelingMeterTexture);
+        add("soundOn", soundOnTexture);
+        add("soundOff", soundOffTexture);
+        add("musicOn", musicOnTexture);
+        add("musicOff", musicOffTexture);
+        add("rail_img", railTexture);
+        add("defaultFont", createFont("lato", Color.BLACK)); //<<<<<<<<<<<<<<<<<<<<------------- TÄÄÄLLÄ ON FONTIT MIKA
+        add("mediumFont", createFont("latoMedium", Color.WHITE));
+        add("mediumItalicFont", createFont("latoMediumItalic", Color.BLACK));
+        add("italicFont", createFont("latoItalic", Color.BLACK));
+        add("anger", angerTexture);
+        add("astonishment", astonishmentTexture);
+        add("disgust", disgustTexture);
+        add("fear", fearTexture);
+        add("happiness", happinessTexture);
+        add("love", loveTexture);
+        add("sadness", sadnessTexture);
+        add("angerButton", angerButtonTexture);
+        add("astonishmentButton", astonishmentButtonTexture);
+        add("disgustButton", disgustButtonTexture);
+        add("fearButton", fearButtonTexture);
+        add("happinessButton", happinessButtonTexture);
+        add("loveButton", loveButtonTexture);
+        add("sadnessButton", sadnessButtonTexture);
+        add("angerButtonPressed", angerButtonPressedTexture);
+        add("astonishmentButtonPressed", astonishmentButtonPressedTexture);
+        add("disgustButtonPressed", disgustButtonPressedTexture);
+        add("fearButtonPressed", fearButtonPressedTexture);
+        add("happinessButtonPressed", happinessButtonPressedTexture);
+        add("loveButtonPressed", loveButtonPressedTexture);
+        add("sadnessButtonPressed", sadnessButtonPressedTexture);
+        add("angerBody", angerBodyTexture);
+        add("astonishmentBody", astonishmentBodyTexture);
+        add("disgustBody", disgustBodyTexture);
+        add("fearBody", fearBodyTexture);
+        add("happinessBody", happinessBodyTexture);
+        add("loveBody", loveBodyTexture);
+        add("sadnessBody", sadnessBodyTexture);
+        add("settings_pressed", settingsPressedTexture);
 
         Label.LabelStyle answerStyle = new Label.LabelStyle();
-        answerStyle.background = s.newDrawable("answer_box");
-        answerStyle.font = s.getFont("default");
+        answerStyle.background = newDrawable("answer_box");
+        answerStyle.font = getFont("default");
 
         Label.LabelStyle answerHighlightedStyle = new Label.LabelStyle();
-        answerHighlightedStyle.background = s.newDrawable("highlighted_box");
-        answerHighlightedStyle.font = s.getFont("default");
+        answerHighlightedStyle.background = newDrawable("highlighted_box");
+        answerHighlightedStyle.font = getFont("default");
 
         Label.LabelStyle immobileAnswerStyle = new Label.LabelStyle();
-        immobileAnswerStyle.background = s.newDrawable("immobile_box");
-        immobileAnswerStyle.font = s.getFont("mediumItalicFont");
+        immobileAnswerStyle.background = newDrawable("immobile_box");
+        immobileAnswerStyle.font = getFont("mediumItalicFont");
 
         Label.LabelStyle questionStyle = new Label.LabelStyle();
-        questionStyle.background = s.newDrawable("questionBox");
-        questionStyle.font = s.getFont("defaultFont");
+        questionStyle.background = newDrawable("questionBox");
+        questionStyle.font = getFont("defaultFont");
 
         Label.LabelStyle questionStyleBig = new Label.LabelStyle();
-        questionStyleBig.background = s.newDrawable("bigQuestionBox");
-        questionStyleBig.font = s.getFont("defaultFont");
+        questionStyleBig.background = newDrawable("bigQuestionBox");
+        questionStyleBig.font = getFont("defaultFont");
 
         Label.LabelStyle questionStyleBigger = new Label.LabelStyle();
-        questionStyleBigger.background = s.newDrawable("biggerQuestionBox");
-        questionStyleBigger.font = s.getFont("defaultFont");
+        questionStyleBigger.background = newDrawable("biggerQuestionBox");
+        questionStyleBigger.font = getFont("defaultFont");
 
         Label.LabelStyle arrowStyle = new Label.LabelStyle();
-        arrowStyle.background = s.newDrawable("arrow_box");
-        arrowStyle.font = s.getFont("default");
+        arrowStyle.background = newDrawable("arrow_box");
+        arrowStyle.font = getFont("default");
 
         Label.LabelStyle textBoxStyle = new Label.LabelStyle();
-        textBoxStyle.background = s.newDrawable("white", Color.CLEAR);
-        textBoxStyle.font = s.getFont("defaultFont");
+        textBoxStyle.background = newDrawable("white", Color.CLEAR);
+        textBoxStyle.font = getFont("defaultFont");
 
         Label.LabelStyle emotionScore = new Label.LabelStyle();
-        emotionScore.background = s.newDrawable("white", Color.CLEAR);
-        emotionScore.font = s.getFont("mediumItalicFont");
+        emotionScore.background = newDrawable("white", Color.CLEAR);
+        emotionScore.font = getFont("mediumItalicFont");
 
         Label.LabelStyle dayText = new Label.LabelStyle();
-        dayText.background = s.newDrawable("white", Color.CLEAR);
-        dayText.font = s.getFont("mediumFont");
+        dayText.background = newDrawable("white", Color.CLEAR);
+        dayText.font = getFont("mediumFont");
 
         Label.LabelStyle imageCaption = new Label.LabelStyle();
-        imageCaption.background = s.newDrawable("white", Color.CLEAR);
-        imageCaption.font = s.getFont("italicFont");
+        imageCaption.background = newDrawable("white", Color.CLEAR);
+        imageCaption.font = getFont("italicFont");
 
         Button.ButtonStyle feelingsButtonStyle = new Button.ButtonStyle();
-        feelingsButtonStyle.up = s.newDrawable("empty");
-        feelingsButtonStyle.down = s.newDrawable("empty", Color.DARK_GRAY);
+        feelingsButtonStyle.up = newDrawable("empty");
+        feelingsButtonStyle.down = newDrawable("empty", Color.DARK_GRAY);
 
         Button.ButtonStyle settingsButtonStyle = new Button.ButtonStyle();
-        settingsButtonStyle.up = s.newDrawable("settings");
-        settingsButtonStyle.down = s.newDrawable("settings_pressed", Color.WHITE);
-        settingsButtonStyle.checked = s.newDrawable("settings_pressed", Color.WHITE);
+        settingsButtonStyle.up = newDrawable("settings");
+        settingsButtonStyle.down = newDrawable("settings_pressed", Color.WHITE);
+        settingsButtonStyle.checked = newDrawable("settings_pressed", Color.WHITE);
 
         Button.ButtonStyle soundStyle = new Button.ButtonStyle();
-        soundStyle.up = s.newDrawable("soundOff");
-        soundStyle.down = s.newDrawable("soundOff", secondaryColor);
-        soundStyle.checked = s.newDrawable("soundOn");
-        soundStyle.checkedDown = s.newDrawable("soundOn", secondaryColor);
+        soundStyle.up = newDrawable("soundOff");
+        soundStyle.down = newDrawable("soundOff", secondaryColor);
+        soundStyle.checked = newDrawable("soundOn");
+        soundStyle.checkedDown = newDrawable("soundOn", secondaryColor);
 
         Button.ButtonStyle musicStyle = new Button.ButtonStyle();
-        musicStyle.up = s.newDrawable("musicOff");
-        musicStyle.down = s.newDrawable("musicOff", secondaryColor);
-        musicStyle.checked = s.newDrawable("musicOn");
-        musicStyle.checkedDown = s.newDrawable("musicOn", secondaryColor);
+        musicStyle.up = newDrawable("musicOff");
+        musicStyle.down = newDrawable("musicOff", secondaryColor);
+        musicStyle.checked = newDrawable("musicOn");
+        musicStyle.checkedDown = newDrawable("musicOn", secondaryColor);
 
         Button.ButtonStyle exitStyle = new Button.ButtonStyle();
-        exitStyle.up = s.newDrawable("mainMenu");
-        exitStyle.down = s.newDrawable("mainMenu", secondaryColor);
-
-        Button.ButtonStyle buttonStyleAlt = new Button.ButtonStyle();
-        buttonStyleAlt.up = s.newDrawable("test");
-        buttonStyleAlt.down = s.newDrawable("test", Color.DARK_GRAY);
+        exitStyle.up = newDrawable("mainMenu");
+        exitStyle.down = newDrawable("mainMenu", secondaryColor);
 
         Label.LabelStyle feelingMeterForeGroundStyle = new Label.LabelStyle();
-        feelingMeterForeGroundStyle.font = s.getFont("default");
-        feelingMeterForeGroundStyle.background = s.newDrawable("meter");
+        feelingMeterForeGroundStyle.font = getFont("default");
+        feelingMeterForeGroundStyle.background = newDrawable("meter");
 
         Label.LabelStyle railStyle = new Label.LabelStyle();
-        railStyle.font = s.getFont("default");
-        railStyle.background = s.newDrawable("rail_img");
+        railStyle.font = getFont("default");
+        railStyle.background = newDrawable("rail_img");
 
         Label.LabelStyle angerStyle = new Label.LabelStyle();
-        angerStyle.font = s.getFont("default");
-        angerStyle.background = s.newDrawable("anger");
+        angerStyle.font = getFont("default");
+        angerStyle.background = newDrawable("anger");
 
         Label.LabelStyle astonishmentStyle = new Label.LabelStyle();
-        astonishmentStyle.font = s.getFont("default");
-        astonishmentStyle.background = s.newDrawable("astonishment");
+        astonishmentStyle.font = getFont("default");
+        astonishmentStyle.background = newDrawable("astonishment");
 
         Label.LabelStyle disgustStyle = new Label.LabelStyle();
-        disgustStyle.font = s.getFont("default");
-        disgustStyle.background = s.newDrawable("disgust");
+        disgustStyle.font = getFont("default");
+        disgustStyle.background = newDrawable("disgust");
 
         Label.LabelStyle fearStyle = new Label.LabelStyle();
-        fearStyle.font = s.getFont("default");
-        fearStyle.background = s.newDrawable("fear");
+        fearStyle.font = getFont("default");
+        fearStyle.background = newDrawable("fear");
 
         Label.LabelStyle happinessStyle = new Label.LabelStyle();
-        happinessStyle.font = s.getFont("default");
-        happinessStyle.background = s.newDrawable("happiness");
+        happinessStyle.font = getFont("default");
+        happinessStyle.background = newDrawable("happiness");
 
         Label.LabelStyle loveStyle = new Label.LabelStyle();
-        loveStyle.font = s.getFont("default");
-        loveStyle.background = s.newDrawable("love");
+        loveStyle.font = getFont("default");
+        loveStyle.background = newDrawable("love");
 
         Label.LabelStyle sadnessStyle = new Label.LabelStyle();
-        sadnessStyle.font = s.getFont("default");
-        sadnessStyle.background = s.newDrawable("sadness");
+        sadnessStyle.font = getFont("default");
+        sadnessStyle.background = newDrawable("sadness");
 
         Button.ButtonStyle happinessButtonStyle = new Button.ButtonStyle();
-        happinessButtonStyle.up = s.newDrawable("happinessButton");
-        happinessButtonStyle.down = s.newDrawable("happinessButtonPressed");
-        happinessButtonStyle.checked = s.newDrawable("happinessButtonPressed");
+        happinessButtonStyle.up = newDrawable("happinessButton");
+        happinessButtonStyle.down = newDrawable("happinessButtonPressed");
+        happinessButtonStyle.checked = newDrawable("happinessButtonPressed");
 
         Button.ButtonStyle sadnessButtonStyle = new Button.ButtonStyle();
-        sadnessButtonStyle.up = s.newDrawable("sadnessButton");
-        sadnessButtonStyle.down = s.newDrawable("sadnessButtonPressed");
-        sadnessButtonStyle.checked = s.newDrawable("sadnessButtonPressed");
+        sadnessButtonStyle.up = newDrawable("sadnessButton");
+        sadnessButtonStyle.down = newDrawable("sadnessButtonPressed");
+        sadnessButtonStyle.checked = newDrawable("sadnessButtonPressed");
 
         Button.ButtonStyle angerButtonStyle = new Button.ButtonStyle();
-        angerButtonStyle.up = s.newDrawable("angerButton");
-        angerButtonStyle.down = s.newDrawable("angerButtonPressed");
-        angerButtonStyle.checked = s.newDrawable("angerButtonPressed");
+        angerButtonStyle.up = newDrawable("angerButton");
+        angerButtonStyle.down = newDrawable("angerButtonPressed");
+        angerButtonStyle.checked = newDrawable("angerButtonPressed");
 
         Button.ButtonStyle loveButtonStyle = new Button.ButtonStyle();
-        loveButtonStyle.up = s.newDrawable("loveButton");
-        loveButtonStyle.down = s.newDrawable("loveButtonPressed");
-        loveButtonStyle.checked = s.newDrawable("loveButtonPressed");
+        loveButtonStyle.up = newDrawable("loveButton");
+        loveButtonStyle.down = newDrawable("loveButtonPressed");
+        loveButtonStyle.checked = newDrawable("loveButtonPressed");
 
         Button.ButtonStyle disgustButtonStyle = new Button.ButtonStyle();
-        disgustButtonStyle.up = s.newDrawable("disgustButton");
-        disgustButtonStyle.down = s.newDrawable("disgustButtonPressed");
-        disgustButtonStyle.checked = s.newDrawable("disgustButtonPressed");
+        disgustButtonStyle.up = newDrawable("disgustButton");
+        disgustButtonStyle.down = newDrawable("disgustButtonPressed");
+        disgustButtonStyle.checked = newDrawable("disgustButtonPressed");
 
         Button.ButtonStyle fearButtonStyle = new Button.ButtonStyle();
-        fearButtonStyle.up = s.newDrawable("fearButton");
-        fearButtonStyle.down = s.newDrawable("fearButtonPressed");
-        fearButtonStyle.checked = s.newDrawable("fearButtonPressed");
+        fearButtonStyle.up = newDrawable("fearButton");
+        fearButtonStyle.down = newDrawable("fearButtonPressed");
+        fearButtonStyle.checked = newDrawable("fearButtonPressed");
 
         Button.ButtonStyle astonishmentButtonStyle = new Button.ButtonStyle();
-        astonishmentButtonStyle.up = s.newDrawable("astonishmentButton");
-        astonishmentButtonStyle.down = s.newDrawable("astonishmentButtonPressed");
-        astonishmentButtonStyle.checked = s.newDrawable("astonishmentButtonPressed");
+        astonishmentButtonStyle.up = newDrawable("astonishmentButton");
+        astonishmentButtonStyle.down = newDrawable("astonishmentButtonPressed");
+        astonishmentButtonStyle.checked = newDrawable("astonishmentButtonPressed");
 
         Label.LabelStyle angerBodyStyle = new Label.LabelStyle();
-        angerBodyStyle.font = s.getFont("default");
-        angerBodyStyle.background = s.newDrawable("angerBody");
+        angerBodyStyle.font = getFont("default");
+        angerBodyStyle.background = newDrawable("angerBody");
 
         Label.LabelStyle astonishmentBodyStyle = new Label.LabelStyle();
-        astonishmentBodyStyle.font = s.getFont("default");
-        astonishmentBodyStyle.background = s.newDrawable("astonishmentBody");
+        astonishmentBodyStyle.font = getFont("default");
+        astonishmentBodyStyle.background = newDrawable("astonishmentBody");
 
         Label.LabelStyle disgustBodyStyle = new Label.LabelStyle();
-        disgustBodyStyle.font = s.getFont("default");
-        disgustBodyStyle.background = s.newDrawable("disgustBody");
+        disgustBodyStyle.font = getFont("default");
+        disgustBodyStyle.background = newDrawable("disgustBody");
 
         Label.LabelStyle fearBodyStyle = new Label.LabelStyle();
-        fearBodyStyle.font = s.getFont("default");
-        fearBodyStyle.background = s.newDrawable("fearBody");
+        fearBodyStyle.font = getFont("default");
+        fearBodyStyle.background = newDrawable("fearBody");
 
         Label.LabelStyle happinessBodyStyle = new Label.LabelStyle();
-        happinessBodyStyle.font = s.getFont("default");
-        happinessBodyStyle.background = s.newDrawable("happinessBody");
+        happinessBodyStyle.font = getFont("default");
+        happinessBodyStyle.background = newDrawable("happinessBody");
 
         Label.LabelStyle loveBodyStyle = new Label.LabelStyle();
-        loveBodyStyle.font = s.getFont("default");
-        loveBodyStyle.background = s.newDrawable("loveBody");
+        loveBodyStyle.font = getFont("default");
+        loveBodyStyle.background = newDrawable("loveBody");
 
         Label.LabelStyle sadnessBodyStyle = new Label.LabelStyle();
-        sadnessBodyStyle.font = s.getFont("default");
-        sadnessBodyStyle.background = s.newDrawable("sadnessBody");
+        sadnessBodyStyle.font = getFont("default");
+        sadnessBodyStyle.background = newDrawable("sadnessBody");
 
 
 
 
-        s.add("answer_movable", answerStyle);
-        s.add("answer_static", immobileAnswerStyle);
-        s.add("answer_highlighted", answerHighlightedStyle);
-        s.add("question", questionStyle);
-        s.add("bigQuestion", questionStyleBig);
-        s.add("biggerQuestion", questionStyleBigger);
-        s.add("arrow", arrowStyle);
-        s.add("feelings", feelingsButtonStyle);
-        s.add("alt", buttonStyleAlt);
-        s.add("text", textBoxStyle);
-        s.add("emotionScoreText", emotionScore);
-        s.add("dayText", dayText);
-        s.add("imageCaptionText", imageCaption);
-        s.add("settings", settingsButtonStyle);
-        s.add("sound", soundStyle);
-        s.add("music", musicStyle);
-        s.add("exit", exitStyle);
-        s.add("feelingMeterForeground", feelingMeterForeGroundStyle);
-        s.add("rail", railStyle);
-        s.add("anger", angerStyle);
-        s.add("astonishment", astonishmentStyle);
-        s.add("disgust", disgustStyle);
-        s.add("fear", fearStyle);
-        s.add("happiness", happinessStyle);
-        s.add("love", loveStyle);
-        s.add("sadness", sadnessStyle);
-        s.add("anger", angerButtonStyle);
-        s.add("astonishment", astonishmentButtonStyle);
-        s.add("disgust", disgustButtonStyle);
-        s.add("fear", fearButtonStyle);
-        s.add("happiness", happinessButtonStyle);
-        s.add("love", loveButtonStyle);
-        s.add("sadness", sadnessButtonStyle);
-        s.add("anger_body", angerBodyStyle);
-        s.add("astonishment_body", astonishmentBodyStyle);
-        s.add("disgust_body", disgustBodyStyle);
-        s.add("fear_body", fearBodyStyle);
-        s.add("joy_body", happinessBodyStyle);
-        s.add("love_body", loveBodyStyle);
-        s.add("sadness_body", sadnessBodyStyle);
-
-
-
-        return s;
+        add("answer_movable", answerStyle);
+        add("answer_static", immobileAnswerStyle);
+        add("answer_highlighted", answerHighlightedStyle);
+        add("question", questionStyle);
+        add("bigQuestion", questionStyleBig);
+        add("biggerQuestion", questionStyleBigger);
+        add("arrow", arrowStyle);
+        add("feelings", feelingsButtonStyle);
+        add("text", textBoxStyle);
+        add("emotionScoreText", emotionScore);
+        add("dayText", dayText);
+        add("imageCaptionText", imageCaption);
+        add("settings", settingsButtonStyle);
+        add("sound", soundStyle);
+        add("music", musicStyle);
+        add("exit", exitStyle);
+        add("feelingMeterForeground", feelingMeterForeGroundStyle);
+        add("rail", railStyle);
+        add("anger", angerStyle);
+        add("astonishment", astonishmentStyle);
+        add("disgust", disgustStyle);
+        add("fear", fearStyle);
+        add("happiness", happinessStyle);
+        add("love", loveStyle);
+        add("sadness", sadnessStyle);
+        add("anger", angerButtonStyle);
+        add("astonishment", astonishmentButtonStyle);
+        add("disgust", disgustButtonStyle);
+        add("fear", fearButtonStyle);
+        add("happiness", happinessButtonStyle);
+        add("love", loveButtonStyle);
+        add("sadness", sadnessButtonStyle);
+        add("anger_body", angerBodyStyle);
+        add("astonishment_body", astonishmentBodyStyle);
+        add("disgust_body", disgustBodyStyle);
+        add("fear_body", fearBodyStyle);
+        add("joy_body", happinessBodyStyle);
+        add("love_body", loveBodyStyle);
+        add("sadness_body", sadnessBodyStyle);
     }
 
     /** getPixelDensity method is used to show correct images
