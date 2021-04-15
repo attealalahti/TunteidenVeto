@@ -1,9 +1,7 @@
 package fi.tuni.tiko;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import java.util.ArrayList;
 
@@ -154,14 +152,14 @@ public class ChoiceScreen extends Screen {
             ab.setPause(pause);
         }
     }
-    public void addGlobalElements(Button feelingMeterButton, Group meters, Button settingsButton, Group settings, String weekDay) {
-        addActor(feelingMeterButton);
-        addActor(meters);
-        addActor(settingsButton);
-        addActor(settings);
-        feelingMeterButton.toBack();
-        meters.toBack();
-        settings.toBack();
+    public void addGlobalElements(GlobalElements globalElements, String weekDay) {
+        addActor(globalElements.getFeelingMeterButton());
+        addActor(globalElements.getMeters());
+        addActor(globalElements.getSettingsButton());
+        addActor(globalElements.getSettings());
+        globalElements.getFeelingMeterButton().toBack();
+        globalElements.getMeters().toBack();
+        globalElements.getSettings().toBack();
 
         dayBox.setText(weekDay.toUpperCase());
 

@@ -7,7 +7,6 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
-import static fi.tuni.tiko.MainGame.FADE_TIME;
 import static fi.tuni.tiko.MainGame.colorMax255;
 import static fi.tuni.tiko.MainGame.currentScreenID;
 import static fi.tuni.tiko.MainGame.darkBackgroundColor;
@@ -54,9 +53,39 @@ public class GlobalElements extends Group {
     private Button settingsButton;
     private Button feelingMeterButton;
 
+    // How long it takes to switch between Game and FeelingMeter mode:
+    public float FADE_TIME = 0.2f;
+
     public GlobalElements() {
         buttonHeight =  windowHeight * 0.07f;
         bigButtonHeight = buttonHeight * 2f;
+
+        meters = createMeters();
+        settings = createSettings();
+        settingsButton = createSettingsButton();
+        feelingMeterButton = createFeelingMeterButton();
+        addActor(meters);
+        addActor(settings);
+        addActor(settingsButton);
+        addActor(feelingMeterButton);
+    }
+    public Group getMeters() {
+        return meters;
+    }
+    public Group getSettings() {
+        return settings;
+    }
+    public Button getSettingsButton() {
+        return settingsButton;
+    }
+    public Button getFeelingMeterButton() {
+        return feelingMeterButton;
+    }
+    public Button getMusicButton() {
+        return musicButton;
+    }
+    public Button getSoundButton() {
+        return soundButton;
     }
 
     public Group createMeters() {
@@ -172,7 +201,6 @@ public class GlobalElements extends Group {
         exitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                //screens = createScreens();
                 currentScreenID = 999;
                 settingsButton.setChecked(false);
                 for (int i = 0; i < screens.size(); i++) {
@@ -194,33 +222,13 @@ public class GlobalElements extends Group {
     public FeelingMeter getMeter(String emotion) {
         FeelingMeter tempMeter = new FeelingMeter(5f, Color.BLACK, "Janika");
         switch(emotion) {
-            case "love":
-                tempMeter = love;
-                break;
-
-            case "happiness":
-                tempMeter =  happiness;
-            break;
-
-            case "anger":
-                tempMeter = anger;
-            break;
-
-            case "astonishment":
-                tempMeter = astonishment;
-            break;
-
-            case "fear":
-                tempMeter = fear;
-            break;
-
-            case "disgust":
-                tempMeter = disgust;
-            break;
-
-            case "sadness":
-                tempMeter = sadness;
-            break;
+            case "love": tempMeter = love; break;
+            case "happiness": tempMeter =  happiness; break;
+            case "anger": tempMeter = anger; break;
+            case "astonishment": tempMeter = astonishment; break;
+            case "fear": tempMeter = fear; break;
+            case "disgust": tempMeter = disgust; break;
+            case "sadness": tempMeter = sadness; break;
         }
         return tempMeter;
     }

@@ -366,4 +366,9 @@ public class MySkin extends Skin {
 
         return tempInt;
     }
+    @Override
+    public void dispose() {
+        super.dispose();
+
+    }
 }

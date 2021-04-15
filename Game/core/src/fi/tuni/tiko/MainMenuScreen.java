@@ -1,15 +1,7 @@
 package fi.tuni.tiko;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-
-import java.util.ArrayList;
-
 import static fi.tuni.tiko.MainGame.margin;
-import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.MainGame.mainMenuChecker;
@@ -50,9 +42,7 @@ public class MainMenuScreen extends Screen {
     public void nextScreen(int screenLink) {
         mainMenuChecker = screenLink;
     }
-
 }
-
 
 
 /** @Override

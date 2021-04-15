@@ -7,17 +7,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import java.util.ArrayList;
 
 
@@ -35,6 +25,7 @@ public class MainGame extends ApplicationAdapter {
 	public static Color currentBackgroundColor = desiredBackgroundColor;
 	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
 	private String weekDay = "Maanantai";
+	private GlobalElements globalElements;
 
 	public static int currentScreenID;
 	public static int mainMenuChecker = 0;
@@ -45,10 +36,6 @@ public class MainGame extends ApplicationAdapter {
 	public static boolean soundOn;
 	public static float margin;
 	public static float meterHeight;
-
-
-	// How long it takes to switch between Game and FeelingMeter mode:
-	public static float FADE_TIME = 0.2f;
 
 	AudioPlayer audioPlayer;
 	@Override
@@ -62,11 +49,9 @@ public class MainGame extends ApplicationAdapter {
 		skin = new MySkin();
 
 
-		settingsButton = createSettingsButton();
-		feelingMeterButton = createFeelingMeterButton();
-		meters = createMeters();
+
+		globalElements = new GlobalElements();
 		screens = createScreens();
-		settings = createSettings();
 
 		loadProgress();
 
@@ -94,8 +79,8 @@ public class MainGame extends ApplicationAdapter {
 		} else if (mainMenuChecker == 2) {
 			loadProgress();
 		} else if (mainMenuChecker == 3) {
-			hideScreenElements(mainMenu);
-			showSettings();
+			globalElements.hideScreenElements(mainMenu);
+			globalElements.showSettings();
 		} else if (mainMenuChecker == 4) {
 			Gdx.app.exit();
 		}
@@ -141,13 +126,13 @@ public class MainGame extends ApplicationAdapter {
 					case 240: weekDay = "Sunnuntai";
 						break;
 				}
-				((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings, weekDay);
+				((ChoiceScreen) currentScreen).addGlobalElements(globalElements, weekDay);
 				updateMeters(((ChoiceScreen) currentScreen).getEffects());
-				feelingMeterButton.setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
+				globalElements.getFeelingMeterButton().setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
 				saveProgress();
 			} else {
-				currentScreen.addActor(settings);
-				settings.toBack();
+				currentScreen.addActor(globalElements.getSettings());
+				globalElements.getSettings().toBack();
 			}
 		}
 		lastFrameCurrentScreen = currentScreen;
@@ -222,13 +207,13 @@ public class MainGame extends ApplicationAdapter {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		prefs.putInteger("screen", currentScreenID);
 		prefs.putString("day", weekDay);
-		prefs.putFloat("happiness", happiness.getValue());
-		prefs.putFloat("sadness", sadness.getValue());
-		prefs.putFloat("anger", anger.getValue());
-		prefs.putFloat("love", love.getValue());
-		prefs.putFloat("astonishment", astonishment.getValue());
-		prefs.putFloat("fear", fear.getValue());
-		prefs.putFloat("disgust", disgust.getValue());
+		prefs.putFloat("happiness", globalElements.getMeter("happiness").getValue());
+		prefs.putFloat("sadness", globalElements.getMeter("sadness").getValue());
+		prefs.putFloat("anger", globalElements.getMeter("anger").getValue());
+		prefs.putFloat("love", globalElements.getMeter("love").getValue());
+		prefs.putFloat("astonishment", globalElements.getMeter("astonishment").getValue());
+		prefs.putFloat("fear", globalElements.getMeter("fear").getValue());
+		prefs.putFloat("disgust", globalElements.getMeter("disgust").getValue());
 		saveSettings();
 		prefs.flush();
 	}
@@ -237,13 +222,13 @@ public class MainGame extends ApplicationAdapter {
 		currentScreenID = prefs.getInteger("screen", 0);
 		weekDay = prefs.getString("day", "Maanantai");
 		float meterDefault = 50;
-		happiness.setValue(prefs.getFloat("happiness", meterDefault));
-		sadness.setValue(prefs.getFloat("sadness", meterDefault));
-		anger.setValue(prefs.getFloat("anger", meterDefault));
-		love.setValue(prefs.getFloat("love", meterDefault));
-		astonishment.setValue(prefs.getFloat("astonishment", meterDefault));
-		fear.setValue(prefs.getFloat("fear", meterDefault));
-		disgust.setValue(prefs.getFloat("disgust", meterDefault));
+		globalElements.getMeter("happiness").setValue(prefs.getFloat("happiness", meterDefault));
+		globalElements.getMeter("sadness").setValue(prefs.getFloat("sadness", meterDefault));
+		globalElements.getMeter("anger").setValue(prefs.getFloat("anger", meterDefault));
+		globalElements.getMeter("love").setValue(prefs.getFloat("love", meterDefault));
+		globalElements.getMeter("astonishment").setValue(prefs.getFloat("astonishment", meterDefault));
+		globalElements.getMeter("fear").setValue(prefs.getFloat("fear", meterDefault));
+		globalElements.getMeter("disgust").setValue(prefs.getFloat("disgust", meterDefault));
 		loadSettings();
 	}
 	public static void saveSettings() {
@@ -256,8 +241,8 @@ public class MainGame extends ApplicationAdapter {
 		Preferences prefs = Gdx.app.getPreferences("MySettings");
 		musicOn = prefs.getBoolean("music", true);
 		soundOn = prefs.getBoolean("sound", true);
-		musicButton.setChecked(musicOn);
-		soundButton.setChecked(soundOn);
+		globalElements.getMusicButton().setChecked(musicOn);
+		globalElements.getSoundButton().setChecked(soundOn);
 	}
 	public void resetProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
@@ -266,18 +251,18 @@ public class MainGame extends ApplicationAdapter {
 	}
 	public String getStrongestEmotion() {
 		String result = "happiness";
-		float largestValue = Math.max(Math.max(Math.max(happiness.getValue(), sadness.getValue()), Math.max(anger.getValue(), love.getValue())), Math.max(disgust.getValue(), Math.max(astonishment.getValue(), fear.getValue())));
-		if (sadness.getValue() == largestValue) {
+		float largestValue = Math.max(Math.max(Math.max(globalElements.getMeter("happiness").getValue(), globalElements.getMeter("sadness").getValue()), Math.max(globalElements.getMeter("anger").getValue(), globalElements.getMeter("love").getValue())), Math.max(globalElements.getMeter("fear").getValue(), Math.max(globalElements.getMeter("disgust").getValue(), globalElements.getMeter("astonishment").getValue())));
+		if (globalElements.getMeter("sadness").getValue() == largestValue) {
 			result = "sadness";
-		} else if (anger.getValue() == largestValue) {
+		} else if (globalElements.getMeter("anger").getValue() == largestValue) {
 			result = "anger";
-		} else if (love.getValue() == largestValue) {
+		} else if (globalElements.getMeter("love").getValue() == largestValue) {
 			result = "love";
-		} else if (disgust.getValue() == largestValue) {
+		} else if (globalElements.getMeter("disgust").getValue() == largestValue) {
 			result = "disgust";
-		} else if (fear.getValue() == largestValue) {
+		} else if (globalElements.getMeter("fear").getValue() == largestValue) {
 			result = "fear";
-		} else if (astonishment.getValue() == largestValue) {
+		} else if (globalElements.getMeter("astonishment").getValue() == largestValue) {
 			result = "astonishment";
 		}
 
@@ -359,19 +344,19 @@ public class MainGame extends ApplicationAdapter {
 			String ast = effectIndicators[5].substring(0, 3);
 			String dis = effectIndicators[6].substring(0, 3);
 			if (indicator.equals(hap)) {
-				happiness.addValue(change);
+				globalElements.getMeter("happiness").addValue(change);
 			} else if (indicator.equals(sad)) {
-				sadness.addValue(change);
+				globalElements.getMeter("sadness").addValue(change);
 			} else if (indicator.equals(ang)) {
-				anger.addValue(change);
+				globalElements.getMeter("anger").addValue(change);
 			} else if (indicator.equals(lov)) {
-				love.addValue(change);
+				globalElements.getMeter("love").addValue(change);
 			} else if (indicator.equals(fea)) {
-				fear.addValue(change);
+				globalElements.getMeter("fear").addValue(change);
 			} else if (indicator.equals(ast)) {
-				astonishment.addValue(change);
+				globalElements.getMeter("astonishment").addValue(change);
 			} else if (indicator.equals(dis)) {
-				disgust.addValue(change);
+				globalElements.getMeter("disgust").addValue(change);
 			}
 		}
 	}
