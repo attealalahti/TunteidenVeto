@@ -370,7 +370,7 @@
 99 Tulevaisuus taitaa hiukan pelottaa sinua. Rauhallinen hengittely on yksi helppo ja nopea tapa rauhoittaa itseä, mikäli huomaa että pelko meinaa ottaa vallan.
 100 Selvä!
 ---
-100 Psykologit ja terapeutit on helppo huomata, mutta myös muissa töissä on tärkeää osata erilaisia tunnetaitoja. Omien tunteiden tunnistaminen ja käsitteleminen auttavan pitämään niin muun elämän kuin työtkin hanskassa. Tunteet välittävät tärkeitä viestejä hyvinvoinnistamme. Millainen työ sinua erityisesti kiinnostaa?
+100 Psykologit on helppo huomata, mutta muissakin töissä on tärkeää osata tunnetaitoja. Omien tunteiden tunnistaminen ja käsitteleminen auttavan pitämään niin muun elämän kuin työtkin hanskassa. Tunteet välittävät tärkeitä viestejä hyvinvoinnistamme. Millainen työ sinua erityisesti kiinnostaa?
 101 Rento työ ja kiva työympäristö
 102 Itsenäinen ja haastava työ
 103 Hyväpalkkainen ja arvostettu työ
