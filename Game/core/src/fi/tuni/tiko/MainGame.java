@@ -23,39 +23,18 @@ import java.util.ArrayList;
 
 public class MainGame extends ApplicationAdapter {
 
-	private ArrayList<Screen> screens;
+	public static ArrayList<Screen> screens;
 	private Screen currentScreen;
-	private MainMenuScreen mainMenu;
-	private Group meters;
-	private Button feelingMeterButton;
-	private Group settings;
-	private Button settingsButton;
-	private Button musicButton;
-	private Button soundButton;
-	private Button exitButton;
+	public static MainMenuScreen mainMenu;
+
 	private Screen lastFrameCurrentScreen;
-	private FeelingMeter happiness;
-	private FeelingMeter sadness;
-	private FeelingMeter anger;
-	private FeelingMeter love;
-	private FeelingMeter fear;
-	private FeelingMeter astonishment;
-	private FeelingMeter disgust;
-	private Color loveColor = colorMax255(234, 140, 128);
-	private Color happinessColor = colorMax255(249, 212, 7);
-	private Color angerColor = colorMax255(143, 12, 0);
-	private Color astonishmentColor = colorMax255(64, 165, 193);
-	private Color sadnessColor =colorMax255( 0, 59, 143);
-	private Color disgustColor = colorMax255(60, 143, 0);
-	private Color fearColor = colorMax255(51, 51, 51);
-	private Color lightBackgroundColor = colorMax255(0f, 151, 167f);
-	private Color darkBackgroundColor = colorMax255(0, 131, 143);
-	private Color desiredBackgroundColor = lightBackgroundColor;
-	private Color currentBackgroundColor = desiredBackgroundColor;
+
+	public static Color lightBackgroundColor = colorMax255(0f, 151, 167f);
+	public static Color darkBackgroundColor = colorMax255(0, 131, 143);
+	public static Color desiredBackgroundColor = lightBackgroundColor;
+	public static Color currentBackgroundColor = desiredBackgroundColor;
 	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
 	private String weekDay = "Maanantai";
-
-
 
 	public static int currentScreenID;
 	public static int mainMenuChecker = 0;
@@ -67,18 +46,15 @@ public class MainGame extends ApplicationAdapter {
 	public static float margin;
 	public static float meterHeight;
 
-	private float buttonHeight;
-	private float bigButtonHeight;
+
 	// How long it takes to switch between Game and FeelingMeter mode:
-	private float FADE_TIME = 0.2f;
+	public static float FADE_TIME = 0.2f;
 
 	AudioPlayer audioPlayer;
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
-		buttonHeight =  windowHeight * 0.07f;
-		bigButtonHeight = buttonHeight * 2f;
 		margin = windowHeight * 0.025f;
 		meterHeight = windowHeight * 0.1f;
 		audioPlayer = new AudioPlayer();
@@ -94,7 +70,7 @@ public class MainGame extends ApplicationAdapter {
 
 		loadProgress();
 
-		mainMenu = createMainMenu();
+		mainMenu = new MainMenuScreen();
 		screens.add(mainMenu);
 		currentScreen = mainMenu;
 		currentScreenID = 999;
@@ -110,19 +86,6 @@ public class MainGame extends ApplicationAdapter {
 		return new Color(r*colorFraction, g*colorFraction, b*colorFraction, 1);
 	}
 
-	public MainMenuScreen createMainMenu() {
-		ArrayList<String> choices = new ArrayList<String>();
-		choices.add("POISTU PELISTÄ");
-		choices.add("ASETUKSET");
-		choices.add("JATKA PELIÄ");
-		choices.add("UUSI PELI");
-		ArrayList<Integer> menuScreenLinks = new ArrayList<Integer>();
-		menuScreenLinks.add(4);
-		menuScreenLinks.add(3);
-		menuScreenLinks.add(2);
-		menuScreenLinks.add(1);
-		return new MainMenuScreen(999, choices, menuScreenLinks);
-	}
 	public void checkMenuChoice() {
 		if (mainMenuChecker == 1) {
 			resetProgress();
@@ -283,7 +246,7 @@ public class MainGame extends ApplicationAdapter {
 		disgust.setValue(prefs.getFloat("disgust", meterDefault));
 		loadSettings();
 	}
-	public void saveSettings() {
+	public static void saveSettings() {
 		Preferences prefs = Gdx.app.getPreferences("MySettings");
 		prefs.putBoolean("music", musicOn);
 		prefs.putBoolean("sound", soundOn);
@@ -453,173 +416,6 @@ public class MainGame extends ApplicationAdapter {
 		return current;
 	}
 
-
-
-
-	public Button createFeelingMeterButton() {
-		final Button button = new Button(skin, "happiness");
-		button.setBounds(((float) windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
-		button.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Screen thisScreen = (Screen) feelingMeterButton.getStage();
-				if (!feelingMeterButton.isChecked()) {
-					hideMeters();
-					if (!settingsButton.isChecked()) {
-						showScreenElements(thisScreen);
-					}
-				} else {
-					showMeters();
-					hideScreenElements(thisScreen);
-					if (settingsButton.isChecked()) {
-						settingsButton.setChecked(false);
-					}
-				}
-			}
-		});
-		return button;
-	}
-	public void hideMeters() {
-		meters.addAction(Actions.fadeOut(FADE_TIME));
-		meters.toBack();
-	}
-	public void showMeters() {
-		meters.addAction(Actions.fadeIn(FADE_TIME));
-		meters.toFront();
-		desiredBackgroundColor = darkBackgroundColor;
-	}
-	public void showSettings() {
-		settings.addAction(Actions.fadeIn(FADE_TIME));
-		settings.toFront();
-		desiredBackgroundColor = darkBackgroundColor;
-	}
-	public void hideSettings() {
-		settings.addAction(Actions.fadeOut(FADE_TIME));
-		settings.toBack();
-	}
-	public void showScreenElements(Screen thisScreen) {
-		thisScreen.getElements().addAction(Actions.fadeIn(FADE_TIME));
-		if (thisScreen.getClass() == ChoiceScreen.class) {
-			((ChoiceScreen) thisScreen).answersSetPause(false);
-		}
-		thisScreen.getElements().toFront();
-		desiredBackgroundColor = lightBackgroundColor;
-	}
-	public void hideScreenElements(Screen thisScreen) {
-		thisScreen.getElements().addAction(Actions.fadeOut(FADE_TIME));
-		if (thisScreen.getClass() == ChoiceScreen.class) {
-			((ChoiceScreen) thisScreen).answersSetPause(true);
-		}
-		thisScreen.getElements().toBack();
-	}
-	public Group createMeters() {
-		Group result = new Group();
-		// Create FeelingMeters
-		float meterMargin = margin + meterHeight;
-		float meterLocationHeight = meterMargin * 7;
-		float currentY = windowHeight - meterLocationHeight;
-		happiness = new FeelingMeter(currentY, happinessColor, "happiness");
-		result.addActor(happiness);
-		currentY += meterMargin;
-		sadness = new FeelingMeter(currentY, sadnessColor, "sadness");
-		result.addActor(sadness);
-		currentY += meterMargin;
-		love = new FeelingMeter(currentY, loveColor, "love");
-		result.addActor(love);
-		currentY += meterMargin;
-		anger = new FeelingMeter(currentY, angerColor, "anger");
-		result.addActor(anger);
-		currentY += meterMargin;
-		fear = new FeelingMeter(currentY, fearColor, "fear");
-		result.addActor(fear);
-		currentY += meterMargin;
-		astonishment = new FeelingMeter(currentY, astonishmentColor, "astonishment");
-		result.addActor(astonishment);
-		currentY += meterMargin;
-		disgust = new FeelingMeter(currentY, disgustColor, "disgust");
-		result.addActor(disgust);
-
-		// Hide the meters initially
-		result.toBack();
-		result.addAction(Actions.fadeOut(0));
-
-		return result;
-	}
-	public Button createSettingsButton() {
-		final Button button = new Button(skin, "settings");
-		button.setBounds(((float) windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
-		button.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				Screen thisScreen = (Screen) settingsButton.getStage();
-				if (!settingsButton.isChecked()) {
-					hideSettings();
-					if (!feelingMeterButton.isChecked()) {
-						showScreenElements(thisScreen);
-					}
-				} else {
-					showSettings();
-					hideScreenElements(thisScreen);
-					if (feelingMeterButton.isChecked()) {
-						feelingMeterButton.setChecked(false);
-					}
-				}
-			}
-		});
-		return button;
-	}
-	public Group createSettings() {
-		Group result = new Group();
-		// Create buttons for settings
-		musicButton = new Button(skin, "music");
-		soundButton = new Button(skin, "sound");
-		exitButton = new Button(skin, "exit");
-		float centerX = windowWidth * 0.5f - bigButtonHeight * 0.5f;
-		float centerY = windowHeight * 0.5f - bigButtonHeight * 0.5f;
-		musicButton.setBounds(centerX, centerY + bigButtonHeight + margin, bigButtonHeight, bigButtonHeight);
-		soundButton.setBounds(centerX, centerY, bigButtonHeight, bigButtonHeight);
-		exitButton.setBounds(centerX, centerY - bigButtonHeight - margin, bigButtonHeight, bigButtonHeight);
-		result.addActor(musicButton);
-		result.addActor(soundButton);
-		result.addActor(exitButton);
-		// Hide the buttons initially
-		result.toBack();
-		result.addAction(Actions.fadeOut(0));
-		musicButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				musicOn = musicButton.isChecked();
-				saveSettings();
-			}
-		});
-		soundButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				soundOn = soundButton.isChecked();
-				saveSettings();
-			}
-		});
-		exitButton.addListener(new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				//screens = createScreens();
-				currentScreenID = 999;
-				settingsButton.setChecked(false);
-				for (int i = 0; i < screens.size(); i++) {
-					if (screens.get(i).getClass() == MainMenuScreen.class) {
-						screens.set(i, createMainMenu());
-						mainMenu = ((MainMenuScreen)screens.get(i));
-					}
-				}
-				hideSettings();
-				showScreenElements(mainMenu);
-			}
-		});
-		musicButton.setChecked(musicOn);
-		soundButton.setChecked(soundOn);
-
-		return result;
-	}
 	@Override
 	public void dispose () {
 

@@ -24,8 +24,9 @@ public class MainMenuScreen extends Screen {
     private final float questionBoxHeight = windowHeight * 0.4f;
     private final float roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
 
-    public MainMenuScreen(int screenID, final ArrayList<String> answers, ArrayList<Integer> screenLinks) {
-        super(screenID, answers, screenLinks);
+
+    public MainMenuScreen() {
+
 
         // Create groups for easy access of different elements
         addActor(getElements());
@@ -49,7 +50,9 @@ public class MainMenuScreen extends Screen {
     public void nextScreen(int screenLink) {
         mainMenuChecker = screenLink;
     }
+
 }
+
 
 
 /** @Override

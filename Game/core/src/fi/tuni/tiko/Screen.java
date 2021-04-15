@@ -12,7 +12,7 @@ import java.util.ArrayList;
 abstract public class Screen extends Stage {
 
     private int screenID;
-    private ArrayList<String> choices;
+    private ArrayList<String> temporaryList;
     private ArrayList<Integer> screenLinks;
     private Group elements = new Group();
 
@@ -24,18 +24,43 @@ abstract public class Screen extends Stage {
      */
     public Screen (int screenID, ArrayList<String> choices, ArrayList<Integer> screenLinks) {
         this.screenID = screenID;
-        this.choices = choices;
+        this.temporaryList = choices;
         this.screenLinks = screenLinks;
         addActor(elements);
         if (choices.size() != screenLinks.size()) {
             throw new IllegalArgumentException("Choice and screen link amounts don't match.");
         }
     }
+    public Screen() {
+        this.screenID = 999;
+        this.temporaryList = createAnswers();
+        this.screenLinks = createScreenLinks();
+        addActor(elements);
+    }
+    public ArrayList<String> createAnswers() {
+        ArrayList<String> temporaryList = new ArrayList<>();
+        temporaryList.add("POISTU PELISTÄ");
+        temporaryList.add("ASETUKSET");
+        temporaryList.add("JATKA PELIÄ");
+        temporaryList.add("UUSI PELI");
+        return temporaryList;
+
+    }
+    public ArrayList<Integer> createScreenLinks() {
+        ArrayList<Integer> menuScreenLinks = new ArrayList<Integer>();
+        menuScreenLinks.add(4);
+        menuScreenLinks.add(3);
+        menuScreenLinks.add(2);
+        menuScreenLinks.add(1);
+        return menuScreenLinks;
+    }
+
+
     public int getScreenID() {
         return screenID;
     }
     public ArrayList<String> getChoices() {
-        return choices;
+        return temporaryList;
     }
     public ArrayList<Integer> getScreenLinks() {
         return screenLinks;
