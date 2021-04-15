@@ -923,15 +923,15 @@
 263 Sunnuntai alkaa vierähtää loppuun. Takana on rankka mutta antoisa viikko: suuri osa ajasta kului koulussa, mutta ehdit tehdä myös vaikka mitä muuta. Seitsemässä päivässä tuli käytyä läpi tunnekuohuja suuntaan ja toiseen, tehtyä yksi koe ja valittua parhaat tavat viettää vapaahetket. Käyt nukkumaan hyvillä mielin - ensi viikkoon!
 999 PÄÄVALIKKOON
 ---
-300 Näyttää siltä, että vihasi alkaa riistäytyä käsistä! Käy juoksulenkillä, huuda yksinäsi, tee rentoutumisharjoitus tai vaikka hikitreeni: vihaa saa helpotettua itse monin tavoin. Toisilla toimii vihakirjeen kirjoittaminen ja tuhoaminen, toisilla meditaatio. Kannattaa ilman muuta etsiä itselle sopivin tapa käsitellä vihaa!
-310 VIHA -30
+400 Näyttää siltä, että vihasi alkaa riistäytyä käsistä! Käy juoksulenkillä, huuda yksinäsi, tee rentoutumisharjoitus tai vaikka hikitreeni: vihaa saa helpotettua itse monin tavoin. Toisilla toimii vihakirjeen kirjoittaminen ja tuhoaminen, toisilla meditaatio. Kannattaa ilman muuta etsiä itselle sopivin tapa käsitellä vihaa!
+410 VIHA -30
 ---
-301 Näyttää siltä, että sinussa ei ole enää lainkaan vihaa. Vaikka viha usein mielletään negatiiviseksi tunteeksi, on sillä tärkeä rooli ihmiselle: se suojaa ihmistä, auttaa puolustautumaan ja antaa voimaa taistella tärkeiden asioiden puolesta. On tärkeää olla tukahduttamatta kaikkea vihaansa.
-310 VIHA +30
+401 Näyttää siltä, että sinussa ei ole enää lainkaan vihaa. Vaikka viha usein mielletään negatiiviseksi tunteeksi, on sillä tärkeä rooli ihmiselle: se suojaa ihmistä, auttaa puolustautumaan ja antaa voimaa taistella tärkeiden asioiden puolesta. On tärkeää olla tukahduttamatta kaikkea vihaansa.
+410 VIHA +30
 ---
-302 O'ou, suru taitaa ottaa sinusta vallan! Surullisena tulee olla itselleen armollinen, mutta surua voi myös omin voimin helpottaa: kirjoita, maalaa, käy kävelylenkillä tai tee mielikuvaharjoituksia. Myös muille surusta puhuminen usein auttaa! Etsi ihmeessä itsellesi sopivin tapa lievittää surua.
-310 SURU -30
+402 O'ou, suru taitaa ottaa sinusta vallan! Surullisena tulee olla itselleen armollinen, mutta surua voi myös omin voimin helpottaa: kirjoita, maalaa, käy kävelylenkillä tai tee mielikuvaharjoituksia. Myös muille surusta puhuminen usein auttaa! Etsi ihmeessä itsellesi sopivin tapa lievittää surua.
+410 SURU -30
 ---
-303 Sinussa ei ole lainkaan surua: olethan varma, ettet ole yrittänyt torjua surun tunteitasi? Surulla on tärkeä tehtävä menetyksen hyväksymisessä, hyvien muistojen mielessä pitämisessä ja eteenpäin pääsemisessä. Surun keskellä myös ihmisen selviytymiskeinot ja vahvuudet nousevat selkeästi esiin.
-310 SURU +30
+403 Sinussa ei ole lainkaan surua: olethan varma, ettet ole yrittänyt torjua surun tunteitasi? Surulla on tärkeä tehtävä menetyksen hyväksymisessä, hyvien muistojen mielessä pitämisessä ja eteenpäin pääsemisessä. Surun keskellä myös ihmisen selviytymiskeinot ja vahvuudet nousevat selkeästi esiin.
+410 SURU +30
 ---
