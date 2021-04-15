@@ -624,7 +624,4 @@ public class MainGame extends ApplicationAdapter {
 	public void dispose () {
 
 	}
-
-
-
 }
