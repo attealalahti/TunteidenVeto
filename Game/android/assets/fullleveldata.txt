@@ -646,7 +646,10 @@
 181 Inho voi olla joko fyysisen tai esimerkiksi eettisesti inhottavan asian aiheuttamaa, ja se keskittyy usein ruoansulatuselimistön ympärille. Inho voi aiheuttaa esimerkiksi kuvotusta ja suoranaista pahoinvointia.
 182 Aivan!
 ---
-182 Viimeinen sinua mietityttämään jäänyt kysymys liittyy kuvaan: mitä tunnetilaa tämä kuvastaa?
+182 Viimeinen sinua mietityttämään jäänyt kysymys liittyy kuvaan. Mitä tunnetilaa kuva kuvastaa?
+501 Katso kuvaa.
+---
+501 [sadness_body]
 183 Inho
 184 Viha
 185 Suru

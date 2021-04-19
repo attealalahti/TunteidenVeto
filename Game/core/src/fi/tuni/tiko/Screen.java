@@ -44,7 +44,6 @@ abstract public class Screen extends Stage {
         temporaryList.add("JATKA PELIÄ");
         temporaryList.add("UUSI PELI");
         return temporaryList;
-
     }
     public ArrayList<Integer> createScreenLinks() {
         ArrayList<Integer> menuScreenLinks = new ArrayList<Integer>();

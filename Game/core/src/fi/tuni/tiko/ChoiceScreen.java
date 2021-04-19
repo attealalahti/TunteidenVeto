@@ -26,7 +26,7 @@ public class ChoiceScreen extends Screen {
     private final float buttonHeight = windowHeight * 0.07f;
     private final float xBox = (windowWidth - boxWidth) * 0.5f;
     private final float dayBoxHeight = windowHeight * 0.03f;
-    private final float captionHeight = windowHeight * 0.06f;
+    private float captionHeight = windowHeight * 0.06f;
     private final int questionSizeThreshold = 200;
     private float roomForAnswers = windowHeight - dayBoxHeight - margin - buttonHeight;
     private String question;
@@ -99,16 +99,22 @@ public class ChoiceScreen extends Screen {
             for (int i = index+1; i < question.length()-1; i++) {
                 style.append(question.charAt(i));
             }
-
-            Label image = new Label(null, skin, style.toString());
-            float imageWidth = windowWidth * 0.5f;
-            float imageHeight = imageWidth * 2;
-            image.setBounds((windowWidth - imageWidth) * 0.5f, windowHeight - dayBoxHeight - margin * 2f - imageHeight, imageWidth, imageHeight);
-
             StringBuilder captionText = new StringBuilder();
             for (int i = 0; i < index-1; i++) {
                 captionText.append(question.charAt(i));
             }
+            if (captionText.toString().equals("")) {
+                captionHeight = 0;
+            }
+
+            Label image = new Label(null, skin, style.toString());
+            float imageHeight = windowHeight - margin - dayBoxHeight - margin - margin - captionHeight - buttonHeight - answers.size()*(margin + boxHeight);
+            if (imageHeight > windowHeight * 0.6f) {
+                imageHeight = windowHeight * 0.6f;
+            }
+            float imageWidth = imageHeight * 0.5f;
+            image.setBounds((windowWidth - imageWidth) * 0.5f, windowHeight - dayBoxHeight - margin * 2f - imageHeight, imageWidth, imageHeight);
+
             Label caption = new Label(captionText.toString(), skin, "imageCaptionText");
             caption.setBounds(xBox, image.getY() - margin - captionHeight, boxWidth, boxHeight);
             caption.setAlignment(0);

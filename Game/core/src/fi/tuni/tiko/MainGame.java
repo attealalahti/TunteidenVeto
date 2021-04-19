@@ -48,8 +48,6 @@ public class MainGame extends ApplicationAdapter {
 
 		skin = new MySkin();
 
-
-
 		globalElements = new GlobalElements();
 		screens = createScreens();
 
