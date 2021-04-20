@@ -141,7 +141,7 @@
 41 Kuvotuksen aalto leviää ylitsesi. Inhottavaa!
 42 INHO +10
 ---
-42 Koulupäivä alkaa terveystiedolla. Tällä kerralla läpi käytävistä asioista on koe perjantaina, kannattaa siis kuunnella tarkasti!
+42 Koulupäivä alkaa terveystiedolla. Tällä kerralla läpi käytävistä asioista on koe perjantaina, kannattaa siis kuunnella tarkasti! Opettaja kuvailee eri tunnetiloja sanallisesti ja näyttää kuvia: kuvissa siniset alueet kuvaavat lamaannusta ja kylmyyttä, punainen ja keltainen taas lämpöä ja aktiivisuutta. Kirkkaimman keltaiset alueet ovat kaikkein aktiivisimpia, sinisimmät taas lamaantuneimpia.
 44 Valmiina ollaan!
 ---
 44 Hämmästys tuntuu pään ja rintakehän alueella, mutta se ei useinkaan ole kovin selkeä tunne. Sitä kuvaillaan usein sekavaksi, hieman sumeaksi varuillaan olon tunteeksi.
