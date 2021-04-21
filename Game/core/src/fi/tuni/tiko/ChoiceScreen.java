@@ -2,6 +2,7 @@ package fi.tuni.tiko;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import java.util.ArrayList;
 
@@ -46,8 +47,6 @@ public class ChoiceScreen extends Screen {
         dayBox = new Label("Viikonpäivä", skin, "dayText");
         dayBox.setBounds(xBox, windowHeight - margin - dayBoxHeight, boxWidth, dayBoxHeight);
         dayBox.setAlignment(0);
-        dayBox.setFontScaleX(0.00045f * windowWidth);
-        dayBox.setFontScaleY(0.00025f * windowHeight);
         dayBox.setWrap(true);
         addActor(dayBox);
         getElements().addActor(dayBox);
@@ -69,8 +68,7 @@ public class ChoiceScreen extends Screen {
             Label questionBackground = new Label(null, skin, questionBoxStyle);
             questionBackground.setBounds(xBox, windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, boxWidth, questionBoxHeight);
 
-
-            Label questionText = new Label(question, skin, "text");
+            Label questionText = new Label(question, skin, "questionBoxText");
             questionText.setBounds(
                     questionBackground.getX() + questionBackground.getWidth() * 0.04f,
                     questionBackground.getY() + questionBackground.getHeight() * 0.08f,
@@ -78,8 +76,6 @@ public class ChoiceScreen extends Screen {
                     questionBackground.getHeight() * 0.88f
             );
             questionText.setAlignment(0);
-            questionText.setFontScaleX(0.00045f * windowWidth);
-            questionText.setFontScaleY(0.00025f * windowHeight);
             questionText.setWrap(true);
 
             Group questionBox = new Group();
@@ -109,8 +105,8 @@ public class ChoiceScreen extends Screen {
 
             Label image = new Label(null, skin, style.toString());
             float imageHeight = windowHeight - margin - dayBoxHeight - margin - margin - captionHeight - buttonHeight - answers.size()*(margin + boxHeight);
-            if (imageHeight > windowHeight * 0.6f) {
-                imageHeight = windowHeight * 0.6f;
+            if (imageHeight > windowHeight * 0.5f) {
+                imageHeight = windowHeight * 0.5f;
             }
             float imageWidth = imageHeight * 0.5f;
             image.setBounds((windowWidth - imageWidth) * 0.5f, windowHeight - dayBoxHeight - margin * 2f - imageHeight, imageWidth, imageHeight);
@@ -118,8 +114,6 @@ public class ChoiceScreen extends Screen {
             Label caption = new Label(captionText.toString(), skin, "imageCaptionText");
             caption.setBounds(xBox, image.getY() - margin - captionHeight, boxWidth, boxHeight);
             caption.setAlignment(0);
-            caption.setFontScaleX(0.00045f * windowWidth);
-            caption.setFontScaleY(0.00025f * windowHeight);
             caption.setWrap(true);
 
             Group bodyImage = new Group();

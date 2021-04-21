@@ -252,16 +252,16 @@
 60 ILO +5
 ---
 60 Pääset kotiin, ja pitkän päivän jälkeen haluat vain rentoutua pelaten yhtä lempivideopeleistäsi. Tuplaklikkaat kuvaketta ja näytölle aukeaa ilmoitus pakollisesta päivityksestä.
-68 Typerä peli, miksi juuri nyt!
-69 Eikä, miksi aina minä!
+268 Typerä peli, miksi juuri nyt!
+269 Eikä, miksi aina minä!
 ---
-68 Poskiasi kuumottaa, kätesi puristuvat nyrkkiin ja tuntuu, että veresi kiehuu. Nyt ärsyttää ja kunnolla!
-70 VIHA +10
+268 Poskiasi kuumottaa, kätesi puristuvat nyrkkiin ja tuntuu, että veresi kiehuu. Nyt ärsyttää ja kunnolla!
+270 VIHA +10
 ---
-69 Tuntuu, että voisit vajota maanrakoon. Vedät hupparia tiukemmin päälle ja melkein itkettää. Päivityksessä kestää kuitenkin koko ilta.
-70 SURU +10
+269 Tuntuu, että voisit vajota maanrakoon. Vedät hupparia tiukemmin päälle ja melkein itkettää. Päivityksessä kestää kuitenkin koko ilta.
+270 SURU +10
 ---
-70 Ei auta muu kuin odottaa, että päivitys saadaan kuntoon. Kone arvio ajaksi pari tuntia. Mitä teet tällä välin?
+270 Ei auta muu kuin odottaa, että päivitys saadaan kuntoon. Kone arvio ajaksi pari tuntia. Mitä teet tällä välin?
 71 Auta kotitöissä.
 72 Lue kokeeseen.
 73 Makoile vuoteessa ja selaile somea.

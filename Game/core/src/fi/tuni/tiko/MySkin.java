@@ -50,11 +50,14 @@ public class MySkin extends Skin {
         add("musicOff", new Texture(getPath("music_off")));
         add("rail_img", new Texture(getPath("rail")));
 
-        add("defaultFont", createFont("lato", Color.BLACK)); //<<<<<<<<<<<<<<<<<<<<------------- TÄÄÄLLÄ ON FONTIT MIKA
-        add("mediumFont", createFont("latoMedium", Color.WHITE));
-        add("mediumItalicFont", createFont("latoMediumItalic", Color.BLACK));
-        add("italicFont", createFont("latoItalic", Color.BLACK));
-        add("lightFont", createFont("latoLight", Color.BLACK));
+        add("answerBoxFont", createFont("lato", 14.2f, Color.BLACK));
+        add("questionBoxFont", createFont("lato", 19.5f ,Color.BLACK));
+        add("meterCaptionFont", createFont("latoItalic", 14.2f, Color.BLACK));
+        add("imageCaptionFont", createFont("latoItalic", 19.5f, Color.BLACK));
+        add("menuFont", createFont("latoLight", 26,  Color.BLACK));
+        add("dayFont", createFont("latoMedium", 19.5f, Color.WHITE));
+        add("emotionScoreFont", createFont("latoMediumItalic", 14.2f, Color.BLACK));
+
         add("anger", new Texture(getPath("anger")));
         add("astonishment", new Texture(getPath("astonishment")));
         add("disgust", new Texture(getPath("disgust")));
@@ -98,48 +101,56 @@ public class MySkin extends Skin {
 
         Label.LabelStyle immobileAnswerStyle = new Label.LabelStyle();
         immobileAnswerStyle.background = newDrawable("immobile_box");
-        immobileAnswerStyle.font = getFont("mediumItalicFont");
+        immobileAnswerStyle.font = getFont("default");
 
         Label.LabelStyle menuBoxStyle = new Label.LabelStyle();
         menuBoxStyle.background = newDrawable("menuBox");
-        menuBoxStyle.font = getFont("lightFont");
+        menuBoxStyle.font = getFont("default");
 
         Label.LabelStyle menuTextStyle = new Label.LabelStyle();
         menuTextStyle.background = newDrawable("white", Color.CLEAR);
-        menuTextStyle.font = getFont("lightFont");
+        menuTextStyle.font = getFont("menuFont");
 
 
         Label.LabelStyle questionStyle = new Label.LabelStyle();
         questionStyle.background = newDrawable("questionBox");
-        questionStyle.font = getFont("defaultFont");
+        questionStyle.font = getFont("default");
 
         Label.LabelStyle questionStyleBig = new Label.LabelStyle();
         questionStyleBig.background = newDrawable("bigQuestionBox");
-        questionStyleBig.font = getFont("defaultFont");
+        questionStyleBig.font = getFont("default");
 
         Label.LabelStyle questionStyleBigger = new Label.LabelStyle();
         questionStyleBigger.background = newDrawable("biggerQuestionBox");
-        questionStyleBigger.font = getFont("defaultFont");
+        questionStyleBigger.font = getFont("default");
 
         Label.LabelStyle arrowStyle = new Label.LabelStyle();
         arrowStyle.background = newDrawable("arrow_box");
         arrowStyle.font = getFont("default");
 
-        Label.LabelStyle textBoxStyle = new Label.LabelStyle();
-        textBoxStyle.background = newDrawable("white", Color.CLEAR);
-        textBoxStyle.font = getFont("defaultFont");
+        Label.LabelStyle answerBoxTextStyle = new Label.LabelStyle();
+        answerBoxTextStyle.background = newDrawable("white", Color.CLEAR);
+        answerBoxTextStyle.font = getFont("answerBoxFont");
+
+        Label.LabelStyle questionBoxTextStyle = new Label.LabelStyle();
+        questionBoxTextStyle.background = newDrawable("white", Color.CLEAR);
+        questionBoxTextStyle.font = getFont("questionBoxFont");
 
         Label.LabelStyle emotionScore = new Label.LabelStyle();
         emotionScore.background = newDrawable("white", Color.CLEAR);
-        emotionScore.font = getFont("mediumItalicFont");
+        emotionScore.font = getFont("emotionScoreFont");
 
         Label.LabelStyle dayText = new Label.LabelStyle();
         dayText.background = newDrawable("white", Color.CLEAR);
-        dayText.font = getFont("mediumFont");
+        dayText.font = getFont("dayFont");
 
         Label.LabelStyle imageCaption = new Label.LabelStyle();
         imageCaption.background = newDrawable("white", Color.CLEAR);
-        imageCaption.font = getFont("italicFont");
+        imageCaption.font = getFont("imageCaptionFont");
+
+        Label.LabelStyle meterCaption = new Label.LabelStyle();
+        meterCaption.background = newDrawable("white", Color.CLEAR);
+        meterCaption.font = getFont("meterCaptionFont");
 
         Button.ButtonStyle feelingsButtonStyle = new Button.ButtonStyle();
         feelingsButtonStyle.up = newDrawable("empty");
@@ -276,10 +287,12 @@ public class MySkin extends Skin {
         add("biggerQuestion", questionStyleBigger);
         add("arrow", arrowStyle);
         add("feelings", feelingsButtonStyle);
-        add("text", textBoxStyle);
+        add("answerBoxText", answerBoxTextStyle);
+        add("questionBoxText", questionBoxTextStyle);
         add("emotionScoreText", emotionScore);
         add("dayText", dayText);
         add("imageCaptionText", imageCaption);
+        add("meterCaptionText", meterCaption);
         add("menuBoxBackground", menuBoxStyle);
         add("menuBoxText", menuTextStyle);
         add("settings", settingsButtonStyle);
@@ -321,22 +334,24 @@ public class MySkin extends Skin {
      */
     public String getPixelDensity() {
         float density = Gdx.graphics.getDensity();
-        String tempString = "";
-
-        if(density < 1) {
-            tempString = "ldpi";
+        String result = "xxxhdpi";
+        if (density <= 3) {
+            result = "xxhdpi";
         }
-        else if(density >= 1f && density < 2f) {
-            tempString = "mdpi";
+        if (density <= 2) {
+            result = "xhdpi";
         }
-        else if(density >= 2f && density < 3f) {
-            tempString = "hdpi";
+        if (density <= 1.5f) {
+            result = "hdpi";
         }
-        else if(density >= 3f && density < 4f) {
-            tempString = "xhdpi";
+        if (density <= 1) {
+            result = "mdpi";
         }
-        System.out.println(tempString);
-        return tempString;
+        if (density <= 0.75f) {
+            result = "ldpi";
+        }
+        System.out.println(result);
+        return result;
     }
 
     /** createFont creates and returns a BitmapFont to be used
@@ -345,15 +360,14 @@ public class MySkin extends Skin {
      * @return returns a BitmapFont
      * @author Mika Kivennenä
      */
-    public BitmapFont createFont(String nameOfFont, Color color) {
+    public BitmapFont createFont(String nameOfFont, float size, Color color) {
         FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/"+nameOfFont+".ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
 
         //fontParameter.size = getFontSize();
-        fontParameter.size = 30;
+        fontParameter.size = (int)(size * Gdx.graphics.getDensity());
         fontParameter.borderColor = color;
-        //fontParameter.borderWidth = 3;
         fontParameter.color = color;
 
         BitmapFont font = fontGenerator.generateFont(fontParameter);
@@ -379,10 +393,5 @@ public class MySkin extends Skin {
         }
 
         return tempInt;
-    }
-    @Override
-    public void dispose() {
-        super.dispose();
-
     }
 }

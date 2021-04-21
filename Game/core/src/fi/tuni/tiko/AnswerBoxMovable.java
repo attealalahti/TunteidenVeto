@@ -47,7 +47,7 @@ public class AnswerBoxMovable extends AnswerBox {
         this.height = height;
 
         getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
-        getTextBox().setStyle(skin.get("text", Label.LabelStyle.class));
+        getTextBox().setStyle(skin.get("answerBoxText", Label.LabelStyle.class));
         startX = getX();
 
 

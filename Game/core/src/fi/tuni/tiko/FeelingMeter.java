@@ -39,10 +39,8 @@ public class FeelingMeter extends Group {
             case "love": emotion = "Rakkaus"; break;
             case "astonishment": emotion = "Hämmennys"; break;
         }
-        Label caption = new Label(emotion, skin, "imageCaptionText");
+        Label caption = new Label(emotion, skin, "meterCaptionText");
         caption.setBounds((windowWidth - combinedWidth) * 0.5f, y, textWidth, textHeight);
-        caption.setFontScaleX(0.000324f * windowWidth);
-        caption.setFontScaleY(0.00018f * windowHeight);
         caption.setAlignment((int)textHeight - 1, 0);
         addActor(caption);
 
