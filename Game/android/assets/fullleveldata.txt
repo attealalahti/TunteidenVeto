@@ -280,7 +280,7 @@
 75 Eri puolilla!
 ---
 75 Tunnet, kuinka päivän stressi purkautuu ja hartiasi laskeutuvat korvista takaisin paikalleen. Mikään ei rentouta paremmin kuin tekeminen, josta nauttii!
-76 ILO +5
+76 ILO +5, RAKKAUS +5
 ---
 62 Vanhempasi ovat hyvin pettyneitä ja ilmoittavat, että tämän illan vietät kotona omassa huoneessasi.
 77 ILO -15
