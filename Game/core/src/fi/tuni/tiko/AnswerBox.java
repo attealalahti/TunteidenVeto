@@ -32,8 +32,10 @@ public class AnswerBox extends Group {
         float xMargin = textMargin * width;
         float yMargin = textMargin * height;
         textBox.setBounds(x + xMargin * 0.5f, y + yMargin * 0.5f, width - xMargin, height - yMargin);
+        /*
         textBox.setFontScaleX(0.000324f * windowWidth);
         textBox.setFontScaleY(0.00018f * windowHeight);
+         */
         textBox.setWrap(true);
         textBox.setAlignment(0);
 

@@ -335,7 +335,7 @@ public class MySkin extends Skin {
         else if(density >= 3f && density < 4f) {
             tempString = "xhdpi";
         }
-
+        System.out.println(tempString);
         return tempString;
     }
 
@@ -350,8 +350,10 @@ public class MySkin extends Skin {
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
 
-        fontParameter.size = getFontSize();
+        //fontParameter.size = getFontSize();
+        fontParameter.size = 30;
         fontParameter.borderColor = color;
+        //fontParameter.borderWidth = 3;
         fontParameter.color = color;
 
         BitmapFont font = fontGenerator.generateFont(fontParameter);

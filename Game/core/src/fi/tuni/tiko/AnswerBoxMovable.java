@@ -17,6 +17,7 @@ import static fi.tuni.tiko.MainGame.skin;
  * @author Atte Ala-Lahti
  */
 public class AnswerBoxMovable extends AnswerBox {
+    private boolean needsConfirmation = true;
     private float moveDuration = 0.2f;
     private int screenLink;
     private boolean atEdge = false;
@@ -88,7 +89,7 @@ public class AnswerBoxMovable extends AnswerBox {
                 float moveX = startX;
                 boolean actionConfirmed = false;
                 boolean movingToEdge = false;
-                if (getParent().getChildren().size > 1) {
+                if (getParent().getChildren().size > 1 && needsConfirmation) {
                     if (getX() < startX - windowWidth * 0.25f) {
                         moveX = startX - windowWidth * 0.5f;
                         movingToEdge = true;
@@ -159,5 +160,9 @@ public class AnswerBoxMovable extends AnswerBox {
         rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
         getParent().getParent().addActor(rail);
         rail.toBack();
+    }
+
+    public void setConfirmation(boolean value) {
+        needsConfirmation = value;
     }
 }

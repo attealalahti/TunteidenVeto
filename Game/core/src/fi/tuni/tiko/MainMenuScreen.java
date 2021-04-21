@@ -42,6 +42,7 @@ public class MainMenuScreen extends Screen {
         for(int i = 0; i < answerBoxes.getChildren().size; i++) {
             ((AnswerBox) answerBoxes.getChild(i)).getBackground().setStyle(skin.get("menuBoxBackground", Label.LabelStyle.class));
             ((AnswerBox) answerBoxes.getChild(i)).getTextBox().setStyle(skin.get("menuBoxText", Label.LabelStyle.class));
+            ((AnswerBoxMovable) answerBoxes.getChild(i)).setConfirmation(false);
         }
         getElements().addActor(answerBoxes);
     }
