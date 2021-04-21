@@ -30,8 +30,8 @@ public class MySkin extends Skin {
         pixmap.setColor(Color.WHITE);
         pixmap.fill();
 
+        /* TEXTURES */
         add("white", new Texture(pixmap));
-        add("default", new BitmapFont());
         add("answerBox", new Texture(getPath("box")));
         add("inactiveBox", new Texture(getPath("box3")));
         add("emotionScoreBox", new Texture(getPath("box2")));
@@ -49,14 +49,6 @@ public class MySkin extends Skin {
         add("soundOff", new Texture(getPath("sound_off")));
         add("musicOn", new Texture(getPath("music_on")));
         add("musicOff", new Texture(getPath("music_off")));
-
-        add("answerBoxFont", createFont("lato", 14.2f, Color.BLACK));
-        add("questionBoxFont", createFont("lato", 19.5f ,Color.BLACK));
-        add("meterCaptionFont", createFont("latoItalic", 14.2f, Color.BLACK));
-        add("imageCaptionFont", createFont("latoItalic", 19.5f, Color.BLACK));
-        add("menuFont", createFont("latoLight", 26,  Color.BLACK));
-        add("dayFont", createFont("latoMedium", 19.5f, Color.WHITE));
-        add("emotionScoreFont", createFont("latoMediumItalic", 14.2f, Color.BLACK));
 
         add("anger", new Texture(getPath("anger")));
         add("astonishment", new Texture(getPath("astonishment")));
@@ -90,6 +82,14 @@ public class MySkin extends Skin {
         add("love_body", new Texture(getPath("love"+modification)));
         add("sadness_body", new Texture(getPath("sadness"+modification)));
 
+        /* FONTS */
+        add("answerBoxFont", createFont("lato", 14.2f, Color.BLACK));
+        add("questionBoxFont", createFont("lato", 19.5f ,Color.BLACK));
+        add("meterCaptionFont", createFont("latoItalic", 14.2f, Color.BLACK));
+        add("imageCaptionFont", createFont("latoItalic", 19.5f, Color.BLACK));
+        add("menuFont", createFont("latoLight", 26,  Color.BLACK));
+        add("dayFont", createFont("latoMedium", 19.5f, Color.WHITE));
+        add("emotionScoreFont", createFont("latoMediumItalic", 14.2f, Color.BLACK));
 
         Label.LabelStyle menuText = new Label.LabelStyle();
         menuText.background = newDrawable("white", Color.CLEAR);
@@ -221,7 +221,6 @@ public class MySkin extends Skin {
         if (density <= 0.75f) {
             result = "ldpi";
         }
-        System.out.println(result);
         return result;
     }
 
