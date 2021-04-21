@@ -30,25 +30,25 @@ public class MySkin extends Skin {
         pixmap.setColor(Color.WHITE);
         pixmap.fill();
 
-        add("answer_box", new Texture(getPath("box")));
-        add("highlighted_box", new Texture(getPath("box3")));
-        add("immobile_box", new Texture(getPath("box2")));
+        add("white", new Texture(pixmap));
+        add("default", new BitmapFont());
+        add("answerBox", new Texture(getPath("box")));
+        add("inactiveBox", new Texture(getPath("box3")));
+        add("emotionScoreBox", new Texture(getPath("box2")));
+        add("menuBox", new Texture(getPath("mainmenubox")));
+        add("arrowBox", new Texture(getPath("arrowbox")));
+        add("rail", new Texture(getPath("rail")));
         add("questionBox", new Texture(getPath("textbox")));
         add("bigQuestionBox", new Texture(getPath("bigtextbox")));
         add("biggerQuestionBox", new Texture(getPath("biggertextbox")));
-        add("arrow_box", new Texture(getPath("arrowbox")));
-        add("white", new Texture(pixmap));
-        add("default", new BitmapFont());
         add("settings", new Texture(getPath("hamburgermenu")));
+        add("settings_pressed", new Texture(getPath("hamburgermenu_pressed")));
         add("mainMenu", new Texture(getPath("mainmenubutton")));
-        add("menuBox", new Texture(getPath("mainmenubox")));
-        add("empty", new Texture(getPath("button")));
-        add("meter", new Texture(getPath("meter")));
+        add("meterForeground", new Texture(getPath("meter")));
         add("soundOn", new Texture(getPath("sound_on")));
         add("soundOff", new Texture(getPath("sound_off")));
         add("musicOn", new Texture(getPath("music_on")));
         add("musicOff", new Texture(getPath("music_off")));
-        add("rail_img", new Texture(getPath("rail")));
 
         add("answerBoxFont", createFont("lato", 14.2f, Color.BLACK));
         add("questionBoxFont", createFont("lato", 19.5f ,Color.BLACK));
@@ -82,63 +82,30 @@ public class MySkin extends Skin {
         add("loveButtonPressed", new Texture(getPath("love"+modification)));
         add("sadnessButtonPressed", new Texture(getPath("sadness"+modification)));
         modification = "_body";
-        add("angerBody", new Texture(getPath("anger"+modification)));
-        add("astonishmentBody", new Texture(getPath("astonishment"+modification)));
-        add("disgustBody", new Texture(getPath("disgust"+modification)));
-        add("fearBody", new Texture(getPath("fear"+modification)));
-        add("happinessBody", new Texture(getPath("joy"+modification)));
-        add("loveBody", new Texture(getPath("love"+modification)));
-        add("sadnessBody", new Texture(getPath("sadness"+modification)));
-        add("settings_pressed", new Texture(getPath("hamburgermenu_pressed")));
-
-        Label.LabelStyle answerStyle = new Label.LabelStyle();
-        answerStyle.background = newDrawable("answer_box");
-        answerStyle.font = getFont("default");
-
-        Label.LabelStyle answerHighlightedStyle = new Label.LabelStyle();
-        answerHighlightedStyle.background = newDrawable("highlighted_box");
-        answerHighlightedStyle.font = getFont("default");
-
-        Label.LabelStyle immobileAnswerStyle = new Label.LabelStyle();
-        immobileAnswerStyle.background = newDrawable("immobile_box");
-        immobileAnswerStyle.font = getFont("default");
-
-        Label.LabelStyle menuBoxStyle = new Label.LabelStyle();
-        menuBoxStyle.background = newDrawable("menuBox");
-        menuBoxStyle.font = getFont("default");
-
-        Label.LabelStyle menuTextStyle = new Label.LabelStyle();
-        menuTextStyle.background = newDrawable("white", Color.CLEAR);
-        menuTextStyle.font = getFont("menuFont");
+        add("anger_body", new Texture(getPath("anger"+modification)));
+        add("astonishment_body", new Texture(getPath("astonishment"+modification)));
+        add("disgust_body", new Texture(getPath("disgust"+modification)));
+        add("fear_body", new Texture(getPath("fear"+modification)));
+        add("joy_body", new Texture(getPath("joy"+modification)));
+        add("love_body", new Texture(getPath("love"+modification)));
+        add("sadness_body", new Texture(getPath("sadness"+modification)));
 
 
-        Label.LabelStyle questionStyle = new Label.LabelStyle();
-        questionStyle.background = newDrawable("questionBox");
-        questionStyle.font = getFont("default");
+        Label.LabelStyle menuText = new Label.LabelStyle();
+        menuText.background = newDrawable("white", Color.CLEAR);
+        menuText.font = getFont("menuFont");
 
-        Label.LabelStyle questionStyleBig = new Label.LabelStyle();
-        questionStyleBig.background = newDrawable("bigQuestionBox");
-        questionStyleBig.font = getFont("default");
+        Label.LabelStyle answerBoxText = new Label.LabelStyle();
+        answerBoxText.background = newDrawable("white", Color.CLEAR);
+        answerBoxText.font = getFont("answerBoxFont");
 
-        Label.LabelStyle questionStyleBigger = new Label.LabelStyle();
-        questionStyleBigger.background = newDrawable("biggerQuestionBox");
-        questionStyleBigger.font = getFont("default");
+        Label.LabelStyle questionBoxText = new Label.LabelStyle();
+        questionBoxText.background = newDrawable("white", Color.CLEAR);
+        questionBoxText.font = getFont("questionBoxFont");
 
-        Label.LabelStyle arrowStyle = new Label.LabelStyle();
-        arrowStyle.background = newDrawable("arrow_box");
-        arrowStyle.font = getFont("default");
-
-        Label.LabelStyle answerBoxTextStyle = new Label.LabelStyle();
-        answerBoxTextStyle.background = newDrawable("white", Color.CLEAR);
-        answerBoxTextStyle.font = getFont("answerBoxFont");
-
-        Label.LabelStyle questionBoxTextStyle = new Label.LabelStyle();
-        questionBoxTextStyle.background = newDrawable("white", Color.CLEAR);
-        questionBoxTextStyle.font = getFont("questionBoxFont");
-
-        Label.LabelStyle emotionScore = new Label.LabelStyle();
-        emotionScore.background = newDrawable("white", Color.CLEAR);
-        emotionScore.font = getFont("emotionScoreFont");
+        Label.LabelStyle emotionScoreText = new Label.LabelStyle();
+        emotionScoreText.background = newDrawable("white", Color.CLEAR);
+        emotionScoreText.font = getFont("emotionScoreFont");
 
         Label.LabelStyle dayText = new Label.LabelStyle();
         dayText.background = newDrawable("white", Color.CLEAR);
@@ -151,10 +118,6 @@ public class MySkin extends Skin {
         Label.LabelStyle meterCaption = new Label.LabelStyle();
         meterCaption.background = newDrawable("white", Color.CLEAR);
         meterCaption.font = getFont("meterCaptionFont");
-
-        Button.ButtonStyle feelingsButtonStyle = new Button.ButtonStyle();
-        feelingsButtonStyle.up = newDrawable("empty");
-        feelingsButtonStyle.down = newDrawable("empty", Color.DARK_GRAY);
 
         Button.ButtonStyle settingsButtonStyle = new Button.ButtonStyle();
         settingsButtonStyle.up = newDrawable("settings");
@@ -176,42 +139,6 @@ public class MySkin extends Skin {
         Button.ButtonStyle exitStyle = new Button.ButtonStyle();
         exitStyle.up = newDrawable("mainMenu");
         exitStyle.down = newDrawable("mainMenu", secondaryColor);
-
-        Label.LabelStyle feelingMeterForeGroundStyle = new Label.LabelStyle();
-        feelingMeterForeGroundStyle.font = getFont("default");
-        feelingMeterForeGroundStyle.background = newDrawable("meter");
-
-        Label.LabelStyle railStyle = new Label.LabelStyle();
-        railStyle.font = getFont("default");
-        railStyle.background = newDrawable("rail_img");
-
-        Label.LabelStyle angerStyle = new Label.LabelStyle();
-        angerStyle.font = getFont("default");
-        angerStyle.background = newDrawable("anger");
-
-        Label.LabelStyle astonishmentStyle = new Label.LabelStyle();
-        astonishmentStyle.font = getFont("default");
-        astonishmentStyle.background = newDrawable("astonishment");
-
-        Label.LabelStyle disgustStyle = new Label.LabelStyle();
-        disgustStyle.font = getFont("default");
-        disgustStyle.background = newDrawable("disgust");
-
-        Label.LabelStyle fearStyle = new Label.LabelStyle();
-        fearStyle.font = getFont("default");
-        fearStyle.background = newDrawable("fear");
-
-        Label.LabelStyle happinessStyle = new Label.LabelStyle();
-        happinessStyle.font = getFont("default");
-        happinessStyle.background = newDrawable("happiness");
-
-        Label.LabelStyle loveStyle = new Label.LabelStyle();
-        loveStyle.font = getFont("default");
-        loveStyle.background = newDrawable("love");
-
-        Label.LabelStyle sadnessStyle = new Label.LabelStyle();
-        sadnessStyle.font = getFont("default");
-        sadnessStyle.background = newDrawable("sadness");
 
         Button.ButtonStyle happinessButtonStyle = new Button.ButtonStyle();
         happinessButtonStyle.up = newDrawable("happinessButton");
@@ -248,66 +175,17 @@ public class MySkin extends Skin {
         astonishmentButtonStyle.down = newDrawable("astonishmentButtonPressed");
         astonishmentButtonStyle.checked = newDrawable("astonishmentButtonPressed");
 
-        Label.LabelStyle angerBodyStyle = new Label.LabelStyle();
-        angerBodyStyle.font = getFont("default");
-        angerBodyStyle.background = newDrawable("angerBody");
-
-        Label.LabelStyle astonishmentBodyStyle = new Label.LabelStyle();
-        astonishmentBodyStyle.font = getFont("default");
-        astonishmentBodyStyle.background = newDrawable("astonishmentBody");
-
-        Label.LabelStyle disgustBodyStyle = new Label.LabelStyle();
-        disgustBodyStyle.font = getFont("default");
-        disgustBodyStyle.background = newDrawable("disgustBody");
-
-        Label.LabelStyle fearBodyStyle = new Label.LabelStyle();
-        fearBodyStyle.font = getFont("default");
-        fearBodyStyle.background = newDrawable("fearBody");
-
-        Label.LabelStyle happinessBodyStyle = new Label.LabelStyle();
-        happinessBodyStyle.font = getFont("default");
-        happinessBodyStyle.background = newDrawable("happinessBody");
-
-        Label.LabelStyle loveBodyStyle = new Label.LabelStyle();
-        loveBodyStyle.font = getFont("default");
-        loveBodyStyle.background = newDrawable("loveBody");
-
-        Label.LabelStyle sadnessBodyStyle = new Label.LabelStyle();
-        sadnessBodyStyle.font = getFont("default");
-        sadnessBodyStyle.background = newDrawable("sadnessBody");
-
-
-
-
-        add("answer_movable", answerStyle);
-        add("answer_static", immobileAnswerStyle);
-        add("answer_highlighted", answerHighlightedStyle);
-        add("question", questionStyle);
-        add("bigQuestion", questionStyleBig);
-        add("biggerQuestion", questionStyleBigger);
-        add("arrow", arrowStyle);
-        add("feelings", feelingsButtonStyle);
-        add("answerBoxText", answerBoxTextStyle);
-        add("questionBoxText", questionBoxTextStyle);
-        add("emotionScoreText", emotionScore);
+        add("answerBoxText", answerBoxText);
+        add("questionBoxText", questionBoxText);
+        add("emotionScoreText", emotionScoreText);
         add("dayText", dayText);
         add("imageCaptionText", imageCaption);
         add("meterCaptionText", meterCaption);
-        add("menuBoxBackground", menuBoxStyle);
-        add("menuBoxText", menuTextStyle);
+        add("menuBoxText", menuText);
         add("settings", settingsButtonStyle);
         add("sound", soundStyle);
         add("music", musicStyle);
         add("exit", exitStyle);
-        add("feelingMeterForeground", feelingMeterForeGroundStyle);
-        add("rail", railStyle);
-        add("anger", angerStyle);
-        add("astonishment", astonishmentStyle);
-        add("disgust", disgustStyle);
-        add("fear", fearStyle);
-        add("happiness", happinessStyle);
-        add("love", loveStyle);
-        add("sadness", sadnessStyle);
         add("anger", angerButtonStyle);
         add("astonishment", astonishmentButtonStyle);
         add("disgust", disgustButtonStyle);
@@ -315,13 +193,6 @@ public class MySkin extends Skin {
         add("happiness", happinessButtonStyle);
         add("love", loveButtonStyle);
         add("sadness", sadnessButtonStyle);
-        add("anger_body", angerBodyStyle);
-        add("astonishment_body", astonishmentBodyStyle);
-        add("disgust_body", disgustBodyStyle);
-        add("fear_body", fearBodyStyle);
-        add("joy_body", happinessBodyStyle);
-        add("love_body", loveBodyStyle);
-        add("sadness_body", sadnessBodyStyle);
     }
 
     /** getPixelDensity method is used to show correct images
@@ -364,34 +235,11 @@ public class MySkin extends Skin {
         FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/"+nameOfFont+".ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-
-        //fontParameter.size = getFontSize();
         fontParameter.size = (int)(size * Gdx.graphics.getDensity());
         fontParameter.borderColor = color;
         fontParameter.color = color;
 
         BitmapFont font = fontGenerator.generateFont(fontParameter);
         return font;
-    }
-
-    /** getFontSize method is used to set size for the font
-     *
-     * This method uses getDensity() method to determine screen pixel density
-     * and calculates the correct font size based on pixel density
-     *
-     * @return returns an integer that is used to set fontSize
-     * @author Mika Kivennenä
-     */
-    public int getFontSize() {
-        float density = Gdx.graphics.getDensity();
-        int tempInt = 0;
-
-        if(density < 1) {
-            tempInt = 120;
-        } else {
-            tempInt = 60 * (int)density;
-        }
-
-        return tempInt;
     }
 }

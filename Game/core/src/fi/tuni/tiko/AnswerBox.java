@@ -1,6 +1,7 @@
 package fi.tuni.tiko;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import static fi.tuni.tiko.MainGame.skin;
@@ -9,7 +10,7 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 
 
 public class AnswerBox extends Group {
-    private Label background;
+    private Image background;
     private Label textBox;
     private float textMargin = 0.14f;
     /**
@@ -24,10 +25,10 @@ public class AnswerBox extends Group {
      * @param height     height of the background in pixels
      */
     public AnswerBox(CharSequence text, float x, float y, float width, float height) {
-        background = new Label(null, skin, "answer_static");
-        textBox = new Label(text, skin, "emotionScoreText");
+        background = new Image(skin, "emotionScoreBox");
         background.setBounds(x, y, width, height);
 
+        textBox = new Label(text, skin, "emotionScoreText");
         // Calculating the dimensions of the text box
         float xMargin = textMargin * width;
         float yMargin = textMargin * height;
@@ -38,11 +39,11 @@ public class AnswerBox extends Group {
         addActor(background);
         addActor(textBox);
     }
-    public Label getBackground() {
-        return background;
+    public void setBackground(String drawable) {
+        background.setDrawable(skin, drawable);
     }
 
-    public Label getTextBox() {
-        return textBox;
+    public void setTextStyle(String style) {
+        textBox.setStyle(skin.get(style, Label.LabelStyle.class));
     }
 }

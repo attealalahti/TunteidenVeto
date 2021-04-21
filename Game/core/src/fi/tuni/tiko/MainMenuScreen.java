@@ -1,6 +1,7 @@
 package fi.tuni.tiko;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import static fi.tuni.tiko.MainGame.margin;
@@ -21,27 +22,20 @@ public class MainMenuScreen extends Screen {
 
 
     public MainMenuScreen() {
-
-
-        // Create groups for easy access of different elements
-        addActor(getElements());
-
         createAnswerBoxes();
     }
 
     public void createAnswerBoxes() {
         answerBoxes = new Group();
-        //float currentY = margin * 2 + buttonHeight;
         float currentY = margin + buttonHeight + roomForAnswers / 4 - boxHeight * 0.5f;
 
         for (int i = 0; i < 4; i++) {
             answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
-            //currentY += margin + boxHeight;
             currentY += roomForAnswers / 4;
         }
         for(int i = 0; i < answerBoxes.getChildren().size; i++) {
-            ((AnswerBox) answerBoxes.getChild(i)).getBackground().setStyle(skin.get("menuBoxBackground", Label.LabelStyle.class));
-            ((AnswerBox) answerBoxes.getChild(i)).getTextBox().setStyle(skin.get("menuBoxText", Label.LabelStyle.class));
+            ((AnswerBox) answerBoxes.getChild(i)).setBackground("menuBox");
+            ((AnswerBox) answerBoxes.getChild(i)).setTextStyle("menuBoxText");
             ((AnswerBoxMovable) answerBoxes.getChild(i)).setConfirmation(false);
         }
         getElements().addActor(answerBoxes);

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
@@ -17,7 +18,7 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 
 public class FeelingMeter extends Group {
     private ProgressBar meter;
-    private Label foreground;
+    private Image foreground;
 
     private final float MIN_VALUE = 0f;
     private final float MAX_VALUE = 100f;
@@ -44,7 +45,7 @@ public class FeelingMeter extends Group {
         caption.setAlignment((int)textHeight - 1, 0);
         addActor(caption);
 
-        Label image = new Label(null, skin, imageStyle);
+        Image image = new Image(skin, imageStyle);
         image.setBounds((windowWidth - combinedWidth + textWidth - imageWidth) * 0.5f, y + textHeight, imageWidth, imageWidth);
         addActor(image);
 
@@ -56,7 +57,7 @@ public class FeelingMeter extends Group {
         meter.setValue(50f);
         addActor(meter);
 
-        foreground = new Label(null, skin, "feelingMeterForeground");
+        foreground = new Image(skin, "meterForeground");
         float tempMargin = 1.02f;
         foreground.setBounds(
                 meter.getX() + 0.5f * (meter.getWidth() * (1-tempMargin)),

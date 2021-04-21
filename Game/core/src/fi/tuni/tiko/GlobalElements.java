@@ -220,7 +220,7 @@ public class GlobalElements extends Group {
     }
 
     public FeelingMeter getMeter(String emotion) {
-        FeelingMeter tempMeter = new FeelingMeter(5f, Color.BLACK, "rail");
+        FeelingMeter tempMeter = new FeelingMeter(5f, Color.BLACK, "sadness");
         switch(emotion) {
             case "love": tempMeter = love; break;
             case "happiness": tempMeter =  happiness; break;

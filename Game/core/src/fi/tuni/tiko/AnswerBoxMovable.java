@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
@@ -26,9 +27,8 @@ public class AnswerBoxMovable extends AnswerBox {
     private float touchDifferenceX;
     private float startX;
     private float y;
-    //private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
-
     private float height;
+
     /** Creates a new AnswerBox.
      * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
      * In the future, different backgrounds might require different text box sizes.
@@ -46,8 +46,8 @@ public class AnswerBoxMovable extends AnswerBox {
         this.y = y;
         this.height = height;
 
-        getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
-        getTextBox().setStyle(skin.get("answerBoxText", Label.LabelStyle.class));
+        setBackground("answerBox");
+        setTextStyle("answerBoxText");
         startX = getX();
 
 
@@ -134,13 +134,12 @@ public class AnswerBoxMovable extends AnswerBox {
                             for (Actor a : getParent().getChildren()) {
                                 if (screenLink != ((AnswerBoxMovable) a).screenLink) {
                                     if (atEdge) {
-                                        ((AnswerBoxMovable) a).getBackground().setStyle(skin.get("answer_highlighted", Label.LabelStyle.class));
+                                        ((AnswerBoxMovable) a).setBackground("inactiveBox");
                                     } else {
-                                        ((AnswerBoxMovable) a).getBackground().setStyle(skin.get("answer_movable", Label.LabelStyle.class));
+                                        ((AnswerBoxMovable) a).setBackground("answerBox");
                                     }
                                 }
                             }
-
                         }
                     })));
                 }
@@ -156,7 +155,7 @@ public class AnswerBoxMovable extends AnswerBox {
     }
 
     public void addRail() {
-        Label rail = new Label(null, skin, "rail");
+        Image rail = new Image(skin, "rail");
         rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
         getParent().getParent().addActor(rail);
         rail.toBack();

@@ -54,18 +54,18 @@ public class ChoiceScreen extends Screen {
 
         if (!question.contains("[")) {
             float questionBoxHeight = windowHeight * 0.4f;
-            String questionBoxStyle = "question";
+            String questionBoxStyle = "questionBox";
             if (question.length() > questionSizeThreshold && ((answers.size() == 2 && answerEffects.size() == 0) || (answers.size() == 1 && answerEffects.size() > 0))) {
                 questionBoxHeight = windowHeight * 0.5f;
-                questionBoxStyle = "bigQuestion";
+                questionBoxStyle = "bigQuestionBox";
             } else if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
                 questionBoxHeight = windowHeight * 0.6f;
-                questionBoxStyle = "biggerQuestion";
+                questionBoxStyle = "biggerQuestionBox";
             }
             roomForAnswers -= questionBoxHeight;
 
             // Create the question text box
-            Label questionBackground = new Label(null, skin, questionBoxStyle);
+            Image questionBackground = new Image(skin, questionBoxStyle);
             questionBackground.setBounds(xBox, windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, boxWidth, questionBoxHeight);
 
             Label questionText = new Label(question, skin, "questionBoxText");
@@ -103,7 +103,7 @@ public class ChoiceScreen extends Screen {
                 captionHeight = 0;
             }
 
-            Label image = new Label(null, skin, style.toString());
+            Image image = new Image(skin, style.toString());
             float imageHeight = windowHeight - margin - dayBoxHeight - margin - margin - captionHeight - buttonHeight - answers.size()*(margin + boxHeight);
             if (imageHeight > windowHeight * 0.5f) {
                 imageHeight = windowHeight * 0.5f;
@@ -132,13 +132,12 @@ public class ChoiceScreen extends Screen {
             float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - boxHeight * 0.5f;
             for (int i = 0; i < getChoices().size(); i++) {
                 answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
-                //currentY += margin + boxHeight;
                 currentY += roomForAnswers / (float) (getChoices().size()+1);
             }
         } else {
             float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - boxHeight * 0.5f;
             AnswerBoxMovable arrowBox = new AnswerBoxMovable(null, xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(0));
-            arrowBox.getBackground().setStyle(skin.get("arrow", Label.LabelStyle.class));
+            arrowBox.setBackground("arrowBox");
             answerBoxes.addActor(arrowBox);
             currentY += roomForAnswers / (float) (getChoices().size()+2);
             getElements().addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
