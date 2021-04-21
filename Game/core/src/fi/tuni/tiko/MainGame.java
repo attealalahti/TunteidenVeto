@@ -56,11 +56,8 @@ public class MainGame extends ApplicationAdapter {
 		mainMenu = new MainMenuScreen();
 		screens.add(mainMenu);
 		currentScreen = mainMenu;
-		currentScreenID = 999;
+		currentScreenID = currentScreen.getScreenID();
 
-		//currentScreen = screens.get(currentScreenID);
-		//lastFrameCurrentScreen = currentScreen;
-		//((ChoiceScreen) currentScreen).addGlobalElements(feelingMeterButton, meters, settingsButton, settings);
 		//audioPlayer.playMenuMusic();
 	}
 
@@ -103,8 +100,6 @@ public class MainGame extends ApplicationAdapter {
 							screens.get(i).getScreenLinks(),
 							((ChoiceScreen)screens.get(i)).getEffects()));
 					currentScreen = screens.get(i);
-				} else {
-
 				}
 			}
 		}
@@ -280,7 +275,7 @@ public class MainGame extends ApplicationAdapter {
 					String indicatorTest = "" + charArray2[0] + charArray2[1] + charArray2[2];
 					if (answerTest.equals(indicatorTest)) {
 						k += 4;
-						String value = "";
+						StringBuilder value = new StringBuilder();
 						boolean keepChecking = true;
 						for (int j = k; j < myAnswer.length() && keepChecking; j++) {
 							if (myAnswer.charAt(j) == '+' ||
@@ -313,7 +308,7 @@ public class MainGame extends ApplicationAdapter {
 								myAnswer.charAt(i) == '7' ||
 								myAnswer.charAt(i) == '8' ||
 								myAnswer.charAt(i) == '9') {
-								value += myAnswer.charAt(i);
+								value.append(myAnswer.charAt(i));
 							} else {
 								keepChecking = false;
 							}
@@ -329,11 +324,11 @@ public class MainGame extends ApplicationAdapter {
 	public void updateMeters(ArrayList<String> effects) {
 		for (String effect: effects) {
 			String indicator = "" + effect.charAt(0) + effect.charAt(1) + effect.charAt(2);
-			String value = "";
+			StringBuilder value = new StringBuilder();
 			for (int i = 3; i < effect.length(); i++) {
-				value += effect.charAt(i);
+				value.append(effect.charAt(i));
 			}
-			int change = Integer.parseInt(value);
+			int change = Integer.parseInt(value.toString());
 			String hap = effectIndicators[0].substring(0, 3);
 			String sad = effectIndicators[1].substring(0, 3);
 			String ang = effectIndicators[2].substring(0, 3);
@@ -401,6 +396,9 @@ public class MainGame extends ApplicationAdapter {
 
 	@Override
 	public void dispose () {
-
+		for (Screen s: screens) {
+			s.dispose();
+		}
+		skin.dispose();
 	}
 }
