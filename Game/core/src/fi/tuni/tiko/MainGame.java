@@ -8,7 +8,10 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.utils.I18NBundle;
+
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class MainGame extends ApplicationAdapter {
@@ -23,8 +26,8 @@ public class MainGame extends ApplicationAdapter {
 	public static Color darkBackgroundColor = colorMax255(0, 131, 143);
 	public static Color desiredBackgroundColor = lightBackgroundColor;
 	public static Color currentBackgroundColor = desiredBackgroundColor;
-	private String [] effectIndicators = {"ILO", "SURU", "VIHA", "RAKKAUS", "PELKO", "HÄMMENNYS", "INHO"};
-	private String weekDay = "Maanantai";
+	private String [] effectIndicators;
+	private String weekDay;
 	private GlobalElements globalElements;
 
 	public static int currentScreenID;
@@ -44,15 +47,14 @@ public class MainGame extends ApplicationAdapter {
 		windowHeight = Gdx.graphics.getHeight();
 		margin = windowHeight * 0.025f;
 		meterHeight = windowHeight * 0.1f;
+
+		addLocalizations();
 		audioPlayer = new AudioPlayer();
-
 		skin = new MySkin();
-
 		globalElements = new GlobalElements();
 		screens = createScreens();
 
 		loadProgress();
-
 		mainMenu = new MainMenuScreen();
 		screens.add(mainMenu);
 		currentScreen = mainMenu;
@@ -60,29 +62,6 @@ public class MainGame extends ApplicationAdapter {
 
 		//audioPlayer.playMenuMusic();
 	}
-
-	public static Color colorMax255(float r, float g, float b) {
-		float colorFraction = 1f / 255f;
-		return new Color(r*colorFraction, g*colorFraction, b*colorFraction, 1);
-	}
-
-	public void checkMenuChoice() {
-		if (mainMenuChecker == 1) {
-			resetProgress();
-			loadProgress();
-			currentScreenID = 266;
-		} else if (mainMenuChecker == 2) {
-			loadProgress();
-		} else if (mainMenuChecker == 3) {
-			globalElements.hideScreenElements(mainMenu);
-			globalElements.showSettings();
-		} else if (mainMenuChecker == 4) {
-			Gdx.app.exit();
-		}
-		mainMenuChecker = 0;
-	}
-
-
 	@Override
 	public void render () {
 		currentBackgroundColor = updateBackgroundColor(currentBackgroundColor, desiredBackgroundColor);
@@ -106,17 +85,17 @@ public class MainGame extends ApplicationAdapter {
 		if (currentScreen != lastFrameCurrentScreen) {
 			if (currentScreen.getClass() == ChoiceScreen.class) {
 				switch (currentScreenID) {
-					case 39: weekDay = "Tiistai";
+					case 39: weekDay = getLocalization("tuesday");
 						break;
-					case 81: weekDay = "Keskiviikko";
+					case 81: weekDay = getLocalization("wednesday");
 						break;
-					case 126: weekDay = "Torstai";
+					case 126: weekDay = getLocalization("thursday");
 						break;
-					case 164: weekDay = "Perjantai";
+					case 164: weekDay = getLocalization("friday");
 						break;
-					case 207: weekDay = "Lauantai";
+					case 207: weekDay = getLocalization("saturday");
 						break;
-					case 240: weekDay = "Sunnuntai";
+					case 240: weekDay = getLocalization("sunday");
 						break;
 				}
 				((ChoiceScreen) currentScreen).addGlobalElements(globalElements, weekDay);
@@ -137,6 +116,41 @@ public class MainGame extends ApplicationAdapter {
 		if (currentScreen == mainMenu) {
 			checkMenuChoice();
 		}
+	}
+	public static Color colorMax255(float r, float g, float b) {
+		float colorFraction = 1f / 255f;
+		return new Color(r*colorFraction, g*colorFraction, b*colorFraction, 1);
+	}
+	public void addLocalizations() {
+		effectIndicators = new String[] {
+				getLocalization("happiness").toUpperCase(),
+				getLocalization("sadness").toUpperCase(),
+				getLocalization("anger").toUpperCase(),
+				getLocalization("love").toUpperCase(),
+				getLocalization("fear").toUpperCase(),
+				getLocalization("astonishment").toUpperCase(),
+				getLocalization("disgust").toUpperCase()};
+		weekDay = getLocalization("monday");
+	}
+	public static String getLocalization(String key) {
+		Locale locale = Locale.getDefault();
+		I18NBundle myBundle = I18NBundle.createBundle(Gdx.files.internal("MyBundle"), locale);
+		return myBundle.get(key);
+	}
+	public void checkMenuChoice() {
+		if (mainMenuChecker == 1) {
+			resetProgress();
+			loadProgress();
+			currentScreenID = 266;
+		} else if (mainMenuChecker == 2) {
+			loadProgress();
+		} else if (mainMenuChecker == 3) {
+			globalElements.hideScreenElements(mainMenu);
+			globalElements.showSettings();
+		} else if (mainMenuChecker == 4) {
+			Gdx.app.exit();
+		}
+		mainMenuChecker = 0;
 	}
 	public ArrayList<Screen> createScreens() {
 		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens();
@@ -213,7 +227,7 @@ public class MainGame extends ApplicationAdapter {
 	public void loadProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		currentScreenID = prefs.getInteger("screen", 0);
-		weekDay = prefs.getString("day", "Maanantai");
+		weekDay = prefs.getString("day", getLocalization("monday"));
 		float meterDefault = 50;
 		globalElements.getMeter("happiness").setValue(prefs.getFloat("happiness", meterDefault));
 		globalElements.getMeter("sadness").setValue(prefs.getFloat("sadness", meterDefault));

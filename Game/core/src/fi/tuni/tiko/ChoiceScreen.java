@@ -44,7 +44,7 @@ public class ChoiceScreen extends Screen {
         this.question = question;
         this.answerEffects = answerEffects;
 
-        dayBox = new Label("Viikonpäivä", skin, "dayText");
+        dayBox = new Label("dayOfTheWeek", skin, "dayText");
         dayBox.setBounds(xBox, windowHeight - margin - dayBoxHeight, boxWidth, dayBoxHeight);
         dayBox.setAlignment(0);
         dayBox.setWrap(true);

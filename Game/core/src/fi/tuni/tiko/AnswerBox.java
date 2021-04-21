@@ -5,8 +5,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 import static fi.tuni.tiko.MainGame.skin;
-import static fi.tuni.tiko.MainGame.windowHeight;
-import static fi.tuni.tiko.MainGame.windowWidth;
 
 
 public class AnswerBox extends Group {

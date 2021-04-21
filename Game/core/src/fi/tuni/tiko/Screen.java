@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
+import static fi.tuni.tiko.MainGame.getLocalization;
 
 /** Screen is an abstract class that is used to create different screen layouts for the game.
  * Every screen has a screen ID and some choices that can move the game to a different screen.
@@ -39,10 +40,10 @@ abstract public class Screen extends Stage {
     }
     public ArrayList<String> createAnswers() {
         ArrayList<String> temporaryList = new ArrayList<>();
-        temporaryList.add("POISTU PELISTÄ");
-        temporaryList.add("ASETUKSET");
-        temporaryList.add("JATKA PELIÄ");
-        temporaryList.add("UUSI PELI");
+        temporaryList.add(getLocalization("exitGame").toUpperCase());
+        temporaryList.add(getLocalization("settings").toUpperCase());
+        temporaryList.add(getLocalization("continue").toUpperCase());
+        temporaryList.add(getLocalization("newGame").toUpperCase());
         return temporaryList;
     }
     public ArrayList<Integer> createScreenLinks() {

@@ -30,17 +30,7 @@ public class FeelingMeter extends Group {
     private final float imageWidth = textWidth * (2f/3f);
 
     public FeelingMeter(float y, Color color, String imageStyle) {
-        String emotion = "";
-        switch (imageStyle) {
-            case "happiness": emotion = "Ilo"; break;
-            case "sadness": emotion = "Suru"; break;
-            case "anger": emotion = "Viha"; break;
-            case "fear": emotion = "Pelko"; break;
-            case "disgust": emotion = "Inho"; break;
-            case "love": emotion = "Rakkaus"; break;
-            case "astonishment": emotion = "Hämmennys"; break;
-        }
-        Label caption = new Label(emotion, skin, "meterCaptionText");
+        Label caption = new Label(MainGame.getLocalization(imageStyle), skin, "meterCaptionText");
         caption.setBounds((windowWidth - combinedWidth) * 0.5f, y, textWidth, textHeight);
         caption.setAlignment((int)textHeight - 1, 0);
         addActor(caption);
