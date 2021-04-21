@@ -41,6 +41,7 @@ public class MySkin extends Skin {
         add("default", new BitmapFont());
         add("settings", new Texture(getPath("hamburgermenu")));
         add("mainMenu", new Texture(getPath("mainmenubutton")));
+        add("menuBox", new Texture(getPath("mainmenubox")));
         add("empty", new Texture(getPath("button")));
         add("meter", new Texture(getPath("meter")));
         add("soundOn", new Texture(getPath("sound_on")));
@@ -98,6 +99,15 @@ public class MySkin extends Skin {
         Label.LabelStyle immobileAnswerStyle = new Label.LabelStyle();
         immobileAnswerStyle.background = newDrawable("immobile_box");
         immobileAnswerStyle.font = getFont("mediumItalicFont");
+
+        Label.LabelStyle menuBoxStyle = new Label.LabelStyle();
+        menuBoxStyle.background = newDrawable("menuBox");
+        menuBoxStyle.font = getFont("lightFont");
+
+        Label.LabelStyle menuTextStyle = new Label.LabelStyle();
+        menuTextStyle.background = newDrawable("white", Color.CLEAR);
+        menuTextStyle.font = getFont("lightFont");
+
 
         Label.LabelStyle questionStyle = new Label.LabelStyle();
         questionStyle.background = newDrawable("questionBox");
@@ -270,6 +280,8 @@ public class MySkin extends Skin {
         add("emotionScoreText", emotionScore);
         add("dayText", dayText);
         add("imageCaptionText", imageCaption);
+        add("menuBoxBackground", menuBoxStyle);
+        add("menuBoxText", menuTextStyle);
         add("settings", settingsButtonStyle);
         add("sound", soundStyle);
         add("music", musicStyle);

@@ -1,7 +1,10 @@
 package fi.tuni.tiko;
 
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
 import static fi.tuni.tiko.MainGame.margin;
+import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.MainGame.mainMenuChecker;
@@ -30,10 +33,15 @@ public class MainMenuScreen extends Screen {
         answerBoxes = new Group();
         //float currentY = margin * 2 + buttonHeight;
         float currentY = margin + buttonHeight + roomForAnswers / 4 - boxHeight * 0.5f;
+
         for (int i = 0; i < 4; i++) {
             answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
             //currentY += margin + boxHeight;
             currentY += roomForAnswers / 4;
+        }
+        for(int i = 0; i < answerBoxes.getChildren().size; i++) {
+            ((AnswerBox) answerBoxes.getChild(i)).getBackground().setStyle(skin.get("menuBoxBackground", Label.LabelStyle.class));
+            ((AnswerBox) answerBoxes.getChild(i)).getTextBox().setStyle(skin.get("menuBoxText", Label.LabelStyle.class));
         }
         getElements().addActor(answerBoxes);
     }
