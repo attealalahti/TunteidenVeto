@@ -266,8 +266,8 @@
 72 Lue kokeeseen.
 73 Makoile vuoteessa ja selaile somea.
 ---
-71 Ugh, tiskejä. Inhottavaa. Isäsi tulee kuitenkin todella iloiseksi, kun löytää keittiöstä tyhjän tiskialtaan!
-74 ILO +10, INHO +5
+71 Ugh, tiskejä. Inhottavaa. Isäsi tulee kuitenkin todella iloiseksi, kun löytää keittiöstä tyhjän tiskialtaan! Tärkeitä ihmisiä on kiva ilahduttaa, vaikka se sitten tarkoittaisikin omien käsien likaamista.
+74 ILO +10, INHO +5, RAKKAUS +5
 ---
 72 Nappaat koulukirjan käteesi ja alat selailla sitä. Tunteet vaikuttavat kehoon, mutta myös keho voi vaikuttaa tunteisiin: esimerkiksi juoksulenkki voi lievittää vihan tunteita. Mielenkiintoista!
 74 Jokohan päivitys olisi valmis?
