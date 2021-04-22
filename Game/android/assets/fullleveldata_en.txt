@@ -372,7 +372,90 @@
 102 Something independent and challenging
 103 Job that pays well both in money and respect
 ---
-
+101 Good work environment lets the employee be what they are, emotions and all. Uncontrolled or unnotices emotions don't work for greater good - colleagues start to behave badly too, if one co-worker is snappy and frowning all the time. On the other hand, good emotion skills make you less influenced by other's bad mood.
+104 That's right!
+---
+102 An independent worker is responsible for their own wellbeing and progress. When you notice your negative emotions and can intervene to them early, challenges and stress are less likely to get bad. Good emotion skills shape the independent and challenging work even more rewarding and less exhausting.
+104 Got it!
+---
+103 Well paid, respected work may mean also a lot of pressure and competition. One that controls their emotions and notices them early can better stay in good work shape, get excellent results and still enjoy their life!
+104 Cool!
+---
+104 Both recognizing and handling your emotions are skills, that can be developed and improved by active training. Which one do you find harder?
+105 Recognizing your emotions
+106 Handling your emotions
+---
+105 Recognizing your emotions is individual and makes easier to handle your emotions and read the messages our body and mind send to us. It's good idea to actively practice writing down your feelings or saying them out loud. Start small - it made me happy to see sun shining.
+107 I'll try and practice listening my feelings at least once a day!
+---
+107 Do you also want to see tips for handling your emotions?
+106 Sure!
+108 Not right now.
+---
+106 It's important to analyze and handle your emotions - dammed emotions may get trapped in the body and cause different symptoms. Emotions' root causes and the feelings they cause are worth concentrating to - learn to find reasons and solutions by for example listing different scenarios on paper. Try and learn what methods of emotion handling are the best for you - is it running or heavy metal?
+109 I'll start focusing more on handling my emotions!
+---
+109 Would you also like to see tips to recognizing your emotions?
+105 Definitely!
+108 Maybe later.
+---
+108 The teacher asks you about your final thoughts on the topic. How do you feel about the future, looking for jobs and trying to find your career?
+110 Hopeful!
+111 It'll be okay!
+---
+110 That's right!
+112 HAPPINESS +10
+---
+111 That's right!
+112 FEAR -5
+---
+112 You walk home chatting with some friends. Your Finnish essay's deadline is today, so it's time to work it! Have you thought about the essay before?
+113 Yes
+114 No
+---
+113 Of course you didn't leave it to the last day! It's not always possible to be early with everything, but it sure feels good.
+115 HAPPINESS +5
+---
+114 It's going to be a tough night! No panic, take some deep breaths and start working.
+115 FEAR +5
+---
+115 The essay is supposed to be about using writing in expressing emotions. Which emotion do you choose?
+116 Anger
+117 Sadness
+---
+116 You check online for the different ways to handle anger through writing. Facing your anger can be difficult, but writing is a good way to face and handle your anger and aggression. For example, writing about the reasons behind the anger, writing down how the anger feels in your body or writing and tearing an angry letter may make you feel better.
+118 ANGER -10
+---
+117 You google handling sadness with writing. If sadness is left unhandled, it may cause for example pains and make you sick. Writing about the reasons behind the sadness or the feelings it causes may help to ease the sorrow.
+118 SADNESS -10
+---
+118 The moment you returned your essay, your sister storms to your room and asks you to play some card games before going to sleep.
+119 Sure!
+120 There is no time.
+---
+119 You play for a while, and you're victorious. The final round begins and you can see your sister's starting to get frustrated - she is frowning, she's not laughing at your jokes and chatting doesn't really go on. How do you play the last round?
+121 Try your best.
+122 Let her win.
+---
+121 Good cards and a tiny mistake in your sister's strategy nail your victory! However, your sister doesn't take the defeat well. How do you react?
+123 Try to make her feel better.
+124 Go to bed.
+---
+123 It's just a game! The tension eases and she starts smiling again. It's nice you didn't have to go to sleep feeling bad! She hugs you before you go to bed, and you remember how important she is to you.
+125 HAPPINESS +10, LOVE +10
+---
+124 It's a bummer you have to go to bed feeling bad - your sister's mood ruined your good vibes too. Why did she take the defeat so seriously? It's just a game!
+125 SADNESS +5
+---
+122 You intentionally make mistakes and let your sister win. She seems happy about it, but you feel a bit miserable - is it right, that you have to ruin your game to make someone else feels better?
+125 SADNESS +5
+---
+120 Your sister seems disappointed and gets out of your room. You start to regret your decision - one game wouldn't have taken that long...
+125 SADNESS +5
+---
+125 It's time to get buried in your bed.
+126 Sleep tight!
+---
 126 THURSDAY. The morning starts with brain fog: who, what, huh?
 127 CONFUSION +10
 ---
