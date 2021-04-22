@@ -1,3 +1,202 @@
+266 Welcome to play! In this game, you get to go through a young student’s weekday, make choices, and watch how they affect emotional states. You can see the emotional states at any time by pressing the emoticon shown below. The emoticon itself shows which emotional state is currently strongest.
+0 To continue, swipe either box to the right or left.
+0 The box first slides in half to check your selection. To continue, slide the box to the end.
+0 Forward!
+---
+0 Hello world! It's Monday morning and a new week ahead. How are you feeling at the start of a new week?
+1 Ugh, Monday. Five miserable days for the weekend.
+2 It would be nice to sleep, but it doesn't help. This might turn out to be a nice week!
+---
+1 Fortunately, the course can still be turned, even if in the morning on the wrong foot!
+3 HAPPINESS -10
+---
+2 The morning mood can have a surprising effect on the rest of the day!
+4 HAPPINESS +10
+---
+3 On your way to school you're greeted by a neighbor, but you don't realize it from your tiredness. Embarassing!
+5 CONFUSION +10
+---
+4 On your way to school, you run into the neighbor's older lady with her little dog. Do you greet her?
+6 No way. She and her dog can buzz off!
+7 Of course!
+---
+6 The old lady is baffled by your behavior. You don't have time for everyone!
+5 ANGER +10
+---
+5 You suddenly feel a cold chill and tightness in your chest. Hopefully the neighbor won’t complain about this to Grandma: Grandma will be really disappointed and will give you an earful if she hears about this.
+8 FEAR +10
+---
+7 You greet the old lady, who joyfully waves at you.
+8 HAPPINESS +10
+---
+8 You arrive at your mother tongue class. The teacher gives the task: he reads a couple of passages of text, and you need to be able to deduce what the protagonist feels.
+9 Bring it!
+---
+9 "Frank stepped out of the door at night. It was wonderful to get there and see her again. Frank felt safe - he was light, his stomach was tingling and there was warmth in his chest. Frank had indeed come home."
+10 Ilo
+11 Love
+---
+10 There is much common in joy and love, but it would have been love. Love is often a deeper and safer feeling for someone or something, for example, while joy is a more transient energetic joy.
+12 All right!
+---
+11 That's right! Love brings a warm, safe feeling. Love is often associated with a person or thing when joy is a more detached good feeling.
+12 HAPPINESS +5
+---
+12 "i feel a lump in my throat and my eyes sting. Longing burned in my chest, but otherwise I was cold as if made of ice. It didn't matter anymore, the future no longer seemed to offer anything. Tears began to flow down my cheeks hot and bitter."
+13 Fear
+14 Sadness
+---
+13 Fear can be a very similar feeling to the grief described in the poem. However, grief is often more crippling, while fear again feels distressing or exacerbating.
+15 Roger that!
+---
+14 That's right! Grief often feels cold and foggy. The train of thought doesn’t flow and you don’t usually get anything out of nice things in general.
+15 HAPPINESS +5
+---
+15 "He put his hand in front of his mouth as he felt nauseous. I could smell that rotten, all-encompassing smell myself. My stomach turned and I felt like I was going to puke. I saw Elena's nose twitch and her mouth squeezed into a tight line in front of me."
+16 Inho
+17 Anger
+---
+16 You are on fire! The disgust nauseating, be it physical disgust caused by spoiled food or moral disgust caused by someone’s behavior, for example.
+18 HAPPINESS +5
+---
+17 Disgust and anger have the same characteristics and may often be related. However, anger is often hotter and more head-related when the disgust is felt in the stomach and nausea.
+18 Alright!
+---
+18 It's done! Do you want to go through the poems again and try other answers, or are you ready?
+9 I want to go through the poems again!
+19 Let's move on!
+---
+19 During the break, you chat with friends about the previous lesson. You think the lesson was ...
+20 pretty boring and silly.
+21 pretty nice!
+---
+20 Your friends are baffled. They thought the interpretation of the poems was really interesting, what exactly did you imagine!
+22 CONFUSION +10
+---
+21 Your friends agree. Reading about other people’s emotional states can help identify their own feelings better.
+22 CONFUSION -10
+---
+22 Your friend shows you a video of a young girl playing Minecraft.
+23 Haha, at least the girl seems to be having fun!
+24 Quite a silly game! It should be shooting game, no one wants to watch that.
+25 Those things could be done much smarter in the game, it doesn't make sense!
+---
+23 You talk for a moment about how nice it is for some to make game videos and stream their games. Maybe you could try it yourself someday?
+29 HAPPINESS +5
+---
+24 Your friend is laughing next to you. Should a nasty comment be sent to the girl? At least she would know that no one wants to watch that, and you could get upvotes yourself.
+26 Send!
+29 Do not send.
+---
+25 Your fingers itch to send the girl a little comment on the video. You are sending ...
+28 tips on what kind of logging is worth using in that situation.
+26 laughter at how no one wants to watch the playing of such noobs.
+---
+26 You start thinking about yourself when you played when you were young. Back then the insults and ridicule of some older player felt really miserable. Your cheeks start to heat up and your throat feels squeezed.
+29 DISGUST +10, SADNESS +5, HAPPINESS -10
+---
+28 You send an encouraging message to the girl with some tips for continuing the game. You will feel warm: the girl will definitely feel good!
+29 HAPPINESS +10
+---
+29 The next lesson is physics. The teacher walks around the class and stops at you and asks for a homework answer. Your heart is beating faster, your fingers feek cool, and your cheeks heat up.
+30 You try to answer. It might be correct, maybe?
+31 You are not going to embarrass yourself in public. You say you don't know.
+---
+30 What a miracle, it went right!
+32 HAPPINESS +10
+---
+31 The guess in your mind would have been correct. Damn!
+32 HAPPINESS -5
+---
+32 You get home. There is no compulsory assignment for tomorrow, but the return of the mother tongue essay is in a couple of days.
+33 Go for a run!
+34 Do some of the essay now.
+---
+33 You are going out! In the hallway, the family dog ​​waves his tail hopefully. Do you take the dog with you?
+35 Without further ado! Then you don’t have to go later separately, and it’s just nice to go jogging together.
+36 I will not. I prefer to go alone, let someone else go with the dog.
+---
+35 Along the way, you’ll come across someone about your age, and in fact, a pretty good-looking dog walker with whom you exchange a few words. Your dog behaves really well and shows its best. The sun is shining brighter today!
+37 HAPPINESS +5, LOVE +5
+---
+36 After the run, your mother begins to complain that you did not bring the dog with you. Annoying!
+37 ANGER +10
+---
+37 Be that as it may, the jog made you feel good! Your thoughts flow better, your chest is no longer squeezed and you are calmer. Yes!
+38 HAPPINESS +5, ANGER -10
+---
+34 Whoa what a crunch! It took it's toll, but now part of the essay has already been done.
+38 HAPPINESS +5
+---
+38 Monday is starting to end. You do the evening chores and go to bed.
+39 Good night!
+---
+39 TUESDAY. Breakfast is waiting, it's toast and fried bean stew. You feel your stomach twist and your forehead pulled into a wrinkle. You...
+40 you take toast only and refuse a disgusting stew.
+41 you hesitatingly try both.
+---
+40 Mom gets angry when you don't take her stew with bread. You try to explain that for some reason it now disgusts you, but she's not listening. Unfair!
+42 DISGUST +5
+---
+41 A wave of disgust rolls over you. Disgusting!
+42 DISGUST +10
+---
+42 The school day begins with health education. There will be an exam on Friday for todays subject, so you should listen carefully!
+44 You're ready!
+---
+44 Astonishment is felt in the head and chest area, but it is often not a very clear feeling. It is often described as a confused, slightly fuzzy sense of alertness.
+300 NEXT
+---
+300 Body image of astonishment [astonishment_body]
+45 NEXT
+---
+45 Happiness makes you feel warm bubbling all over your body. The chest and head radiate warmth and the feeling is light and energetic. You will smile and everything will feel more comfortable.
+301 NEXT
+---
+301 Body image of joy [joy_body]
+46 NEXT
+---
+46 Disgust has been particularly necessary in the past to identify contaminated food, but it also arises in response to moral disgust. The disgust feels like nausea in the abdomen and around the mouth, it feels like you're close to vomiting.
+302 NEXT
+---
+302 Body image of disgust [disgust_body]
+47 NEXT
+---
+47 Fear makes the heart beat and the body prepare to either flee or fight. Fear is felt above all in the head and chest, in addition to which the limbs can either be hot or they can feel cold and heavy. Fear makes you feel restless and anxious.
+303 NEXT
+---
+303 Body image of fear [fear_body]
+48 NEXT
+---
+48 Sadness can manifest in the body in many ways: there is abdominal pain, headaches, and spacing out. The feeling can be distressing and the memory is broken. Often sleep also suffers: a grieving person may sleep more than normal or suffer from insomnia. Crying is a common way to deal with grief, but sometimes you are unable to cry.
+304 NEXT
+---
+304 Body image of grief [sadness_body]
+49 NEXT
+---
+49 When you're angry you may feel as if your blood is boiling. You clench your fists, your muscles tense and you bite your teeth together. Your cheeks become hot and your tone may change even without you noticing.
+305 NEXT
+---
+305 Body image of anger [anger_body]
+265 NEXT
+---
+265 Love feels like warmth or even heat, especially in the chest, but almost all over the upper body. Love is a safe and well-being that can make the heart pound or the stomach tingle. The feeling of love is by no means always romantic, but can also be between friends or family members, for example, or even include your home.
+306 NEXT
+---
+306 Body image of love [love_body]
+50 NEXT
+---
+50 In addition to these there are numerous different combinations of emotions and different sensations such as shame, jealousy and pleasure. Do you want to repeat the main feelings and their effects on the body, or are you ready for Friday’s exam?
+44 I want to repeat!
+51 Forward!
+---
+51 After the health education, it is time for lucnh and english after that. Your friends have decided to go to town after eating and skip the English class. You...
+52 you go along.
+53 you stay at school.
+---
+52 This is an adventure! Yes, you are in trouble if someone sees you ...
+54 FEAR +15
+---
 54 You decide to go hang out at the mall. Your friends find some makeup testers and start to paint each others faces with all kinds of war paints.
 55 You catch a lipstick and start decorating your friend's cheeck.
 56 You decide to stay further, giggling at them.
@@ -172,4 +371,274 @@
 101 Chill job with nice work environment
 102 Something independent and challenging
 103 Job that pays well both in money and respect
+---
+
+126 THURSDAY. The morning starts with brain fog: who, what, huh?
+127 CONFUSION +10
+---
+127 The morning begins with mother tongue class. The teacher hopes that one of the students will read their own essay aloud to the class. Of course you don’t want to read your essay - who would?
+128 Play busy.
+129 Hope the teacher does not choose you.
+---
+129 You sit quietly in your seat and hope the teacher chooses someone else. Be that as it may, the teacher calls you by name and asks you to read your essay. Oh no.
+130 Refuse. You really don’t read your essay!
+131 Read if you really have to.
+---
+130 You tell the teacher that you are not reading your essay. The teacher looks confused and a couple of your classmates squeal from behind. How a teacher can even be so outrageous that you end up on the spot!
+132 ANGER +10
+---
+131 I guess I have to. You read your essay in a vibrating voice, and to your surprise you get good feedback from your teacher and classmates!
+132 HAPPINESS +5
+---
+128 You're in a hurry to rummage through your backpack for something. After all, the teacher can’t pick you if you’re not ready! Right? The teacher stops at you, but still ends up choosing your fellow buddy. Your heart is still pounding in your throat.
+132 FEAR +10
+---
+132 After the nightmare, it's time for a meal, and your friends suggest going out to eat - it's almost weekend! Which one do you choose, burgers or potato soup?
+133 You go for burgers!
+134 You'll skip eating out this time.
+---
+133 You arrive at your burger Place and place your order. Your friend is mocking a young boy working at the checkout and laughing at his clothes and hair. Your other friends are laughing around, some more encouraging and some more embarrassed. What are you doing?
+135 You go along. You don't want to be the killjoy here!
+136 You don't say anything, but you don't laugh either.
+137 You control your friends and defend the cashier.
+---
+135 You also make fun of cashier’s glasses and laugh. Why on earth do you do this and get involved? Your cheeks start to heat up, you get a bad mood and you start questioning yourself: what on earth made you act like that?
+138 HATE +5, DISGUST +10, CONFUSION +10, SADNESS +10
+---
+136 How could they be like that, disgusting behavior. For a moment, it feels like you don’t even know them. There is a cold lump on the bottom of your stomach: should I have addressed the situation somehow?
+138 DISGUST +10, SADNESS +10, LOVE -5
+---
+137 You tell your friends to keep their opinions to themselves and you apologize to the cashier. Disgusting that kind of behavior, you’re really disappointed with your friends. Your friends are a little embarrassed, but you felt warm: you just saves the cashier’s day!
+138 HAPPINESS +15, INHO +10
+---
+138 Your order number will appear and you walk to pick up your burger from the counter. It served to you by the same seller your friends just bullied. He clearly avoids your gaze and feels like you see his hands trembling a little.
+139 You say nothing.
+140 You apologize for your friends.
+---
+139 You pass the situation as quickly as possible without saying anything. The cashier will glance at you questioningly, but you will grab your food and rush back to your seat. Strange situation!
+141 CONFUSION +10
+---
+140 You smile apologetically at the checkout and apologize for the actions of your friends. The fear of the cashier visibly eases, his shoulders lower and he looks you in the eyes with a little smile. Even if he says little to nothing, you will find that your words made him feel better.
+141 HAPPINESS +5
+---
+134 You decide to save time and money, so you wave your friends goodbye and stay to eat at school. At first, your choice is a little annoying, but don’t let it bother you. You go to the canteen to sit with people you kinda know and you have really good conversations about the latest twists and turns in the series you’re following!
+141 HAPPINESS +5
+---
+141 In the afternoon, you have a rare opportunity to choose whether to go to a visual arts class or exercise. Which one sounds better today?
+142 Art!
+143 Exercise!
+---
+142 In class, you are free to draw whatever is in your mind — express yourself and your feelings on paper, as the teacher put it. How do you approach the situation?
+144 You want to convince others of your artistic skills and you start drawing from a realistic pencil drawing.
+145 You go to test different techniques and colors according to what feels right to you at the moment.
+---
+144 Your pencil setup doesn’t work the way you would like, and you feel your mood drop. You knew yes, realistic pencil art is not for you. Sure, it looks great, but the meticulous creation of realistic shadows doesn’t interest you at all.
+146 HAPPINESS -5
+---
+145 Without thinking about the end result, you test markers, charcoal and various bright colors. You make shapes and shades according to what comes to mind. The final piece may not be very easy to outline or one you’d like to hang on your wall, but it was fun to do! Again, you remember why people like the arts.
+146 HAPPINESS +10, LOVE +5
+---
+146 Whatever the outcome, art is a great way to deal with and unleash emotions. By drawing, painting or even shaping, one can also express one's feelings in an easily visible form.
+151 SADNESS -5, ANGER -5, CONFUSION -10
+---
+143 You head to an gymnastics class where the warm up is done by running according to the teacher's instructions. Some classmates immediately sprint to the front of the line, others just calmly jog. What is your style?
+148 You start running at a good pace to front of the group.
+149 You join to jog in peace with your friends.
+---
+148 You definitely want to be among the first! Running at the front is lonely, and it feels a little silly to take the initial warm-up in such a competitive spirit, but on the other hand, brisk running makes you feel good.
+150 HAPPINESS +5
+---
+149 You catch up with your friends and continue warming up. You chatter and laugh at the same time you don't even notice as the time flies by.
+150 HAPPINESS +5
+---
+150 You continue by testing different sports in groups. Exercise is a great way to deal with and dissipate different emotional states. On the other hand, physical movement can also alleviate anxiety and depression, clarify thoughts, and divert attention away from, for example, physical distress.
+151 SADNESS -5, ANGER -5, CONFUSION -10
+---
+151 You continue your journey from school to football practice. Your coach praises dribbling technique of one of your team members, although you don't think this is very advanced: instead, your other teammate Aali has worked hard on deception and developed a lot in a short time.
+152 You tell the coach that you have noticed that Aali has also developed a lot.
+153 You are not commenting on anything.
+---
+152 You point out that Aali has done a lot of work and developed significantly. While they are clearly a bit embarrassed from the attention, they are also really happy. Your coach admits you agree and also praises your attitude. You will feel valued and an important part of the team.
+154 HAPPINESS +5, LOVE +5
+---
+153 You say nothing, you just sulk on the sideline. Why does the coach only praise his own favorites? Unfair!
+154 ANGER +5, HAPPINESS -5
+---
+154 At the end of the training, you will play for some time in the middle of the team. One of your teammates is playing really badly, not at all at their normal level. Your hands are clenched into your fists and your head and chest heat up - how are they so bad!
+155 Give the person some feedback and tell them to focus.
+156 Count to ten and take a deep breath.
+---
+156 The heat in your cheeks drops and your muscles relax. Huh, the anger is starting to pass. How do you proceed with the situation?
+157 Don't say anything.
+158 Give the person some feedback and ask them to focus.
+---
+157 It's just a practice game though, and the person might be going through some tricky things in their life. You decide to let it be and focus on your own game.
+159 HAPPINESS +5
+---
+158 You try to sound carefree and ask a half-jokingly from the person if their thoughts are a little elsewhere. He laughs and promises to hold himself by the neck. The rest of the game he plays better!
+159 HAPPINESS +5
+---
+155 Even if you try to be quite neutral, the anger bubbling beneath the surface makes the comment sound silly. The person blushes red and frowns and says nothing to you during the final workouts. In addition to being angry, you are now also sad: that you had to go to offend them for no good reason!
+159 ANGER +5, SADNESS +5
+---
+159 You cycle home from your workouts. After the shower, you fall into bed, but you are not quite asleep yet. Your phone and a book are on the bedside table: which one do you grab?
+160 You grab the book.
+161 You turn the relaxation exercise on from your phone.
+162 You chat for a moment with a friend.
+---
+160 You read for a while until your favorite character dies. How can this be the case, why did he have to die? Even the death of a fictional character feels surprisingly strong, your throat tightening and eyes stinging. Still, the reading was nice.
+163 HAPPINESS +5, SADNESS +5
+---
+161 You follow the instructor's instructions to breathe in peace and create images. Crazy how much physical feeling can be affected through thoughts, and how physical relaxation can also calm the mind!
+163 ANGER -5, DISGUST -5
+---
+162 You chat for a moment with a friend. You haven’t talked properly in the past, but now it’s good to catch up! You go through recent events, your worries and joys, and you immediately feel a little lighter.
+163 SADNESS -5, ANGER -5
+---
+163 Your eyelids slowly start feeling heavier, and it’s time to catch some Zs.
+164 Good night!
+---
+164 FRIDAY. Yeah, the last day of school before the weekend! First class for today is social studies. The students sitting behind you are fooling around, and from somewhere the teacher gets in his head that you would have thrown him with rubber! What is your response to the teacher’s unfounded accusation?
+165 Shout that you have done nothing wrong.
+166 Explain to the teacher that it was someone else.
+---
+165 It really wasn't you! However, the teacher does not believe in your innocence. You start to get so annoyer you feel like throwing a book - outrageous to accuse you of that! There is blood rushes to your ears and it is terribly hot in class too. Annoying!
+167 ANGER +15
+---
+166 You calmly try to explain to the teacher that you did not throw anything, and that it was someone else. The teacher doesn't believe you. Is that how little you are trusted? Your shoulders flutter and the whole class seems to lose its meaning.
+167 SADNESS +5
+---
+167 The teacher leaves the class for a moment, and you take out your phone. Should I send a message to a friend and complain about the unfair treatment I just received?
+168 It doesn't help at all.
+169 Indeed!
+---
+168 Your friend can't make the teacher any less biased and you're a little embarrassed by your own reaction. You don’t send a message to him, but the situation remains a little bitter in your mind - would talking have made it anyway?
+170 Forward!
+---
+169 You send a message to your friend explaining the situation and telling you how unfair the teacher is and it's annoying. You will feel lighter as soon as you get it off your chest!
+170 SADNESS -5, ANGER -5
+---
+170 During lucnh, your friend is silent and doesn’t seem to be interested in your stuff at all. They seem lost in thought, smiling, and their whole posture seems to be sluggish. They are in their own world and not laughing at your joke.
+171 You feel stupid. Have you angered them somehow?
+172 You begin to ask what's bothering you. They are clearly not their own self.
+---
+171 The situation remains to be considered. Was your friend sad and not angry? You don’t really know what to think about the situation.
+173 CONFUSION +15
+---
+172 You take the guy to the side and ask if all is well. Your friend gets weird, pulls the shirt tighter and says they don’t want to be bothered.
+173 You try to cheer them up by telling about your own stuff.
+174 You encourage your friend to talk.
+---
+173 You tell them they can talk when they feel like it. You start telling your own stuff to them to cheer them up. You tell what your family dog ​​has been up to and how your little sister is doing. Your friend smiles gratefully, but doesn’t get excited about anything. Hopefully they talk when once they are ready.
+175 HAPPINESS +5, CONFUSION +10
+---
+174 After a while, your friend tells you that their pet recently died. You talk about the situation for a moment, and your friend seems to be feeling better. You yourself start to get a little sad for your friend, but you’re glad they feel bit better.
+175 SADNESS +5, HAPPINESS +10
+---
+175 After lunch you head for health education class. As promised on Tuesday, it's time for an exam today! Mostly the exam goes just fine, but you have to think few questions bit harder.
+176 Forward!
+---
+176 Which emotional state is most likely to cause, among other things, palpitations, restlessness, and hot or cold limbs?
+177 Disgust
+177 Sadness
+178 Fear
+---
+177 Different emotional states can affect people in different ways. However, palpitations, restlessness, and limb heat or cold are most often associated with fear.
+179 Good to know.
+---
+178 That's right! Fear prepares a person to flee or fight and draws more attention to potential threats to the environment.
+179 Yeah!
+---
+179 The next question of the test deals with disgust: which statement is most often associated with disgust?
+180 Disgust is often associated with the digestive system and is felt in the abdomen and mouth area.
+181 Disgust often causes headaches.
+181 Disgust is always associated with a physically nauseating smell or taste.
+---
+180 That's right! Disgust warns a person of either a physically or ethically bad thing, an activity, or even food, and it often feels like nausea.
+182 Good!
+---
+181 Disgust can be caused by either a physical or, for example, an ethically disgusting thing, and is often centered around the digestive system. Disgust can cause nausea and outright sickening feeling, for example.
+182 Absolutely!
+---
+182 The last question you have to think about is related to the picture: what emotional state does this reflect?
+183 Disgust
+184 Anger
+185 Sadness
+---
+183 The picture shows a feeling of grief: grief makes you feel cold, numb, especially on the head and chest, as shown in the picture. Disgust is often accompanied by a warm, nauseating feeling in the stomach and around the mouth.
+186 All right!
+---
+184 The picture shows a feeling of grief: grief makes you feel cold, numb, especially on the head and chest, as shown in the picture. Anger often feels in the same areas, but hot and burning.
+186 Ahaa!
+---
+185 You're all right, it's grief: it gets cold, numb, especially on the head and chest, as the picture shows.
+186 Great!
+---
+186 The test is finally over! Results will be given next week. You don’t have time to get through the front door properly when your dad tells you to empty the dishwasher and help with the vacuuming.
+187 You settle for your destiny and you go to do chores.
+190 Yeah yeah, in a moment!
+191 You negotiate to do them in the evening.
+---
+187 You grab the dish brush and put the music on. It's good to get these done!
+188 HAPPINESS +5
+---
+188 After a rigorous dishwashing and vacuuming session, you grab your phone. Your friend has sent a message and asked you to spend the evening with the gang at their place! Fortunately, everything is done. You run to your room to change clothes and prepare for the evening.
+196 HAPPINESS +5
+---
+190 You would like to give your father a piece of your mind: after a hard school week, the first thing at home is to do such a thing! You'll tell him you're doing the work right away and you're going to your room. Outrageous!
+192 ANGER +5
+---
+191 You agreed with your father that you would like to relax after the school for a while and then do the work. You go to your room to rest for a moment. Nice that Dad agreed to this!
+192 HAPPINESS +5
+---
+192 Your phone vibrates. Your friend sent a message and asked you to spend the evening with the gang at their place. Oh no, quickly do the chores so you get to hang out with them! You wish you'd done them sooner ... Nice to have an evening with friends!
+193 HAPPINESS +5, CONFUSION +10
+---
+193 Of course you want to get to your friends as soon as possible. Are you doing your job properly or the bare minimum? No one will hardly notice if you leave the pots still “dirty” and kick the dust balls under the cupboards.
+194 You clean quickly.
+195 You clean well.
+---
+194 Get on the move sooner! You assure yourself that you will take care of things tomorrow. However, Dad notices you trying to dodge work, and gives you strict feedback. You’ll have to actually clean up before you leave, and you’ll end up being done faster by doing things the right way.
+196 ANGER +5, SADNESS +10
+---
+195 Annoying, but at least you don't get complaints and breathing down your neck. You do your job properly but at a fast pace and run to your room to change clothes and prepare for the evening. Fortunately, there were no more chores for this day!
+196 ANGER +5, HAPPINESS +5
+---
+196 You get a ride from Dad to your friend, the others are already there. You notice that the group is a little split in two: one half sitting in the living room chatting in depth with a serious look, the other half laughing and fooling around in the kitchen. Which group do you join?
+197 Living room. They seem to have good conversations going on!
+198 In the kitchen. You want to have fun too!
+---
+197 An in-depth discussion turns out to be an analysis of a TV series you are all familiar with. Your friends are arguing fiercely about the new plot twist, and of course immediately asking for your opinion on the matter as well.
+198 You agree with the decision. The character worked perfectly right!
+198 You disagree with the decision. Silly use of the character!
+199 You answer politically that you understand both positions.
+---
+198 Half the crowd is outraged by your answer and half are ecstatic about your support. It seems that the subject goes into people’s emotions properly: how can this be such a big thing that it’s worth arguing about?
+203 CONFUSION +10
+---
+199 You get a little resentful snort when you don’t want to take a strong stand, but it also dissipates a tense atmosphere. The conversation continues in lighter relaxed mood. How was that such a big deal now?
+203 HAPPINESS +5, CONFUSION +5
+---
+198 The fun and laughter of the kitchen crew seems to end immediately when you arrive. A little doubt starts to bite your mind: did they laugh at you?
+201 Trust that they didn't laugh at you.
+202 Ask about it jokingly.
+---
+201 The conversation continues in a reasonably normal way, but the situation is still bothering you. You know your thoughts are probably just silly, but you can’t help but think they laughed at you.
+203 SADNESS +5, CONFUSION +10
+---
+202 You half-jokingly ask if they were laughing at you. Everyone bursts into laughter and assures you they didn’t laugh at you: they were just startled when you suddenly arrived. Fortunately, you have best friends with whom you can chat through even silly feelings!
+203 LOVE +10
+---
+203 You sit in the gang during the evening chatting and playing until your more distant friends start arguing and the mood drops. You’re starting to feel like it’s time to take a hike. Your mom has previously promised to pick you up from a friend, so you send a message to her. How do you express it?
+204 I'm done, come get me.
+205 I'd like to come home, can I have a ride soon?
+---
+204 Your mother responds very faintly that she will leave soon - you may have offended her with your message. You will a bit sad too: why on earth did you send a rude message to your mother when she is coming to pick you up from your friends house?
+206 INHO +10
+---
+205 Your mother will gladly answer that she will leave immediately and suggest that you use it on the way to grab some good food. Yes!
+206 ILO +5
+---
+206 You arrive home and talk for a moment about the events of the evening. You go to your room, message for a while with the friends who decided to stay there. You turn off the lights. Tomorrow you can sleep for a long time!
+207 Good night!
 ---
