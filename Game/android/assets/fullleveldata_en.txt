@@ -1,1 +1,160 @@
-fullleveldata_en
+54 You decide to go hang out at the mall. Your friends find some makeup testers and start to paint each others faces with all kinds of war paints.
+55 You catch a lipstick and start decorating your friend's cheeck.
+56 You decide to stay further, giggling at them.
+---
+55 One of your friends paints an unbelievably realistic platypus to your cheeck. Afterwards you start thinking about all the germs in testers - yuck!
+61 HAPPINESS +5, DISGUST +10
+---
+56 What are they thinking! You kind of admire how they live in the moment, but you can't stop thinking about how dirty those old testers must be.
+57 ASTONISHMENT +10
+---
+57 You can see your principle coming to the store! Just your luck - all of you just can't run away uncaught. Time for quick decisions: flee yourself or stay with the crew?
+58 You're out of here!
+59 You stay with the others.
+---
+58 There's no point in all of you getting caught! You manage to avoid the principle and run home. One of your friends sends you a bitter message about saving your own ass.
+60 SADNESS +10, ANGER +5
+---
+59 One for all, all for one! You stay and get caught. Your friends thank you for not leaving them.
+61 HAPPINESS +5
+---
+61 The principle catches you and calls your parents. Both your parents and your teachers are very disappointed on you fooling around.
+62 SADNESS +15
+---
+53 You're going to spend English class listening to English music. The teacher asks you for next song. Your friend whispers their own wish to your ear, but it's really not your thing.
+63 Nevermind, you'll say friend's recommendation.
+64 You say your own wish.
+---
+63 You say the song your friend asked. Why did you actually do so?
+65 Your friend would get mad at you otherwise.
+66 To make your friend happy!
+---
+65 Your mood drops: why would they get mad over one song, if they're your friend? You start to feel frustrated and cold.
+67 SADNESS +10
+---
+66 You want to make your friend happy! Your friend starts to smile, and it spreads to you too. They're really important to you, so it's nice to see them that happy!
+67 HAPPINESS +10, LOVE +5
+---
+64 Teacher gave you an opportunity to say your own wish, and that's what you will do! You wish for something...
+68 lively!
+69 calming!
+70 refreshing!
+---
+68 The lively music starts rolling and you're feeling uplifted. It's nice to get some extra joy out of English class!
+67 HAPPINESS +10
+---
+69 You wish for something calming and chill. You feel your thoughts getting smoother and clearer. Feels good!
+67 ANGER -10
+---
+70 Situation demands something intense! Energetic music gets your brain working and mood up.
+67 SADNESS -10
+---
+67 The music choice is being praised and you spend the rest of the lesson chatting about music. Music is a nice way to have influence over your emotions! You feel better about the whole day.
+60 HAPPINESS +5
+---
+60 You get home from school and all you want to do is relax and play one of your favourite video games. You double-click the icon and a pop-up tells about mandatory update.
+68 Stupid game, why now!
+69 No, why is it always like this!
+---
+68 Your cheecks feel hot, hands clench and you can feel your blood boiling. Now you are really frustrated!
+70 ANGER +10
+---
+69 You feel like sinking inside your bed. You dig deeper in your sweater and feel yourself almost getting teary. The update is going to take all night!
+70 SADNESS +10
+---
+70 All you can do is wait: the computer says the update will probably take about two hours. How will you spend your time?
+71 Help your family with chores.
+72 Study for exam.
+73 Lay in bed and scroll through your social media.
+---
+71 Ugh, dishes! Disgusting. However, your dad becomes really happy finding an empty kitchen sink! It's nice to make important people happy, even though it means getting your own hands a bit dirty.
+74 HAPPINESS +10, DISGUST +5, LOVE +5
+---
+72 You catch a school book and start eyeing it. Emotions have power over body, but body can also have influence over emotions - for example a brisk jog can ease the feelings of hatred. Interesting!
+74 Go check the computer!
+---
+73 You throw yourself on the bed and lay there watching cat videos. It's nice and warm here, and it's fun to see what the kittens are up to.
+74 SADNESS -5
+---
+74 The update is finally ready, and you can see also your friends online. Do you team up or play against each others?
+75 On the same side!
+75 Against each others!
+---
+75 You can feel the stress relieving and your shoulders softening. Nothing makes you relax better than doing something you love!
+76 HAPPINESS +5, LOVE +5
+---
+62 Your parents are very disappointed and inform that you're going to stay in your room rest of the night.
+77 HAPPINESS -15
+---
+77 You lay in your room super bored. Doing some chores could make your parents fell better about your behaviour. Do you try helping out at home?
+78 Definitely not.
+79 Ask if you can help with dishes.
+---
+78 They have chosen their side when they started punishing you - you're no way helping them with chores voluntarily!
+80 ANGER +10
+---
+79 Ugh, dishes! Disgusting. However, your dad becomes really happy finding an empty kitchen sink! It's nice to make important people happy, even though it means getting your own hands a bit dirty.
+80 HAPPINESS +10, DISGUST +5, LOVE +5
+---
+80 Your phone buzzes in your pocket - there's a new message in your friend group's chat!
+76 Read it!
+---
+76 One of your friends playfully mocks your other friends' gaming skills after they made one amateur mistake. The mocked one has left the message on read.
+77 That's life! Support your mocked friend.
+78 Noob! Join the mocking.
+---
+77 Your friend thanks your for support and starts also laughing at their mistake. Stuff like that happens!
+79 HAPPINESS +5
+---
+78 The friend tries to weakly defend themself. 
+77 They doesn't seem to find this funny. Defend them.
+80 Keep jokingly mocking them. They've got to understand some humour!
+---
+80 It's certain your friend has started to feel bad. You try and apologize, but they still seem to be down. What a situation!
+79 SADNESS +10
+---
+79 Time to get some sleep.
+81 Good night!
+---
+81 WEDNESDAY. You wake up feeling something's wrong. You've overslept! You can feel a cramp in your stomach and coldness running through your body. How on earth will you be at school on time? 
+82 HAPPINESS -15, FEAR +15, ANGER +5
+---
+82 You stuff a sandwich to your mouth, put clothes on and grab your backpack. You meant to walk to school, but now you don't have time. What do you do?
+83 Time to run. At least you'll get some exercise!
+84 You walk to dad and humbly ask for ride.
+---
+83 At first, running feels awful, but slowly your feet start rolling. You can feel the morning's anger and frustration leave your mind.
+86 ANGER -10
+---
+84 Dad agrees to take you to school, but keeps on nagging about it the whole ride. You didn't mean to oversleep! At least you're at school on time, so it's one less thing to worry about.
+86 ANGER +5, FEAR -10
+---
+86 Wednesday starts with chemistry, and you arrive to class when everyone else is there. Your friends have already taken places on back corner. There are no free tables near them. You...
+87 carry an extra chair near your friends.
+88 sit to back row next to a classmate you don't know beforehand.
+89 sit alone to front row under the teacher's gaze.
+---
+87 The teacher definitely doesn't appreciate your problem-solving. You get a couple of firm words and decide to carry the chair back. You start blushing for embarrassment and anger. Why did they the teacher have to make a number of this?
+90 ANGER +5
+---
+90 New try. Where do you sit?
+88 To back row next to a stranger.
+89 Alone to front row.
+---
+88 You can see the stranger avoiding your gaze and looking uneasy when you walk towards the chair. They don't greet you or look your in the eye. How do you react?
+89 Sit next to them without saying a word.
+92 Break the ice and say hello.
+---
+89 The lonely lesson feels endless. Having someone next to you would make the lesson feel easier, you wouldn't even have to talk with them.
+94 SADNESS +5
+---
+92 The classmate must have been super nervous! You chat for a couple of minutes before the lesson starts, and class exercises are nicer to do with a pair.
+94 HAPPINESS +10
+---
+94 While you're eating school lunch, one of your friends catches your attention from across the cafeteria. They pretend to throw a meatball to the cafeteria wall. How do you react?
+95 Facepalm.
+96 Thumbs up!
+---
+95 Your friend seems bummed. A while later they send a message to your group chat saying you're a killjoy.
+97 HAPPINESS -5
+---
