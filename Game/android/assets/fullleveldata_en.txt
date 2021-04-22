@@ -158,3 +158,18 @@
 95 Your friend seems bummed. A while later they send a message to your group chat saying you're a killjoy.
 97 HAPPINESS -5
 ---
+97 Next lesson is about emotion skills needed in worklife. Soon you too should start thinking your future career. Your palms are sweating, your mouth is dry and your chest feels tight. Your heart is pounding as if you'd just run a marathon.
+98 You take a couple of long, deep breaths - in and out, in and out.
+99 You start to desperately plan your career - there's got to be something!
+---
+98 That's right! When you feel fear or anxiety, taking a couple of deep breaths makes you often feel better. There's no need to panic, you will find your path.
+100 FEAR -10
+---
+99 It seems like you're a bit scared of the future. Taking some deep breaths is an easy and fast way to calm yourself down when you feel the fear rising.
+100 Roger that!
+---
+100 It's easy to notice psychologists, but having good emotion skills is important also on other jobs. Recognizing and handling your feelings helps to keep both yout work life and free time in balance - emotions send important messages about our wellbeing. What kind of jobs do you find most interesting?
+101 Chill job with nice work environment
+102 Something independent and challenging
+103 Job that pays well both in money and respect
+---
