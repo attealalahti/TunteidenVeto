@@ -725,3 +725,34 @@
 206 You arrive home and talk for a moment about the events of the evening. You go to your room, message for a while with the friends who decided to stay there. You turn off the lights. Tomorrow you can sleep for a long time!
 207 Good night!
 ---
+207 SATURDAY. You sleep long and well. As soon as you get downstairs your sister starts complaining, that you have only slept and done nothing with her in the morning. You can feel your frustration rising: why on earth is it your responsibility to keep her company, instead of getting some sleep?
+208 You strictly reason with her, that since you have not agreed to anything, you've done nothing wrong.
+209 You snap at her that it's not your responsibility to entertain her.
+---
+209 She runs to her own room crying. It's not your responsibility, but you could've said it a bit nicer... You start to feel bad after realizing how tactless you were. You knock on her door, but she doesn't open. You go eat breakfast to your own room. 
+215 SADNESS +10
+---
+208 You explain that since you hadn't talked about doing something in the morning, you did have a right to sleep in. If she wanted to do something with you, she could've asked. Her lip starts shaking and she crosses her hands on her chest.
+210 You ask if she'd like to play some Skipbo now that you're awake.
+211 Let her mope, it's not your fault.
+---
+210 Her face lightens up and she rushes to get the cards. Was it this easy to make her feel better?
+212 HAPPINESS +5
+---
+212 You play and chat a bit of this, a bit of that. She seems to have something on her mind, even though she's mostly happy and brisk. 
+213 Ask how the school has been.
+214 Ask how she's doing.
+---
+213 She tells about some fun incidents at school and seems to get more and more energy. You too start to feel amused - how is it even possible for one person to see that much funny stuff?
+215 HAPPINESS +5, LOVE +5
+---
+214 She tells you about things that worry about her and about her fight with a friend. You try to make her feel better, and she seems to get a bit lighter feeling. You too start to feel better - it'll be okay.
+215 SADNESS -5, LOVE +5
+---
+211 Why should you be her personal entertainer? You leave your sister to the living room, take some breakfast and return to your own room.
+215 ANGER +5
+---
+215 You decide to go for a walk to ease the week's stress. Your dog looks at you persuasively and you decide to take him with you. Big decisions: walking or jogging?
+216 Walking
+217 Jogging
+---
