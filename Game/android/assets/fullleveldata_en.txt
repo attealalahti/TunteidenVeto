@@ -920,3 +920,35 @@
 263 Sunday is getting to an end. It's been a rough but rewarding week - most of your time was spent with school, but you had also time for plenty of other things. It was seven days full of emotional rollercoaster, one test and hard decisions about how to spend your free time. You go to bed feeling good - until next week!
 999 MAIN MENU
 ---
+400 Looks like your anger level is getting high! Go for a run, shout out loud at home, do a relaxation exercise or work out - there are many ways to ease anger. Some like writing and tearing a hate letter, others find meditating helpful. It's definitely a good idea to try and find the most suitable way to ease your anger.
+411 ANGER -30
+---
+401 Looks like you're low on anger. Even though anger is often seen as a negative and destructive emotion, it acts an important role in our lives - it protects us, helps us defend ourselves and fight for things important to us. It's important not to dam all of your anger.
+411 ANGER +30
+---
+402 Oops, looks like sadness is taking over you! You have to be merciful for yourself when you're feeling sad, but you can also help yourself feel better: yöu can ease sadness for example writing, painting, visualizing good place or taking a walk. Also talking about sadness may help you feel better. It's important to find a good ways to soothe your sadness.
+411 SADNESS -30
+---
+403 Looks like you're not feeling any kind of sadness - are you sure you havent tried to dam your emotions? Sadness is important in accepting loss, keeping up the good memories and moving on. When you're experiencing some sadness, it's also a possibility for learning to know you, your coping mechanisms and strengths.
+---
+404 Disgust may be a hard emotion to understand - it may be linked to many different thingd, be a temporary reaction to something of a longterm situation. Feeling disgust is necessary to protect oneself, but sometimes it may be also wise to get used to the cause of disgust. As usually with emotions, it's important to avoid extremes.
+411 DISGUST -30
+---
+405 If you're totally missing the feeling of love, it may be hard to see life's good things. Love is ofter far from romantic - go outside and admire nature's beauty, spend time with your favourite people, pet some animals or do something you like. Love for nature, people, animals, hobbies or other things keep the sparkle and excitement in life.
+411 LOVE +30
+---
+406 You're filled with love! Feelings of love towards other people, hobbies or things are important and bring a lot of joy in life. On the other hand, it's important to keep in mind that reason is crucial too: it's not wise to get blinded by love and do anything for it, or put something you love above your own wellbeing without a thorough consideration.
+407 Continue
+---
+407 You're running out of happiness! There are times in life, when happiness is harder to find, it's always there. Go walk in the nature, consciously focus on little nice things and do something you enjoy - life is a lot nicer when you focus on goot things, and it's a skill you can train.
+411 HAPPINESS +30
+---
+408 There's never too much happiness in life! Even though it's said nothing good lasts forever, but actually you should enjoy happiness instead of worrying when it ends. On the other hand, it's often wise to prioritize long-term happiness obove temporary happiness, even though they both have their times.
+411 Continue!
+---
+409 It seems like astonishment is your primary emotion at the moment - it's important, but too strong astonishment may make it harder to see your own needs and desires. It's good to find a way to clarify your mind when you're astonished - others find a brisk walk helpful, others like more about meditating or relaxation exercises.
+411 ASTONISHMENT -30
+---
+410 It looks like you're not feeling almost any astonishment and you mind is clear. Remember, that also astonishment has important mission: if you're feeling too much clarity and certainity, it may be hard to remember how important it is to consider all your possibilities. It's crucial to reconsider different points of view and ways of acting. When there's a reaonable level of astonishment, you're especially open for adjusting your habits.
+411 ASTONISHMENT +30
+---
