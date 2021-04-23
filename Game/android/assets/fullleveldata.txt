@@ -887,7 +887,7 @@
 254 Nyt pitää punnertaa!
 ---
 252 Tiuskit äidille ja veri kohisee korvissasi. Sinun huoneesihan se on, mitä se äidille kuuluu! Tuntuu, ettei kiukku millään helpota.
-255 VHA +10
+255 VIHA +10
 ---
 253 Miksi tässä käy aina näin? Jos sinulla on hetki vapaata, jolloin voisit tehdä mitä haluat, joudut heti töihin. Sinua alkaa itkettää: et varmaan ehdi tekemään mitään kivaa enää tänään!
 255 SURU +5
