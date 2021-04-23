@@ -756,3 +756,46 @@
 216 Walking
 217 Jogging
 ---
+216 A brisk walk lets you fully enjoy the beautiful nature. You head to forest path and you breathe in forest's energy. Finnish forest is a wonderful place! 
+218 HAPPINESS +5
+---
+217 A brisk jog makes your energy flow and your head feel clearer. Everything feels to make more sense after a jog!
+218 ANGER -5, SADNESS -5, ASTONISHMENT -5
+---
+218 After you come back, the dog gets straight to sleep on the living room rug. The rest of the family has thought it'd be nice to play some board game together. They all would like to play Alias, but you're not so fond of it.
+219. Okay, it could be nice!
+220 No, definitely not Alias!
+---
+219 You and your mother team up against your father and sister. Your excitement starts to grow - here we go! 
+221 HAPPINESS +5
+---
+220 You inform you're not going to play Alias - isn't there anything else? There is no other game that even two family members would öike to play. They want to know, if you really won't play Alias.
+222 If it's that hard, you won't play with them at all.
+219 Well okay, but you'll choose your team mate first!
+---
+222 You go alone to your room while other stay and play Alias with modified rules. You lay on your bed and hear the soinds of laughter and joy - they're clearly having fun. Should you have goven it a chance too?
+229 HAPPINESS -10
+---
+221 The game begins - your sisterand father score masses of points on the very first round. Feels like your dad said two words and your sister already knew what he means.
+223 There's no way you can win anymore! 
+224 This will be quite a fight!
+---
+223 You don't understand how they were so good. Were they cheating? The game feels already played, and your confusion impacts your explaining and guessing skills a lot. Your head keeps buzzing - how were they that good?
+225 HAPPINESS -5, ASTONISHMENT +10
+---
+224 Adrenaline starts to flow in your veins and your team manages to get to tie situation in few rounds. You're not surrounding without a fight!
+225 HAPPINESS +5
+---
+225 After some fierce playing is the turn that determines the winner - you've been super similar in points. If you can get this one word correct, you'll win! Are you ready?
+226 Shoot!
+---
+226 "Someone is like this, if someone they know died or something else bad happened. You're very emotional, nothing feels good, you can only think of what's happened."
+227 Angry!
+228 Sad!
+---
+227 That's correct! You win the game, sister and dad are defeated. That was a good game!
+229 HAPPINESS +5
+---
+228 Nooo, the correct answer would've been anger. You lost, but it was fun to play with your family!
+229 HAPPINESS +5, LOVE +5
+---
