@@ -837,3 +837,87 @@
 239 After a bit of napping on the couch you decide to move to your bed.
 240 Good night!
 ---
+240 SUNDAY. In the morning your father comes to wake you and ask, if you'd like to come see your grandma.
+241 No way. You want to sleep!
+242 It's probably better to stay and do some schoolwork.
+243 Sure!
+---
+243 You get dressed, jump in the car and drive to your grandma's place. She's standing at the doorway and gives you a firm hug as soon as you get yourself out of the car. It's nice to see how happy she is to see you!
+244 HAPPINESS +5
+---
+244 After a while of chatting Grandma asks you to get some coffee. There are delicious-looking biscuits on the table, which make your water mouth. Then again, sour cream buns look kind of sus and rise more of a vomit to your mouth. Your stomach starts to gruble with a bare thought of eating them. How do you react, when Grandma asks you to take one?
+245 You tell that buns look rotten and you won't take one.
+246 You tell you'd prefer taking another biscuit.
+---
+245 You tell Grandma you won't take a bun that looks that rotten. She gets visibly confused and doesn't know how to react - she just keeps apologizing and convincing the buns are okay. Luckily you weren't forced to eat those, but it hurts to see her that upset.
+247 HAPPINESS -5, SADNESS +10
+---
+246 You thank and say, that the biscuits were so good you'd like to keep enjoying those. After a while, your mum takes one bun and tells they're the best sour cream buns she's ever seen. What, those are supposed to look like that?
+247 ASTONISHMENT +5
+---
+247 You start to get going, and Grandma comes to hug you again and it was so nice to see you. Such a short visit and it made her so happy! You get a warm and good feeling yourself, when you see Grandma's happiness. It was a great decision to come and spend time with her!
+251 HAPPINESS +5, LOVE +10
+---
+242 You tell you have too much school work and ask them to take your love to Grandma. The doore shuts behind them when the rest of the family leaves. Do you really start doing your homework or do you use your alone time relaxing?
+248 Get up and start studying.
+249 Stay in the bed and scroll through your social media.
+---
+248 You work hard with homework and larger exercises, and before long your to do list starts to look good. Grandma would definitely been happy to see you, but it was also good to get some schoolwork done!
+251 HAPPINESS +5
+---
+241 You tell Dad you're going to stay and sleep in. The doore shuts behind them when the rest of the family leaves. Do you try to get some more sleep or do you start scrolling through your social media?
+249 Start scrolling your social media.
+250 Try to get some more sleep.
+---
+249 The time flies by, and by the time other family returns home, you've just stayed in bed and scrolled the same social media sites over and over again without getting anything of it. You start to feel a bit bad - Grandma would've been very happy to see you.
+251 SADNESS +5
+---
+250 You fall asleep surprisingly fast, and wake up a couple of hours later perky and wellslept. You know how important it is to sleep well, but you hadn't even realized how tired you had been!
+251 ASTONISHMENT -5
+---
+251 After a while, your mom comes to tell you to clean your room. The anger heats your whole body and makes your muscles tense. Sure, there is some mess - you can easily notice three dirty plates - but it's Sunday and all!
+252 She can't come and tell you what to do!
+253 Why can't you ever just get a rest day?
+254 Now you have to do some push-ups!
+---
+252 You keep snapping to your mom and can hear the blood rushing in your ears. It's your room, what is it up to her! You feel like the anger just doesn't go away.
+255 ANGER +10
+---
+253 Why does it always go like this? If you have a moment of free time, somebody ruins it for you. You can feel tears coming - cleaning up takes probably the whole day and you won't get time for anything fun.
+255 SADNESS +5
+---
+254 You drop on the floor for a couple of push-ups and jumping jacks, to get your pulse up. You start to feel calmer, and doing a quick clean-up doesn't sound like a bad idea anymore. You're not actually bothered by the mess in your room, but it could also be nicer to spend time in your room if it was cleaner.
+255 ANGER -5, HAPPINESS +5
+---
+255 Cleaning your room was faster than you thought! You're going to spend the night playing with some random people. You play multiple rounds on the same teams, and one high-rank team member keeps nagging at lower-rank player all the time.
+256 Ask them to stop. That's annoying!
+257 You can't help but grin. At least they're saying what they think!
+---
+256 You ask the nagger to keep it to themselves. If there's nothing smart or kind to say, there's no need to say anything. Gaming should be fun for everyone, and constant whining doesn't lift the spirits.
+258 DISGUST +5
+---
+258 They don't let your comment slow them down, and the complaining continues. You have the authority to kick them out of your team, but they are an excellent player... What do you do?
+259 Mute them from yourself.
+260 Kick them out.
+---
+259 You mute them so you can't hear their voice or see their chat messages, but they're still playing in your team. It's easier for you, but you keep thinking if it influences others' mood as well.
+257 SADNESS +5
+---
+260 You kick the bully out and you keep on playing without them. You're not as good against the enemy team as you were, but everyone seems to have a lot more fun!
+262 HAPPINESS +5
+---
+257 The bullied player asks others, if you want to play without them ruining your game. Others don't comment. You...
+Haukuttu pelaaja kysyy muilta, onko hän niin huono ettei saisi pelata. Muut eivät kommentoi mitään. Sinä...
+261 ...keep quiet
+261 ...advise them to go.
+262 ...ask them to stay.
+---
+261 The player sends you a message telling how bad they feel, and leaves the game. Your chest feels tight and you're cold all over - this wasn't supposed to be that serious...
+263 SADNESS +10
+---
+262 The bullied player sends you a direct message thanking you for your support.They tell it's their first time playing with others and your support meant a lot. That feels nice!
+263 HAPPINESS +10
+---
+263 Sunday is getting to an end. It's been a rough but rewarding week - most of your time was spent with school, but you had also time for plenty of other things. It was seven days full of emotional rollercoaster, one test and hard decisions about how to spend your free time. You go to bed feeling good - until next week!
+999 MAIN MENU
+---
