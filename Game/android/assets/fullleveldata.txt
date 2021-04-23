@@ -926,36 +926,39 @@
 263 Sunnuntai alkaa vierähtää loppuun. Takana on rankka mutta antoisa viikko: suuri osa ajasta kului koulussa, mutta ehdit tehdä myös vaikka mitä muuta. Seitsemässä päivässä tuli käytyä läpi tunnekuohuja suuntaan ja toiseen, tehtyä yksi koe ja valittua parhaat tavat viettää vapaahetket. Käyt nukkumaan hyvillä mielin - ensi viikkoon!
 999 PÄÄVALIKKOON
 ---
-400 Näyttää siltä, että vihasi alkaa riistäytyä käsistä! Käy juoksulenkillä, huuda yksinäsi, tee rentoutumisharjoitus tai vaikka hikitreeni: vihaa saa helpotettua itse monin tavoin. Toisilla toimii vihakirjeen kirjoittaminen ja tuhoaminen, toisilla meditaatio. Kannattaa ilman muuta etsiä itselle sopivin tapa käsitellä vihaa!
-411 VIHA -30
+401 Näyttää siltä, että vihasi alkaa riistäytyä käsistä! Käy juoksulenkillä, huuda yksinäsi, tee rentoutumisharjoitus tai vaikka hikitreeni: vihaa saa helpotettua itse monin tavoin. Toisilla toimii vihakirjeen kirjoittaminen ja tuhoaminen, toisilla meditaatio. Kannattaa ilman muuta etsiä itselle sopivin tapa käsitellä vihaa!
+0 VIHA -30
 ---
-401 Näyttää siltä, että sinussa ei ole enää lainkaan vihaa. Vaikka viha usein mielletään negatiiviseksi tunteeksi, on sillä tärkeä rooli ihmiselle: se suojaa ihmistä, auttaa puolustautumaan ja antaa voimaa taistella tärkeiden asioiden puolesta. On tärkeää olla tukahduttamatta kaikkea vihaansa.
-411 VIHA +30
+402 Näyttää siltä, että sinussa ei ole enää lainkaan vihaa. Vaikka viha usein mielletään negatiiviseksi tunteeksi, on sillä tärkeä rooli ihmiselle: se suojaa ihmistä, auttaa puolustautumaan ja antaa voimaa taistella tärkeiden asioiden puolesta. On tärkeää olla tukahduttamatta kaikkea vihaansa.
+0 VIHA +30
 ---
-402 O'ou, suru taitaa ottaa sinusta vallan! Surullisena tulee olla itselleen armollinen, mutta surua voi myös omin voimin helpottaa: kirjoita, maalaa, käy kävelylenkillä tai tee mielikuvaharjoituksia. Myös muille surusta puhuminen usein auttaa! Etsi ihmeessä itsellesi sopivin tapa lievittää surua.
-411 SURU -30
+403 O'ou, suru taitaa ottaa sinusta vallan! Surullisena tulee olla itselleen armollinen, mutta surua voi myös omin voimin helpottaa: kirjoita, maalaa, käy kävelylenkillä tai tee mielikuvaharjoituksia. Myös muille surusta puhuminen usein auttaa! Etsi ihmeessä itsellesi sopivin tapa lievittää surua.
+0 SURU -30
 ---
-403 Sinussa ei näytä olevan juuri lainkaan surua: olethan varma, ettet ole yrittänyt torjua surun tunteitasi? Surulla on tärkeä tehtävä menetyksen hyväksymisessä, hyvien muistojen mielessä pitämisessä ja eteenpäin pääsemisessä. Surun keskellä myös ihmisen selviytymiskeinot ja vahvuudet nousevat selkeästi esiin.
-411 SURU +30
+404 Sinussa ei näytä olevan juuri lainkaan surua: olethan varma, ettet ole yrittänyt torjua surun tunteitasi? Surulla on tärkeä tehtävä menetyksen hyväksymisessä, hyvien muistojen mielessä pitämisessä ja eteenpäin pääsemisessä. Surun keskellä myös ihmisen selviytymiskeinot ja vahvuudet nousevat selkeästi esiin.
+0 SURU +30
 ---
-404 Inho voi olla hankala tunne hahmottaa: se voi liittyä moneen asiaan, olla väliaikainen reaktio ärsykkeeseen tai pitkäaikaisempi tilanteen aiheuttama olotila. Inhon tunteet ovat välttämättömiä itsen suojaamiseksi, mutta joskus inhon kohteeseen voi olla tarpeen myös totuttautua. Kuten tunteissa yleensäkin, keskitien pitäminen on tärkeää.
-411 INHO -30
+405 Inho voi olla hankala tunne hahmottaa: se voi liittyä moneen asiaan, olla väliaikainen reaktio ärsykkeeseen tai pitkäaikaisempi tilanteen aiheuttama olotila. Inhon tunteet ovat välttämättömiä itsen suojaamiseksi, mutta joskus inhon kohteeseen voi olla tarpeen myös totuttautua. Kuten tunteissa yleensäkin, keskitien pitäminen on tärkeää.
+0 INHO -30
 ---
-405 Jos rakkauden tunteita ei ole ollenkaan, voi elämän hienoutta olla hankala nähdä. Rakkaus ei läheskään aina ole romanttista: mene ulos ihastelemaan luonnon kauneutta, vietä aikaa lempi-ihmistesi kanssa, touhua eläinten parissa tai harrasta jotakin, mistä pidät. Rakkauden tunteet ihmisiä, eläimiä, asioita tai toimintaa kohtaa pitävät elämässä innostusta ja kipinää yllä.
-411 RAKKAUS +30
+406 Inho väliaikainen ruutu
+0 INHO +30
 ---
-406 Olet pullollaan rakkautta! Rakkauden tunteet muita ihmisiä, harrastuksia tai asioita kohtaan ovat tärkeitä ja tuovat paljon iloa. Toisaalta on tärkeää pitää mielessä, että järjen on hyvä olla mukana tunteiden hallitsemisessa: rakkauden tunteen sokaisemana ei tule tehdä mitä tahansa, eikä rakkauden kohdetta kannata harkitsematta asettaa oman hyvinvoinnin edelle.
-411 RAKKAUS -30
+407 Olet pullollaan rakkautta! Rakkauden tunteet muita ihmisiä, harrastuksia tai asioita kohtaan ovat tärkeitä ja tuovat paljon iloa. Toisaalta on tärkeää pitää mielessä, että järjen on hyvä olla mukana tunteiden hallitsemisessa: rakkauden tunteen sokaisemana ei tule tehdä mitä tahansa, eikä rakkauden kohdetta kannata harkitsematta asettaa oman hyvinvoinnin edelle.
+0 RAKKAUS -30
 ---
-407 Ilovarastosi ovat päässeet ehtymään! Vaikka elämässä on aikoja, jolloin ilon aiheita voi olla hankalampaa löytää, on niitä aina olemassa. Mene kävelemään luontoon, kiinnitä tietoisesti huomiota maailman pieniin hienouksiin ja tee asioita, joista nautit: elämä on paljon mukavampaa, kun muistaa keskittyä myös iloa tuottaviin asioihin!
-411 ILO +30
+408 Jos rakkauden tunteita ei ole ollenkaan, voi elämän hienoutta olla hankala nähdä. Rakkaus ei läheskään aina ole romanttista: mene ulos ihastelemaan luonnon kauneutta, vietä aikaa lempi-ihmistesi kanssa, touhua eläinten parissa tai harrasta jotakin, mistä pidät. Rakkauden tunteet ihmisiä, eläimiä, asioita tai toimintaa kohtaa pitävät elämässä innostusta ja kipinää yllä.
+0 RAKKAUS +30
 ---
-408 Ilo on aina paikallaan! Sananlaskun mukaan pitkästä ilosta seuraa itku, mutta todellisuudessa ilon tunteista kannattaa nauttia, eikä liikaa murehtia sen loppumista. Toisaalta pitkäaikainen ilo voi olla usein järkevää asettaa lyhytaikaisen ilon edelle: molemmilla on aikansa ja paikkansa, eikä tiettyä ilon aihetta välttämättä kannata jahdata muun hyvinvoinnin kustannuksella.
-411 ILO -30
+409 Ilo on aina paikallaan! Sananlaskun mukaan pitkästä ilosta seuraa itku, mutta todellisuudessa ilon tunteista kannattaa nauttia, eikä liikaa murehtia sen loppumista. Toisaalta pitkäaikainen ilo voi olla usein järkevää asettaa lyhytaikaisen ilon edelle: molemmilla on aikansa ja paikkansa, eikä tiettyä ilon aihetta välttämättä kannata jahdata muun hyvinvoinnin kustannuksella.
+0 ILO -30
 ---
-409 Hämmennys tuntuu peittävän nyt kaiken muun alleen. Hämmennyskin on tärkeä tunne, mutta liian voimakkaana se voi hankaloittaa omien halujen ja tarpeiden hahmottamista. Kannattaa etsiä itselleen sopiva keino lieventää hämmennystä: joillakin toimii reipas kävelylenkki ulkoilmassa, toisilla esimerkiksi meditaatio tai rentoutumisharjoitus.
-411 HÄMMENNYS -30
+410 Ilovarastosi ovat päässeet ehtymään! Vaikka elämässä on aikoja, jolloin ilon aiheita voi olla hankalampaa löytää, on niitä aina olemassa. Mene kävelemään luontoon, kiinnitä tietoisesti huomiota maailman pieniin hienouksiin ja tee asioita, joista nautit: elämä on paljon mukavampaa, kun muistaa keskittyä myös iloa tuottaviin asioihin!
+0 ILO +30
 ---
-410 Elämäsi näyttää olevan selvillä vesillä, eikä hämmennyksen tunteita juuri ole. Muista, että hämmennykselläkin on tärkeä tehtävä hoidettavanaan: liian varmana ja tilanteen ollessa selkeä saattaa unohtua, että eri näkökulmat ja toimintamallit ovat tärkeitä ja kokeilemisen arvoisia. Sopivan hämmennyksen keskellä ihminen on erityisen avoin kehittymään ja oppimaan uutta.
-411 HÄMMENNYS +30
+411 Hämmennys tuntuu peittävän nyt kaiken muun alleen. Hämmennyskin on tärkeä tunne, mutta liian voimakkaana se voi hankaloittaa omien halujen ja tarpeiden hahmottamista. Kannattaa etsiä itselleen sopiva keino lieventää hämmennystä: joillakin toimii reipas kävelylenkki ulkoilmassa, toisilla esimerkiksi meditaatio tai rentoutumisharjoitus.
+0 HÄMMENNYS -30
+---
+412 Elämäsi näyttää olevan selvillä vesillä, eikä hämmennyksen tunteita juuri ole. Muista, että hämmennykselläkin on tärkeä tehtävä hoidettavanaan: liian varmana ja tilanteen ollessa selkeä saattaa unohtua, että eri näkökulmat ja toimintamallit ovat tärkeitä ja kokeilemisen arvoisia. Sopivan hämmennyksen keskellä ihminen on erityisen avoin kehittymään ja oppimaan uutta.
+0 HÄMMENNYS +30
 ---
