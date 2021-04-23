@@ -763,7 +763,7 @@
 218 ANGER -5, SADNESS -5, ASTONISHMENT -5
 ---
 218 After you come back, the dog gets straight to sleep on the living room rug. The rest of the family has thought it'd be nice to play some board game together. They all would like to play Alias, but you're not so fond of it.
-219. Okay, it could be nice!
+219 Okay, it could be nice!
 220 No, definitely not Alias!
 ---
 219 You and your mother team up against your father and sister. Your excitement starts to grow - here we go! 
@@ -907,7 +907,6 @@
 262 HAPPINESS +5
 ---
 257 The bullied player asks others, if you want to play without them ruining your game. Others don't comment. You...
-Haukuttu pelaaja kysyy muilta, onko hän niin huono ettei saisi pelata. Muut eivät kommentoi mitään. Sinä...
 261 ...keep quiet
 261 ...advise them to go.
 262 ...ask them to stay.

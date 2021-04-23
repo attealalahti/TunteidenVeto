@@ -159,7 +159,7 @@ public class MainGame extends ApplicationAdapter {
 		return allScreens;
 	}
 	public ArrayList<ChoiceScreen> createChoiceScreens() {
-		FileHandle handle = Gdx.files.internal("fullleveldata.txt");
+		FileHandle handle = Gdx.files.internal("fullleveldata_en.txt");
 		String text = handle.readString();
 		String [] allLines = text.split("\\r?\\n");
 
