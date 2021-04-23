@@ -856,12 +856,12 @@
 246 Sanot jatkavasi mieluummin kaneliässien parissa.
 ---
 245 Sanot mummolle, ettet ota pullia jotka näyttävät noin pilalle menneiltä. Tämä menee selvästi hämilleen eikä oikein osaa reagoida, pahoittelee vain ja vakuuttaa, ettei niissä mitään vikaa ole. Onneksi et joutunut syömään pullia, mutta ikävää nähdä mummo noin tolaltaan.
-247 ILO -5
+247 ILO -5, SURU +10
 ---
 246 Kiität ja sanot kaneliässien olleen niin hyviä, että jatkat mielelläsi niiden parissa. Selitys menee mummollesi läpi, jes! Hetken päästä äitisi alkaa kovasti kehua rahkapullia: mitä ihmettä, niidenkö oikeasti kuuluu näyttää tuolta?
 247 HÄMMENNYS +5
 ---
-247 Alatte tehdä lähtöä, ja mummo tulee vielä uudestaan kertomaan kuinka kiva oli että tulit myös mukaan. Tulipa hän onnelliseksi tällaisesta asiasta! Itsellesikin tulee lämmin ja tyytyväinen fiilis, kun näen mummon onnen. Onneksi tulit mukaan viettämään aikaa hänen+
+247 Alatte tehdä lähtöä, ja mummo tulee vielä uudestaan kertomaan kuinka kiva oli että tulit myös mukaan. Tulipa hän onnelliseksi tällaisesta asiasta! Itsellesikin tulee lämmin ja tyytyväinen fiilis, kun näen mummon onnen. Onneksi tulit mukaan viettämään aikaa hänen kanssaan!
 251 ILO +5, RAKKAUS +10
 ---
 242 Sanot isälle jääväsi tekemään kouluhommia ja pyydät heitä viemään mummolaan terveisiä. Ovi kolahtaa heidän takanaan kiinni. Alatko oikeasti tehdä läksyjä vai käytätkö saamasi yksinoloajan vuoteessa makoiluun ja rentoutumiseen?
