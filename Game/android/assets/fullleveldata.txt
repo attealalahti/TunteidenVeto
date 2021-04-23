@@ -893,7 +893,7 @@
 255 SURU +5
 ---
 254 Teet lattialla jokusen punnerruksen ja haaraperushyppyjä niin, että saat sykkeesi nousemaan kunnolla. Olosi rauhoittuu nopeasti, eikä pikasiivouksen tekeminen tunnu enää niin kamalalta. Vaikkei sotku varsinaisesti itseäsi haittaakaan, voi huoneessa tietysti olla mukavampaa olla siivoamisen jälkeen.
-255 ILO +5
+255 VIHA-5, ILO +5
 ---
 255 Huoneen siivoaminen käykin yllättävän pikaisesti! Menet viettämään iltaa pelaillen randomien kanssa. Pelaatte useamman erän samoissa tiimeissä, ja yksi tiimiläinen moittii kokemattomampaa pelaajaa kaiken aikaa.
 256 Puutut asiaan. Ärsyttävää tuollainen!
