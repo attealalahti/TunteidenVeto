@@ -799,3 +799,41 @@
 228 Nooo, the correct answer would've been anger. You lost, but it was fun to play with your family!
 229 HAPPINESS +5, LOVE +5
 ---
+229 You notice that it's your childhood friend's birthday. You haven been much in a touch in a couple of years, but once you were like two peas in a pod. Do you congratulate them?
+230 Send a happy birthday message.
+231 Call them!
+232 Don't congratulate.
+---
+230 You send a congratulations message. They read it immediately, but don't answer anything.
+233 It's okay, they must be busy. They'll answer later!
+234 Send them a new message and ask if they're angry at you, since they left you to read.
+---
+233 They're probably busy and must have received loads of congratulation messages. After a couple of hours they send you a long, joyful message where they tell about their life nowadays and thank you for your message. You keep on texting - it's so nice to talk after a long time!
+235 HAPPINESS +10
+---
+234 You send them a new message saying, that you don't have to be friends anymore if they don't appreciate you. You're not to be left on read without consequences!
+232 ANGER +10
+---
+232 Would you still wanted to stay in touch? You keep thinking the situation and feel coldness in your stomach. It's a shame, if a long friendship is gone because of this.
+235 SADNESS +10
+---
+231 They answer and seem very happily surprised. You talk a long while, and it's just as easy as before! You agree to meet soon and grab a coffee. You wouldn't have though a simple phone call would warm up a good old friendship.
+235 HAPPINESS +10, ASTONISHMENT +5, LOVE +5
+---
+235 Saturday evening is getting to end and you want to relax watching a movie. You know your preferences: when you're angry you like action, when you're sad you prefer comedy and when you're feeling astonishment, horror is way to go. You're feeling a bit weird - you're kind of alert, but not particularly jumpy. Your mind is wandering and you don't know what to think. Now is time for...Laitat pyörimään...
+236 ...action
+237 ...comedy
+238 ...horror
+---
+236 Grumpy Arnold and fists of steel to the screen, thank you! Thinking about it later, a horror flick could've been better choice, but this was good too!
+239 ANGER -5
+---
+237 Let's get something fun going on! Thinking about it later, a horror flick could've been better choice, but this was good too!
+239 SADNESS -5
+---
+238 Yes, this was just the right choice! A bunch or teenagers going to cabin, some serious trouble on the way. You can feel your mind relaxing and clarifying.
+239 HAPPINESS +5, ASTONISHMENT -10
+---
+239 After a bit of napping on the couch you decide to move to your bed.
+240 Good night!
+---
