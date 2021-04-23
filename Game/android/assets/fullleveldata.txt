@@ -945,13 +945,13 @@
 411 RAKKAUS +30
 ---
 406 Olet pullollaan rakkautta! Rakkauden tunteet muita ihmisiä, harrastuksia tai asioita kohtaan ovat tärkeitä ja tuovat paljon iloa. Toisaalta on tärkeää pitää mielessä, että järjen on hyvä olla mukana tunteiden hallitsemisessa: rakkauden tunteen sokaisemana ei tule tehdä mitä tahansa, eikä rakkauden kohdetta kannata harkitsematta asettaa oman hyvinvoinnin edelle.
-411 Eteenpäin!
+411 RAKKAUS -30
 ---
 407 Ilovarastosi ovat päässeet ehtymään! Vaikka elämässä on aikoja, jolloin ilon aiheita voi olla hankalampaa löytää, on niitä aina olemassa. Mene kävelemään luontoon, kiinnitä tietoisesti huomiota maailman pieniin hienouksiin ja tee asioita, joista nautit: elämä on paljon mukavampaa, kun muistaa keskittyä myös iloa tuottaviin asioihin!
 411 ILO +30
 ---
 408 Ilo on aina paikallaan! Sananlaskun mukaan pitkästä ilosta seuraa itku, mutta todellisuudessa ilon tunteista kannattaa nauttia, eikä liikaa murehtia sen loppumista. Toisaalta pitkäaikainen ilo voi olla usein järkevää asettaa lyhytaikaisen ilon edelle: molemmilla on aikansa ja paikkansa, eikä tiettyä ilon aihetta välttämättä kannata jahdata muun hyvinvoinnin kustannuksella.
-411 Eteenpäin!
+411 ILO -30
 ---
 409 Hämmennys tuntuu peittävän nyt kaiken muun alleen. Hämmennyskin on tärkeä tunne, mutta liian voimakkaana se voi hankaloittaa omien halujen ja tarpeiden hahmottamista. Kannattaa etsiä itselleen sopiva keino lieventää hämmennystä: joillakin toimii reipas kävelylenkki ulkoilmassa, toisilla esimerkiksi meditaatio tai rentoutumisharjoitus.
 411 HÄMMENNYS -30

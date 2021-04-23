@@ -18,23 +18,23 @@ public class MainGame extends ApplicationAdapter {
 
 	public static ArrayList<Screen> screens;
 	private Screen currentScreen;
-	public static MainMenuScreen mainMenu;
 
-	private Screen lastFrameCurrentScreen;
 
 	public static Color lightBackgroundColor = colorMax255(0f, 151, 167f);
 	public static Color darkBackgroundColor = colorMax255(0, 131, 143);
 	public static Color desiredBackgroundColor = lightBackgroundColor;
 	public static Color currentBackgroundColor = desiredBackgroundColor;
+
 	private String [] effectIndicators;
-	private String weekDay;
-	private GlobalElements globalElements;
+	public static String weekDay;
 
 	public static int currentScreenID;
-	public static int mainMenuChecker = 0;
+	private int lastFrameCurrentScreenID;
+	public static int nextScreenID = currentScreenID;
 	public static int windowWidth;
 	public static int windowHeight;
 	public static MySkin skin;
+	public static GlobalElements globalElements;
 	public static boolean musicOn;
 	public static boolean soundOn;
 	public static float margin;
@@ -52,12 +52,10 @@ public class MainGame extends ApplicationAdapter {
 		audioPlayer = new AudioPlayer();
 		skin = new MySkin();
 		globalElements = new GlobalElements();
-		screens = createScreens();
+		screens = createScreens(getLocalization("levelDataPath"));
 
-		loadProgress();
-		mainMenu = new MainMenuScreen();
-		screens.add(mainMenu);
-		currentScreen = mainMenu;
+		screens.add(new MainMenuScreen());
+		currentScreen = screens.get(screens.size()-1);
 		currentScreenID = currentScreen.getScreenID();
 
 		//audioPlayer.playMenuMusic();
@@ -68,54 +66,84 @@ public class MainGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(currentBackgroundColor.r, currentBackgroundColor.g, currentBackgroundColor.b, currentBackgroundColor.a);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		for (int i = 0; i < screens.size(); i++) {
-			if (screens.get(i).getScreenID() == currentScreenID) {
-				currentScreen = screens.get(i);
-				if (screens.get(i).getClass() == ChoiceScreen.class && currentScreen != lastFrameCurrentScreen) {
-					screens.set(i, new ChoiceScreen(
-							screens.get(i).getScreenID(),
-							((ChoiceScreen)screens.get(i)).getQuestion(),
-							screens.get(i).getChoices(),
-							screens.get(i).getScreenLinks(),
-							((ChoiceScreen)screens.get(i)).getEffects()));
+		if (currentScreenID != lastFrameCurrentScreenID) {
+			for (int i = 0; i < screens.size(); i++) {
+				if (screens.get(i).getScreenID() == currentScreenID) {
 					currentScreen = screens.get(i);
+					if (screens.get(i).getClass() == MainMenuScreen.class) {
+						screens.set(i, new MainMenuScreen());
+						currentScreen.addActor(globalElements.getSettings());
+						globalElements.getSettings().toBack();
+					} else {
+						int emotionAlertScreenID = getEmotionAlertScreen();
+						if (emotionAlertScreenID != 0 && lastFrameCurrentScreenID != 999) {
+							for (int j = 0; j < screens.size(); j++) {
+								if (screens.get(j).getScreenID() == emotionAlertScreenID) {
+									ArrayList<Integer> tempLink = new ArrayList<>();
+									tempLink.add(currentScreenID);
+									screens.set(j, new ChoiceScreen(
+											screens.get(j).getScreenID(),
+											((ChoiceScreen)screens.get(j)).getQuestion(),
+											screens.get(j).getChoices(),
+											tempLink,
+											((ChoiceScreen)screens.get(j)).getEffects()));
+									currentScreen = screens.get(j);
+								}
+							}
+							currentScreen.getScreenLinks().set(0, currentScreenID);
+							nextScreenID = currentScreenID;
+							currentScreenID = 10000;
+						} else {
+							screens.set(i, new ChoiceScreen(
+									screens.get(i).getScreenID(),
+									((ChoiceScreen)screens.get(i)).getQuestion(),
+									screens.get(i).getChoices(),
+									screens.get(i).getScreenLinks(),
+									((ChoiceScreen)screens.get(i)).getEffects()));
+							currentScreen = screens.get(i);
+							nextScreenID = currentScreenID;
+						}
+						switch (currentScreenID) {
+							case 39: weekDay = getLocalization("tuesday");
+								break;
+							case 81: weekDay = getLocalization("wednesday");
+								break;
+							case 126: weekDay = getLocalization("thursday");
+								break;
+							case 164: weekDay = getLocalization("friday");
+								break;
+							case 207: weekDay = getLocalization("saturday");
+								break;
+							case 240: weekDay = getLocalization("sunday");
+								break;
+						}
+						((ChoiceScreen) currentScreen).addGlobalElements(globalElements, weekDay);
+						updateMeters(((ChoiceScreen) currentScreen).getEffects());
+						globalElements.getFeelingMeterButton().setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
+						saveProgress();
+					}
 				}
 			}
 		}
-		if (currentScreen != lastFrameCurrentScreen) {
-			if (currentScreen.getClass() == ChoiceScreen.class) {
-				switch (currentScreenID) {
-					case 39: weekDay = getLocalization("tuesday");
-						break;
-					case 81: weekDay = getLocalization("wednesday");
-						break;
-					case 126: weekDay = getLocalization("thursday");
-						break;
-					case 164: weekDay = getLocalization("friday");
-						break;
-					case 207: weekDay = getLocalization("saturday");
-						break;
-					case 240: weekDay = getLocalization("sunday");
-						break;
-				}
-				((ChoiceScreen) currentScreen).addGlobalElements(globalElements, weekDay);
-				updateMeters(((ChoiceScreen) currentScreen).getEffects());
-				globalElements.getFeelingMeterButton().setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
-				saveProgress();
-			} else {
-				currentScreen.addActor(globalElements.getSettings());
-				globalElements.getSettings().toBack();
-			}
-		}
-		lastFrameCurrentScreen = currentScreen;
+		lastFrameCurrentScreenID = currentScreenID;
 
 		Gdx.input.setInputProcessor(currentScreen);
 		currentScreen.draw();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
-
-		if (currentScreen == mainMenu) {
-			checkMenuChoice();
+	}
+	public int getEmotionAlertScreen() {
+		int result = 0;
+		String [] emotions = {"anger", "sadness", "disgust", "love", "happiness", "astonishment"};
+		int link = 401;
+		for (int i = 0; i < 6; i++) {
+			if (globalElements.getMeter(emotions[i]).getValue() == 100) {
+				result = link;
+			} else if (globalElements.getMeter(emotions[i]).getValue() == 0) {
+				result = link + 1;
+			}
+			link += 2;
 		}
+		return result;
 	}
 	public static Color colorMax255(float r, float g, float b) {
 		float colorFraction = 1f / 255f;
@@ -137,29 +165,14 @@ public class MainGame extends ApplicationAdapter {
 		I18NBundle myBundle = I18NBundle.createBundle(Gdx.files.internal("MyBundle"), locale);
 		return myBundle.get(key);
 	}
-	public void checkMenuChoice() {
-		if (mainMenuChecker == 1) {
-			resetProgress();
-			loadProgress();
-			currentScreenID = 266;
-		} else if (mainMenuChecker == 2) {
-			loadProgress();
-		} else if (mainMenuChecker == 3) {
-			globalElements.hideScreenElements(mainMenu);
-			globalElements.showSettings();
-		} else if (mainMenuChecker == 4) {
-			Gdx.app.exit();
-		}
-		mainMenuChecker = 0;
-	}
-	public ArrayList<Screen> createScreens() {
-		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens();
+	public ArrayList<Screen> createScreens(String path) {
+		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens(path);
 		ArrayList<Screen> allScreens = new ArrayList<>();
 		allScreens.addAll(choiceScreens);
 		return allScreens;
 	}
-	public ArrayList<ChoiceScreen> createChoiceScreens() {
-		FileHandle handle = Gdx.files.internal("fullleveldata_en.txt");
+	public ArrayList<ChoiceScreen> createChoiceScreens(String path) {
+		FileHandle handle = Gdx.files.internal(path);
 		String text = handle.readString();
 		String [] allLines = text.split("\\r?\\n");
 
@@ -210,9 +223,9 @@ public class MainGame extends ApplicationAdapter {
 		}
 		return text.toString();
 	}
-	public void saveProgress() {
+	public static void saveProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
-		prefs.putInteger("screen", currentScreenID);
+		prefs.putInteger("screen", nextScreenID);
 		prefs.putString("day", weekDay);
 		prefs.putFloat("happiness", globalElements.getMeter("happiness").getValue());
 		prefs.putFloat("sadness", globalElements.getMeter("sadness").getValue());
@@ -224,7 +237,7 @@ public class MainGame extends ApplicationAdapter {
 		saveSettings();
 		prefs.flush();
 	}
-	public void loadProgress() {
+	public static void loadProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		currentScreenID = prefs.getInteger("screen", 0);
 		weekDay = prefs.getString("day", getLocalization("monday"));
@@ -244,14 +257,14 @@ public class MainGame extends ApplicationAdapter {
 		prefs.putBoolean("sound", soundOn);
 		prefs.flush();
 	}
-	public void loadSettings() {
+	public static void loadSettings() {
 		Preferences prefs = Gdx.app.getPreferences("MySettings");
 		musicOn = prefs.getBoolean("music", true);
 		soundOn = prefs.getBoolean("sound", true);
 		globalElements.getMusicButton().setChecked(musicOn);
 		globalElements.getSoundButton().setChecked(soundOn);
 	}
-	public void resetProgress() {
+	public static void resetProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
 		prefs.clear();
 		prefs.flush();

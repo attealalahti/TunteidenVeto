@@ -1,14 +1,15 @@
 package fi.tuni.tiko;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
+import static fi.tuni.tiko.MainGame.currentScreenID;
+import static fi.tuni.tiko.MainGame.loadProgress;
 import static fi.tuni.tiko.MainGame.margin;
-import static fi.tuni.tiko.MainGame.skin;
+import static fi.tuni.tiko.MainGame.resetProgress;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
-import static fi.tuni.tiko.MainGame.mainMenuChecker;
+import static fi.tuni.tiko.MainGame.globalElements;
 
 public class MainMenuScreen extends Screen {
 
@@ -43,6 +44,23 @@ public class MainMenuScreen extends Screen {
 
    @Override
     public void nextScreen(int screenLink) {
-        mainMenuChecker = screenLink;
+       switch (screenLink) {
+           case 1:
+               resetProgress();
+               loadProgress();
+               currentScreenID = 266;
+               break;
+           case 2:
+               loadProgress();
+               break;
+           case 3:
+               globalElements.hideScreenElements(this);
+               globalElements.showSettings();
+               currentScreenID = 10000;
+               break;
+           case 4:
+               Gdx.app.exit();
+               break;
+       }
     }
 }

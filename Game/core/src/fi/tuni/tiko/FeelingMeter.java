@@ -39,7 +39,7 @@ public class FeelingMeter extends Group {
         image.setBounds((windowWidth - combinedWidth + textWidth - imageWidth) * 0.5f, y + textHeight, imageWidth, imageWidth);
         addActor(image);
 
-        meter = new ProgressBar(0f, 100f, 1f, false, new ProgressBar.ProgressBarStyle());
+        meter = new ProgressBar(MIN_VALUE, MAX_VALUE, 1f, false, new ProgressBar.ProgressBarStyle());
         meter.getStyle().knobBefore = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, color);
         meter.getStyle().knobAfter = getColoredDrawable((int)(meterWidth / MAX_VALUE), (int)meterHeight, Color.WHITE);
         meter.setBounds(caption.getX() + textWidth + imageMargin, y, meterWidth, meterHeight);

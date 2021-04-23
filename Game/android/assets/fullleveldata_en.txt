@@ -14,7 +14,7 @@
 4 HAPPINESS +10
 ---
 3 On your way to school you're greeted by a neighbor, but you don't realize it from your tiredness. Embarassing!
-5 CONFUSION +10
+5 ASTONISHMENT +10
 ---
 4 On your way to school, you run into the neighbor's older lady with her little dog. Do you greet her?
 6 No way. She and her dog can buzz off!
@@ -53,7 +53,7 @@
 15 HAPPINESS +5
 ---
 15 "He put his hand in front of his mouth as he felt nauseous. I could smell that rotten, all-encompassing smell myself. My stomach turned and I felt like I was going to puke. I saw Elena's nose twitch and her mouth squeezed into a tight line in front of me."
-16 Inho
+16 Disgust
 17 Anger
 ---
 16 You are on fire! The disgust nauseating, be it physical disgust caused by spoiled food or moral disgust caused by someone’s behavior, for example.
@@ -71,10 +71,10 @@
 21 pretty nice!
 ---
 20 Your friends are baffled. They thought the interpretation of the poems was really interesting, what exactly did you imagine!
-22 CONFUSION +10
+22 ASTONISHMENT +10
 ---
 21 Your friends agree. Reading about other people’s emotional states can help identify their own feelings better.
-22 CONFUSION -10
+22 ASTONISHMENT -10
 ---
 22 Your friend shows you a video of a young girl playing Minecraft.
 23 Haha, at least the girl seems to be having fun!
@@ -153,7 +153,7 @@
 45 Happiness makes you feel warm bubbling all over your body. The chest and head radiate warmth and the feeling is light and energetic. You will smile and everything will feel more comfortable.
 301 NEXT
 ---
-301 Body image of joy [joy_body]
+301 Body image of happiness [joy_body]
 46 NEXT
 ---
 46 Disgust has been particularly necessary in the past to identify contaminated food, but it also arises in response to moral disgust. The disgust feels like nausea in the abdomen and around the mouth, it feels like you're close to vomiting.
@@ -457,7 +457,7 @@
 126 Sleep tight!
 ---
 126 THURSDAY. The morning starts with brain fog: who, what, huh?
-127 CONFUSION +10
+127 ASTONISHMENT +10
 ---
 127 The morning begins with mother tongue class. The teacher hopes that one of the students will read their own essay aloud to the class. Of course you don’t want to read your essay - who would?
 128 Play busy.
@@ -486,7 +486,7 @@
 137 You control your friends and defend the cashier.
 ---
 135 You also make fun of cashier’s glasses and laugh. Why on earth do you do this and get involved? Your cheeks start to heat up, you get a bad mood and you start questioning yourself: what on earth made you act like that?
-138 HATE +5, DISGUST +10, CONFUSION +10, SADNESS +10
+138 HATE +5, DISGUST +10, ASTONISHMENT +10, SADNESS +10
 ---
 136 How could they be like that, disgusting behavior. For a moment, it feels like you don’t even know them. There is a cold lump on the bottom of your stomach: should I have addressed the situation somehow?
 138 DISGUST +10, SADNESS +10, LOVE -5
@@ -499,7 +499,7 @@
 140 You apologize for your friends.
 ---
 139 You pass the situation as quickly as possible without saying anything. The cashier will glance at you questioningly, but you will grab your food and rush back to your seat. Strange situation!
-141 CONFUSION +10
+141 ASTONISHMENT +10
 ---
 140 You smile apologetically at the checkout and apologize for the actions of your friends. The fear of the cashier visibly eases, his shoulders lower and he looks you in the eyes with a little smile. Even if he says little to nothing, you will find that your words made him feel better.
 141 HAPPINESS +5
@@ -522,7 +522,7 @@
 146 HAPPINESS +10, LOVE +5
 ---
 146 Whatever the outcome, art is a great way to deal with and unleash emotions. By drawing, painting or even shaping, one can also express one's feelings in an easily visible form.
-151 SADNESS -5, ANGER -5, CONFUSION -10
+151 SADNESS -5, ANGER -5, ASTONISHMENT -10
 ---
 143 You head to an gymnastics class where the warm up is done by running according to the teacher's instructions. Some classmates immediately sprint to the front of the line, others just calmly jog. What is your style?
 148 You start running at a good pace to front of the group.
@@ -535,7 +535,7 @@
 150 HAPPINESS +5
 ---
 150 You continue by testing different sports in groups. Exercise is a great way to deal with and dissipate different emotional states. On the other hand, physical movement can also alleviate anxiety and depression, clarify thoughts, and divert attention away from, for example, physical distress.
-151 SADNESS -5, ANGER -5, CONFUSION -10
+151 SADNESS -5, ANGER -5, ASTONISHMENT -10
 ---
 151 You continue your journey from school to football practice. Your coach praises dribbling technique of one of your team members, although you don't think this is very advanced: instead, your other teammate Aali has worked hard on deception and developed a lot in a short time.
 152 You tell the coach that you have noticed that Aali has also developed a lot.
@@ -606,14 +606,14 @@
 172 You begin to ask what's bothering you. They are clearly not their own self.
 ---
 171 The situation remains to be considered. Was your friend sad and not angry? You don’t really know what to think about the situation.
-173 CONFUSION +15
+173 ASTONISHMENT +15
 ---
 172 You take the guy to the side and ask if all is well. Your friend gets weird, pulls the shirt tighter and says they don’t want to be bothered.
 173 You try to cheer them up by telling about your own stuff.
 174 You encourage your friend to talk.
 ---
 173 You tell them they can talk when they feel like it. You start telling your own stuff to them to cheer them up. You tell what your family dog ​​has been up to and how your little sister is doing. Your friend smiles gratefully, but doesn’t get excited about anything. Hopefully they talk when once they are ready.
-175 HAPPINESS +5, CONFUSION +10
+175 HAPPINESS +5, ASTONISHMENT +10
 ---
 174 After a while, your friend tells you that their pet recently died. You talk about the situation for a moment, and your friend seems to be feeling better. You yourself start to get a little sad for your friend, but you’re glad they feel bit better.
 175 SADNESS +5, HAPPINESS +10
@@ -675,7 +675,7 @@
 192 HAPPINESS +5
 ---
 192 Your phone vibrates. Your friend sent a message and asked you to spend the evening with the gang at their place. Oh no, quickly do the chores so you get to hang out with them! You wish you'd done them sooner ... Nice to have an evening with friends!
-193 HAPPINESS +5, CONFUSION +10
+193 HAPPINESS +5, ASTONISHMENT +10
 ---
 193 Of course you want to get to your friends as soon as possible. Are you doing your job properly or the bare minimum? No one will hardly notice if you leave the pots still “dirty” and kick the dust balls under the cupboards.
 194 You clean quickly.
@@ -697,17 +697,17 @@
 199 You answer politically that you understand both positions.
 ---
 198 Half the crowd is outraged by your answer and half are ecstatic about your support. It seems that the subject goes into people’s emotions properly: how can this be such a big thing that it’s worth arguing about?
-203 CONFUSION +10
+203 ASTONISHMENT +10
 ---
 199 You get a little resentful snort when you don’t want to take a strong stand, but it also dissipates a tense atmosphere. The conversation continues in lighter relaxed mood. How was that such a big deal now?
-203 HAPPINESS +5, CONFUSION +5
+203 HAPPINESS +5, ASTONISHMENT +5
 ---
 198 The fun and laughter of the kitchen crew seems to end immediately when you arrive. A little doubt starts to bite your mind: did they laugh at you?
 201 Trust that they didn't laugh at you.
 202 Ask about it jokingly.
 ---
 201 The conversation continues in a reasonably normal way, but the situation is still bothering you. You know your thoughts are probably just silly, but you can’t help but think they laughed at you.
-203 SADNESS +5, CONFUSION +10
+203 SADNESS +5, ASTONISHMENT +10
 ---
 202 You half-jokingly ask if they were laughing at you. Everyone bursts into laughter and assures you they didn’t laugh at you: they were just startled when you suddenly arrived. Fortunately, you have best friends with whom you can chat through even silly feelings!
 203 LOVE +10
@@ -780,7 +780,7 @@
 223 There's no way you can win anymore! 
 224 This will be quite a fight!
 ---
-223 You don't understand how they were so good. Were they cheating? The game feels already played, and your confusion impacts your explaining and guessing skills a lot. Your head keeps buzzing - how were they that good?
+223 You don't understand how they were so good. Were they cheating? The game feels already played, and your ASTONISHMENT impacts your explaining and guessing skills a lot. Your head keeps buzzing - how were they that good?
 225 HAPPINESS -5, ASTONISHMENT +10
 ---
 224 Adrenaline starts to flow in your veins and your team manages to get to tie situation in few rounds. You're not surrounding without a fight!
@@ -920,35 +920,39 @@
 263 Sunday is getting to an end. It's been a rough but rewarding week - most of your time was spent with school, but you had also time for plenty of other things. It was seven days full of emotional rollercoaster, one test and hard decisions about how to spend your free time. You go to bed feeling good - until next week!
 999 MAIN MENU
 ---
-400 Looks like your anger level is getting high! Go for a run, shout out loud at home, do a relaxation exercise or work out - there are many ways to ease anger. Some like writing and tearing a hate letter, others find meditating helpful. It's definitely a good idea to try and find the most suitable way to ease your anger.
-411 ANGER -30
+401 Looks like your anger level is getting high! Go for a run, shout out loud at home, do a relaxation exercise or work out - there are many ways to ease anger. Some like writing and tearing a hate letter, others find meditating helpful. It's definitely a good idea to try and find the most suitable way to ease your anger.
+0 ANGER -30
 ---
-401 Looks like you're low on anger. Even though anger is often seen as a negative and destructive emotion, it acts an important role in our lives - it protects us, helps us defend ourselves and fight for things important to us. It's important not to dam all of your anger.
-411 ANGER +30
+402 Looks like you're low on anger. Even though anger is often seen as a negative and destructive emotion, it acts an important role in our lives - it protects us, helps us defend ourselves and fight for things important to us. It's important not to dam all of your anger.
+0 ANGER +30
 ---
-402 Oops, looks like sadness is taking over you! You have to be merciful for yourself when you're feeling sad, but you can also help yourself feel better: yöu can ease sadness for example writing, painting, visualizing good place or taking a walk. Also talking about sadness may help you feel better. It's important to find a good ways to soothe your sadness.
-411 SADNESS -30
+403 Oops, looks like sadness is taking over you! You have to be merciful for yourself when you're feeling sad, but you can also help yourself feel better: yöu can ease sadness for example writing, painting, visualizing good place or taking a walk. Also talking about sadness may help you feel better. It's important to find a good ways to soothe your sadness.
+0 SADNESS -30
 ---
-403 Looks like you're not feeling any kind of sadness - are you sure you havent tried to dam your emotions? Sadness is important in accepting loss, keeping up the good memories and moving on. When you're experiencing some sadness, it's also a possibility for learning to know you, your coping mechanisms and strengths.
+404 Looks like you're not feeling any kind of sadness - are you sure you havent tried to dam your emotions? Sadness is important in accepting loss, keeping up the good memories and moving on. When you're experiencing some sadness, it's also a possibility for learning to know you, your coping mechanisms and strengths.
+0 SADNESS +30
 ---
-404 Disgust may be a hard emotion to understand - it may be linked to many different thingd, be a temporary reaction to something of a longterm situation. Feeling disgust is necessary to protect oneself, but sometimes it may be also wise to get used to the cause of disgust. As usually with emotions, it's important to avoid extremes.
-411 DISGUST -30
+405 Disgust may be a hard emotion to understand - it may be linked to many different thingd, be a temporary reaction to something of a longterm situation. Feeling disgust is necessary to protect oneself, but sometimes it may be also wise to get used to the cause of disgust. As usually with emotions, it's important to avoid extremes.
+0 DISGUST -30
 ---
-405 If you're totally missing the feeling of love, it may be hard to see life's good things. Love is ofter far from romantic - go outside and admire nature's beauty, spend time with your favourite people, pet some animals or do something you like. Love for nature, people, animals, hobbies or other things keep the sparkle and excitement in life.
-411 LOVE +30
+406 Too little disgust placeholder
+0 DISGUST +30
 ---
-406 You're filled with love! Feelings of love towards other people, hobbies or things are important and bring a lot of joy in life. On the other hand, it's important to keep in mind that reason is crucial too: it's not wise to get blinded by love and do anything for it, or put something you love above your own wellbeing without a thorough consideration.
-407 Continue
+407 You're filled with love! Feelings of love towards other people, hobbies or things are important and bring a lot of joy in life. On the other hand, it's important to keep in mind that reason is crucial too: it's not wise to get blinded by love and do anything for it, or put something you love above your own wellbeing without a thorough consideration.
+0 LOVE -30
 ---
-407 You're running out of happiness! There are times in life, when happiness is harder to find, it's always there. Go walk in the nature, consciously focus on little nice things and do something you enjoy - life is a lot nicer when you focus on goot things, and it's a skill you can train.
-411 HAPPINESS +30
+408 If you're totally missing the feeling of love, it may be hard to see life's good things. Love is ofter far from romantic - go outside and admire nature's beauty, spend time with your favourite people, pet some animals or do something you like. Love for nature, people, animals, hobbies or other things keep the sparkle and excitement in life.
+0 LOVE +30
 ---
-408 There's never too much happiness in life! Even though it's said nothing good lasts forever, but actually you should enjoy happiness instead of worrying when it ends. On the other hand, it's often wise to prioritize long-term happiness obove temporary happiness, even though they both have their times.
-411 Continue!
+409 There's never too much happiness in life! Even though it's said nothing good lasts forever, but actually you should enjoy happiness instead of worrying when it ends. On the other hand, it's often wise to prioritize long-term happiness obove temporary happiness, even though they both have their times.
+0 HAPPINESS -30
 ---
-409 It seems like astonishment is your primary emotion at the moment - it's important, but too strong astonishment may make it harder to see your own needs and desires. It's good to find a way to clarify your mind when you're astonished - others find a brisk walk helpful, others like more about meditating or relaxation exercises.
-411 ASTONISHMENT -30
+410 You're running out of happiness! There are times in life, when happiness is harder to find, it's always there. Go walk in the nature, consciously focus on little nice things and do something you enjoy - life is a lot nicer when you focus on goot things, and it's a skill you can train.
+0 HAPPINESS +30
 ---
-410 It looks like you're not feeling almost any astonishment and you mind is clear. Remember, that also astonishment has important mission: if you're feeling too much clarity and certainity, it may be hard to remember how important it is to consider all your possibilities. It's crucial to reconsider different points of view and ways of acting. When there's a reaonable level of astonishment, you're especially open for adjusting your habits.
-411 ASTONISHMENT +30
+411 It seems like astonishment is your primary emotion at the moment - it's important, but too strong astonishment may make it harder to see your own needs and desires. It's good to find a way to clarify your mind when you're astonished - others find a brisk walk helpful, others like more about meditating or relaxation exercises.
+0 ASTONISHMENT -30
+---
+412 It looks like you're not feeling almost any astonishment and you mind is clear. Remember, that also astonishment has important mission: if you're feeling too much clarity and certainity, it may be hard to remember how important it is to consider all your possibilities. It's crucial to reconsider different points of view and ways of acting. When there's a reaonable level of astonishment, you're especially open for adjusting your habits.
+0 ASTONISHMENT +30
 ---

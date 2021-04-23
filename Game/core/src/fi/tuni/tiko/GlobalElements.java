@@ -12,12 +12,10 @@ import static fi.tuni.tiko.MainGame.currentScreenID;
 import static fi.tuni.tiko.MainGame.darkBackgroundColor;
 import static fi.tuni.tiko.MainGame.desiredBackgroundColor;
 import static fi.tuni.tiko.MainGame.lightBackgroundColor;
-import static fi.tuni.tiko.MainGame.mainMenu;
 import static fi.tuni.tiko.MainGame.margin;
 import static fi.tuni.tiko.MainGame.meterHeight;
 import static fi.tuni.tiko.MainGame.musicOn;
 import static fi.tuni.tiko.MainGame.saveSettings;
-import static fi.tuni.tiko.MainGame.screens;
 import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.soundOn;
 import static fi.tuni.tiko.MainGame.windowHeight;
@@ -203,14 +201,7 @@ public class GlobalElements extends Group {
             public void changed(ChangeEvent event, Actor actor) {
                 currentScreenID = 999;
                 settingsButton.setChecked(false);
-                for (int i = 0; i < screens.size(); i++) {
-                    if (screens.get(i).getClass() == MainMenuScreen.class) {
-                        screens.set(i, new MainMenuScreen());
-                        mainMenu = ((MainMenuScreen)screens.get(i));
-                    }
-                }
                 hideSettings();
-                showScreenElements(mainMenu);
             }
         });
         musicButton.setChecked(musicOn);
