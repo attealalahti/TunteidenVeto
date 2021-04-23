@@ -84,11 +84,11 @@ public class MySkin extends Skin {
 
         /* FONTS */
         add("answerBoxFont", createFont("lato", 14.2f, Color.BLACK));
-        add("questionBoxFont", createFont("lato", 19.5f ,Color.BLACK));
+        add("questionBoxFont", createFont("lato", 19f ,Color.BLACK));
         add("meterCaptionFont", createFont("latoItalic", 14.2f, Color.BLACK));
-        add("imageCaptionFont", createFont("latoItalic", 19.5f, Color.BLACK));
+        add("imageCaptionFont", createFont("latoItalic", 19f, Color.BLACK));
         add("menuFont", createFont("latoLight", 26,  Color.BLACK));
-        add("dayFont", createFont("latoMedium", 19.5f, Color.WHITE));
+        add("dayFont", createFont("latoMedium", 19f, Color.WHITE));
         add("emotionScoreFont", createFont("latoMediumItalic", 14.2f, Color.BLACK));
 
         Label.LabelStyle menuText = new Label.LabelStyle();
