@@ -15,7 +15,14 @@ import static fi.tuni.tiko.MainGame.meterHeight;
 import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
-
+/** FeelingMeter class is used to keep track of story emotional states
+ *
+ * FeelingMeter class keeps track of emotional states in the story.
+ * This class has methods to adjust the different emotional states.
+ * Objects can be made out of this class for the different required meters.
+ *
+ * @author Mika Kivennenä
+ */
 public class FeelingMeter extends Group {
     private ProgressBar meter;
     private Image foreground;
@@ -29,6 +36,15 @@ public class FeelingMeter extends Group {
     private final float meterWidth = combinedWidth - imageMargin - textWidth;
     private final float imageWidth = textWidth * (2f/3f);
 
+    /** FeelingMeter constructor. This is used to create meters for different emotional states.
+     *
+     * By giving this constructor float, color and image, you can create an object out of this.
+     * That object can be displayed in the games emotional state window.
+     *
+     * @param y sets the y coordinate for the feeling meter.
+     * @param color is the color the meter is filled with.
+     * @param imageStyle is the emoji in front of the meter that symbolizes the emotion.
+     */
     public FeelingMeter(float y, Color color, String imageStyle) {
         Label caption = new Label(MainGame.getLocalization(imageStyle), skin, "meterCaptionText");
         caption.setBounds((windowWidth - combinedWidth) * 0.5f, y, textWidth, textHeight);
@@ -59,6 +75,15 @@ public class FeelingMeter extends Group {
 
     }
 
+    /** getColoredDrawable method is used to create the color for the meter fill
+     *
+     * this method is used in the constructor to set meter fill color
+     *
+     * @param width used to set meter width
+     * @param height used to meter height
+     * @param col is the color variable used to set color
+     * @return
+     */
     public Drawable getColoredDrawable(int width, int height, Color col) {
         Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
         pixmap.setColor(col);
@@ -71,6 +96,14 @@ public class FeelingMeter extends Group {
         return drawable;
     }
 
+    /** addValue method changes the meter value
+     *
+     * This method changes the value depending on what number you give to it.
+     * If you give a positive number it increases.
+     * Negative number decreases the value.
+     *
+     * @param valueToAdd
+     */
     public void addValue(float valueToAdd) {
         float tempFloat = meter.getValue();
         tempFloat += valueToAdd;
@@ -81,9 +114,21 @@ public class FeelingMeter extends Group {
         }
         meter.setValue(tempFloat);
     }
+
+    /** getValue is the getter method for getting current value for meter
+     *
+     * @return meter value
+     */
     public float getValue() {
         return meter.getValue();
     }
+
+    /** Setter method for setting the meter value
+     *
+     * this method is used in addValue method to change the meter value.
+     *
+     * @param value Sets the meter value
+     */
     public void setValue(float value) {
         meter.setValue(value);
     }
