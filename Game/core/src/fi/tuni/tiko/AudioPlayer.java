@@ -10,9 +10,9 @@ import com.badlogic.gdx.audio.Sound;
  */
 public class AudioPlayer {
     private Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/backgroundMusic.mp3"));
-    //private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/swipe3.mp3"));
-    private static boolean canPlayMusic= true;
-    private static boolean canPlaySound = true;
+    private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/dalek_gun.mp3"));
+    private boolean canPlayMusic = true;
+    private boolean canPlaySound = true;
 
     /** playMenuMusic method play the menu music if it is playable
      *
@@ -23,7 +23,20 @@ public class AudioPlayer {
     public void playMenuMusic() {
         if(canPlayMusic) {
             backgroundMusic.play();
+            backgroundMusic.setLooping(true);
         }
+    }
+
+    public void music(boolean onState) {
+        canPlayMusic = onState;
+        if (onState) {
+            playMenuMusic();
+        } else {
+            backgroundMusic.pause();
+        }
+    }
+    public void sound(boolean onState) {
+        canPlaySound = onState;
     }
 
     /** playMusic method plays the music if it is allowed
@@ -32,7 +45,7 @@ public class AudioPlayer {
      *
      * @author Mika Kivennenä
      */
-    public static void playMusic(Music songToPlay) {
+    public void playMusic(Music songToPlay) {
         if(canPlayMusic) {
             songToPlay.play();
         }
@@ -44,7 +57,9 @@ public class AudioPlayer {
      * @author Mika Kivennenä
      */
     public void playSwipeSound() {
-       // swipeSound.play();
+        if (canPlaySound) {
+            swipeSound.play();
+        }
     }
 
     /** playSound method plays the given sound if allowed
@@ -54,7 +69,7 @@ public class AudioPlayer {
      * @param sound variable is the sound that is played
      * @author Mika Kivennenä
      */
-    public static void playSound(Sound sound) {
+    public void playSound(Sound sound) {
         if(canPlaySound) {
             sound.play();
         }
@@ -76,7 +91,7 @@ public class AudioPlayer {
      * @return canPlayMusic boolean is returned
      * @author Mika Kivennenä
      */
-    public Boolean getMusicBoolean() {
+    public boolean getMusicBoolean() {
         return canPlayMusic;
     }
 
@@ -96,8 +111,12 @@ public class AudioPlayer {
      * @return canPlaySound boolean is returned
      * @author Mika Kivennenä
      */
-    public Boolean getSoundBoolean() {
+    public boolean getSoundBoolean() {
         return  canPlaySound;
+    }
+
+    public void dispose() {
+        backgroundMusic.dispose();
     }
 
 }

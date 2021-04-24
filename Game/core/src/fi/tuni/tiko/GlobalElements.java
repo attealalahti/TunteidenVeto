@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import static fi.tuni.tiko.MainGame.audioPlayer;
 import static fi.tuni.tiko.MainGame.colorMax255;
 import static fi.tuni.tiko.MainGame.currentScreenID;
 import static fi.tuni.tiko.MainGame.darkBackgroundColor;
@@ -14,10 +15,8 @@ import static fi.tuni.tiko.MainGame.desiredBackgroundColor;
 import static fi.tuni.tiko.MainGame.lightBackgroundColor;
 import static fi.tuni.tiko.MainGame.margin;
 import static fi.tuni.tiko.MainGame.meterHeight;
-import static fi.tuni.tiko.MainGame.musicOn;
 import static fi.tuni.tiko.MainGame.saveSettings;
 import static fi.tuni.tiko.MainGame.skin;
-import static fi.tuni.tiko.MainGame.soundOn;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 
@@ -52,7 +51,7 @@ public class GlobalElements extends Group {
     private Button feelingMeterButton;
 
     // How long it takes to switch between Game and FeelingMeter mode:
-    public float FADE_TIME = 0.2f;
+    public final float FADE_TIME = 0.2f;
 
     public GlobalElements() {
         buttonHeight =  windowHeight * 0.07f;
@@ -185,14 +184,14 @@ public class GlobalElements extends Group {
         musicButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                musicOn = musicButton.isChecked();
+                audioPlayer.music(musicButton.isChecked());
                 saveSettings();
             }
         });
         soundButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                soundOn = soundButton.isChecked();
+                audioPlayer.sound(soundButton.isChecked());
                 saveSettings();
             }
         });
@@ -205,9 +204,6 @@ public class GlobalElements extends Group {
                 desiredBackgroundColor = lightBackgroundColor;
             }
         });
-        musicButton.setChecked(musicOn);
-        soundButton.setChecked(soundOn);
-
         return result;
     }
 

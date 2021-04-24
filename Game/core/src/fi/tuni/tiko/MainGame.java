@@ -35,21 +35,19 @@ public class MainGame extends ApplicationAdapter {
 	public static int windowHeight;
 	public static MySkin skin;
 	public static GlobalElements globalElements;
-	public static boolean musicOn;
-	public static boolean soundOn;
 	public static float margin;
 	public static float meterHeight;
+	public static AudioPlayer audioPlayer;
 
-	AudioPlayer audioPlayer;
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
 		windowHeight = Gdx.graphics.getHeight();
 		margin = windowHeight * 0.025f;
 		meterHeight = windowHeight * 0.1f;
+		audioPlayer = new AudioPlayer();
 
 		addLocalizations();
-		audioPlayer = new AudioPlayer();
 		skin = new MySkin();
 		globalElements = new GlobalElements();
 		screens = createScreens(getLocalization("levelDataPath"));
@@ -57,8 +55,7 @@ public class MainGame extends ApplicationAdapter {
 		screens.add(new MainMenuScreen());
 		currentScreen = screens.get(screens.size()-1);
 		currentScreenID = currentScreen.getScreenID();
-
-		//audioPlayer.playMenuMusic();
+		loadSettings();
 	}
 	@Override
 	public void render () {
@@ -256,16 +253,16 @@ public class MainGame extends ApplicationAdapter {
 	}
 	public static void saveSettings() {
 		Preferences prefs = Gdx.app.getPreferences("MySettings");
-		prefs.putBoolean("music", musicOn);
-		prefs.putBoolean("sound", soundOn);
+		prefs.putBoolean("music", audioPlayer.getMusicBoolean());
+		prefs.putBoolean("sound", audioPlayer.getSoundBoolean());
 		prefs.flush();
 	}
 	public static void loadSettings() {
 		Preferences prefs = Gdx.app.getPreferences("MySettings");
-		musicOn = prefs.getBoolean("music", true);
-		soundOn = prefs.getBoolean("sound", true);
-		globalElements.getMusicButton().setChecked(musicOn);
-		globalElements.getSoundButton().setChecked(soundOn);
+		audioPlayer.setMusicBoolean(prefs.getBoolean("music", true));
+		audioPlayer.setSoundBoolean(prefs.getBoolean("sound", true));
+		globalElements.getMusicButton().setChecked(audioPlayer.getMusicBoolean());
+		globalElements.getSoundButton().setChecked(audioPlayer.getSoundBoolean());
 	}
 	public static void resetProgress() {
 		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
@@ -352,6 +349,9 @@ public class MainGame extends ApplicationAdapter {
 		return answerEffects;
 	}
 	public void updateMeters(ArrayList<String> effects) {
+		if (effects.size() > 0) {
+			audioPlayer.playSwipeSound();
+		}
 		for (String effect: effects) {
 			String indicator = "" + effect.charAt(0) + effect.charAt(1) + effect.charAt(2);
 			StringBuilder value = new StringBuilder();
@@ -430,5 +430,6 @@ public class MainGame extends ApplicationAdapter {
 			s.dispose();
 		}
 		skin.dispose();
+		audioPlayer.dispose();
 	}
 }
