@@ -7,6 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import java.util.ArrayList;
+
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
+import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 import static fi.tuni.tiko.MainGame.audioPlayer;
 import static fi.tuni.tiko.MainGame.colorMax255;
 import static fi.tuni.tiko.MainGame.currentScreenID;
@@ -43,6 +48,7 @@ public class GlobalElements extends Group {
 
     private Group meters;
     private Group settings;
+    private ArrayList<Actor> initiallyHiddenElements;
 
     private Button musicButton;
     private Button soundButton;
@@ -65,6 +71,23 @@ public class GlobalElements extends Group {
         addActor(settings);
         addActor(settingsButton);
         addActor(feelingMeterButton);
+
+        initiallyHiddenElements = new ArrayList<>();
+        initiallyHiddenElements.add(meters);
+        initiallyHiddenElements.add(settings);
+
+        hideBackgroundElementsWhileLoading();
+    }
+    public void hideBackgroundElementsWhileLoading() {
+        for (final Actor a: initiallyHiddenElements) {
+            a.setVisible(false);
+            a.addAction(sequence(moveTo(a.getX(), a.getY(), 0.1f), run(new Runnable() {
+                @Override
+                public void run() {
+                    a.setVisible(true);
+                }
+            })));
+        }
     }
     public Group getMeters() {
         return meters;

@@ -162,6 +162,7 @@ public class ChoiceScreen extends Screen {
         for (Actor a: answerBoxes.getChildren()) {
             ((AnswerBoxMovable) a).addRail();
         }
+        globalElements.hideBackgroundElementsWhileLoading();
     }
     public ArrayList<String> getEffects() {
         return answerEffects;

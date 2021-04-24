@@ -250,6 +250,7 @@ public class MainGame extends ApplicationAdapter {
 		globalElements.getMeter("fear").setValue(prefs.getFloat("fear", meterDefault));
 		globalElements.getMeter("disgust").setValue(prefs.getFloat("disgust", meterDefault));
 		loadSettings();
+		globalElements.hideBackgroundElementsWhileLoading();
 	}
 	public static void saveSettings() {
 		Preferences prefs = Gdx.app.getPreferences("MySettings");
