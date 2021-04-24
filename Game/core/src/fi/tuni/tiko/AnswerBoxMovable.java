@@ -21,6 +21,7 @@ public class AnswerBoxMovable extends AnswerBox {
     private boolean needsConfirmation = true;
     private float moveDuration = 0.2f;
     private int screenLink;
+    private CharSequence text;
     private boolean atEdge = false;
     private boolean currentlyTouched = false;
     private boolean paused = false;
@@ -40,9 +41,10 @@ public class AnswerBoxMovable extends AnswerBox {
      * @param height height of the background in pixels
      * @param screenLink the ID of the screen to move to when this AnswerBox is confirmed
      */
-    public AnswerBoxMovable(CharSequence text, float x, float y, float width, float height, final int screenLink) {
+    public AnswerBoxMovable(final CharSequence text, float x, float y, float width, float height, final int screenLink) {
         super(text, x, y, width, height);
         this.screenLink = screenLink;
+        this.text = text;
         this.y = y;
         this.height = height;
 
@@ -58,7 +60,7 @@ public class AnswerBoxMovable extends AnswerBox {
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 currentlyTouched = true;
                 for (Actor a : getParent().getChildren()) {
-                    if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (screenLink != ((AnswerBoxMovable) a).screenLink)) {
+                    if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (!text.equals(((AnswerBoxMovable) a).text))) {
                         currentlyTouched = false;
                     }
                 }
@@ -71,7 +73,7 @@ public class AnswerBoxMovable extends AnswerBox {
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
                 boolean canMove = true;
                 for (Actor a : getParent().getChildren()) {
-                    if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (screenLink != ((AnswerBoxMovable) a).screenLink)) {
+                    if ((((AnswerBoxMovable) a).atEdge || ((AnswerBoxMovable) a).currentlyTouched) && (!text.equals(((AnswerBoxMovable) a).text))) {
                         canMove = false;
                     }
                 }
@@ -132,7 +134,7 @@ public class AnswerBoxMovable extends AnswerBox {
                                 atEdge = true;
                             }
                             for (Actor a : getParent().getChildren()) {
-                                if (screenLink != ((AnswerBoxMovable) a).screenLink) {
+                                if (!text.equals(((AnswerBoxMovable) a).text)) {
                                     if (atEdge) {
                                         ((AnswerBoxMovable) a).setBackground("inactiveBox");
                                     } else {

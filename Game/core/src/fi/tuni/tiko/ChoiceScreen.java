@@ -133,7 +133,7 @@ public class ChoiceScreen extends Screen {
             }
         } else {
             float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - getBoxHeight() * 0.5f;
-            AnswerBoxMovable arrowBox = new AnswerBoxMovable(null, getBoxX(), currentY, getBoxWidth(), getBoxHeight(), getScreenLinks().get(0));
+            AnswerBoxMovable arrowBox = new AnswerBoxMovable("", getBoxX(), currentY, getBoxWidth(), getBoxHeight(), getScreenLinks().get(0));
             arrowBox.setBackground("arrowBox");
             answerBoxes.addActor(arrowBox);
             currentY += roomForAnswers / (float) (getChoices().size()+2);
