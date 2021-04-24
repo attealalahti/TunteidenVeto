@@ -158,6 +158,9 @@ public class MainGame extends ApplicationAdapter {
 				getLocalization("fear").toUpperCase(),
 				getLocalization("astonishment").toUpperCase(),
 				getLocalization("disgust").toUpperCase()};
+		if (getLocalization("language").equals("fi")) {
+			effectIndicators[5] = "HÄMMENNYS";
+		}
 		weekDay = getLocalization("monday");
 	}
 	public static String getLocalization(String key) {

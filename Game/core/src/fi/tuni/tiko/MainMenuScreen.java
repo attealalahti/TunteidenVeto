@@ -2,11 +2,13 @@ package fi.tuni.tiko;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import static fi.tuni.tiko.MainGame.currentScreenID;
 import static fi.tuni.tiko.MainGame.loadProgress;
 import static fi.tuni.tiko.MainGame.margin;
 import static fi.tuni.tiko.MainGame.resetProgress;
+import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.MainGame.globalElements;
@@ -14,32 +16,30 @@ import static fi.tuni.tiko.MainGame.globalElements;
 public class MainMenuScreen extends Screen {
 
     private Group answerBoxes;
-    private final float boxWidth = windowWidth * 0.9f;
-    private final float boxHeight = windowHeight * 0.1f;
-    private final float buttonHeight = windowHeight * 0.07f;
-    private final float xBox = (windowWidth - boxWidth) / 2f;
-    private final float questionBoxHeight = windowHeight * 0.4f;
-    private final float roomForAnswers = windowHeight - questionBoxHeight - margin * 2f - buttonHeight;
-
+    private float startY = windowHeight * 0.1f;
+    private float titleHeight = getBoxWidth() * 0.547f;
 
     public MainMenuScreen() {
         createAnswerBoxes();
+        float roomLeft = windowHeight - startY - getChoices().size() * (getBoxHeight() + margin) + margin;
+        Image title = new Image(skin, "title");
+        title.setBounds(getBoxX(), windowHeight - roomLeft * 0.5f - titleHeight * 0.5f, getBoxWidth(), titleHeight);
+        getElements().addActor(title);
     }
 
     public void createAnswerBoxes() {
         answerBoxes = new Group();
-        float currentY = margin + buttonHeight + roomForAnswers / 4 - boxHeight * 0.5f;
-
-        for (int i = 0; i < 4; i++) {
-            answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
-            currentY += roomForAnswers / 4;
-        }
-        for(int i = 0; i < answerBoxes.getChildren().size; i++) {
-            ((AnswerBox) answerBoxes.getChild(i)).setBackground("menuBox");
-            ((AnswerBox) answerBoxes.getChild(i)).setTextStyle("menuBoxText");
-            ((AnswerBoxMovable) answerBoxes.getChild(i)).setConfirmation(false);
-        }
         getElements().addActor(answerBoxes);
+        float currentY = startY;
+        for (int i = 0; i < getChoices().size(); i++) {
+            AnswerBoxMovable tempAnswerBox = new AnswerBoxMovable(getChoices().get(i), getBoxX(), currentY, getBoxWidth(), getBoxHeight(), getScreenLinks().get(i));
+            answerBoxes.addActor(tempAnswerBox);
+            tempAnswerBox.setBackground("menuBox");
+            tempAnswerBox.setTextStyle("menuBoxText");
+            tempAnswerBox.setConfirmation(false);
+            tempAnswerBox.addRail();
+            currentY += margin + getBoxHeight();
+        }
     }
 
    @Override

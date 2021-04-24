@@ -202,6 +202,7 @@ public class GlobalElements extends Group {
                 currentScreenID = 999;
                 settingsButton.setChecked(false);
                 hideSettings();
+                desiredBackgroundColor = lightBackgroundColor;
             }
         });
         musicButton.setChecked(musicOn);

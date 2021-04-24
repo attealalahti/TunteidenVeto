@@ -49,6 +49,7 @@ public class MySkin extends Skin {
         add("soundOff", new Texture(getPath("sound_off")));
         add("musicOn", new Texture(getPath("music_on")));
         add("musicOff", new Texture(getPath("music_off")));
+        add("title", new Texture(getPath("mainmenutitle")));
 
         add("anger", new Texture(getPath("anger")));
         add("astonishment", new Texture(getPath("astonishment")));

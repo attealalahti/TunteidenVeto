@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
 import static fi.tuni.tiko.MainGame.getLocalization;
+import static fi.tuni.tiko.MainGame.windowHeight;
+import static fi.tuni.tiko.MainGame.windowWidth;
 
 /** Screen is an abstract class that is used to create different screen layouts for the game.
  * Every screen has a screen ID and some choices that can move the game to a different screen.
@@ -16,6 +18,10 @@ abstract public class Screen extends Stage {
     private ArrayList<String> temporaryList;
     private ArrayList<Integer> screenLinks;
     private Group elements = new Group();
+
+    private final float boxWidth = windowWidth * 0.9f;
+    private final float boxHeight = windowHeight * 0.1f;
+    private final float boxX = (windowWidth - boxWidth) * 0.5f;
 
     /** Creates a new screen.
      *
@@ -108,5 +114,14 @@ abstract public class Screen extends Stage {
      */
     public Group getElements() {
         return elements;
+    }
+    public float getBoxWidth() {
+        return boxWidth;
+    }
+    public float getBoxHeight() {
+        return boxHeight;
+    }
+    public float getBoxX() {
+        return boxX;
     }
 }

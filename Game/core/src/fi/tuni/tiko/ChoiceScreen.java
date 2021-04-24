@@ -22,10 +22,7 @@ public class ChoiceScreen extends Screen {
     private Group answerBoxes;
     private Label dayBox;
     private ArrayList<String> answerEffects;
-    private final float boxWidth = windowWidth * 0.9f;
-    private final float boxHeight = windowHeight * 0.1f;
     private final float buttonHeight = windowHeight * 0.07f;
-    private final float xBox = (windowWidth - boxWidth) * 0.5f;
     private final float dayBoxHeight = windowHeight * 0.03f;
     private float captionHeight = windowHeight * 0.06f;
     private final int questionSizeThreshold = 200;
@@ -45,7 +42,7 @@ public class ChoiceScreen extends Screen {
         this.answerEffects = answerEffects;
 
         dayBox = new Label("dayOfTheWeek", skin, "dayText");
-        dayBox.setBounds(xBox, windowHeight - margin - dayBoxHeight, boxWidth, dayBoxHeight);
+        dayBox.setBounds(getBoxX(), windowHeight - margin - dayBoxHeight, getBoxWidth(), dayBoxHeight);
         dayBox.setAlignment(0);
         dayBox.setWrap(true);
         addActor(dayBox);
@@ -66,7 +63,7 @@ public class ChoiceScreen extends Screen {
 
             // Create the question text box
             Image questionBackground = new Image(skin, questionBoxStyle);
-            questionBackground.setBounds(xBox, windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, boxWidth, questionBoxHeight);
+            questionBackground.setBounds(getBoxX(), windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, getBoxWidth(), questionBoxHeight);
 
             Label questionText = new Label(question, skin, "questionBoxText");
             questionText.setBounds(
@@ -104,7 +101,7 @@ public class ChoiceScreen extends Screen {
             }
 
             Image image = new Image(skin, style.toString());
-            float imageHeight = windowHeight - margin - dayBoxHeight - margin - margin - captionHeight - buttonHeight - answers.size()*(margin + boxHeight);
+            float imageHeight = windowHeight - margin - dayBoxHeight - margin - margin - captionHeight - buttonHeight - answers.size()*(margin + getBoxHeight());
             if (imageHeight > windowHeight * 0.5f) {
                 imageHeight = windowHeight * 0.5f;
             }
@@ -112,7 +109,7 @@ public class ChoiceScreen extends Screen {
             image.setBounds((windowWidth - imageWidth) * 0.5f, windowHeight - dayBoxHeight - margin * 2f - imageHeight, imageWidth, imageHeight);
 
             Label caption = new Label(captionText.toString(), skin, "imageCaptionText");
-            caption.setBounds(xBox, image.getY() - margin - captionHeight, boxWidth, boxHeight);
+            caption.setBounds(getBoxX(), image.getY() - margin - captionHeight, getBoxWidth(), getBoxHeight());
             caption.setAlignment(0);
             caption.setWrap(true);
 
@@ -129,18 +126,18 @@ public class ChoiceScreen extends Screen {
     public void createAnswerBoxes() {
         answerBoxes = new Group();
         if (answerEffects.size() == 0) {
-            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - boxHeight * 0.5f;
+            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - getBoxHeight() * 0.5f;
             for (int i = 0; i < getChoices().size(); i++) {
-                answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(i)));
+                answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), getBoxX(), currentY, getBoxWidth(), getBoxHeight(), getScreenLinks().get(i)));
                 currentY += roomForAnswers / (float) (getChoices().size()+1);
             }
         } else {
-            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - boxHeight * 0.5f;
-            AnswerBoxMovable arrowBox = new AnswerBoxMovable(null, xBox, currentY, boxWidth, boxHeight, getScreenLinks().get(0));
+            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - getBoxHeight() * 0.5f;
+            AnswerBoxMovable arrowBox = new AnswerBoxMovable(null, getBoxX(), currentY, getBoxWidth(), getBoxHeight(), getScreenLinks().get(0));
             arrowBox.setBackground("arrowBox");
             answerBoxes.addActor(arrowBox);
             currentY += roomForAnswers / (float) (getChoices().size()+2);
-            getElements().addActor(new AnswerBox(getChoices().get(0), xBox, currentY, boxWidth, boxHeight));
+            getElements().addActor(new AnswerBox(getChoices().get(0), getBoxX(), currentY, getBoxWidth(), getBoxHeight()));
         }
         getElements().addActor(answerBoxes);
     }
