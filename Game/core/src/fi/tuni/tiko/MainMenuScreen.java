@@ -5,13 +5,11 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 import static fi.tuni.tiko.MainGame.currentScreenID;
-import static fi.tuni.tiko.MainGame.loadProgress;
 import static fi.tuni.tiko.MainGame.margin;
-import static fi.tuni.tiko.MainGame.resetProgress;
 import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.windowHeight;
-import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.MainGame.globalElements;
+import static fi.tuni.tiko.SaveHandler.*;
 
 public class MainMenuScreen extends Screen {
 

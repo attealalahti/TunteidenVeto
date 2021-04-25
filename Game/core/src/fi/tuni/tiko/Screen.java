@@ -4,9 +4,10 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.ArrayList;
-import static fi.tuni.tiko.MainGame.getLocalization;
+import static fi.tuni.tiko.MainGame.mainMenuScreenID;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
+import static fi.tuni.tiko.Utility.getLocalization;
 
 /** Screen is an abstract class that is used to create different screen layouts for the game.
  * Every screen has a screen ID and some choices that can move the game to a different screen.
@@ -39,7 +40,7 @@ abstract public class Screen extends Stage {
         }
     }
     public Screen() {
-        this.screenID = 999;
+        this.screenID = mainMenuScreenID;
         this.temporaryList = createAnswers();
         this.screenLinks = createScreenLinks();
         addActor(elements);

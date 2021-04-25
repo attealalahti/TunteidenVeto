@@ -15,6 +15,8 @@ import static fi.tuni.tiko.MainGame.meterHeight;
 import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
+import static fi.tuni.tiko.Utility.getLocalization;
+
 /** FeelingMeter class is used to keep track of story emotional states
  *
  * FeelingMeter class keeps track of emotional states in the story.
@@ -46,7 +48,7 @@ public class FeelingMeter extends Group {
      * @param imageStyle is the emoji in front of the meter that symbolizes the emotion.
      */
     public FeelingMeter(float y, Color color, String imageStyle) {
-        Label caption = new Label(MainGame.getLocalization(imageStyle), skin, "meterCaptionText");
+        Label caption = new Label(getLocalization(imageStyle), skin, "meterCaptionText");
         caption.setBounds((windowWidth - combinedWidth) * 0.5f, y, textWidth, textHeight);
         caption.setAlignment((int)textHeight - 1, 0);
         addActor(caption);

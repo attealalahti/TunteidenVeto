@@ -3,7 +3,6 @@ package fi.tuni.tiko;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -12,6 +11,9 @@ import com.badlogic.gdx.utils.I18NBundle;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import static fi.tuni.tiko.SaveHandler.*;
+import static fi.tuni.tiko.Utility.colorMax255;
+import static fi.tuni.tiko.Utility.getLocalization;
 
 
 public class MainGame extends ApplicationAdapter {
@@ -25,7 +27,6 @@ public class MainGame extends ApplicationAdapter {
 	public static Color desiredBackgroundColor = lightBackgroundColor;
 	public static Color currentBackgroundColor = desiredBackgroundColor;
 
-	private String [] effectIndicators;
 	public static String weekDay;
 
 	public static int currentScreenID;
@@ -38,6 +39,7 @@ public class MainGame extends ApplicationAdapter {
 	public static float margin;
 	public static float meterHeight;
 	public static AudioPlayer audioPlayer;
+	public static int mainMenuScreenID = 999;
 
 	@Override
 	public void create () {
@@ -47,7 +49,7 @@ public class MainGame extends ApplicationAdapter {
 		meterHeight = windowHeight * 0.1f;
 		audioPlayer = new AudioPlayer();
 
-		addLocalizations();
+		weekDay = getLocalization("monday");
 		skin = new MySkin();
 		globalElements = new GlobalElements();
 		screens = createScreens(getLocalization("levelDataPath"));
@@ -73,7 +75,7 @@ public class MainGame extends ApplicationAdapter {
 						globalElements.getSettings().toBack();
 					} else {
 						int emotionAlertScreenID = getEmotionAlertScreen();
-						if (emotionAlertScreenID != 0 && lastFrameCurrentScreenID != 999) {
+						if (emotionAlertScreenID != 0 && lastFrameCurrentScreenID != mainMenuScreenID) {
 							for (int j = 0; j < screens.size(); j++) {
 								if (screens.get(j).getScreenID() == emotionAlertScreenID) {
 									ArrayList<Integer> tempLink = new ArrayList<>();
@@ -115,8 +117,10 @@ public class MainGame extends ApplicationAdapter {
 								break;
 						}
 						((ChoiceScreen) currentScreen).addGlobalElements(globalElements, weekDay);
-						updateMeters(((ChoiceScreen) currentScreen).getEffects());
-						globalElements.getFeelingMeterButton().setStyle(skin.get(getStrongestEmotion(), Button.ButtonStyle.class));
+						if (lastFrameCurrentScreenID != mainMenuScreenID) {
+							globalElements.updateMeters(((ChoiceScreen) currentScreen).getEffects());
+						}
+						globalElements.getFeelingMeterButton().setStyle(skin.get(globalElements.getStrongestEmotion(), Button.ButtonStyle.class));
 						saveProgress();
 					}
 				}
@@ -141,29 +145,6 @@ public class MainGame extends ApplicationAdapter {
 			link += 2;
 		}
 		return result;
-	}
-	public static Color colorMax255(float r, float g, float b) {
-		float colorFraction = 1f / 255f;
-		return new Color(r*colorFraction, g*colorFraction, b*colorFraction, 1);
-	}
-	public void addLocalizations() {
-		effectIndicators = new String[] {
-				getLocalization("happiness").toUpperCase(),
-				getLocalization("sadness").toUpperCase(),
-				getLocalization("anger").toUpperCase(),
-				getLocalization("love").toUpperCase(),
-				getLocalization("fear").toUpperCase(),
-				getLocalization("astonishment").toUpperCase(),
-				getLocalization("disgust").toUpperCase()};
-		if (getLocalization("language").equals("fi")) {
-			effectIndicators[5] = "HÄMMENNYS";
-		}
-		weekDay = getLocalization("monday");
-	}
-	public static String getLocalization(String key) {
-		Locale locale = Locale.getDefault();
-		I18NBundle myBundle = I18NBundle.createBundle(Gdx.files.internal("MyBundle"), locale);
-		return myBundle.get(key);
 	}
 	public ArrayList<Screen> createScreens(String path) {
 		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens(path);
@@ -223,75 +204,9 @@ public class MainGame extends ApplicationAdapter {
 		}
 		return text.toString();
 	}
-	public static void saveProgress() {
-		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
-		prefs.putInteger("screen", nextScreenID);
-		prefs.putString("day", weekDay);
-		prefs.putFloat("happiness", globalElements.getMeter("happiness").getValue());
-		prefs.putFloat("sadness", globalElements.getMeter("sadness").getValue());
-		prefs.putFloat("anger", globalElements.getMeter("anger").getValue());
-		prefs.putFloat("love", globalElements.getMeter("love").getValue());
-		prefs.putFloat("astonishment", globalElements.getMeter("astonishment").getValue());
-		prefs.putFloat("fear", globalElements.getMeter("fear").getValue());
-		prefs.putFloat("disgust", globalElements.getMeter("disgust").getValue());
-		saveSettings();
-		prefs.flush();
-	}
-	public static void loadProgress() {
-		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
-		currentScreenID = prefs.getInteger("screen", 0);
-		weekDay = prefs.getString("day", getLocalization("monday"));
-		float meterDefault = 50;
-		globalElements.getMeter("happiness").setValue(prefs.getFloat("happiness", meterDefault));
-		globalElements.getMeter("sadness").setValue(prefs.getFloat("sadness", meterDefault));
-		globalElements.getMeter("anger").setValue(prefs.getFloat("anger", meterDefault));
-		globalElements.getMeter("love").setValue(prefs.getFloat("love", meterDefault));
-		globalElements.getMeter("astonishment").setValue(prefs.getFloat("astonishment", meterDefault));
-		globalElements.getMeter("fear").setValue(prefs.getFloat("fear", meterDefault));
-		globalElements.getMeter("disgust").setValue(prefs.getFloat("disgust", meterDefault));
-		loadSettings();
-		globalElements.hideBackgroundElementsWhileLoading();
-	}
-	public static void saveSettings() {
-		Preferences prefs = Gdx.app.getPreferences("MySettings");
-		prefs.putBoolean("music", audioPlayer.getMusicBoolean());
-		prefs.putBoolean("sound", audioPlayer.getSoundBoolean());
-		prefs.flush();
-	}
-	public static void loadSettings() {
-		Preferences prefs = Gdx.app.getPreferences("MySettings");
-		audioPlayer.setMusicBoolean(prefs.getBoolean("music", true));
-		audioPlayer.setSoundBoolean(prefs.getBoolean("sound", true));
-		globalElements.getMusicButton().setChecked(audioPlayer.getMusicBoolean());
-		globalElements.getSoundButton().setChecked(audioPlayer.getSoundBoolean());
-	}
-	public static void resetProgress() {
-		Preferences prefs = Gdx.app.getPreferences("MyPreferences");
-		prefs.clear();
-		prefs.flush();
-	}
-	public String getStrongestEmotion() {
-		String result = "happiness";
-		float largestValue = Math.max(Math.max(Math.max(globalElements.getMeter("happiness").getValue(), globalElements.getMeter("sadness").getValue()), Math.max(globalElements.getMeter("anger").getValue(), globalElements.getMeter("love").getValue())), Math.max(globalElements.getMeter("fear").getValue(), Math.max(globalElements.getMeter("disgust").getValue(), globalElements.getMeter("astonishment").getValue())));
-		if (globalElements.getMeter("sadness").getValue() == largestValue) {
-			result = "sadness";
-		} else if (globalElements.getMeter("anger").getValue() == largestValue) {
-			result = "anger";
-		} else if (globalElements.getMeter("love").getValue() == largestValue) {
-			result = "love";
-		} else if (globalElements.getMeter("disgust").getValue() == largestValue) {
-			result = "disgust";
-		} else if (globalElements.getMeter("fear").getValue() == largestValue) {
-			result = "fear";
-		} else if (globalElements.getMeter("astonishment").getValue() == largestValue) {
-			result = "astonishment";
-		}
-
-		return result;
-	}
 	public ArrayList<String> getAnswerEffects(String myAnswer) {
 		ArrayList<String> answerEffects = new ArrayList<>();
-		for (String indicator : effectIndicators) {
+		for (String indicator : globalElements.getEmotions()) {
 			if (myAnswer.contains(indicator)) {
 				boolean effectAdded = false;
 				for (int k = 0; k < myAnswer.length() && k + 2 < myAnswer.length() && !effectAdded; k++) {
@@ -348,41 +263,6 @@ public class MainGame extends ApplicationAdapter {
 			}
 		}
 		return answerEffects;
-	}
-	public void updateMeters(ArrayList<String> effects) {
-		if (effects.size() > 0) {
-			audioPlayer.playSwipeSound();
-		}
-		for (String effect: effects) {
-			String indicator = "" + effect.charAt(0) + effect.charAt(1) + effect.charAt(2);
-			StringBuilder value = new StringBuilder();
-			for (int i = 3; i < effect.length(); i++) {
-				value.append(effect.charAt(i));
-			}
-			int change = Integer.parseInt(value.toString());
-			String hap = effectIndicators[0].substring(0, 3);
-			String sad = effectIndicators[1].substring(0, 3);
-			String ang = effectIndicators[2].substring(0, 3);
-			String lov = effectIndicators[3].substring(0, 3);
-			String fea = effectIndicators[4].substring(0, 3);
-			String ast = effectIndicators[5].substring(0, 3);
-			String dis = effectIndicators[6].substring(0, 3);
-			if (indicator.equals(hap)) {
-				globalElements.getMeter("happiness").addValue(change);
-			} else if (indicator.equals(sad)) {
-				globalElements.getMeter("sadness").addValue(change);
-			} else if (indicator.equals(ang)) {
-				globalElements.getMeter("anger").addValue(change);
-			} else if (indicator.equals(lov)) {
-				globalElements.getMeter("love").addValue(change);
-			} else if (indicator.equals(fea)) {
-				globalElements.getMeter("fear").addValue(change);
-			} else if (indicator.equals(ast)) {
-				globalElements.getMeter("astonishment").addValue(change);
-			} else if (indicator.equals(dis)) {
-				globalElements.getMeter("disgust").addValue(change);
-			}
-		}
 	}
 	public Color updateBackgroundColor(Color currentBGColor, Color desired) {
 		Color current = new Color(currentBGColor);

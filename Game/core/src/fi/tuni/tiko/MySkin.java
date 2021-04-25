@@ -10,27 +10,24 @@ import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
+import static fi.tuni.tiko.Utility.colorMax255;
+
 public class MySkin extends Skin {
 
-    private Color secondaryColor = MainGame.colorMax255(234, 158, 128);
+    private Color secondaryColor = colorMax255(234, 158, 128);
 
     public MySkin() {
-        createSkin();
+        addTextures();
+        addFonts();
+        createStyles();
     }
 
-    public String getPath(String texture) {
-        String pixelDensity = getPixelDensity();
-        String folderToUse = pixelDensity + "/";
-        String suffix = pixelDensity + ".png";
-        return folderToUse + texture + suffix;
-    }
 
-    public void createSkin() {
+    public void addTextures() {
         Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.WHITE);
         pixmap.fill();
 
-        /* TEXTURES */
         add("white", new Texture(pixmap));
         add("answerBox", new Texture(getPath("box")));
         add("inactiveBox", new Texture(getPath("box3")));
@@ -82,8 +79,8 @@ public class MySkin extends Skin {
         add("joy_body", new Texture(getPath("joy"+modification)));
         add("love_body", new Texture(getPath("love"+modification)));
         add("sadness_body", new Texture(getPath("sadness"+modification)));
-
-        /* FONTS */
+    }
+    public void addFonts() {
         add("answerBoxFont", createFont("lato", 14.2f, Color.BLACK));
         add("questionBoxFont", createFont("lato", 19f ,Color.BLACK));
         add("meterCaptionFont", createFont("latoItalic", 14.2f, Color.BLACK));
@@ -91,7 +88,8 @@ public class MySkin extends Skin {
         add("menuFont", createFont("latoLight", 26,  Color.BLACK));
         add("dayFont", createFont("latoMedium", 19f, Color.WHITE));
         add("emotionScoreFont", createFont("latoMediumItalic", 14.2f, Color.BLACK));
-
+    }
+    public void createStyles() {
         Label.LabelStyle menuText = new Label.LabelStyle();
         menuText.background = newDrawable("white", Color.CLEAR);
         menuText.font = getFont("menuFont");
@@ -194,6 +192,12 @@ public class MySkin extends Skin {
         add("happiness", happinessButtonStyle);
         add("love", loveButtonStyle);
         add("sadness", sadnessButtonStyle);
+    }
+    public String getPath(String texture) {
+        String pixelDensity = getPixelDensity();
+        String folderToUse = pixelDensity + "/";
+        String suffix = pixelDensity + ".png";
+        return folderToUse + texture + suffix;
     }
 
     /** getPixelDensity method is used to show correct images

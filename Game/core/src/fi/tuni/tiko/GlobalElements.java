@@ -13,17 +13,19 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.moveTo;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.run;
 import static com.badlogic.gdx.scenes.scene2d.actions.Actions.sequence;
 import static fi.tuni.tiko.MainGame.audioPlayer;
-import static fi.tuni.tiko.MainGame.colorMax255;
 import static fi.tuni.tiko.MainGame.currentScreenID;
 import static fi.tuni.tiko.MainGame.darkBackgroundColor;
 import static fi.tuni.tiko.MainGame.desiredBackgroundColor;
 import static fi.tuni.tiko.MainGame.lightBackgroundColor;
+import static fi.tuni.tiko.MainGame.mainMenuScreenID;
 import static fi.tuni.tiko.MainGame.margin;
 import static fi.tuni.tiko.MainGame.meterHeight;
-import static fi.tuni.tiko.MainGame.saveSettings;
+import static fi.tuni.tiko.SaveHandler.*;
 import static fi.tuni.tiko.MainGame.skin;
 import static fi.tuni.tiko.MainGame.windowHeight;
 import static fi.tuni.tiko.MainGame.windowWidth;
+import static fi.tuni.tiko.Utility.colorMax255;
+import static fi.tuni.tiko.Utility.getLocalization;
 
 
 public class GlobalElements extends Group {
@@ -55,6 +57,7 @@ public class GlobalElements extends Group {
     private Button exitButton;
     private Button settingsButton;
     private Button feelingMeterButton;
+    private String [] emotions;
 
     // How long it takes to switch between Game and FeelingMeter mode:
     public final float FADE_TIME = 0.2f;
@@ -62,6 +65,18 @@ public class GlobalElements extends Group {
     public GlobalElements() {
         buttonHeight =  windowHeight * 0.07f;
         bigButtonHeight = buttonHeight * 2f;
+
+        emotions = new String[] {
+                getLocalization("happiness").toUpperCase(),
+                getLocalization("sadness").toUpperCase(),
+                getLocalization("anger").toUpperCase(),
+                getLocalization("love").toUpperCase(),
+                getLocalization("fear").toUpperCase(),
+                getLocalization("astonishment").toUpperCase(),
+                getLocalization("disgust").toUpperCase()};
+        if (getLocalization("language").equals("fi")) {
+            emotions[5] = "HÄMMENNYS";
+        }
 
         meters = createMeters();
         settings = createSettings();
@@ -140,6 +155,62 @@ public class GlobalElements extends Group {
         result.addAction(Actions.fadeOut(0));
 
         return result;
+    }
+    public void updateMeters(ArrayList<String> effects) {
+        if (effects.size() > 0) {
+            audioPlayer.playSwipeSound();
+        }
+        for (String effect: effects) {
+            String indicator = "" + effect.charAt(0) + effect.charAt(1) + effect.charAt(2);
+            StringBuilder value = new StringBuilder();
+            for (int i = 3; i < effect.length(); i++) {
+                value.append(effect.charAt(i));
+            }
+            int change = Integer.parseInt(value.toString());
+            String hap = emotions[0].substring(0, 3);
+            String sad = emotions[1].substring(0, 3);
+            String ang = emotions[2].substring(0, 3);
+            String lov = emotions[3].substring(0, 3);
+            String fea = emotions[4].substring(0, 3);
+            String ast = emotions[5].substring(0, 3);
+            String dis = emotions[6].substring(0, 3);
+            if (indicator.equals(hap)) {
+                happiness.addValue(change);
+            } else if (indicator.equals(sad)) {
+                sadness.addValue(change);
+            } else if (indicator.equals(ang)) {
+                anger.addValue(change);
+            } else if (indicator.equals(lov)) {
+                love.addValue(change);
+            } else if (indicator.equals(fea)) {
+                fear.addValue(change);
+            } else if (indicator.equals(ast)) {
+                astonishment.addValue(change);
+            } else if (indicator.equals(dis)) {
+                disgust.addValue(change);
+            }
+        }
+    }
+    public String getStrongestEmotion() {
+        String result = "happiness";
+        float largestValue = Math.max(Math.max(Math.max(happiness.getValue(), disgust.getValue()), Math.max(anger.getValue(), fear.getValue())), Math.max(Math.max(sadness.getValue(), astonishment.getValue()), love.getValue()));
+        if (sadness.getValue() == largestValue) {
+            result = "sadness";
+        } else if (anger.getValue() == largestValue) {
+            result = "anger";
+        } else if (love.getValue() == largestValue) {
+            result = "love";
+        } else if (disgust.getValue() == largestValue) {
+            result = "disgust";
+        } else if (fear.getValue() == largestValue) {
+            result = "fear";
+        } else if (astonishment.getValue() == largestValue) {
+            result = "astonishment";
+        }
+        return result;
+    }
+    public String [] getEmotions() {
+        return emotions;
     }
     public Button createFeelingMeterButton() {
         final Button button = new Button(skin, "happiness");
@@ -221,7 +292,7 @@ public class GlobalElements extends Group {
         exitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                currentScreenID = 999;
+                currentScreenID = mainMenuScreenID;
                 settingsButton.setChecked(false);
                 hideSettings();
                 desiredBackgroundColor = lightBackgroundColor;
