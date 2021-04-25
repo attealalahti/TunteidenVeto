@@ -117,6 +117,7 @@ public class AudioPlayer {
 
     public void dispose() {
         backgroundMusic.dispose();
+        swipeSound.dispose();
     }
 
 }

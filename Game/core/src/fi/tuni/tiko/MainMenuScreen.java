@@ -34,7 +34,7 @@ public class MainMenuScreen extends Screen {
             answerBoxes.addActor(tempAnswerBox);
             tempAnswerBox.setBackground("menuBox");
             tempAnswerBox.setTextStyle("menuBoxText");
-            tempAnswerBox.setConfirmation(false);
+            tempAnswerBox.setConfirmationNeed(false);
             tempAnswerBox.addRail();
             currentY += margin + getBoxHeight();
         }

@@ -159,11 +159,11 @@ public class AnswerBoxMovable extends AnswerBox {
     public void addRail() {
         Image rail = new Image(skin, "rail");
         rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
-        getParent().getParent().addActor(rail);
+        getStage().addActor(rail);
         rail.toBack();
     }
 
-    public void setConfirmation(boolean value) {
+    public void setConfirmationNeed(boolean value) {
         needsConfirmation = value;
     }
 }
