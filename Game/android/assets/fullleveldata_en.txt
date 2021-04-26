@@ -98,7 +98,7 @@
 28 You send an encouraging message to the girl with some tips for continuing the game. You will feel warm: the girl will definitely feel good!
 29 HAPPINESS +10
 ---
-29 The next lesson is physics. The teacher walks around the class and stops at you and asks for a homework answer. Your heart is beating faster, your fingers feek cool, and your cheeks heat up.
+29 The next lesson is physics. The teacher walks around the class and stops at you and asks for a homework answer. Your heart is beating faster, your fingers feel cool, and your cheeks heat up.
 30 You try to answer. It might be correct, maybe?
 31 You are not going to embarrass yourself in public. You say you don't know.
 ---
