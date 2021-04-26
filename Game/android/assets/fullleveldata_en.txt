@@ -956,3 +956,8 @@
 412 It looks like you're not feeling almost any astonishment and you mind is clear. Remember, that also astonishment has important mission: if you're feeling too much clarity and certainity, it may be hard to remember how important it is to consider all your possibilities. It's crucial to reconsider different points of view and ways of acting. When there's a reaonable level of astonishment, you're especially open for adjusting your habits.
 0 ASTONISHMENT +30
 ---
+413 Fear seems to be overwhelming you - it's a healthy and necessary reaction in many situation, but prolonged and too strong fear can make focusing, relaxing and enjoying normal things very difficult. There are different ways people can ease their fear, but for example writing or talking about fear, or focusing on strengths and possibilites the feared thing causes us, may help handling fear.
+0 FEAR -30
+---
+414 You don't seem afraid at all. Too strong fear may be very distracting, but reasonable amount of fear is very importat - it protects us from dangerous things, forces us to think things through before doing them and consider the risks. If you're total stranger to fear, you may easily become overimpulsive and reckless.
+0 FEAR +30

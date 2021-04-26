@@ -962,3 +962,8 @@
 412 Elämäsi näyttää olevan selvillä vesillä, eikä hämmennyksen tunteita juuri ole. Muista, että hämmennykselläkin on tärkeä tehtävä hoidettavanaan: liian varmana ja tilanteen ollessa selkeä saattaa unohtua, että eri näkökulmat ja toimintamallit ovat tärkeitä ja kokeilemisen arvoisia. Sopivan hämmennyksen keskellä ihminen on erityisen avoin kehittymään ja oppimaan uutta.
 0 HÄMMENNYS +30
 ---
+413 Pelko tuntuu olevan tällä hetkellä sinulle ylivoimaista: pelko on terve ja tarpeellinen reaktio monissa tilanteissa, mutta pitkäkestoinen ja liiallinen pelko tekee keskittymisestä, rentoutumisesta ja normaalista asioita nauttimisesta vaikeaa. Eri ihmisillä pelkoa helpottavat eri asiat, mutta esimerkiksi pelon kohteesta kirjoittaminen tai pelon sijaan vahvuuksiin ja mahdollisuuksiin keskittyminen voi helpottaa pelon tunteita.
+0 PELKO -30
+---
+414 Et tunnu pelkäävän mitään. Pelko voi toki liiallisena olla hyvin häiritsevää, mutta kohtuullisissa määrin pelko on hyvin tärkeä tunne, joka suojelee meitä vaarallisilta tilanteita, pakottaa harkitsemaan asioita ja niiden seurauksia sekä punnitsemaan riskinottoa. Mikäli pelon tunteet ovat täysin vieraita, ihminen on helposti yli-impulsiivinen ja holtiton.
+0 PELKO +30
