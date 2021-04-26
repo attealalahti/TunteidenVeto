@@ -967,3 +967,4 @@
 ---
 414 Et tunnu pelkäävän mitään. Pelko voi toki liiallisena olla hyvin häiritsevää, mutta kohtuullisissa määrin pelko on hyvin tärkeä tunne, joka suojelee meitä vaarallisilta tilanteita, pakottaa harkitsemaan asioita ja niiden seurauksia sekä punnitsemaan riskinottoa. Mikäli pelon tunteet ovat täysin vieraita, ihminen on helposti yli-impulsiivinen ja holtiton.
 0 PELKO +30
+---

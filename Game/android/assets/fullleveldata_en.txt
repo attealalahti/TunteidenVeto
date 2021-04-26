@@ -252,16 +252,16 @@
 60 HAPPINESS +5
 ---
 60 You get home from school and all you want to do is relax and play one of your favourite video games. You double-click the icon and a pop-up tells about mandatory update.
-68 Stupid game, why now!
-69 No, why is it always like this!
+268 Stupid game, why now!
+269 No, why is it always like this!
 ---
-68 Your cheecks feel hot, hands clench and you can feel your blood boiling. Now you are really frustrated!
-70 ANGER +10
+268 Your cheecks feel hot, hands clench and you can feel your blood boiling. Now you are really frustrated!
+270 ANGER +10
 ---
-69 You feel like sinking inside your bed. You dig deeper in your sweater and feel yourself almost getting teary. The update is going to take all night!
-70 SADNESS +10
+269 You feel like sinking inside your bed. You dig deeper in your sweater and feel yourself almost getting teary. The update is going to take all night!
+270 SADNESS +10
 ---
-70 All you can do is wait: the computer says the update will probably take about two hours. How will you spend your time?
+270 All you can do is wait: the computer says the update will probably take about two hours. How will you spend your time?
 71 Help your family with chores.
 72 Study for exam.
 73 Lay in bed and scroll through your social media.
@@ -353,6 +353,12 @@
 94 While you're eating school lunch, one of your friends catches your attention from across the cafeteria. They pretend to throw a meatball to the cafeteria wall. How do you react?
 95 Facepalm.
 96 Thumbs up!
+---
+95 The friend grimaces at you. Later a message calling you a spoilsport is sent to your chat room.
+97 HAPPINESS -5
+---
+96 Without hesitation the the friend picks up a meatball dripping with sauce and throws it to the wall. What on earth? You don’t know what to think about the situation. Noone does that, right?
+97 ASTONISHMENT +10, DISGUST +10
 ---
 95 Your friend seems bummed. A while later they send a message to your group chat saying you're a killjoy.
 97 HAPPINESS -5
@@ -961,3 +967,4 @@
 ---
 414 You don't seem afraid at all. Too strong fear may be very distracting, but reasonable amount of fear is very importat - it protects us from dangerous things, forces us to think things through before doing them and consider the risks. If you're total stranger to fear, you may easily become overimpulsive and reckless.
 0 FEAR +30
+---

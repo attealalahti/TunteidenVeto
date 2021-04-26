@@ -139,7 +139,7 @@ public class MainGame extends ApplicationAdapter {
 		for (int i = 0; i < 6; i++) {
 			if (globalElements.getMeter(emotions[i]).getValue() == 100) {
 				result = link;
-			} else if (globalElements.getMeter(emotions[i]).getValue() == 0) {
+			} else if (globalElements.getMeter(emotions[i]).getValue() == 0 && i != 2) {
 				result = link + 1;
 			}
 			link += 2;
