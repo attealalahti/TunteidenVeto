@@ -12,17 +12,27 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 import static fi.tuni.tiko.Utility.colorMax255;
 
+/** The MySkin class holds all textures, fonts and UI styles for the game.
+ *
+ * The class is used to create a static object that everything in the game refers to when something visual is needed.
+ */
 public class MySkin extends Skin {
 
     private Color secondaryColor = colorMax255(234, 158, 128);
 
+    /** Creates the skin.
+     * Adds textures, fonts and UI styles.
+     */
     public MySkin() {
         addTextures();
         addFonts();
         createStyles();
     }
 
-
+    /** Adds textures to the skin.
+     *
+     * Gives the textures names that are used when getting them from the skin.
+     */
     public void addTextures() {
         Pixmap pixmap = new Pixmap(1,1, Pixmap.Format.RGBA8888);
         pixmap.setColor(Color.WHITE);
@@ -80,6 +90,11 @@ public class MySkin extends Skin {
         add("love_body", new Texture(getPath("love"+modification)));
         add("sadness_body", new Texture(getPath("sadness"+modification)));
     }
+
+    /** Adds fonts to the skin.
+     *
+     * Gives the fonts names that are used when getting them from the skin.
+     */
     public void addFonts() {
         add("answerBoxFont", createFont("lato", 14.2f, Color.BLACK));
         add("questionBoxFont", createFont("lato", 19f ,Color.BLACK));
@@ -89,6 +104,11 @@ public class MySkin extends Skin {
         add("dayFont", createFont("latoMedium", 19f, Color.WHITE));
         add("emotionScoreFont", createFont("latoMediumItalic", 14.2f, Color.BLACK));
     }
+
+    /** Adds textures to the skin.
+     *
+     * Gives the textures names that are used when getting them from the skin.
+     */
     public void createStyles() {
         Label.LabelStyle menuText = new Label.LabelStyle();
         menuText.background = newDrawable("white", Color.CLEAR);

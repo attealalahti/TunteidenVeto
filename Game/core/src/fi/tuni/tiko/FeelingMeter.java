@@ -22,6 +22,7 @@ import static fi.tuni.tiko.Utility.getLocalization;
  * FeelingMeter class keeps track of emotional states in the story.
  * This class has methods to adjust the different emotional states.
  * Objects can be made out of this class for the different required meters.
+ * The class consists of the meter and an image with a caption of the emotion it represents.
  *
  * @author Mika Kivennenä
  */
@@ -84,7 +85,7 @@ public class FeelingMeter extends Group {
      * @param width used to set meter width
      * @param height used to meter height
      * @param col is the color variable used to set color
-     * @return
+     * @return colored drawable
      */
     public Drawable getColoredDrawable(int width, int height, Color col) {
         Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
@@ -104,7 +105,7 @@ public class FeelingMeter extends Group {
      * If you give a positive number it increases.
      * Negative number decreases the value.
      *
-     * @param valueToAdd
+     * @param valueToAdd value to add to the meter
      */
     public void addValue(float valueToAdd) {
         float tempFloat = meter.getValue();

@@ -10,25 +10,29 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.Utility.getLocalization;
 
 /** Screen is an abstract class that is used to create different screen layouts for the game.
- * Every screen has a screen ID and some choices that can move the game to a different screen.
+ *
+ * Every screen has a screen ID, some choices that can move the game to a different screen and a group that houses all it's elements.
+ *
  * @author Atte Ala-Lahti
  */
 abstract public class Screen extends Stage {
 
     private int screenID;
-    private ArrayList<String> temporaryList;
     private ArrayList<Integer> screenLinks;
+    private ArrayList<String> temporaryList;
     private Group elements = new Group();
 
     private final float boxWidth = windowWidth * 0.9f;
     private final float boxHeight = windowHeight * 0.1f;
     private final float boxX = (windowWidth - boxWidth) * 0.5f;
 
-    /** Creates a new screen.
+    /** Creates a new screen. The basic constructor.
+     *
+     * All parameters need to be specified.
      *
      * @param screenID a unique integer used in MainGame to determine which screen to show
      * @param choices text for each of the choices
-     * @param screenLinks screen IDs for screens the choices lead to. Must be the same size as choices
+     * @param screenLinks list of screen IDs for screens the choices lead to. Must be the same size as choices
      */
     public Screen (int screenID, ArrayList<String> choices, ArrayList<Integer> screenLinks) {
         this.screenID = screenID;
@@ -39,13 +43,25 @@ abstract public class Screen extends Stage {
             throw new IllegalArgumentException("Choice and screen link amounts don't match.");
         }
     }
+
+    /** Creates a screen with the specification of the main menu.
+     *
+     * Used in the construction of the MainMenuScreen class.
+     */
     public Screen() {
         this.screenID = mainMenuScreenID;
-        this.temporaryList = createAnswers();
-        this.screenLinks = createScreenLinks();
+        this.temporaryList = createMainMenuAnswers();
+        this.screenLinks = createMainMenuScreenLinks();
         addActor(elements);
     }
-    public ArrayList<String> createAnswers() {
+
+    /** Returns the choices of the main menu.
+     *
+     * Used for constructing the main menu.
+     *
+     * @return a list of choices on the main menu
+     */
+    public ArrayList<String> createMainMenuAnswers() {
         ArrayList<String> temporaryList = new ArrayList<>();
         temporaryList.add(getLocalization("exitGame").toUpperCase());
         temporaryList.add(getLocalization("settings").toUpperCase());
@@ -53,7 +69,15 @@ abstract public class Screen extends Stage {
         temporaryList.add(getLocalization("newGame").toUpperCase());
         return temporaryList;
     }
-    public ArrayList<Integer> createScreenLinks() {
+
+    /** Returns the IDs for the choices for the main menu.
+     *
+     * The MainMenuScreen class will determine what to do based on these numbers.
+     * Used for constructing the main menu.
+     *
+     * @return a list of IDs for the main menu choices
+     */
+    public ArrayList<Integer> createMainMenuScreenLinks() {
         ArrayList<Integer> menuScreenLinks = new ArrayList<Integer>();
         menuScreenLinks.add(4);
         menuScreenLinks.add(3);
@@ -62,17 +86,31 @@ abstract public class Screen extends Stage {
         return menuScreenLinks;
     }
 
-
+    /** Returns the screen's identifying number.
+     *
+     * @return screenID
+     */
     public int getScreenID() {
         return screenID;
     }
+
+    /** Returns the text for each of the possible choices.
+     *
+     * @return list of choices
+     */
     public ArrayList<String> getChoices() {
         return temporaryList;
     }
+
+    /** Returns the IDs of screens the choices on this screen lead.
+     *
+     * @return list of screen IDs
+     */
     public ArrayList<Integer> getScreenLinks() {
         return screenLinks;
     }
-    /** Called by an AnswerBox when it is selected and confirmed.
+
+    /** Called by an AnswerBoxMovable when it is selected and confirmed.
      *
      * @param screenLink The ID number of the next screen.
      */
@@ -80,48 +118,34 @@ abstract public class Screen extends Stage {
         MainGame.currentScreenID = screenLink;
     }
 
-    /** This method creates an array of screens containing longer story texts.
+    /** Returns a group that should contain all actor elements specific to this screen.
      *
-     * This method takes in the story text, divides it into different screens for easier readibility.
-     * @param lengthOfMaxPerScreen is the float given to determine the length of the story text.
-     * @param storyText containing the story text that will be split into separate parts
-     * @return an array of strings
-     * @author Mika Kivennenä
-     */
-    public String[] createStoryScreens(float lengthOfMaxPerScreen, String storyText) {
-        int amountOfScreens = (int)(Math.ceil(storyText.length() / lengthOfMaxPerScreen));
-        int characterIndex = 0;
-        int screenIndex = 0;
-        String[] stringArr = new String[amountOfScreens];
-
-        // This loop runs until the current character is the last character of the text.
-        while(characterIndex < storyText.length()) {
-            String tempString = "";
-            // Saves the story text one character at a time into a temporary string that is later added to the story array.
-            for(int i = 0; i<lengthOfMaxPerScreen; i++) {
-                tempString += storyText.charAt(characterIndex);
-                characterIndex++;
-            }
-            // Adds the tempString into the string array of the current screen index. Increases screen index by one.
-            stringArr[screenIndex] = tempString;
-            screenIndex++;
-        }
-        return stringArr;
-    }
-
-    /**
-     *
-     * @return a group that should contain all visual elements of the screen
+     * @return a group of all elements of the screen
      */
     public Group getElements() {
         return elements;
     }
+
+    /** Returns a default width that the boxes on the screen can use.
+     *
+     * @return width of the boxes on the screen
+     */
     public float getBoxWidth() {
         return boxWidth;
     }
+
+    /** Returns a default height that the answer boxes on the screen can use.
+     *
+     * @return height of the answer boxes on the screen
+     */
     public float getBoxHeight() {
         return boxHeight;
     }
+
+    /** Returns an x position that will center an object with the default box width on the screen.
+     *
+     * @return centered x position for objects of default box width
+     */
     public float getBoxX() {
         return boxX;
     }

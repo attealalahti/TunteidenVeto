@@ -7,10 +7,9 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.utils.I18NBundle;
 
 import java.util.ArrayList;
-import java.util.Locale;
+
 import static fi.tuni.tiko.SaveHandler.*;
 import static fi.tuni.tiko.Utility.colorMax255;
 import static fi.tuni.tiko.Utility.getLocalization;
@@ -116,7 +115,7 @@ public class MainGame extends ApplicationAdapter {
 							case 240: weekDay = getLocalization("sunday");
 								break;
 						}
-						((ChoiceScreen) currentScreen).addGlobalElements(globalElements, weekDay);
+						((ChoiceScreen) currentScreen).activate(globalElements, weekDay);
 						if (lastFrameCurrentScreenID != mainMenuScreenID) {
 							globalElements.updateMeters(((ChoiceScreen) currentScreen).getEffects());
 						}
