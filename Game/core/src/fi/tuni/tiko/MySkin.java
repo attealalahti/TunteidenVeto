@@ -15,6 +15,8 @@ import static fi.tuni.tiko.Utility.colorMax255;
 /** The MySkin class holds all textures, fonts and UI styles for the game.
  *
  * The class is used to create a static object that everything in the game refers to when something visual is needed.
+ *
+ * @author Mika Kivennenä
  */
 public class MySkin extends Skin {
 
@@ -105,9 +107,9 @@ public class MySkin extends Skin {
         add("emotionScoreFont", createFont("latoMediumItalic", 14.2f, Color.BLACK));
     }
 
-    /** Adds textures to the skin.
+    /** Adds text and button styles to the skin.
      *
-     * Gives the textures names that are used when getting them from the skin.
+     * Gives the styles names that are used when getting them from the skin.
      */
     public void createStyles() {
         Label.LabelStyle menuText = new Label.LabelStyle();
@@ -213,6 +215,14 @@ public class MySkin extends Skin {
         add("love", loveButtonStyle);
         add("sadness", sadnessButtonStyle);
     }
+
+    /** Returns the path to a texture file based on a String
+     *
+     * Adds the appropriate pixel density folder and a .png suffix to the String.
+     *
+     * @param texture which the path is going to go to
+     * @return path to the texture file
+     */
     public String getPath(String texture) {
         String pixelDensity = getPixelDensity();
         String folderToUse = pixelDensity + "/";
@@ -220,13 +230,12 @@ public class MySkin extends Skin {
         return folderToUse + texture + suffix;
     }
 
-    /** getPixelDensity method is used to show correct images
+    /** Returns the pixel density of the screen.
      *
      * This method uses getDensity() method to determine screen pixel density
-     * and sets the correct folder to which the images in the project are being used from.
+     * and returns the correct folder to which the images in the project are being used from.
      *
      * @return returns a string that is used to choose right folder for images
-     * @author Mika Kivennenä
      */
     public String getPixelDensity() {
         float density = Gdx.graphics.getDensity();
@@ -252,8 +261,11 @@ public class MySkin extends Skin {
     /** createFont creates and returns a BitmapFont to be used
      *
      * This method uses FreeTypeFont to create a BitmapFont from an existing font file in the project font folder.
+     *
+     * @param nameOfFont name of the font file
+     * @param size what size the font will be
+     * @param color what color the font will be
      * @return returns a BitmapFont
-     * @author Mika Kivennenä
      */
     public BitmapFont createFont(String nameOfFont, float size, Color color) {
         FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("font/"+nameOfFont+".ttf"));

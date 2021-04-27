@@ -22,9 +22,9 @@ abstract public class Screen extends Stage {
     private ArrayList<String> temporaryList;
     private Group elements = new Group();
 
-    private final float boxWidth = windowWidth * 0.9f;
-    private final float boxHeight = windowHeight * 0.1f;
-    private final float boxX = (windowWidth - boxWidth) * 0.5f;
+    private final float BOX_WIDTH = windowWidth * 0.9f;
+    private final float BOX_HEIGHT = windowHeight * 0.1f;
+    private final float BOX_X = (windowWidth - BOX_WIDTH) * 0.5f;
 
     /** Creates a new screen. The basic constructor.
      *
@@ -131,7 +131,7 @@ abstract public class Screen extends Stage {
      * @return width of the boxes on the screen
      */
     public float getBoxWidth() {
-        return boxWidth;
+        return BOX_WIDTH;
     }
 
     /** Returns a default height that the answer boxes on the screen can use.
@@ -139,7 +139,7 @@ abstract public class Screen extends Stage {
      * @return height of the answer boxes on the screen
      */
     public float getBoxHeight() {
-        return boxHeight;
+        return BOX_HEIGHT;
     }
 
     /** Returns an x position that will center an object with the default box width on the screen.
@@ -147,6 +147,6 @@ abstract public class Screen extends Stage {
      * @return centered x position for objects of default box width
      */
     public float getBoxX() {
-        return boxX;
+        return BOX_X;
     }
 }

@@ -27,7 +27,12 @@ import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.Utility.colorMax255;
 import static fi.tuni.tiko.Utility.getLocalization;
 
-
+/** The GlobalElements group hold all elements needed in all screens of the game.
+ *
+ * The elements are added to each screen as they become active.
+ *
+ * @author Atte Ala-Lahti
+ */
 public class GlobalElements extends Group {
     private FeelingMeter happiness;
     private FeelingMeter sadness;
@@ -62,6 +67,12 @@ public class GlobalElements extends Group {
     // How long it takes to switch between Game and FeelingMeter mode:
     public final float FADE_TIME = 0.2f;
 
+    /** Creates all global elements.
+     *
+     * Indicators for different emotions are created. These are used when reading from a file.
+     * Astonishment is specified on it's own because the properties file doesn't know Ä.
+     * Initially hidden elements are added to a list and made invisible briefly at first as the game loads.
+     */
     public GlobalElements() {
         buttonHeight =  windowHeight * 0.07f;
         bigButtonHeight = buttonHeight * 2f;
@@ -93,6 +104,11 @@ public class GlobalElements extends Group {
 
         hideBackgroundElementsWhileLoading();
     }
+
+    /** Elements in the initially hidden elements list are made invisible and returned to visible 0.1 seconds later.
+     *
+     * This is to avoid blinking over the other elements for a few frames when first loading.
+     */
     public void hideBackgroundElementsWhileLoading() {
         for (final Actor a: initiallyHiddenElements) {
             a.setVisible(false);
@@ -104,28 +120,63 @@ public class GlobalElements extends Group {
             })));
         }
     }
+
+    /** Returns all of the feeling meters as a group.
+     *
+     * @return group of feeling meters
+     */
     public Group getMeters() {
         return meters;
     }
+
+    /** Returns all of the settings buttons as a group.
+     *
+     * @return group of settings buttons
+     */
     public Group getSettings() {
         return settings;
     }
+
+    /** Returns the button to show settings.
+     *
+     * @return button to show settings
+     */
     public Button getSettingsButton() {
         return settingsButton;
     }
+
+    /** Returns the button to show feeling meters.
+     *
+     * @return button to show feeling meters
+     */
     public Button getFeelingMeterButton() {
         return feelingMeterButton;
     }
+
+    /** Returns the button controlling music.
+     *
+     * @return button controlling music
+     */
     public Button getMusicButton() {
         return musicButton;
     }
+
+    /** Returns the button controlling sounds.
+     *
+     * @return button controlling sounds.
+     */
     public Button getSoundButton() {
         return soundButton;
     }
 
+    /** Creates a feeling meter for each of the seven emotions.
+     *
+     * The meters are hidden initially.
+     *
+     * @return all meters in a group
+     */
     public Group createMeters() {
         Group result = new Group();
-        // Create FeelingMeters
         float meterMargin = margin + meterHeight;
         float meterLocationHeight = meterMargin * 7;
         float currentY = windowHeight - meterLocationHeight;
@@ -156,9 +207,16 @@ public class GlobalElements extends Group {
 
         return result;
     }
+
+    /** Updates the feeling meters based on the effects given.
+     *
+     * The effects come from a screen and have three first letters of the emotion in question as indicators followed by how much that emotion should change.
+     *
+     * @param effects effects on feeling meters
+     */
     public void updateMeters(ArrayList<String> effects) {
         if (effects.size() > 0) {
-            audioPlayer.playSwipeSound();
+            audioPlayer.playEmotionSound();
         }
         for (String effect: effects) {
             String indicator = "" + effect.charAt(0) + effect.charAt(1) + effect.charAt(2);
@@ -191,6 +249,11 @@ public class GlobalElements extends Group {
             }
         }
     }
+
+    /** Returns the emotion with the most full meter.
+     *
+     * @return emotion with the most full meter
+     */
     public String getStrongestEmotion() {
         String result = "happiness";
         float largestValue = Math.max(Math.max(Math.max(happiness.getValue(), disgust.getValue()), Math.max(anger.getValue(), fear.getValue())), Math.max(Math.max(sadness.getValue(), astonishment.getValue()), love.getValue()));
@@ -209,9 +272,21 @@ public class GlobalElements extends Group {
         }
         return result;
     }
+
+    /** Returns the list of all emotions.
+     *
+     * @return list of all emotions in English
+     */
     public String [] getEmotions() {
         return emotions;
     }
+
+    /** Creates the button to show the feeling meters.
+     *
+     * Turns off if the settings button is pressed.
+     *
+     * @return button to show feeling meters
+     */
     public Button createFeelingMeterButton() {
         final Button button = new Button(skin, "happiness");
         button.setBounds(((float) windowWidth / 3f) - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
@@ -235,6 +310,13 @@ public class GlobalElements extends Group {
         });
         return button;
     }
+
+    /** Creates the button to show settings.
+     *
+     * Turns off if the feeling meter button is pressed.
+     *
+     * @return button to show settings
+     */
     public Button createSettingsButton() {
         final Button button = new Button(skin, "settings");
         button.setBounds(((float) windowWidth / 3f) * 2f - buttonHeight * 0.5f, margin, buttonHeight, buttonHeight);
@@ -258,6 +340,11 @@ public class GlobalElements extends Group {
         });
         return button;
     }
+
+    /** Creates the buttons that control music and sound.
+     *
+     * @return group of buttons that control music and sound
+     */
     public Group createSettings() {
         Group result = new Group();
         // Create buttons for settings
@@ -301,6 +388,11 @@ public class GlobalElements extends Group {
         return result;
     }
 
+    /** Returns a specific feeling meter based on the name given.
+     *
+     * @param emotion name of the meter
+     * @return the meter
+     */
     public FeelingMeter getMeter(String emotion) {
         FeelingMeter tempMeter = new FeelingMeter(5f, Color.BLACK, "sadness");
         switch(emotion) {
@@ -315,25 +407,50 @@ public class GlobalElements extends Group {
         return tempMeter;
     }
 
+    /** Fades out all meters.
+     *
+     * Also makes them the back most item of their screen.
+     */
     public void hideMeters() {
         meters.addAction(Actions.fadeOut(FADE_TIME));
         meters.toBack();
     }
+
+    /** Fades in all meters.
+     *
+     * Also makes them the fore most item of their screen.
+     */
     public void showMeters() {
         meters.addAction(Actions.fadeIn(FADE_TIME));
         meters.toFront();
         desiredBackgroundColor = darkBackgroundColor;
     }
+    /** Fades out all settings.
+     *
+     * Also makes them the back most item of their screen.
+     */
     public void showSettings() {
         settings.addAction(Actions.fadeIn(FADE_TIME));
         settings.toFront();
         desiredBackgroundColor = darkBackgroundColor;
     }
+
+    /** Fades in all settings.
+     *
+     * Also makes them the fore most item of their screen.
+     */
     public void hideSettings() {
         settings.addAction(Actions.fadeOut(FADE_TIME));
         settings.toBack();
     }
 
+    /** Fades in all elements from the given screen's elements group.
+     *
+     * Unpauses the answers on the screen and makes the background the light variant.
+     * Also makes them the fore most item of their screen.
+     *
+     * @param thisScreen the screen to show the elements in
+     */
     public void showScreenElements(Screen thisScreen) {
         thisScreen.getElements().addAction(Actions.fadeIn(FADE_TIME));
         if (thisScreen.getClass() == ChoiceScreen.class) {
@@ -343,6 +460,13 @@ public class GlobalElements extends Group {
         desiredBackgroundColor = lightBackgroundColor;
     }
 
+    /** Fades out all elements from the given screen's elements group.
+     *
+     * Pauses the answers on the screen.
+     * Also makes them the back most item of their screen.
+     *
+     * @param thisScreen the screen to hide the elements in
+     */
     public void hideScreenElements(Screen thisScreen) {
         thisScreen.getElements().addAction(Actions.fadeOut(FADE_TIME));
         if (thisScreen.getClass() == ChoiceScreen.class) {

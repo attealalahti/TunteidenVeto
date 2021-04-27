@@ -10,15 +10,13 @@ import com.badlogic.gdx.audio.Sound;
  */
 public class AudioPlayer {
     private Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("audio/backgroundMusic.mp3"));
-    private Sound swipeSound = Gdx.audio.newSound(Gdx.files.internal("audio/dalek_gun.mp3"));
+    private Sound emotionSound = Gdx.audio.newSound(Gdx.files.internal("audio/piano.mp3"));
     private boolean canPlayMusic = true;
     private boolean canPlaySound = true;
 
-    /** playMenuMusic method play the menu music if it is playable
+    /** playMenuMusic method plays the menu music if it is playable
      *
      * if the canPlayMusic boolean is set to true, the music user wants to play is played.
-     *
-     * @author Mika Kivennenä
      */
     public void playMenuMusic() {
         if(canPlayMusic) {
@@ -27,6 +25,13 @@ public class AudioPlayer {
         }
     }
 
+    /** Sets the music's on state.
+     *
+     * If set to on, will start playing music.
+     * If set to off, will pause the music.
+     *
+     * @param onState true: on, false: off
+     */
     public void music(boolean onState) {
         canPlayMusic = onState;
         if (onState) {
@@ -35,43 +40,20 @@ public class AudioPlayer {
             backgroundMusic.pause();
         }
     }
+
+    /** Sets the sound's on state.
+     *
+     * @param onState true: on, false: off
+     */
     public void sound(boolean onState) {
         canPlaySound = onState;
     }
 
-    /** playMusic method plays the music if it is allowed
-     *
-     * User gives Music variable as a parameter and
-     *
-     * @author Mika Kivennenä
-     */
-    public void playMusic(Music songToPlay) {
-        if(canPlayMusic) {
-            songToPlay.play();
-        }
-    }
-
     /** playSwipeSound method plays the Swipe sound if it is allowed
-     *
-     *
-     * @author Mika Kivennenä
      */
-    public void playSwipeSound() {
+    public void playEmotionSound() {
         if (canPlaySound) {
-            swipeSound.play();
-        }
-    }
-
-    /** playSound method plays the given sound if allowed
-     *
-     * if playing a sound is enabled then this method will play the sound user gives as a parameter.
-     *
-     * @param sound variable is the sound that is played
-     * @author Mika Kivennenä
-     */
-    public void playSound(Sound sound) {
-        if(canPlaySound) {
-            sound.play();
+            emotionSound.play();
         }
     }
 
@@ -115,9 +97,11 @@ public class AudioPlayer {
         return  canPlaySound;
     }
 
+    /** Disposes all music and sounds.
+     */
     public void dispose() {
         backgroundMusic.dispose();
-        swipeSound.dispose();
+        emotionSound.dispose();
     }
 
 }

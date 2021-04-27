@@ -14,12 +14,18 @@ import static fi.tuni.tiko.SaveHandler.*;
 import static fi.tuni.tiko.Utility.colorMax255;
 import static fi.tuni.tiko.Utility.getLocalization;
 
-
+/** The MainGame class runs the game.
+ *
+ * The class creates the different screens based on a file.
+ *
+ * @author Atte Ala-Lahti
+ * @author Janika Kupila
+ * @author Mika Kivennenä
+ */
 public class MainGame extends ApplicationAdapter {
 
 	public static ArrayList<Screen> screens;
 	private Screen currentScreen;
-
 
 	public static Color lightBackgroundColor = colorMax255(0f, 151, 167f);
 	public static Color darkBackgroundColor = colorMax255(0, 131, 143);
@@ -39,7 +45,13 @@ public class MainGame extends ApplicationAdapter {
 	public static float meterHeight;
 	public static AudioPlayer audioPlayer;
 	public static int mainMenuScreenID = 999;
+	public static boolean continueUnlocked;
 
+	/** Screens are created. Main menu is created and loaded after.
+	 *
+	 * The width and height of the screen is determined for all classes to base their sizes on.
+	 * All default values are set.
+	 */
 	@Override
 	public void create () {
 		windowWidth = Gdx.graphics.getWidth();
@@ -48,6 +60,7 @@ public class MainGame extends ApplicationAdapter {
 		meterHeight = windowHeight * 0.1f;
 		audioPlayer = new AudioPlayer();
 
+		loadContinueUnlock();
 		weekDay = getLocalization("monday");
 		skin = new MySkin();
 		globalElements = new GlobalElements();
@@ -58,6 +71,13 @@ public class MainGame extends ApplicationAdapter {
 		currentScreenID = currentScreen.getScreenID();
 		loadSettings();
 	}
+
+	/** Draws the game and handles inputs. Changes the screen when an answer is chosen.
+	 *
+	 * Each frame currentScreenID is checked for changes. If it changes, the screen is changed to that of the new ID.
+	 * The screen is refreshed and global UI elements are added to it.
+	 * If one of the emotions is in a critical state when switching screen, an emotion info screen is moved to instead.
+	 */
 	@Override
 	public void render () {
 		currentBackgroundColor = updateBackgroundColor(currentBackgroundColor, desiredBackgroundColor);
@@ -120,6 +140,7 @@ public class MainGame extends ApplicationAdapter {
 							globalElements.updateMeters(((ChoiceScreen) currentScreen).getEffects());
 						}
 						globalElements.getFeelingMeterButton().setStyle(skin.get(globalElements.getStrongestEmotion(), Button.ButtonStyle.class));
+						continueUnlocked = true;
 						saveProgress();
 					}
 				}
@@ -131,11 +152,18 @@ public class MainGame extends ApplicationAdapter {
 		currentScreen.draw();
 		currentScreen.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 60f));
 	}
+
+	/** Returns the ID of the emotion alert screen if one of the emotions is in a critical enough condition.
+	 *
+	 * Too little disgust doesn't have it's own alert screen because it's impossible to happen in the game.
+	 *
+	 * @return ID of the emotion alert screen, if there isn't need for it, returns 0
+	 */
 	public int getEmotionAlertScreen() {
 		int result = 0;
-		String [] emotions = {"anger", "sadness", "disgust", "love", "happiness", "astonishment"};
+		String [] emotions = {"anger", "sadness", "disgust", "love", "happiness", "astonishment", "fear"};
 		int link = 401;
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 7; i++) {
 			if (globalElements.getMeter(emotions[i]).getValue() == 100) {
 				result = link;
 			} else if (globalElements.getMeter(emotions[i]).getValue() == 0 && i != 2) {
@@ -145,12 +173,28 @@ public class MainGame extends ApplicationAdapter {
 		}
 		return result;
 	}
+
+	/** Creates the ChoiceScreens from a file. Adds them to a general screens list.
+	 *
+	 * @param path filename of the file to create the screens from
+	 * @return list of all screens
+	 */
 	public ArrayList<Screen> createScreens(String path) {
 		ArrayList<ChoiceScreen> choiceScreens = createChoiceScreens(path);
 		ArrayList<Screen> allScreens = new ArrayList<>();
 		allScreens.addAll(choiceScreens);
 		return allScreens;
 	}
+
+	/** Creates ChoiceScreens from a file.
+	 *
+	 * In the file screens are separated with a line of "---".
+	 * Each line start with it's associated screen ID.
+	 * Answer lines' ID is the one they lead to.
+	 *
+	 * @param path file name of the file to read from
+	 * @return the list of all ChoiceScreens in the game.
+	 */
 	public ArrayList<ChoiceScreen> createChoiceScreens(String path) {
 		FileHandle handle = Gdx.files.internal(path);
 		String text = handle.readString();
@@ -182,6 +226,14 @@ public class MainGame extends ApplicationAdapter {
 
 		return choiceScreens;
 	}
+
+	/** Attempts to parse the first characters of a string up to a space into an integer and return it.
+	 *
+	 * Is used in creating ChoiceScreens from a file.
+	 *
+	 * @param line line to get the first number from
+	 * @return first characters of the line interpreted as an integer
+	 */
 	public int getStartOfLineNumber(String line) {
 		StringBuilder number = new StringBuilder();
 		int index = 0;
@@ -191,6 +243,14 @@ public class MainGame extends ApplicationAdapter {
 		}
 		return Integer.parseInt(number.toString());
 	}
+
+	/** Returns everything in a String after a space.
+	 *
+	 * Is used in creating ChoiceScreens from a file.
+	 *
+	 * @param line line to read from
+	 * @return everything after a space
+	 */
 	public String getEndOfLineText(String line) {
 		int index = 0;
 		while (line.charAt(index) != ' ') {
@@ -203,6 +263,15 @@ public class MainGame extends ApplicationAdapter {
 		}
 		return text.toString();
 	}
+
+	/** Returns possible emotional effects on the feeling meters based on a given answer text.
+	 *
+	 * Goes through all seven emotions trying to find emotional effect indicators in the line it is given.
+	 * If it finds them, it will find out how much that emotion is changed and add the first three letters and the amount of change to a list of effects.
+	 *
+	 * @param myAnswer the answer text to find the emotional effects from
+	 * @return list of emotional effects found in the answer, formatted for future use
+	 */
 	public ArrayList<String> getAnswerEffects(String myAnswer) {
 		ArrayList<String> answerEffects = new ArrayList<>();
 		for (String indicator : globalElements.getEmotions()) {
@@ -263,6 +332,15 @@ public class MainGame extends ApplicationAdapter {
 		}
 		return answerEffects;
 	}
+
+	/** Returns a color that is slightly more like another color.
+	 *
+	 * Called every frame to make smooth transitions between background colors.
+	 *
+	 * @param currentBGColor the color to change
+	 * @param desired the color to change to
+	 * @return original color changed to be slightly more like the target color
+	 */
 	public Color updateBackgroundColor(Color currentBGColor, Color desired) {
 		Color current = new Color(currentBGColor);
 		if (!currentBackgroundColor.equals(desiredBackgroundColor)) {
@@ -304,6 +382,8 @@ public class MainGame extends ApplicationAdapter {
 		return current;
 	}
 
+	/** Disposes all screens, the skin and audio player.
+	 */
 	@Override
 	public void dispose () {
 		for (Screen s: screens) {

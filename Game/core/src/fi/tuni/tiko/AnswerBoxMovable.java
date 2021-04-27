@@ -11,7 +11,9 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.*;
 import static fi.tuni.tiko.MainGame.windowWidth;
 import static fi.tuni.tiko.MainGame.skin;
 
-/** AnswerBoxes are text boxes that can be moved by dragging them. They stop halfway out from the screen and require a second swipe to confirm.
+/** These AnswerBoxes can be moved by dragging them.
+ *
+ * They stop halfway out from the screen and require a second swipe to confirm.
  * Confirming an AnswerBox calls it's Screen's nextScreen method with the AnswerBox's assigned screenLink,
  * screenLink being the ID of the Screen the AnswerBox's answer leads to.
  * Other AnswerBoxes on the same Screen cannot be dragged once one is on the edge of the screen.
@@ -20,7 +22,6 @@ import static fi.tuni.tiko.MainGame.skin;
 public class AnswerBoxMovable extends AnswerBox {
     private boolean needsConfirmation = true;
     private float moveDuration = 0.2f;
-    private int screenLink;
     private CharSequence text;
     private boolean atEdge = false;
     private boolean currentlyTouched = false;
@@ -30,9 +31,10 @@ public class AnswerBoxMovable extends AnswerBox {
     private float y;
     private float height;
 
-    /** Creates a new AnswerBox.
-     * An AnswerBox is comprised of a background label and a text box label to precisely control where the text can be.
-     * In the future, different backgrounds might require different text box sizes.
+    /** Creates a new movable AnswerBox.
+     *
+     * An AnswerBox is comprised of a background image and a text label to precisely control where the text can be.
+     * Listeners are added to handle movement.
      *
      * @param text the text in the text box
      * @param x horizontal coordinate in pixels
@@ -43,7 +45,6 @@ public class AnswerBoxMovable extends AnswerBox {
      */
     public AnswerBoxMovable(final CharSequence text, float x, float y, float width, float height, final int screenLink) {
         super(text, x, y, width, height);
-        this.screenLink = screenLink;
         this.text = text;
         this.y = y;
         this.height = height;
@@ -116,7 +117,7 @@ public class AnswerBoxMovable extends AnswerBox {
                     moveX = startX + windowWidth;
                     actionConfirmed = true;
                 }
-                final boolean finalEdge = movingToEdge;
+                final boolean FINAL_EDGE = movingToEdge;
 
                 if (actionConfirmed && moveX != getX()) {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
@@ -130,7 +131,7 @@ public class AnswerBoxMovable extends AnswerBox {
                     addAction(sequence(moveTo(moveX, getY(), moveDuration), run(new Runnable() {
                         @Override
                         public void run() {
-                            if (finalEdge) {
+                            if (FINAL_EDGE) {
                                 atEdge = true;
                             }
                             for (Actor a : getParent().getChildren()) {
@@ -151,18 +152,30 @@ public class AnswerBoxMovable extends AnswerBox {
 
     /** Sets pausing. The AnswerBox cannot be moved while paused.
      * Called by the Screen when moving out of game view.
+     *
+     * @param pause true: pause, false: unpause
      */
     public void setPause(boolean pause) {
         paused = pause;
     }
 
+    /** Adds a rail to list of elements on the AnswerBox's screen.
+     *
+     * The rail is a dark rectangle that the box slides on.
+     */
     public void addRail() {
         Image rail = new Image(skin, "rail");
         rail.setBounds(-windowWidth, y, windowWidth * 3f, height);
-        getStage().addActor(rail);
+        ((Screen) getStage()).getElements().addActor(rail);
         rail.toBack();
     }
 
+    /** Set whether the answer needs to be confirmed with a second swipe or not.
+     *
+     * If a second swipe is not necessary, even a tap while choose the answer.
+     *
+     * @param value true: needs confirmation or false: doesn't need confirmation
+     */
     public void setConfirmationNeed(boolean value) {
         needsConfirmation = value;
     }

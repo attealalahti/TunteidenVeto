@@ -26,11 +26,11 @@ public class ChoiceScreen extends Screen {
     private Label dayBox;
     private ArrayList<String> answers;
     private ArrayList<String> answerEffects;
-    private final float buttonHeight = windowHeight * 0.07f;
-    private final float dayBoxHeight = windowHeight * 0.03f;
+    private final float BUTTON_HEIGHT = windowHeight * 0.07f;
+    private final float DAY_BOX_HEIGHT = windowHeight * 0.03f;
     private float captionHeight = windowHeight * 0.06f;
-    private final int questionSizeThreshold = 200;
-    private float roomForAnswers = windowHeight - dayBoxHeight - margin - buttonHeight;
+    private final int QUESTION_SIZE_THRESHOLD = 200;
+    private float roomForAnswers = windowHeight - DAY_BOX_HEIGHT - margin - BUTTON_HEIGHT;
     private String question;
 
     /** Creates a new ChoiceScreen.
@@ -62,7 +62,7 @@ public class ChoiceScreen extends Screen {
      */
     public void createDayText() {
         dayBox = new Label("dayOfTheWeek", skin, "dayText");
-        dayBox.setBounds(getBoxX(), windowHeight - margin - dayBoxHeight, getBoxWidth(), dayBoxHeight);
+        dayBox.setBounds(getBoxX(), windowHeight - margin - DAY_BOX_HEIGHT, getBoxWidth(), DAY_BOX_HEIGHT);
         dayBox.setAlignment(0);
         dayBox.setWrap(true);
         addActor(dayBox);
@@ -78,17 +78,17 @@ public class ChoiceScreen extends Screen {
     public void createQuestionBox() {
         float questionBoxHeight = windowHeight * 0.4f;
         String questionBoxStyle = "questionBox";
-        if (question.length() > questionSizeThreshold && ((answers.size() == 2 && answerEffects.size() == 0) || (answers.size() == 1 && answerEffects.size() > 0))) {
+        if (question.length() > QUESTION_SIZE_THRESHOLD && ((answers.size() == 2 && answerEffects.size() == 0) || (answers.size() == 1 && answerEffects.size() > 0))) {
             questionBoxHeight = windowHeight * 0.5f;
             questionBoxStyle = "bigQuestionBox";
-        } else if (question.length() > questionSizeThreshold && answers.size() == 1 && answerEffects.size() == 0) {
+        } else if (question.length() > QUESTION_SIZE_THRESHOLD && answers.size() == 1 && answerEffects.size() == 0) {
             questionBoxHeight = windowHeight * 0.6f;
             questionBoxStyle = "biggerQuestionBox";
         }
         roomForAnswers -= questionBoxHeight;
 
         Image questionBackground = new Image(skin, questionBoxStyle);
-        questionBackground.setBounds(getBoxX(), windowHeight - dayBoxHeight - questionBoxHeight - margin * 2f, getBoxWidth(), questionBoxHeight);
+        questionBackground.setBounds(getBoxX(), windowHeight - DAY_BOX_HEIGHT - questionBoxHeight - margin * 2f, getBoxWidth(), questionBoxHeight);
 
         Label questionText = new Label(question, skin, "questionBoxText");
         questionText.setBounds(
@@ -134,12 +134,12 @@ public class ChoiceScreen extends Screen {
         }
 
         Image image = new Image(skin, style.toString());
-        float imageHeight = windowHeight - margin - dayBoxHeight - margin - margin - captionHeight - buttonHeight - answers.size()*(margin + getBoxHeight());
+        float imageHeight = windowHeight - margin - DAY_BOX_HEIGHT - margin - margin - captionHeight - BUTTON_HEIGHT - answers.size()*(margin + getBoxHeight());
         if (imageHeight > windowHeight * 0.5f) {
             imageHeight = windowHeight * 0.5f;
         }
         float imageWidth = imageHeight * 0.5f;
-        image.setBounds((windowWidth - imageWidth) * 0.5f, windowHeight - dayBoxHeight - margin * 2f - imageHeight, imageWidth, imageHeight);
+        image.setBounds((windowWidth - imageWidth) * 0.5f, windowHeight - DAY_BOX_HEIGHT - margin * 2f - imageHeight, imageWidth, imageHeight);
 
         Label caption = new Label(captionText.toString(), skin, "imageCaptionText");
         caption.setBounds(getBoxX(), image.getY() - margin - captionHeight, getBoxWidth(), getBoxHeight());
@@ -154,7 +154,7 @@ public class ChoiceScreen extends Screen {
         roomForAnswers -= imageHeight + captionHeight;
     }
 
-    /** Creates a group of answer boxes based on the choice texts and screen links.
+    /** Creates a group of answer boxes based on how much room is available and the choice texts and screen links.
      *
      * If there are effects to the feeling meters, the answer box is made not movable and an additional answer box with an arrow is created below.
      * That arrow box is used to move to the next screen.
@@ -162,13 +162,13 @@ public class ChoiceScreen extends Screen {
     public void createAnswerBoxes() {
         answerBoxes = new Group();
         if (answerEffects.size() == 0) {
-            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+1) - getBoxHeight() * 0.5f;
+            float currentY = BUTTON_HEIGHT + roomForAnswers / (float) (getChoices().size()+1) - getBoxHeight() * 0.5f;
             for (int i = 0; i < getChoices().size(); i++) {
                 answerBoxes.addActor(new AnswerBoxMovable(getChoices().get(i), getBoxX(), currentY, getBoxWidth(), getBoxHeight(), getScreenLinks().get(i)));
                 currentY += roomForAnswers / (float) (getChoices().size()+1);
             }
         } else {
-            float currentY = buttonHeight + roomForAnswers / (float) (getChoices().size()+2) - getBoxHeight() * 0.5f;
+            float currentY = BUTTON_HEIGHT + roomForAnswers / (float) (getChoices().size()+2) - getBoxHeight() * 0.5f;
             AnswerBoxMovable arrowBox = new AnswerBoxMovable("", getBoxX(), currentY, getBoxWidth(), getBoxHeight(), getScreenLinks().get(0));
             arrowBox.setBackground("arrowBox");
             answerBoxes.addActor(arrowBox);
