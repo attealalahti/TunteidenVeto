@@ -1,4 +1,4 @@
-# TunteidenVeto
+# Tunteiden Veto
 
 Tunteiden Veto is an immersive role-playing game based on real-life situations - each choice you make takes the story forward and impacts the outcome. The game’s emotion tracking meters allow you to follow the levels of different emotions. Tunteiden Veto focuses on teaching emotional skills by showing how emotions affect our daily lives and what kind of responses the emotions can trigger in our bodies.
 
