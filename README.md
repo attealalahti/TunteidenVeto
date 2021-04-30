@@ -4,6 +4,9 @@ Tunteiden Veto is an immersive role-playing game based on real-life situations -
 
 The game has been developed in collaboration with the Eläytyen osalliseksi project. The project’s focus is to support young people by improving their feeling of inclusion. The target group of the project is teenagers who are particularly vulnerable to social exclusion and dropping out of education due to intergenerational burden.
 
+Download it on Google Play:
+https://play.google.com/store/apps/details?id=fi.tuni.tunteidenveto
+
 ![screenshot](https://webpages.tuni.fi/20tiko2e/screenshot1e.png)
 
 ![screenshot](https://webpages.tuni.fi/20tiko2e/screenshot2e.png)
