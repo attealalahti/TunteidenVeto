@@ -48,7 +48,11 @@ public class FeelingMeter extends Group {
      * @param imageStyle is the emoji in front of the meter that symbolizes the emotion.
      */
     public FeelingMeter(float y, Color color, String imageStyle) {
-        Label caption = new Label(getLocalization(imageStyle), skin, "meterCaptionText");
+        String captionLocalization = getLocalization(imageStyle);
+        if (imageStyle.equals("astonishment") && getLocalization("language").equals("fi")) {
+            captionLocalization = "Hämmennys";
+        }
+        Label caption = new Label(captionLocalization, skin, "meterCaptionText");
         caption.setBounds((windowWidth - combinedWidth) * 0.5f, y, TEXT_WIDTH, TEXT_HEIGHT);
         caption.setAlignment((int) TEXT_HEIGHT - 1, 0);
         addActor(caption);
