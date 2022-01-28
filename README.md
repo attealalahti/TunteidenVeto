@@ -7,10 +7,10 @@ The game has been developed in collaboration with the Eläytyen osalliseksi proj
 Download it on Google Play:
 https://play.google.com/store/apps/details?id=fi.tuni.tunteidenveto
 
-![screenshot](https://webpages.tuni.fi/20tiko2e/screenshot1e.png)
+![screenshot](screenshots/screenshot1e.png)
 
-![screenshot](https://webpages.tuni.fi/20tiko2e/screenshot2e.png)
+![screenshot](screenshots/screenshot2e.png)
 
-![screenshot](https://webpages.tuni.fi/20tiko2e/screenshot3e.png)
+![screenshot](screenshots/screenshot3e.png)
 
-![screenshot](https://webpages.tuni.fi/20tiko2e/screenshot4e.png)
+![screenshot](screenshots/screenshot4e.png)
