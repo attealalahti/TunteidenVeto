@@ -7,6 +7,9 @@ The game has been developed in collaboration with the Eläytyen osalliseksi proj
 Download it on Google Play:
 https://play.google.com/store/apps/details?id=fi.tuni.tunteidenveto
 
+Website for the game:
+https://webpages.tuni.fi/20tiko2e/index_en.html
+
 ![screenshot](screenshots/screenshot1e.png)
 
 ![screenshot](screenshots/screenshot2e.png)
